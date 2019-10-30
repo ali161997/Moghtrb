@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@color/white">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
+        android:layout_marginTop="72dp"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="60dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/explore_recycler"
+                android:layout_width="match_parent"
+                android:background="@color/low_white"
+                android:layout_height="wrap_content"
+                android:padding="3dp" />
+        </LinearLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/cordy"
+        android:layout_marginTop="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:expanded="false">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/dark_blue"
+                app:contentScrim="?attr/colorPrimary"
+                app:expandedTitleGravity="top"
+                app:layout_scrollFlags="exitUntilCollapsed|scroll">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <Button
+                        android:id="@+id/Where_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/blue"
+                        android:fontFamily="@font/heebo_medium"
+                        android:padding="10dp"
+                        android:layout_marginTop="75dp"
+                        android:text="@string/where"
+                        android:drawablePadding="5dp"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textSize="15sp" />
+
+
+                    <Button
+                        android:id="@+id/Guests_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/blue"
+                        android:fontFamily="@font/heebo_medium"
+                        android:padding="10dp"
+                        android:drawablePadding="5dp"
+                        android:text="@string/guests_number"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textSize="15sp" />
+
+                    <Button
+                        android:id="@+id/Time_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="5dp"
+                        android:background="@color/blue"
+                        android:fontFamily="@font/heebo_medium"
+                        android:padding="10dp"
+                        android:text="@string/when"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textSize="15sp" />
+                    <!-- -->
+
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@color/dark_blue"
+                    app:collapseIcon="@drawable/search"
+                    app:layout_collapseMode="pin">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/Filter_btn"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_centerInParent="true"
+                            android:layout_marginBottom="7dp"
+                            android:layout_marginEnd="15dp"
+                            android:gravity="center" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/card_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_toStartOf="@+id/Filter_btn"
+                            app:cardBackgroundColor="@color/blue"
+                            app:cardCornerRadius="3dp"
+                            android:layout_centerInParent="true"
+                            app:cardElevation="3dp"
+                            app:cardPreventCornerOverlap="true"
+                            app:cardUseCompatPadding="true">
+
+                            <ImageButton
+                                android:id="@+id/btn_search"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_margin="5dp" />
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </RelativeLayout>
+
+
+                </androidx.appcompat.widget.Toolbar>
+
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <include layout="@layout/filter_bottom_sheet" />
+
+        <include layout="@layout/num_guests_bottom_sheet" />
+
+        <include layout="@layout/anytime_bottom_sheet" />
+
+        <include layout="@layout/anywhere_bottom_sheet" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</RelativeLayout>

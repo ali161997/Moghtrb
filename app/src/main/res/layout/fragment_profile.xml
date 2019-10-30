@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        android:layout_marginEnd="20dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/image_profile"
+            android:layout_width="100dp"
+            fresco:roundAsCircle="true"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            fresco:placeholderImage="@color/gray"
+            fresco:placeholderImageScaleType="fitCenter"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/edit_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_name"
+            android:layout_alignParentStart="true"
+            android:fontFamily="@font/heebo_medium"
+            android:text="@string/edit_profile"
+            android:textColor="@color/gray"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/heebo_medium"
+            android:textColor="@color/blue"
+            android:textSize="30sp" />
+
+        <ListView
+            android:layout_below="@id/edit_profile"
+            android:id="@+id/list_view_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/white"
+            android:divider="@color/common_google_signin_btn_text_dark_disabled"
+            android:dividerHeight="1dp"
+            android:textDirection="ltr"
+            android:layout_marginBottom="60dp" />
+    </RelativeLayout>
+
+
+</LinearLayout>

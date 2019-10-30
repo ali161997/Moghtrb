@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/filter_bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+
+    <RelativeLayout
+        android:id="@+id/header_view_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sheet_top_margin">
+
+        <Button
+            android:id="@+id/CloseFilterSheet"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_margin="10dp" />
+
+        <Button
+            android:id="@+id/reset_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            android:fontFamily="@font/heebo_medium"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="Reset all"
+            android:textAllCaps="false"
+            android:textColor="@color/blue" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/body_where"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/card_save_where"
+        android:layout_below="@id/header_view_filter">
+
+
+        <RelativeLayout
+            android:id="@+id/scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <CheckBox
+                android:id="@+id/smoking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/roommate_sheet_tv"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/heebo_medium"
+                android:layoutDirection="rtl"
+                app:buttonTint="@color/blue"
+                android:text="@string/no_smoking"
+                android:textColor="@color/gray"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:id="@+id/container_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/price_range_tv"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/price_range_tv"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Average Price"
+                    android:textColor="@color/gray"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:id="@+id/averagePrice"
+                    android:text="350 L.E per month"
+                    android:textColor="@color/blue" />
+
+            </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/radio_sheet_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/room_sheet_tv"
+                android:layout_margin="10dp"
+                android:layoutDirection="rtl"
+                android:orientation="vertical"
+                android:splitMotionEvents="true">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:id="@+id/ifShared"
+                    android:tag="@string/shared_room"
+                    android:fontFamily="@font/heebo_medium"
+                    android:text="@string/shared_room"
+                    app:buttonTint="@color/dark_blue"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/ifPrivate"
+                    android:tag="@string/private_room"
+                    android:fontFamily="@font/heebo_medium"
+                    app:buttonTint="@color/dark_blue"
+                    android:text="@string/private_room"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp" />
+            </RadioGroup>
+
+            <Spinner
+                android:id="@+id/sheet_spin_faculty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/preferred_tv"
+                android:layout_margin="10dp"
+                android:background="@color/gray"
+                android:entries="@array/faculties"
+                android:padding="10dp"
+                android:textDirection="ltr">
+
+            </Spinner>
+
+            <TextView
+                android:id="@+id/price_range_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/heebo_medium"
+                android:text="@string/price_range"
+                android:textColor="@color/blue"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/room_sheet_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/heebo_medium"
+                android:text="@string/room"
+                android:textColor="@color/blue"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/roommate_sheet_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line2"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/heebo_medium"
+                android:maxLines="1"
+                android:text="@string/roommate"
+                android:textColor="@color/blue"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/preferred_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/smoking"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/blue"
+                android:textSize="20sp"
+                android:text="@string/preferred_faculty" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@id/range_seek_sheet"
+                android:layout_margin="10dp" />
+
+            <View
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@id/radio_sheet_bottom"
+                android:layout_margin="10dp"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="300 L.E"
+                android:textColor="@color/gray"
+                android:textSize="15sp"
+                android:id="@+id/start_price"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/heebo_medium"
+                android:layout_toStartOf="@id/range_seek_sheet"
+                android:layout_below="@id/container_price"
+
+                />
+
+            <TextView
+                android:id="@+id/end_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="300 L.E"
+                android:layout_marginTop="30dp"
+                android:textSize="15sp"
+                android:fontFamily="@font/heebo_medium"
+                android:textColor="@color/gray"
+                android:layout_toEndOf="@id/range_seek_sheet"
+                android:layout_below="@id/container_price"
+
+                />
+
+            <com.yahoo.mobile.client.android.util.RangeSeekBar
+                android:id="@+id/range_seek_sheet"
+                android:layout_width="250dp"
+                app:alwaysActive="true"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/container_price" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_save_where"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:cardCornerRadius="@dimen/card_sheet_corners"
+        app:cardElevation="@dimen/card_sheet_elevation">
+
+        <Button
+            android:id="@+id/btn_save_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:fontFamily="@font/heebo_medium"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

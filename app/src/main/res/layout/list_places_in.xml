@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/list_places_bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="5dp"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <Button
+        android:id="@+id/btn_close_list_places"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp" />
+
+    <Button
+        android:id="@+id/btn_again_list_places"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:layout_margin="10dp" />
+
+
+    <ListView
+        android:id="@+id/list_view_places"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@color/white"
+        android:divider="@color/common_google_signin_btn_text_dark_disabled"
+        android:dividerHeight="1dp"
+        android:textDirection="ltr" />
+
+    <ProgressBar
+        android:id="@+id/progress_loadplaces"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:progress="25"
+
+        />
+</androidx.cardview.widget.CardView>
