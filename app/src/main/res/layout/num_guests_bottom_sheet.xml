@@ -4,7 +4,6 @@
     android:id="@+id/num_guests_bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="10dp"
     android:background="@color/white"
     android:clipToPadding="false"
     android:fitsSystemWindows="true"
@@ -28,7 +27,6 @@
             android:layout_margin="10dp" />
 
         <Button
-            android:id="@+id/reset_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -44,7 +42,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/header_view_guests"
         android:layout_margin="20dp">
 
@@ -70,13 +68,11 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_save_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="10dp">
+        app:cardCornerRadius="@dimen/card_sheet_corners"
+        app:cardElevation="@dimen/btnSaveCardElevation">
 
         <Button
             android:id="@+id/btn_save_num_guests"
@@ -84,7 +80,7 @@
             android:layout_height="wrap_content"
             android:background="@color/blue"
             android:fontFamily="@font/heebo_medium"
-            android:text="Save"
+            android:text="@string/save"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="25sp" />

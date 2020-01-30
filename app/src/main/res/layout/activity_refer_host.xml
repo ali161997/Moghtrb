@@ -8,7 +8,6 @@
     tools:context=".activities.refer_host">
 
     <Button
-        android:id="@+id/btn_submit_refer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/host_phone"

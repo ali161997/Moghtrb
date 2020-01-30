@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top|center_horizontal"
             android:layout_margin="20dp"
-            android:background="@color/common_google_signin_btn_text_dark_disabled"
+            android:background="@color/gray"
             app:cardCornerRadius="5dp"
             app:cardElevation="15dp">
 

@@ -15,7 +15,7 @@
         android:gravity="center"
         android:id="@+id/selectall"
         android:layoutDirection="rtl"
-        android:text="select all"
+        android:text="@string/select_all"
         android:textColor="@color/gray"
         app:buttonTint="@color/blue" />
 

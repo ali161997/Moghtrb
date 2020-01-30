@@ -25,42 +25,67 @@
             android:layout_alignParentStart="true"
             android:layout_margin="10dp" />
 
-        <Button
-            android:id="@+id/reset_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="10dp"
-            android:background="@color/white"
-            android:fontFamily="@font/heebo_medium"
-            android:gravity="center"
-            android:padding="0dp"
-            android:text="Reset all"
-            android:textAllCaps="false"
-            android:textColor="@color/blue" />
     </RelativeLayout>
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_save_time"
+
+        android:id="@+id/cardCity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/header_view_anywhere"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="20dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@color/quantum_grey500"
+        app:cardCornerRadius="10dp"
         app:cardElevation="10dp">
 
-        <fragment
-            android:id="@+id/autocomplete_fragment_anywhere"
-            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+        <Spinner
+            android:id="@+id/spinSelectCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardCity"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="20dp"
+        app:cardBackgroundColor="@color/quantum_grey500"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp">
+
+        <Spinner
+            android:id="@+id/spinSelectRegion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_save_where"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:cardCornerRadius="@dimen/card_sheet_corners"
+        app:cardElevation="@dimen/btnSaveCardElevation">
+
+        <Button
+            android:id="@+id/btn_save_anyWhere"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" />
-
-
+            android:background="@color/blue"
+            android:fontFamily="@font/heebo_medium"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

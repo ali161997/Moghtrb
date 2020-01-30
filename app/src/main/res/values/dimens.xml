@@ -3,11 +3,12 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="sheet_top_margin">10dp</dimen>
-    <dimen name="card_sheet_elevation">5dp</dimen>
     <dimen name="card_sheet_corners">5dp</dimen>
     <dimen name="imageWidthDetail">400dp</dimen>
     <dimen name="imageHeightDetail">300dp</dimen>
     <dimen name="paddingEditText">10dp</dimen>
+    <dimen name="btnSaveCardElevation">5dp</dimen>
+    <dimen name="view_parent_dimen">10dp</dimen>
 
 
 </resources>

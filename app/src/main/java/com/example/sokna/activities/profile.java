@@ -192,8 +192,6 @@ public class profile extends Fragment implements View.OnClickListener, ListView.
             case 0:
                 Intent intent1 = new Intent(getActivity(), ListUserPlaces.class);
                 startActivity(intent1);
-
-
                 break;
             case 1:
                 Intent intent2 = new Intent(getActivity(), SettingsActivity.class);
@@ -214,8 +212,10 @@ public class profile extends Fragment implements View.OnClickListener, ListView.
                 integrator.initiateScan();
                 break;
             case 4:
+                //---
                 break;
             case 5:
+
                 break;
             case 6:
                 signOut();
@@ -227,14 +227,25 @@ public class profile extends Fragment implements View.OnClickListener, ListView.
     }
 
     private void setUserImageView(String url) {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(url);
-        storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
+        if (url.contains("https:")) {
 
             userImageView.setController(
                     Fresco.newDraweeControllerBuilder()
                             .setTapToRetryEnabled(true)
-                            .setUri(uri)
+                            .setUri(url)
                             .build());
-        });
+        } else {
+
+            StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(url);
+            storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
+
+                userImageView.setController(
+                        Fresco.newDraweeControllerBuilder()
+                                .setTapToRetryEnabled(true)
+                                .setUri(uri)
+                                .build());
+            });
+        }
+
     }
 }

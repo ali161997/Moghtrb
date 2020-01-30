@@ -3,25 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activities.EditingProfile">
+    android:layout_height="match_parent"
+    tools:context=".activities.createacount">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Profile_tv"
+        android:id="@+id/signup_tv"
         android:fontFamily="@font/heebo_medium"
-        android:text="@string/profile"
+        android:text="@string/signup"
         android:textSize="30sp"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
-        android:layout_toEndOf="@id/arrowBack_profile"
+        android:layout_toEndOf="@id/arrowback_signup"
         android:textColor="@color/blue"
         android:gravity="center" />
 
     <ImageView
-        android:id="@+id/arrowBack_profile"
+        android:id="@+id/arrowback_signup"
         android:layout_width="35dp"
         android:layout_alignParentStart="true"
         android:layout_height="33dp"
@@ -30,11 +30,9 @@
         android:layout_marginRight="30dp"
         app:srcCompat="@drawable/arrow_back" />
 
-
     <ScrollView
-        android:id="@+id/scrollEditingProfile"
         android:layout_width="match_parent"
-        android:layout_below="@id/arrowBack_profile"
+        android:layout_below="@id/arrowback_signup"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content">
 
@@ -42,33 +40,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/enableEditing"
-                android:text="@string/edit"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/blue"
-                android:padding="5dp"
-                android:textSize="12sp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:fontFamily="@font/heebo_medium"
-                android:background="@color/low_white" />
             <EditText
-                android:layout_below="@id/enableEditing"
                 android:cursorVisible="true"
                 android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
-                android:id="@+id/typename_profile"
+                android:id="@+id/typename_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginTop="10dp"
-
                 android:inputType="textPersonName"
-                android:padding="5dp"
+                android:padding="@dimen/paddingEditText"
                 android:hint="Name"
                 android:fontFamily="@font/heebo_medium"
                 android:textColor="@color/blue"
@@ -78,16 +60,16 @@
             <EditText
                 android:cursorVisible="true"
                 android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
-                android:id="@+id/typemail_profile"
+                android:id="@+id/typemail_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/typename_profile"
+                android:layout_below="@id/typename_signup"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginRight="30dp"
                 android:inputType="textEmailAddress"
                 android:background="@drawable/edittext_border"
-                android:padding="5dp"
+                android:padding="@dimen/paddingEditText"
                 android:textSize="20sp"
                 android:hint="@string/email"
                 android:fontFamily="@font/heebo_medium"
@@ -97,20 +79,37 @@
                 android:cursorVisible="true"
                 android:background="@drawable/edittext_border"
                 android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
-                android:id="@+id/type_phone_profile"
+                android:id="@+id/type_phone_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/typemail_profile"
+                android:layout_below="@id/typemail_signup"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="30dp"
                 android:inputType="phone"
-                android:padding="5dp"
+                android:padding="@dimen/paddingEditText"
                 android:textSize="20sp"
                 android:hint="@string/telephone"
                 android:fontFamily="@font/heebo_medium"
                 android:textColor="@color/blue" />
 
+            <EditText
+                android:cursorVisible="true"
+                android:background="@drawable/edittext_border"
+                android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
+                android:id="@+id/type_password_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/type_phone_signup"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="30dp"
+                android:inputType="textPassword"
+                android:padding="@dimen/paddingEditText"
+                android:textColor="@color/blue"
+                android:textSize="20sp"
+                android:hint="@string/passWord"
+                android:fontFamily="@font/heebo_medium" />
 
             <Spinner
                 android:layout_width="match_parent"
@@ -119,19 +118,21 @@
                 android:layout_marginTop="30dp"
                 android:dropDownWidth="match_parent"
                 android:layout_marginRight="30dp"
-                android:id="@+id/college_Spinner_profile"
+                android:id="@+id/college_Spinner_signup"
                 android:spinnerMode="dropdown"
                 android:prompt="@string/college"
                 android:entries="@array/faculties"
-                android:background="@color/places_text_black_alpha_26"
-                android:layout_below="@+id/type_phone_profile" />
+                style="@style/Widget.AppCompat.Spinner"
+                android:theme="@style/Widget.AppCompat.Light.DropDownItem.Spinner"
+                android:background="#B38F8F"
+                android:layout_below="@+id/type_password_signup" />
 
             <RadioGroup
-                android:id="@+id/radio_gender_profile"
+                android:id="@+id/radio_gender_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:layout_below="@id/college_Spinner_profile"
+                android:layout_below="@id/college_Spinner_signup"
                 android:layout_margin="30dp"
                 android:layoutDirection="ltr"
                 android:dividerPadding="20dp"
@@ -142,7 +143,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginEnd="40dp"
                     android:id="@+id/Male_box"
                     android:tag="MaleBox"
                     android:fontFamily="@font/heebo_medium"
@@ -168,47 +169,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/YearOfBirth"
-                android:id="@+id/birh_tv_profile"
-                android:layout_below="@id/radio_gender_profile"
+                android:id="@+id/birh_tv_signup"
+                android:layout_below="@id/radio_gender_signup"
                 android:textSize="20sp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:textColor="@color/blue" />
 
-            <androidx.cardview.widget.CardView
+            <DatePicker
+                android:id="@+id/date_picker_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:id="@+id/cardBirthDate"
-                android:layout_below="@id/birh_tv_profile"
-                app:cardBackgroundColor="@color/low_white"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp">
+                android:layout_below="@id/birh_tv_signup"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:spinnersShown="true"
+                android:calendarViewShown="false"
+                android:background="@color/blue"
+                android:layout_marginRight="30dp"
+                tools:visibility="visible">
 
-
-                <Button
-                    android:id="@+id/btnBirthDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/birth_date"
-                    android:textAllCaps="false"
-                    android:textSize="20sp"
-                    android:background="@color/low_white"
-                    android:textColor="@color/blue">
-
-                </Button>
-            </androidx.cardview.widget.CardView>
+            </DatePicker>
 
             <Button
                 android:layout_width="match_parent"
-                android:id="@+id/update_profile"
+                android:id="@+id/createAccount_signup"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/cardBirthDate"
+                android:layout_below="@id/date_picker_signup"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
-                android:text="@string/update"
+                android:text="@string/Create_account"
                 android:fontFamily="@font/heebo_medium"
                 android:background="@drawable/rounded_button_log"
                 android:layout_marginTop="40dp"
@@ -217,7 +208,7 @@
                 android:layout_marginBottom="50dp" />
 
             <ProgressBar
-                android:id="@+id/progressBar_profile"
+                android:id="@+id/progressBar_signup"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:visibility="gone"
@@ -227,5 +218,4 @@
 
         </RelativeLayout>
     </ScrollView>
-
 </RelativeLayout>

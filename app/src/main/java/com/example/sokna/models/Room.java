@@ -7,12 +7,12 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 public class Room implements Parcelable {
-    private double price;
-    private int rate;
-    private int num_reviews;
-    private String street;
-    private int number_beds;
-    private String comments;
+    private double price; //
+    private int rate;//
+    private int num_reviews;//
+    private String street;//
+    private int number_beds;//
+    private String detailLink;
     private ArrayList<String> urlsImage;
 
     public Room() {
@@ -67,12 +67,12 @@ public class Room implements Parcelable {
         this.number_beds = number_beds;
     }
 
-    public String getComments() {
-        return comments;
+    public String getDetailLink() {
+        return detailLink;
     }
 
-    public void setComments(String comments) {
-        this.comments = comments;
+    public void setComments(String detailLink) {
+        this.detailLink = detailLink;
     }
 
 
@@ -88,19 +88,19 @@ public class Room implements Parcelable {
         dest.writeInt(num_reviews);
         dest.writeString(street);
         dest.writeInt(number_beds);
-        dest.writeString(comments);
+        dest.writeString(detailLink);
         dest.writeList(urlsImage);
 
 
     }
 
-    public Room(double price, int rate, int num_reviews, String street, int number_beds, String comments, ArrayList<String> urlsImage) {
+    public Room(double price, int rate, int num_reviews, String street, int number_beds, String detailLink, ArrayList<String> urlsImage) {
         this.price = price;
         this.rate = rate;
         this.num_reviews = num_reviews;
         this.street = street;
         this.number_beds = number_beds;
-        this.comments = comments;
+        this.detailLink = detailLink;
         this.urlsImage = urlsImage;
     }
 
@@ -110,7 +110,7 @@ public class Room implements Parcelable {
         num_reviews = in.readInt();
         street = in.readString();
         number_beds = in.readInt();
-        comments = in.readString();
+        detailLink = in.readString();
         urlsImage = in.readArrayList(null);
 
 

@@ -67,6 +67,7 @@
                         android:text="@string/where"
                         android:drawablePadding="5dp"
                         android:textAlignment="textStart"
+                        android:gravity="start|center"
                         android:textAllCaps="false"
                         android:textSize="15sp" />
 
@@ -83,8 +84,9 @@
                         android:padding="10dp"
                         android:drawablePadding="5dp"
                         android:text="@string/guests_number"
-                        android:textAlignment="textStart"
                         android:textAllCaps="false"
+                        android:textAlignment="textStart"
+                        android:gravity="start|center"
                         android:textSize="15sp" />
 
                     <Button
@@ -101,6 +103,7 @@
                         android:padding="10dp"
                         android:text="@string/when"
                         android:textAlignment="textStart"
+                        android:gravity="start|center"
                         android:textAllCaps="false"
                         android:textSize="15sp" />
                     <!-- -->

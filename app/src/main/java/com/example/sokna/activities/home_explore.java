@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.sokna.Interfaces.IOnBackPressed;
 import com.example.sokna.R;
 import com.example.sokna.viewmodels.activityHomeViewModel;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -22,8 +23,8 @@ import static androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE;
 public class home_explore extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     BottomNavigationView navigation;
+    private static final String TAG = "home_explore";
     private activityHomeViewModel viewModel;
-    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class home_explore extends AppCompatActivity implements BottomNavigationV
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         Fresco.initialize(this);
         viewModel = ViewModelProviders.of(this).get(activityHomeViewModel.class);
+        // model_explore = ViewModelProviders.of(this).get(view_model_explore.class);
         //loading the default fragment
         if (viewModel.getSelectedFragment().getValue().equals(new explore())) {
             viewFragment(viewModel.getSelectedFragment().getValue(), "FRAGMENT_HOME");
@@ -45,15 +47,24 @@ public class home_explore extends AppCompatActivity implements BottomNavigationV
 
 
     }
-
-
     @Override
     public void onBackPressed() {
-        viewFragment(new explore(), "FRAGMENT_HOME");
-        viewModel.getSelectedFragment().setValue(new explore());
-        super.onBackPressed();
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (!(fragment instanceof IOnBackPressed) || !((IOnBackPressed) fragment).onBackPressed()) {
+            viewFragment(new explore(), "FRAGMENT_HOME");
+            viewModel.getSelectedFragment().setValue(new explore());
+            super.onBackPressed();
+        }
 
     }
+
+    /*@Override
+    public void onBackPressed() {
+            viewFragment(new explore(), "FRAGMENT_HOME");
+            viewModel.getSelectedFragment().setValue(new explore());
+            super.onBackPressed();
+        }*/
+    //https://stackoverflow.com/questions/8430805/clicking-the-back-button-twice-to-exit-an-activity
 
 
     @Override

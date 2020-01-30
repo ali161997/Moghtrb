@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
+    android:layoutDirection="ltr"
     tools:context=".activities.booking">
 
     <ScrollView
@@ -19,33 +20,32 @@
 
 
             <include
-                android:id="@+id/horizontalview"
-                layout="@layout/horzintal_scroll_images"
+                android:id="@+id/horizontalView"
+                layout="@layout/horizontal_scroll_images"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
                 android:layout_margin="5dp" />
-
 
             <TextView
                 android:id="@+id/bed_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/horizontalview"
-                android:layout_margin="20dp"
-                android:layout_marginStart="10dp"
+                android:layout_below="@id/horizontalView"
+                android:layout_margin="@dimen/view_parent_dimen"
+                android:layout_marginStart="@dimen/view_parent_dimen"
                 android:maxLines="2"
                 android:text="RENT BED IN SEED PLACE"
                 android:textColor="@color/dark_blue"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:id="@+id/ratingview_booking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/bed_title"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="@dimen/view_parent_dimen"
+                android:layout_marginEnd="@dimen/view_parent_dimen"
                 android:orientation="horizontal"
                 android:textColor="@color/gray">
 
@@ -66,8 +66,9 @@
                     android:id="@+id/review_item_booking"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginStart="@dimen/view_parent_dimen"
+                    android:layout_marginTop="1dp"
+                    android:layout_gravity="end"
                     android:fontFamily="@font/heebo_medium"
                     android:textColor="@color/dark_blue"
                     android:textSize="12sp" />
@@ -78,7 +79,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_below="@id/ratingview_booking"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/view_parent_dimen"
+                android:layout_marginStart="@dimen/view_parent_dimen"
+                android:layout_marginEnd="@dimen/view_parent_dimen"
                 android:background="@color/gray" />
 
             <include
@@ -87,7 +90,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/line_booking"
-                android:layout_margin="20dp" />
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="@dimen/view_parent_dimen" />
 
             <include
                 android:id="@+id/services_existed"
@@ -95,19 +99,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/bed_details"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp" />
+                android:layout_marginStart="@dimen/view_parent_dimen"
+                android:layout_marginEnd="@dimen/view_parent_dimen" />
+
+            <View
+                android:id="@+id/line2_booking"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@id/services_existed"
+                android:layout_marginTop="@dimen/view_parent_dimen"
+                android:layout_marginStart="@dimen/view_parent_dimen"
+                android:layout_marginEnd="@dimen/view_parent_dimen"
+
+                android:background="@color/gray" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/services_existed"
-                android:layout_margin="20dp"
+                android:layout_below="@+id/line2_booking"
+                android:layout_margin="@dimen/view_parent_dimen"
+                android:layout_alignParentStart="true"
                 android:fontFamily="@font/heebo_medium"
                 android:padding="5dp"
                 android:text="@string/More_about"
                 android:textColor="@color/blue"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
         </RelativeLayout>
     </ScrollView>
 
@@ -116,8 +132,8 @@
         android:layout_height="30dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/back_booking" />
 
     <androidx.cardview.widget.CardView

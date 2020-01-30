@@ -18,8 +18,23 @@ public class view_model_explore extends ViewModel {
     private MutableLiveData<Boolean> state_search;
     private MutableLiveData<Boolean> makeRefresh;
     private MutableLiveData<Integer> state_num_guests;
+    private MutableLiveData<List<Room>> listRooms;
+    private MutableLiveData<List<String>> listCities;
+    private MutableLiveData<String> selectedCity;
+
+    public void resetStates() {
+        state_where.setValue(4);
+        state_when.setValue(4);
+        state_filter.setValue(4);
+        state_search.setValue(false);
+        makeRefresh.setValue(true);
+        state_num_guests.setValue(4);
+
+    }
 
     public view_model_explore() {
+        // if(repository.equals(null))
+        //{
         repository = explore_Repository.getInstance();
         state_where = new MutableLiveData<>();
         state_when = new MutableLiveData<>();
@@ -27,14 +42,39 @@ public class view_model_explore extends ViewModel {
         state_search = new MutableLiveData<>(false);
         makeRefresh = new MutableLiveData<>();
         state_num_guests = new MutableLiveData<>();
+        listRooms = new MutableLiveData<>();
+        selectedCity = new MutableLiveData<>();
+        listCities = new MutableLiveData<>();
+
+        // }
+        listRooms.setValue(repository.getdata().getValue());
+        listCities.setValue(repository.getCities().getValue());
     }
 
+    public MutableLiveData<String> getSelectedCity() {
+        return selectedCity;
+    }
+
+    public void setSelectedCity(String city) {
+        repository.setSelectedCity(city);
+        selectedCity.setValue(city);
+
+    }
+
+
+    public MutableLiveData<List<String>> getListCities() {
+        return listCities;
+    }
+
+    public MutableLiveData<List<String>> getListRigions() {
+        return repository.getRegions();
+    }
 
     public MutableLiveData<Boolean> getState_search() {
         return state_search;
     }
 
-    public void setState_search(boolean state_search1) {
+    public void setState_search(Boolean state_search1) {
         state_search.setValue(state_search1);
     }
 
@@ -80,11 +120,31 @@ public class view_model_explore extends ViewModel {
     }
 
     public LiveData<List<Room>> getrooms() {
-        return repository.getdata();
+        return listRooms;
     }
 
     public LiveData<List<Double>> getMinMaxSeek() {
         return repository.getMinMaxSeekbar();
+    }
+
+    public void setPlace(String city, String Region) {
+
+    }
+
+    public void setNumGuest(int numGuests) {
+
+    }
+
+    public void setTime(String[] StudentTime) {
+
+    }
+
+    public void setTime(String checkIn, String Checkout) {
+
+    }
+
+    public void setFilter(double Startprice, double endPrice, boolean shared, boolean smoking, String preferredFaculty) {
+
     }
 
 

@@ -8,8 +8,9 @@ import com.example.sokna.activities.explore;
 
 public class activityHomeViewModel extends ViewModel {
     private MutableLiveData<Fragment> fragment_Selected;
-
+    private static final String TAG = "activityHomeViewModel";
     public activityHomeViewModel() {
+
         fragment_Selected = new MutableLiveData<>(new explore());
     }
 

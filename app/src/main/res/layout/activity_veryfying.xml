@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.veryfying">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/line"
+            android:outlineSpotShadowColor="@color/gray" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line"
+            android:text="Phone Number Verification"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:padding="20dp"
+            android:id="@+id/txt_ver"
+            android:textColor="@color/gray" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_ver"
+            android:layout_marginTop="40dp"
+            android:id="@+id/phone_number"
+
+            android:text="+20 01068278067"
+            android:textColor="@color/blue"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:padding="15dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phone_number"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
+            android:hint="Enter code here"
+            android:fontFamily="@font/heebo_medium"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:id="@+id/entering"
+            android:inputType="number"
+
+            />
+
+        <Button
+            android:id="@+id/startVerifyPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/entering"
+            android:layout_marginTop="70dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/rounded_button_log"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/heebo_medium"
+            android:text="Start verifying" />
+
+        <Button
+            android:id="@+id/buttonVerifyPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/startVerifyPhone"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/rounded_button_log"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/heebo_medium"
+            android:text="Verifying" />
+
+        <Button
+            android:id="@+id/buttonResend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buttonVerifyPhone"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/rounded_button_log"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/heebo_medium"
+            android:text="Resend" />
+
+
+    </RelativeLayout>
+
+</ScrollView>

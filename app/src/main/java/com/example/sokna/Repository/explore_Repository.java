@@ -11,13 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class explore_Repository {
+    private static final String TAG = "explore_Repository";
 
     private static explore_Repository instance;
     private ArrayList<Room> datasetrooms = new ArrayList<>();
     private static ArrayList<Double> MinMaxSeekBar = new ArrayList<>();
     private MutableLiveData<List<Room>> datalist = new MutableLiveData<>();
+    private MutableLiveData<List<String>> cities = new MutableLiveData<>();
+    private MutableLiveData<List<String>> regions = new MutableLiveData<>();
     MutableLiveData<List<Double>> minMax = new MutableLiveData<>();
-    //private static Search search = new Search();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
@@ -27,6 +29,34 @@ public class explore_Repository {
 
         }
         return instance;
+
+    }
+
+    public MutableLiveData<List<String>> getCities() {
+        //set cities and return it
+        setCities();
+        return cities;
+    }
+
+    public MutableLiveData<List<String>> getRegions() {
+
+        return regions;
+    }
+
+    public void setSelectedCity(String City) {
+        setRegions(City);
+
+    }
+
+    private void setRegions(String city) {
+        List<String> regionsDo = new ArrayList<>();
+        regionsDo.add("select Region");
+        regionsDo.add("akhmim");
+        regionsDo.add("akhmim");
+        regionsDo.add("akhmim");
+        regionsDo.add("akhmim");
+        regions.setValue(regionsDo);
+
 
     }
 
@@ -68,20 +98,16 @@ public class explore_Repository {
 
     }
 
-    /*private void setSearch() {
-        db.collection("users").document("5XCsYesOlm959Nksslgc").
-                collection("search_history").document("search1")
-                .get().addOnSuccessListener(documentSnapshot -> {
-            search = documentSnapshot.toObject(Search.class);
-            Log.i("get search from db", "setSearch: suuccefull");
-           // Log.i("start price", search.getFilter().getPrice_start()+" ");
-          //  Log.i("end price", search.getFilter().getPrice_end()+" ");
-
-        }).addOnFailureListener(e -> {
-            Log.i("get search from db", "setSearch: failed");
-        });
-
-    }*/
+    private void setCities() {
+        //get Cities from database
+        List<String> ci = new ArrayList<>();
+        ci.add("Select City");
+        ci.add("assiut");
+        ci.add("assiut");
+        ci.add("assiut");
+        ci.add("assiut");
+        cities.setValue(ci);
+    }
 
 
 }

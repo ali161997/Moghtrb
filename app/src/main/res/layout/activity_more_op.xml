@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activities.moreOp">
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="33dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        app:srcCompat="@drawable/arrow_back" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content">
+
+
+            <Button
+                android:id="@+id/with_facebook"
+                android:layout_marginHorizontal="30dp"
+                android:textColor="@color/white"
+                android:background="@drawable/rounded_button_log"
+                android:padding="15dp"
+                android:textAllCaps="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:layout_marginTop="70dp"
+                android:textSize="20sp"
+
+                android:text="@string/continue_with_face" />
+
+
+            <Button
+                android:id="@+id/with_twitter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/with_facebook"
+                android:layout_marginTop="50dp"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:background="@drawable/rounded_button_log"
+                android:padding="15dp"
+                android:layout_marginHorizontal="30dp"
+                android:text="Continue With Twitter" />
+
+            <Button
+                android:id="@+id/with_google"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/with_twitter"
+                android:layout_marginTop="50dp"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_marginHorizontal="30dp"
+                android:text="Continue With Google"
+                android:textColor="@color/white"
+                android:background="@drawable/rounded_button_log"
+                android:padding="15dp" />
+
+            <Button
+                android:id="@+id/createAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/with_google"
+                android:layout_marginTop="50dp"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:textColor="@color/gray"
+                android:background="@drawable/rounded_button"
+                android:padding="15dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginHorizontal="30dp"
+                android:text="@string/Create_account" />
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

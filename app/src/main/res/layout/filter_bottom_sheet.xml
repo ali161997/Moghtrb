@@ -26,7 +26,6 @@
             android:layout_margin="10dp" />
 
         <Button
-            android:id="@+id/reset_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -35,13 +34,12 @@
             android:fontFamily="@font/heebo_medium"
             android:gravity="center"
             android:padding="0dp"
-            android:text="Reset all"
+            android:text="@string/reset_all"
             android:textAllCaps="false"
             android:textColor="@color/blue" />
     </RelativeLayout>
 
     <ScrollView
-        android:id="@+id/body_where"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/card_save_where"
@@ -49,19 +47,21 @@
 
 
         <RelativeLayout
-            android:id="@+id/scrollview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
             <CheckBox
                 android:id="@+id/smoking"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/roommate_sheet_tv"
                 android:layout_margin="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:fontFamily="@font/heebo_medium"
-                android:layoutDirection="rtl"
+                android:layoutDirection="ltr"
+                android:padding="10dp"
                 app:buttonTint="@color/blue"
                 android:text="@string/no_smoking"
                 android:textColor="@color/gray"
@@ -79,20 +79,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/price_range_tv"
                     android:layout_margin="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Average Price"
-                    android:textColor="@color/gray"
-                    android:textSize="15dp" />
+                    android:text="@string/average_price"
+                    android:textColor="@color/blue"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:id="@+id/averagePrice"
-                    android:text="350 L.E per month"
-                    android:textColor="@color/blue" />
+                    android:text="@string/LEperMonth"
+                    android:textColor="@color/Black" />
 
             </LinearLayout>
 
@@ -102,26 +100,28 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/room_sheet_tv"
                 android:layout_margin="10dp"
+                android:padding="10dp"
+                android:gravity="center_horizontal"
                 android:layoutDirection="rtl"
-                android:orientation="vertical"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
                 android:splitMotionEvents="true">
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:id="@+id/ifShared"
                     android:tag="@string/shared_room"
                     android:fontFamily="@font/heebo_medium"
                     android:text="@string/shared_room"
+                    android:layout_marginEnd="20dp"
                     app:buttonTint="@color/dark_blue"
                     android:textColor="@color/gray"
                     android:textSize="15sp" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:id="@+id/ifPrivate"
                     android:tag="@string/private_room"
                     android:fontFamily="@font/heebo_medium"
@@ -131,18 +131,29 @@
                     android:textSize="15sp" />
             </RadioGroup>
 
-            <Spinner
-                android:id="@+id/sheet_spin_faculty"
+            <androidx.cardview.widget.CardView
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                app:cardBackgroundColor="@color/quantum_grey500"
+                app:cardCornerRadius="10dp"
                 android:layout_below="@+id/preferred_tv"
-                android:layout_margin="10dp"
+                android:layout_marginStart="30dp"
                 android:background="@color/gray"
-                android:entries="@array/faculties"
-                android:padding="10dp"
-                android:textDirection="ltr">
+                android:textDirection="ltr"
+                app:cardElevation="10dp">
 
-            </Spinner>
+                <Spinner
+                    android:id="@+id/sheet_spin_faculty"
+                    android:layout_width="match_parent"
+                    android:padding="10dp"
+                    android:entries="@array/faculties"
+                    android:layout_height="wrap_content" />
+
+            </androidx.cardview.widget.CardView>
+
 
             <TextView
                 android:id="@+id/price_range_tv"
@@ -178,7 +189,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/heebo_medium"
                 android:maxLines="1"
                 android:text="@string/roommate"
@@ -190,12 +201,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/smoking"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="5dp"
                 android:textColor="@color/blue"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:text="@string/preferred_faculty" />
 
             <View
@@ -221,7 +231,7 @@
                 android:textColor="@color/gray"
                 android:textSize="15sp"
                 android:id="@+id/start_price"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/heebo_medium"
                 android:layout_toStartOf="@id/range_seek_sheet"
                 android:layout_below="@id/container_price"
@@ -233,7 +243,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="300 L.E"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:textSize="15sp"
                 android:fontFamily="@font/heebo_medium"
                 android:textColor="@color/gray"
@@ -242,13 +252,24 @@
 
                 />
 
-            <com.yahoo.mobile.client.android.util.RangeSeekBar
+            <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
                 android:id="@+id/range_seek_sheet"
                 android:layout_width="250dp"
-                app:alwaysActive="true"
                 android:layout_centerHorizontal="true"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/container_price" />
+                android:layout_height="50dp"
+                app:corner_radius="10"
+                android:layout_marginTop="10dp"
+                app:min_value="50"
+                app:max_value="100"
+                app:gap="20"
+                app:bar_color="@color/gray"
+                app:bar_highlight_color="@color/places_text_white_alpha_26"
+                app:left_thumb_color="@color/blue"
+                app:right_thumb_color="@color/blue"
+                app:left_thumb_color_pressed="@color/dark_blue"
+                app:right_thumb_color_pressed="@color/dark_blue"
+                android:layout_below="@+id/container_price"
+                app:data_type="_integer" />
 
 
         </RelativeLayout>
@@ -260,7 +281,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:cardCornerRadius="@dimen/card_sheet_corners"
-        app:cardElevation="@dimen/card_sheet_elevation">
+        app:cardElevation="@dimen/btnSaveCardElevation">
 
         <Button
             android:id="@+id/btn_save_filter"
@@ -268,7 +289,7 @@
             android:layout_height="wrap_content"
             android:background="@color/blue"
             android:fontFamily="@font/heebo_medium"
-            android:text="Save"
+            android:text="@string/save"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="25sp" />

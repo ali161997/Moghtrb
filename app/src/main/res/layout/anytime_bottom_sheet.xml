@@ -12,7 +12,6 @@
     app:layout_behavior="@string/bottom_sheet_behavior">
 
     <RelativeLayout
-        android:id="@+id/headerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sheet_top_margin">
@@ -25,7 +24,6 @@
             android:layout_margin="10dp" />
 
         <Button
-            android:id="@+id/reset_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -34,28 +32,39 @@
             android:fontFamily="@font/heebo_medium"
             android:gravity="center"
             android:padding="0dp"
-            android:text="Reset all"
+            android:text="@string/reset_all"
             android:textAllCaps="false"
             android:textColor="@color/blue" />
     </RelativeLayout>
 
-    <Spinner
-        android:id="@+id/spinner"
-        style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/cardSpinner"
         android:layout_marginStart="50dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="50dp"
+        app:cardElevation="@dimen/btnSaveCardElevation"
+        app:cardCornerRadius="@dimen/btnSaveCardElevation"
         android:layout_marginBottom="25dp"
-        android:background="@color/gray"
-        android:entries="@array/spinner_choice_time"
-        android:padding="10dp" />
+        android:layout_height="wrap_content">
+
+        <Spinner
+            android:id="@+id/spinnerAnyTime"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:textAlignment="center"
+            android:entries="@array/spinner_choice_time"
+            android:padding="10dp" />
+
+
+    </androidx.cardview.widget.CardView>
 
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/spinner">
+        android:layout_below="@id/cardSpinner">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -73,17 +82,17 @@
     <include
         android:id="@+id/student_view"
         layout="@layout/student_view"
-        android:layout_below="@id/spinner"
+        android:layout_below="@id/cardSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_save_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/low_white"
         android:layout_alignParentBottom="true"
         app:cardCornerRadius="@dimen/card_sheet_corners"
-        app:cardElevation="@dimen/card_sheet_elevation">
+        app:cardElevation="@dimen/btnSaveCardElevation">
 
         <Button
             android:id="@+id/btn_save_anytime"
@@ -91,7 +100,7 @@
             android:layout_height="wrap_content"
             android:background="@color/blue"
             android:fontFamily="@font/heebo_medium"
-            android:text="Save"
+            android:text="@string/save"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="25sp" />

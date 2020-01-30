@@ -61,9 +61,6 @@ public class ProfileViewModel extends ViewModel {
                     user user1 = documentSnapshot.toObject(user.class);
                     userImage.setValue(user1.getPhotoUrl());
                     Username.setValue(user1.getName());
-                    Log.i("Profile View Model", "Correct" + user1.getName() + " ");
-                    Log.i("Profile View Model", "Correct" + user1.getPhotoUrl() + " ");
-
                 }).addOnFailureListener(e -> {
             Log.i("Profile View Model", "Error");
         });
