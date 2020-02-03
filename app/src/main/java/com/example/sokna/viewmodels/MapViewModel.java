@@ -76,7 +76,7 @@ public class MapViewModel extends ViewModel {
         imgs.add("https://firebasestorage.googleapis.com/v0/b/sokna-281e7.appspot.com/o/pic3.jpg?alt=media&token=e85692f3-e4d9-4b84-953f-e05d8678e022");
         imgs.add("https://firebasestorage.googleapis.com/v0/b/sokna-281e7.appspot.com/o/pic6.jpg?alt=media&token=dfdc2bd9-1f5d-486b-b486-f9cd5ab1f802");
         Room room1 = new Room(400.0, 3, 100, "assiut-asyut-seed factoty-shehab street", 2, "firstLink",
-                imgs);
+                imgs, "assiut", "seed4");
         list.add(room1);
         list.add(room1);
     }

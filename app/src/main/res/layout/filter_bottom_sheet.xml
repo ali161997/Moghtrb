@@ -53,14 +53,14 @@
 
             <CheckBox
                 android:id="@+id/smoking"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/roommate_sheet_tv"
                 android:layout_margin="10dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/heebo_medium"
-                android:layoutDirection="ltr"
+                android:layoutDirection="rtl"
                 android:padding="10dp"
                 app:buttonTint="@color/blue"
                 android:text="@string/no_smoking"
@@ -106,8 +106,8 @@
                 android:layout_centerHorizontal="true"
                 android:orientation="horizontal"
                 android:splitMotionEvents="true">
-
                 <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/sharedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
@@ -122,7 +122,7 @@
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ifPrivate"
+                    android:id="@+id/privateButton"
                     android:tag="@string/private_room"
                     android:fontFamily="@font/heebo_medium"
                     app:buttonTint="@color/dark_blue"
@@ -259,8 +259,6 @@
                 android:layout_height="50dp"
                 app:corner_radius="10"
                 android:layout_marginTop="10dp"
-                app:min_value="50"
-                app:max_value="100"
                 app:gap="20"
                 app:bar_color="@color/gray"
                 app:bar_highlight_color="@color/places_text_white_alpha_26"

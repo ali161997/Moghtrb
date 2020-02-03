@@ -13,7 +13,27 @@ public class Room implements Parcelable {
     private String street;//
     private int number_beds;//
     private String detailLink;
+    private String city;
+    private String region;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
     private ArrayList<String> urlsImage;
+
 
     public Room() {
     }
@@ -90,11 +110,13 @@ public class Room implements Parcelable {
         dest.writeInt(number_beds);
         dest.writeString(detailLink);
         dest.writeList(urlsImage);
+        dest.writeString(city);
+        dest.writeString(region);
 
 
     }
 
-    public Room(double price, int rate, int num_reviews, String street, int number_beds, String detailLink, ArrayList<String> urlsImage) {
+    public Room(double price, int rate, int num_reviews, String street, int number_beds, String detailLink, ArrayList<String> urlsImage, String city, String region) {
         this.price = price;
         this.rate = rate;
         this.num_reviews = num_reviews;
@@ -102,6 +124,8 @@ public class Room implements Parcelable {
         this.number_beds = number_beds;
         this.detailLink = detailLink;
         this.urlsImage = urlsImage;
+        this.city = city;
+        this.region = region;
     }
 
     public Room(Parcel in) {
@@ -112,6 +136,8 @@ public class Room implements Parcelable {
         number_beds = in.readInt();
         detailLink = in.readString();
         urlsImage = in.readArrayList(null);
+        city = in.readString();
+        region = in.readString();
 
 
     }

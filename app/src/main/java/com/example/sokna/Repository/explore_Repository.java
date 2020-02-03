@@ -15,7 +15,9 @@ public class explore_Repository {
 
     private static explore_Repository instance;
     private ArrayList<Room> datasetrooms = new ArrayList<>();
-    private static ArrayList<Double> MinMaxSeekBar = new ArrayList<>();
+    private MutableLiveData<Double> Min = new MutableLiveData<>();
+    private MutableLiveData<Double> Max = new MutableLiveData<>();
+    private Double min, max;
     private MutableLiveData<List<Room>> datalist = new MutableLiveData<>();
     private MutableLiveData<List<String>> cities = new MutableLiveData<>();
     private MutableLiveData<List<String>> regions = new MutableLiveData<>();
@@ -51,8 +53,8 @@ public class explore_Repository {
     private void setRegions(String city) {
         List<String> regionsDo = new ArrayList<>();
         regionsDo.add("select Region");
-        regionsDo.add("akhmim");
-        regionsDo.add("akhmim");
+        regionsDo.add("seed1");
+        regionsDo.add("seed4");
         regionsDo.add("akhmim");
         regionsDo.add("akhmim");
         regions.setValue(regionsDo);
@@ -67,18 +69,24 @@ public class explore_Repository {
         return datalist;
     }
 
-    public MutableLiveData<List<Double>> getMinMaxSeekbar() {
+    public MutableLiveData<Double> getMinSeekbar() {
         setMinMaxSeekBar();
-        minMax.setValue(MinMaxSeekBar);
-        return minMax;
+        Min.setValue(min);
+        return Min;
+
+    }
+
+    public MutableLiveData<Double> getMaxSeekbar() {
+        setMinMaxSeekBar();
+        Max.setValue(max);
+        return Max;
 
     }
 
     private void setMinMaxSeekBar() {
-        MinMaxSeekBar.add(1.0);
-        MinMaxSeekBar.add(100.0);
+        min = 1.0;
+        max = 1500.0;
     }
-
     private void setDatasetrooms() {
 
         db.collection("Rooms")

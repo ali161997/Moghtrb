@@ -52,6 +52,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCa
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
+import java.util.HashMap;
 
 import butterknife.BindArray;
 import butterknife.BindDrawable;
@@ -177,7 +178,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
     //View Models
     private boolean shared;
     private String facultyPreferred;
-    private boolean ifSmoking;
+    private boolean noSmoking;
     private String[] StudentTime = new String[]{"", "", "", ""};
     private String foreignerCheckIn;
     private String foreignerCheckOut;
@@ -186,6 +187,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
     private DatePickerDialog.OnDateSetListener dateCheckIn;
     private Calendar checkOutCalendar;
     private DatePickerDialog.OnDateSetListener dateCheckOut;
+    private HashMap<String, String> searchText;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (container == null) {
@@ -229,27 +231,21 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         AppSearchState();
         StopDragAppSearchBar();
         SetupAnWhere();
+        viewModelExplore.setContext(getApplicationContext());
         SwipeRefreshHome.setOnRefreshListener(this);
         RadioFilterSheet.setOnCheckedChangeListener(this);
-        StartRangePrice.setText(String.valueOf(viewModelExplore.getMinMaxSeek().getValue().get(0)));
-        EndRangePrice.setText(String.valueOf(viewModelExplore.getMinMaxSeek().getValue().get(1)));
+        rangeSeekSheet.setMinValue((float) (double) viewModelExplore.getMinSeek().getValue());
+        rangeSeekSheet.setMaxValue((float) (double) viewModelExplore.getMaxSeek().getValue());
+        StartRangePrice.setText(String.valueOf(viewModelExplore.getMinSeek().getValue()));
+        EndRangePrice.setText(String.valueOf(viewModelExplore.getMaxSeek().getValue()));
         rangeSeekSheet.setOnRangeSeekbarChangeListener((minValue, maxValue) -> {
             StartRangePrice.setText(String.valueOf(minValue));
             EndRangePrice.setText(String.valueOf(maxValue));
         });
-        SwipeRefreshHome.setRefreshing(true);
-        new Handler().postDelayed(() -> {
-            SwipeRefreshHome.setRefreshing(false);
-            roomAdapter.notifyDataSetChanged();
-        }, 6000);
-
-        if (isInternetAvailable()) {
-            showInternetStatus();
-
-        }
+        onRefresh();
         SetDateFromPicker();
         Uploading_explore uploading_explore = new Uploading_explore();
-        uploading_explore.settoUpload();
+        //uploading_explore.settoUpload();
 
 
     }
@@ -331,6 +327,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         checkInCalendar = Calendar.getInstance();
         checkOutCalendar = Calendar.getInstance();
         AppBar.setLiftOnScroll(false);
+        searchText = new HashMap<>();
     }
     private void set_behaviors_sheets() {
         bottomSheet_filter = BottomSheetBehavior.from(filterBottomSheet);
@@ -342,13 +339,9 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
     private void HomeRecycler() {
         ExploreRecyclerHome.setHasFixedSize(true);
         ExploreRecyclerHome.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         roomAdapter = new RoomAdapter(getContext(), viewModelExplore.getrooms().getValue(), this);
-
-        viewModelExplore.getrooms().observe(this, roomList -> roomAdapter.notifyDataSetChanged());
-
-        ExploreRecyclerHome.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
         ExploreRecyclerHome.setAdapter(roomAdapter);
+        ExploreRecyclerHome.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
         ExploreRecyclerHome.setItemAnimator(new DefaultItemAnimator());
         ExploreRecyclerHome.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -519,8 +512,12 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
             SwipeRefreshHome.setRefreshing(false);
 
         } else {
-            roomAdapter.notifyDataSetChanged();
-            new Handler().postDelayed(() -> SwipeRefreshHome.setRefreshing(false), 2000);
+            SwipeRefreshHome.setRefreshing(true);
+            new Handler().postDelayed(() -> {
+                SwipeRefreshHome.setRefreshing(false);
+                roomAdapter = new RoomAdapter(getContext(), viewModelExplore.getrooms().getValue(), this);
+                ExploreRecyclerHome.setAdapter(roomAdapter);
+            }, 3000);
         }
 
 
@@ -598,37 +595,49 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
             case R.id.btn_save_anytime:
 
                 if (spinner_when.getSelectedItemPosition() == 0) {
-                    viewModelExplore.setTime(StudentTime);
-                    viewModelExplore.setTime(null, null);
+                    searchText.remove("ForeignerTime");
                     TimeBtn.setText("");
+                    String r = "";
                     for (String s : StudentTime)
-                        if (!s.equals(""))
+                        if (!s.equals("")) {
                             TimeBtn.append(s + "-");
+                            r.concat(s + "-");
+
+                        }
+                    searchText.put("StudentTime", r);
 
                 } else {
-                    viewModelExplore.setTime(foreignerCheckIn, foreignerCheckOut);
-                    viewModelExplore.setTime(null);
+                    searchText.remove("StudentTime");
                     TimeBtn.setText("");
-                    TimeBtn.setText(String.format("%s:%s", foreignerCheckIn, foreignerCheckOut));
+                    String t = String.format("%s:%s", foreignerCheckIn, foreignerCheckOut);
+                    TimeBtn.setText(t);
+                    searchText.put("ForeignerTime", t);
 
                 }
                 bottomSheet_anytime.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 viewModelExplore.setState_when(BottomSheetBehavior.STATE_COLLAPSED);
+                setSearchText();
                 break;
             case R.id.btn_save_num_guests:
                 int c = (Integer.parseInt(GuestsCount.getText().toString()));
-                viewModelExplore.setNumGuest(c);
-                GuestsBtn.setText(String.format("%s Guests", c));
+                String guests = String.format("%s Guests", c);
+                GuestsBtn.setText(guests);
+                searchText.put("NumGuests", guests);
                 bottomSheet_num_guests.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 viewModelExplore.setState_num_guests(BottomSheetBehavior.STATE_COLLAPSED);
+                setSearchText();
                 break;
             case R.id.btn_save_filter:
-                rangeSeekSheet.setOnRangeSeekbarFinalValueListener((minValue, maxValue) ->
-                        viewModelExplore.setFilter((double) minValue, (double) maxValue, shared, ifSmoking, facultyPreferred)
-
-                );
+                viewModelExplore.setPriceRange(rangeSeekSheet.getSelectedMinValue().doubleValue(), rangeSeekSheet.getSelectedMaxValue().doubleValue());
+                if (shared) searchText.put("Shared", "Yes");
+                else searchText.put("Shared", "No");
+                if (noSmoking) searchText.put("NoSmoking", "Yes");
+                else searchText.put("NoSmoking", "NO");
+                searchText.put("PreferredFaculty", facultyPreferred);
+                onRefresh();
                 bottomSheet_filter.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 viewModelExplore.setState_filter(BottomSheetBehavior.STATE_COLLAPSED);
+                setSearchText();
                 break;
             case R.id.btn_search:
                 if (viewModelExplore.getState_search().getValue()) {
@@ -663,8 +672,11 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
             case R.id.btn_save_anyWhere:
                 bottomSheet_anyWhere.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 viewModelExplore.setState_where(BottomSheetBehavior.STATE_COLLAPSED);
-                viewModelExplore.setPlace(selectCitySpin.getSelectedItem().toString(), selectRegionSpin.getSelectedItem().toString());
-                WhereBtn.setText(String.format("%s / %s", selectCitySpin.getSelectedItem().toString(), selectRegionSpin.getSelectedItem().toString()));
+                String city = selectCitySpin.getSelectedItem().toString();
+                String Region = selectRegionSpin.getSelectedItem().toString();
+                searchText.put("PlaceRequired", city + "/" + Region);
+                viewModelExplore.setPlace(city, Region);
+                WhereBtn.setText(String.format("%s / %s", city, Region));
                 break;
 
 
@@ -751,8 +763,9 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
     }
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        if (RadioFilterSheet.getId() == group.getId()) {
-            shared = checkedId != R.id.ifPrivate;
+        if (R.id.radio_sheet_bottom == group.getId()) {
+            if (checkedId == R.id.sharedButton) shared = true;
+            else if (checkedId == R.id.privateButton) shared = false;
         }
 
     }
@@ -774,7 +787,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
 
 
         } else if (buttonView.getId() == R.id.smoking) {
-            ifSmoking = !isChecked;
+            noSmoking = !isChecked;
 
 
         } else if (buttonView.getId() == R.id.semester1) {
@@ -828,4 +841,9 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
             return false;
         }
     }
+
+    private void setSearchText() {
+        viewModelExplore.setSearchText(searchText);
+    }
+
 }

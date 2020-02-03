@@ -1,6 +1,7 @@
 package com.example.sokna.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
 
     final private Context ctx;
     final private List<Room> roomList;
+    private static final String TAG = "RoomAdapter";
 
     public RoomAdapter(Context ctx, List<Room> roomList, RecyclerViewClickListener itemListener) {
         this.ctx = ctx;
@@ -59,10 +61,10 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
     public void onBindViewHolder(@NonNull final RoomViewHolder roomViewHolder, int i) {
         Room room = roomList.get(i);
         String s = Double.toString(room.getPrice());
-        roomViewHolder.price.setText(s + "  LE/Month");
+        roomViewHolder.price.setText(String.format("%s  LE/Month", s));
         roomViewHolder.street.setText(room.getStreet());
         roomViewHolder.ratingBar.setRating(room.getRate());
-        roomViewHolder.reviews.setText(room.getNum_reviews() + " Reviews");
+        roomViewHolder.reviews.setText(String.format("%s Reviews", room.getNum_reviews()));
         ProgressBarDrawable progressBarDrawable = new ProgressBarDrawable();
         progressBarDrawable.setColor(R.color.quantum_googred);
         progressBarDrawable.setAlpha(1);
@@ -81,7 +83,14 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
 
     @Override
     public int getItemCount() {
-        return roomList.size();
+
+        try {
+            return roomList.size();
+        } catch (Exception e) {
+            Log.i(TAG, "getItemCount: is null");
+        }
+        return 0;
+
     }
 
     public interface RecyclerViewClickListener {
