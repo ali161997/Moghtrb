@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".activities.veryfying">
 
@@ -62,8 +63,10 @@
 
             />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/startVerifyPhone"
+            style="@style/Widget.MaterialComponents.Button"
+            app:backgroundTint="@color/gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/entering"
@@ -77,8 +80,9 @@
             android:fontFamily="@font/heebo_medium"
             android:text="Start verifying" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonVerifyPhone"
+            app:backgroundTint="@color/gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/startVerifyPhone"
@@ -92,8 +96,9 @@
             android:fontFamily="@font/heebo_medium"
             android:text="Verifying" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonResend"
+            android:backgroundTint="@color/gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/buttonVerifyPhone"

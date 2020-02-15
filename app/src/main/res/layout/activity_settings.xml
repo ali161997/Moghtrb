@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".activities.SettingsActivity">
+
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        style="@style/IconOnlyButton"
+        app:icon="@drawable/arrow_back"
+        app:iconTint="@color/Black"
+        app:strokeWidth="0dp"
+        app:backgroundTint="@color/zxing_transparent"
+        android:layout_height="wrap_content"
+        android:id="@+id/backSitting" />
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/backSitting"
+        android:text="@string/select_language"
+        android:textSize="25sp"
+        android:id="@+id/selectLanguage"
+        android:textColor="@color/gray"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp" />
+
+    <RadioGroup
+        android:id="@+id/radioSelectLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/selectLanguage"
+        android:layout_margin="20dp"
+        android:padding="5dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:splitMotionEvents="true">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/englishButton"
+            android:layoutDirection="rtl"
+            android:padding="10dp"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/heebo_medium"
+            android:text="@string/english"
+            app:buttonTint="@color/dark_blue"
+            android:textColor="@color/gray"
+            android:textSize="15sp" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:padding="10dp"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:id="@+id/arabicButton"
+            android:fontFamily="@font/heebo_medium"
+            app:buttonTint="@color/dark_blue"
+            android:text="@string/arabic"
+            android:textColor="@color/gray"
+            android:textSize="15sp" />
+    </RadioGroup>
+
+
+</RelativeLayout>

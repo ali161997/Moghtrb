@@ -69,7 +69,6 @@ public class ProfileViewModel extends ViewModel {
 
     private void listViewData() {
 
-        choices.add("List of your space");
         choices.add("Settings");
         choices.add("Refer Host");
         choices.add("Identify Host");

@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -22,8 +21,6 @@ import java.util.List;
 
 public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder> {
     private static RecyclerViewClickListener itemListener;
-
-
     final private Context ctx;
     final private List<Room> roomList;
     private static final String TAG = "RoomAdapter";
@@ -70,7 +67,6 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
         progressBarDrawable.setAlpha(1);
         progressBarDrawable.setBackgroundColor(R.color.gray);
         roomViewHolder.imageView.getHierarchy().setProgressBarImage(progressBarDrawable);
-        //roomViewHolder.progressBar.setVisibility(View.VISIBLE);
         roomViewHolder.imageView.setController(
                 Fresco.newDraweeControllerBuilder()
                         .setTapToRetryEnabled(true)
@@ -103,7 +99,6 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
         TextView street;
         RatingBar ratingBar;
         TextView reviews;
-        ProgressBar progressBar;
 
         public RoomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -112,7 +107,6 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
             street = itemView.findViewById(R.id.tv_street);
             ratingBar = itemView.findViewById(R.id.rating_item);
             reviews = itemView.findViewById(R.id.review_item);
-            progressBar = itemView.findViewById(R.id.progress_image_rec);
             itemView.setOnClickListener(this);
 
         }
@@ -122,7 +116,10 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
         public void onClick(View v) {
             itemListener.recyclerViewListClicked(v, this.getLayoutPosition());
 
+
         }
+
+
     }
 
 

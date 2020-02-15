@@ -11,11 +11,15 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Editing_view_model extends ViewModel {
 
     private MutableLiveData<user> userData;
     private static final String TAG = "Editing_view_model";
     private FirebaseFirestore db;
+    private MutableLiveData<List<String>> colleges;
 
     public MutableLiveData<Boolean> getUpdateCompleted() {
         return updateCompleted;
@@ -27,6 +31,7 @@ public class Editing_view_model extends ViewModel {
         userData = new MutableLiveData<>();
         db = FirebaseFirestore.getInstance();
         updateCompleted = new MutableLiveData<>();
+        colleges = new MutableLiveData<>();
         downloadUserData();
     }
 
@@ -63,6 +68,21 @@ public class Editing_view_model extends ViewModel {
                 .set(userData.getValue())
                 .addOnSuccessListener(aVoid -> updateCompleted.setValue(true))
                 .addOnFailureListener(e -> updateCompleted.setValue(false));
+    }
+
+    public MutableLiveData<List<String>> getColleges() {
+
+        List<String> college = new ArrayList<>();
+        college.add("Faculty");
+        college.add("Computers and Information");
+        college.add("Agriculture");
+        college.add("Law");
+        college.add("Sciences");
+        college.add("Commerce");
+        colleges.setValue(college);
+
+
+        return colleges;
     }
 
 

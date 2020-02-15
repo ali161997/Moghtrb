@@ -6,10 +6,12 @@
     android:layoutDirection="ltr"
     android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         fresco:cardElevation="5dp"
-        fresco:cardBackgroundColor="@color/gray"
+        fresco:strokeWidth="1dp"
+        fresco:strokeColor="@color/low_white"
+        fresco:cardBackgroundColor="@color/low_white"
         android:layout_height="wrap_content">
 
         <LinearLayout
@@ -60,7 +62,7 @@
                 android:layout_height="@dimen/imageHeightDetail"
                 android:background="@color/gray" />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </HorizontalScrollView>

@@ -8,10 +8,10 @@
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_container"
-        android:layout_marginTop="71dp"
         android:layout_width="match_parent"
-        android:layout_marginBottom="60dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="71dp"
+        android:layout_marginBottom="60dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,17 +21,16 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/explore_recycler"
                 android:layout_width="match_parent"
-                android:background="@color/low_white"
                 android:layout_height="wrap_content"
-                android:padding="3dp" />
+                android:background="@color/low_white" />
         </LinearLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/cordy"
-        android:layout_marginTop="0dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -44,68 +43,67 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/dark_blue"
-                app:contentScrim="?attr/colorPrimary"
+                app:contentScrim="@color/dark_blue"
                 app:expandedTitleGravity="top"
                 app:layout_scrollFlags="exitUntilCollapsed|scroll">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="75dp"
                     android:orientation="vertical">
 
-
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/Where_btn"
+                        style="@style/Widget.MaterialComponents.Button.Icon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@color/blue"
+                        android:layout_marginEnd="60dp"
                         android:fontFamily="@font/heebo_medium"
-                        android:padding="10dp"
-                        android:layout_marginTop="75dp"
                         android:text="@string/where"
-                        android:drawablePadding="5dp"
                         android:textAlignment="textStart"
-                        android:gravity="start|center"
                         android:textAllCaps="false"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        app:backgroundTint="@color/blue"
+                        app:icon="@drawable/ic_anywhere"
+                        app:iconPadding="5dp"
+                        app:iconTint="@color/white" />
 
-
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/Guests_btn"
+                        style="@style/Widget.MaterialComponents.Button.Icon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@color/blue"
+                        android:layout_marginEnd="60dp"
                         android:fontFamily="@font/heebo_medium"
-                        android:padding="10dp"
-                        android:drawablePadding="5dp"
-                        android:text="@string/guests_number"
-                        android:textAllCaps="false"
-                        android:textAlignment="textStart"
                         android:gravity="start|center"
-                        android:textSize="15sp" />
+                        android:text="@string/guests_number"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textSize="15sp"
+                        app:backgroundTint="@color/blue"
+                        app:icon="@drawable/ic_guest"
+                        app:iconPadding="5dp" />
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/Time_btn"
+                        style="@style/Widget.MaterialComponents.Button.Icon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:drawablePadding="5dp"
-                        android:background="@color/blue"
+                        android:layout_marginEnd="60dp"
+                        android:layout_marginBottom="5dp"
                         android:fontFamily="@font/heebo_medium"
-                        android:padding="10dp"
+                        android:gravity="start|center"
                         android:text="@string/when"
                         android:textAlignment="textStart"
-                        android:gravity="start|center"
                         android:textAllCaps="false"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        app:backgroundTint="@color/blue"
+                        app:icon="@drawable/ic_calender"
+                        app:iconPadding="5dp" />
                     <!-- -->
 
 
@@ -114,47 +112,59 @@
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:background="@color/dark_blue"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:backgroundTint="@color/dark_blue"
                     app:collapseIcon="@drawable/search"
-                    app:layout_collapseMode="pin">
+                    app:layout_collapseMode="pin"
+                    app:maxButtonHeight="40dp">
 
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <Button
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/Filter_btn"
+                            style="@style/IconOnlyButton"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_alignParentEnd="true"
-                            android:layout_gravity="center_horizontal"
                             android:layout_centerInParent="true"
-                            android:layout_marginBottom="7dp"
+                            android:layout_gravity="center_horizontal"
                             android:layout_marginEnd="15dp"
-                            android:gravity="center" />
+                            android:layout_marginBottom="7dp"
+                            android:gravity="center"
+                            app:backgroundTint="@android:color/transparent"
+                            app:icon="@drawable/ic_filter"
+                            app:iconGravity="textStart"
+                            app:iconTint="@color/quantum_googredA700" />
 
-                        <androidx.cardview.widget.CardView
+                        <com.google.android.material.card.MaterialCardView
                             android:id="@+id/card_search"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
                             android:layout_marginEnd="10dp"
                             android:layout_toStartOf="@+id/Filter_btn"
                             app:cardBackgroundColor="@color/blue"
-                            app:cardCornerRadius="3dp"
-                            android:layout_centerInParent="true"
                             app:cardElevation="3dp"
                             app:cardPreventCornerOverlap="true"
                             app:cardUseCompatPadding="true">
 
-                            <ImageButton
+                            <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btn_search"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_margin="5dp" />
+                                style="@style/IconOnlyButton"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                app:backgroundTint="@android:color/transparent"
+                                app:icon="@drawable/ic_search"
+                                app:iconGravity="textStart"
+                                app:iconSize="30dp"
+                                app:iconTint="@color/white" />
 
-                        </androidx.cardview.widget.CardView>
+                        </com.google.android.material.card.MaterialCardView>
 
 
                     </RelativeLayout>

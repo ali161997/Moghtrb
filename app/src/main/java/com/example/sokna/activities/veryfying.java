@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class veryfying extends AppCompatActivity implements View.OnClickListener {
+
     String phone;
     TextView phone_tv;
     EditText get_code_et;

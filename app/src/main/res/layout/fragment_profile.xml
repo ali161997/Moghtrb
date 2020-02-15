@@ -25,13 +25,15 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp" />
 
-        <TextView
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/edit_profile"
+            fresco:strokeWidth="0dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/user_name"
             android:layout_alignParentStart="true"
-            android:fontFamily="@font/heebo_medium"
+            android:fontFamily="@font/heebo_thin"
             android:text="@string/edit_profile"
             android:textColor="@color/gray"
             android:textSize="20sp" />
@@ -41,10 +43,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
+            android:maxLines="1"
             android:fontFamily="@font/heebo_medium"
             android:textColor="@color/blue"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
         <ListView
             android:layout_below="@id/edit_profile"

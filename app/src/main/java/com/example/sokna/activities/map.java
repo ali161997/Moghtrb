@@ -60,8 +60,6 @@ public class map extends Fragment implements OnMapReadyCallback, View.OnClickLis
     FloatingActionButton getLocation;
     @BindView(R.id.btn_close_list_places)
     Button btnCloseListPlaces;
-    @BindView(R.id.btn_again_list_places)
-    Button btnAgainListPlaces;
     @BindView(R.id.map_recycler)
     RecyclerView recyclerMap;
     @BindView(R.id.progress_loadplaces)
@@ -79,7 +77,7 @@ public class map extends Fragment implements OnMapReadyCallback, View.OnClickLis
     private LatLng assiut_latlng;
     private AutocompleteSupportFragment autocompleteFragment;
     private BottomNavigationView bottom_navigation;
-    private CardView cardView_bottom;
+
     private MapViewModel mapViewModel;
     private CoordinatorLayout bottomCord;
     boolean needReset;
@@ -107,8 +105,6 @@ public class map extends Fragment implements OnMapReadyCallback, View.OnClickLis
         View layout = inflater.inflate(R.layout.fragment_map, container, false);
 
         ButterKnife.bind(this, layout);
-        btnAgainListPlaces.setBackgroundResource(R.drawable.ic_refresh_black_24dp);
-        btnCloseListPlaces.setBackgroundResource(R.drawable.ic_close);
 
 
         return layout;
@@ -129,7 +125,6 @@ public class map extends Fragment implements OnMapReadyCallback, View.OnClickLis
 
                 } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
                     mapViewModel.setSheetState(BottomSheetBehavior.STATE_COLLAPSED);
-                    cardView_bottom.setVisibility(View.VISIBLE);
                     bottomCord.setVisibility(View.VISIBLE);
                     bottom_navigation.clearAnimation();
                     getLocation.clearAnimation();
@@ -141,7 +136,6 @@ public class map extends Fragment implements OnMapReadyCallback, View.OnClickLis
                     setup_bottom_sheet();
                     start_anim_bottom_navigation();
                     start_anim_Fab();
-                    cardView_bottom.setVisibility(View.INVISIBLE);
                     bottomCord.setVisibility(View.INVISIBLE);
                     needReset = true;
                 }
@@ -181,7 +175,7 @@ public class map extends Fragment implements OnMapReadyCallback, View.OnClickLis
         animation.setFillAfter(true);
         animation.setDuration(1000);
         bottom_navigation.startAnimation(animation);
-        cardView_bottom.setVisibility(View.INVISIBLE);
+
     }
 
     private void start_anim_Fab() {
@@ -287,7 +281,6 @@ public class map extends Fragment implements OnMapReadyCallback, View.OnClickLis
 
 
         bottom_navigation = getActivity().findViewById(R.id.navigation);
-        cardView_bottom = getActivity().findViewById(R.id.card_bottom);
         autocompleteFragment = (AutocompleteSupportFragment)
                 getChildFragmentManager().findFragmentById(R.id.autocomplete_fragment_map);
         bottomCord = getActivity().findViewById(R.id.cord_home);
@@ -295,7 +288,7 @@ public class map extends Fragment implements OnMapReadyCallback, View.OnClickLis
     }
 
 
-    @OnClick({R.id.get_location, R.id.btn_close_list_places, R.id.btn_again_list_places})
+    @OnClick({R.id.get_location, R.id.btn_close_list_places})
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -304,9 +297,6 @@ public class map extends Fragment implements OnMapReadyCallback, View.OnClickLis
                 break;
             case R.id.btn_close_list_places:
                 bottomSheet_list_places.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                break;
-            case R.id.btn_again_list_places:
-                // mapViewModel.again();
                 break;
         }
     }

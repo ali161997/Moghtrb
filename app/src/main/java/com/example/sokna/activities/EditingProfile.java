@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
@@ -35,7 +35,7 @@ public class EditingProfile extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.Profile_tv)
     TextView ProfileTv;
     @BindView(R.id.arrowBack_profile)
-    ImageView arrowBackProfile;
+    Button arrowBackProfile;
     @BindView(R.id.typename_profile)
     EditText typenameProfile;
     @BindView(R.id.typemail_profile)
@@ -50,8 +50,6 @@ public class EditingProfile extends AppCompatActivity implements View.OnClickLis
     AppCompatRadioButton FemaleBox;
     @BindView(R.id.radio_gender_profile)
     RadioGroup radioGenderProfile;
-    @BindView(R.id.birh_tv_profile)
-    TextView birhTvProfile;
     @BindView(R.id.update_profile)
     Button updateProfile;
     @BindView(R.id.progressBar_profile)
@@ -75,8 +73,10 @@ public class EditingProfile extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_editing_profile);
         ButterKnife.bind(this);
         updateUser = new user();
+
         InitializeVariables();
         EnableEditing(false);
+        SetupCollegeSpinner();
         setUserData();
         SetDateFromPicker();
 
@@ -86,6 +86,7 @@ public class EditingProfile extends AppCompatActivity implements View.OnClickLis
     private void InitializeVariables() {
         editingViewModel = ViewModelProviders.of(this).get(Editing_view_model.class);
         birthCalendar = Calendar.getInstance();
+
     }
 
     private void setUserData() {
@@ -93,11 +94,17 @@ public class EditingProfile extends AppCompatActivity implements View.OnClickLis
                     typemailProfile.setText(user.getEmail());
                     typePhoneProfile.setText(user.getPhone());
                     typenameProfile.setText(user.getName());
-                    collegeSpinnerProfile.setPrompt(user.getCollege());
+            collegeSpinnerProfile.setSelection(editingViewModel.getColleges().getValue().indexOf(user.getCollege()));
                     btnBirthDate.setText(user.getBirthdate());
                 }
         );
 
+
+    }
+
+    private void SetupCollegeSpinner() {
+        ArrayAdapter<String> adapterColleges = new ArrayAdapter<>(this, R.layout.spinner_where_item, editingViewModel.getColleges().getValue());
+        collegeSpinnerProfile.setAdapter(adapterColleges);
 
     }
 

@@ -22,39 +22,30 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/cord_home"
         android:layout_width="wrap_content"
-        app:cardPreventCornerOverlap="true"
+        android:layout_height="wrap_content"
         android:background="@color/low_white"
+        app:cardPreventCornerOverlap="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_height="wrap_content">
+        app:layout_constraintRight_toRightOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_bottom"
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigation"
+            style="@style/Widget.MaterialComponents.BottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="3dp"
+            android:animateLayoutChanges="false"
+            android:animationCache="false"
+            android:background="@color/white"
+            android:focusableInTouchMode="false"
+            app:itemTextAppearanceActive="@style/MenuItem"
+            android:textAlignment="center"
+            app:itemIconTint="@color/icon_selected_in_bottom_nav"
+            app:itemTextColor="@color/icon_selected_in_bottom_nav"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_nav_menu" />
 
-            >
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/navigation"
-                style="@style/BottomNavigationViewTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:animateLayoutChanges="false"
-                android:animationCache="false"
-                android:focusableInTouchMode="false"
-                android:textAlignment="center"
-                app:itemIconTint="@color/icon_selected_in_bottom_nav"
-                app:itemTextColor="@color/icon_selected_in_bottom_nav"
-                app:labelVisibilityMode="labeled"
-                app:menu="@menu/bottom_nav_menu" />
-
-        </androidx.cardview.widget.CardView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

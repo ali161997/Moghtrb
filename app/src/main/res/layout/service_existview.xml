@@ -4,10 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:layoutDirection="ltr"
     android:layout_gravity="center_horizontal"
-    android:gravity="center_horizontal"
-    android:orientation="horizontal">
+
+    >
 
     <CheckBox
         android:layout_gravity="center_horizontal"
@@ -17,6 +16,7 @@
         android:checked="true"
         android:clickable="false"
         android:text="@string/internet"
+        android:layoutDirection="rtl"
         android:textColor="@color/gray"
         android:padding="5dp"
         android:textSize="15sp"

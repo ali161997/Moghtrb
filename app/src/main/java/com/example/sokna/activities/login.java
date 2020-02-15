@@ -1,17 +1,17 @@
 package com.example.sokna.activities;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,32 +20,31 @@ import com.example.sokna.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Locale;
+
 public class login extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = "EmailPassword";
     private Button go;
     private RelativeLayout relativeLayout;
     private ProgressBar prgbar;
-    private TextView mStatusTextView;
     private FirebaseAuth mAuth;
     private EditText email;
     private EditText password;
-    private static final String TAG = "EmailPassword";
-    private ImageView back;
+    private Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //initialize variables
         relativeLayout = findViewById(R.id.relative_log);
         go = findViewById(R.id.btn_go);
         prgbar = findViewById(R.id.progressBar);
         mAuth = FirebaseAuth.getInstance();
-        email = findViewById(R.id.type_email_login);
+        email = findViewById(R.id.typeMailLogin);
         password = findViewById(R.id.type_password_login);
-        mStatusTextView = findViewById(R.id.mstatus);
         back = findViewById(R.id.arrowback_login);
-
+        back.setOnClickListener(this);
         go.setOnClickListener(this);
 
 
@@ -84,7 +83,7 @@ public class login extends AppCompatActivity implements View.OnClickListener {
 
                     // [START_EXCLUDE]
                     if (!task.isSuccessful()) {
-                        mStatusTextView.setText("auth failed");
+                        Toast.makeText(this, "Error Login ,Try Again", Toast.LENGTH_LONG).show();
                     }
                     hideProgressDialog();
                     // [END_EXCLUDE]
@@ -98,6 +97,16 @@ public class login extends AppCompatActivity implements View.OnClickListener {
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
+    private void setDefaultLanguage(String Code) {
+
+        Resources res = getApplicationContext().getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        android.content.res.Configuration conf = res.getConfiguration();
+        conf.setLocale(new Locale(Code)); // API 17+ only.
+        res.updateConfiguration(conf, dm);
+
+    }
+
     private void hideProgressDialog() {
         prgbar.setVisibility(View.INVISIBLE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -107,29 +116,26 @@ public class login extends AppCompatActivity implements View.OnClickListener {
         boolean valid = true;
 
         String str_email = email.getText().toString();
-        if (TextUtils.isEmpty(str_email)) {
-            email.setError("Required.");
-            valid = false;
-        } else {
-            email.setError(null);
-        }
-
         String str_password = password.getText().toString();
-        if (TextUtils.isEmpty(str_password)) {
-            password.setError("Required.");
-            valid = false;
+        if (TextUtils.isEmpty(str_email) || TextUtils.isEmpty(str_password)) {
+            if (TextUtils.isEmpty(str_email)) {
+                email.setError("Required");
+                valid = false;
+            } else if (TextUtils.isEmpty(str_password)) {
+                password.setError("Required");
+                valid = false;
+            }
         } else {
             password.setError(null);
+            email.setError(null);
+            valid = true;
         }
-
         return valid;
     }
 
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
-            mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
-                    user.getEmail(), user.isEmailVerified()));
             Intent intent = new Intent(login.this, home_explore.class);
             startActivity(intent);
             finish();

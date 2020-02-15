@@ -1,9 +1,11 @@
 package com.example.sokna.activities;
 
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -14,16 +16,26 @@ import com.example.sokna.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
     private static int splash_time = 2000;
     ImageView splashLogo;
     Animation alpha;
     private FirebaseAuth mAuth;
+    SharedPreferences pref;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        if (pref.contains("lang")) {
+            if (!pref.getString("lang", null).equals(null))
+                setDefaultLanguage(pref.getString("lang", null));
+        }
+
 
         splashLogo = findViewById(R.id.logoSplash);
         alpha = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.alpha);
@@ -47,17 +59,13 @@ public class MainActivity extends AppCompatActivity {
         }, splash_time);
     }
 
-    private class MyTask extends AsyncTask<Void, Void, Void> {
+    private void setDefaultLanguage(String Code) {
+        Resources res = getApplicationContext().getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        android.content.res.Configuration conf = res.getConfiguration();
+        conf.setLocale(new Locale(Code)); // API 17+ only.
+        res.updateConfiguration(conf, dm);
 
-        @Override
-        protected Void doInBackground(Void... voids) {
-            return null;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
     }
 
 

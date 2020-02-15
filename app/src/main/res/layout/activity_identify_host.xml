@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".activities.IdentifyHost">
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/startRead"
+        app:icon="@drawable/ic_qr"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:backgroundTint="@color/gray"
+        app:iconTint="@color/white"
+        android:textColor="@color/white"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:textSize="20sp"
+        android:text="@string/scan_for_host" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_margin="50dp"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="@color/Black"
+        android:background="@color/low_white"
+        android:layout_height="wrap_content"
+        android:id="@+id/ifHostIdentified"
+        android:layout_below="@id/startRead" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ifHostIdentified"
+        android:layout_centerHorizontal="true"
+        app:backgroundTint="@color/blue"
+        android:text="@string/explore_rooms"
+        android:padding="10dp"
+        style="@style/Widget.MaterialComponents.Button"
+        android:enabled="false"
+        android:id="@+id/exploreRooms" />
+
+
+</RelativeLayout>

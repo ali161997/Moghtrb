@@ -1,13 +1,14 @@
 package com.example.sokna.activities;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -29,9 +30,13 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class createacount extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+    boolean verified = false;
     private Button create_account;
     private String TAG = "create_acount";
     private EditText name_signup;
@@ -39,7 +44,7 @@ public class createacount extends AppCompatActivity implements RadioGroup.OnChec
     private EditText phone_signup;
     private EditText password_signup;
     private Spinner spinner_college_signup;
-    private DatePicker datePicker_birth_signup;
+    private Button datePicker_birth_signup;
     private TextView signup_tv;
     private ProgressBar prgbar;
     private FirebaseAuth mAuth;
@@ -47,6 +52,8 @@ public class createacount extends AppCompatActivity implements RadioGroup.OnChec
     private user newUser = null;
     private RadioGroup getGender;
     private ImageView back;
+    private DatePickerDialog.OnDateSetListener dateBirth;
+    private Calendar birthCalendar;
 
     @Override
     protected void onStart() {
@@ -58,7 +65,7 @@ public class createacount extends AppCompatActivity implements RadioGroup.OnChec
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createacount);
-        //initialize views and buttons
+
         name_signup = findViewById(R.id.typename_signup);
         email_signup = findViewById(R.id.typemail_signup);
         phone_signup = findViewById(R.id.type_phone_signup);
@@ -77,8 +84,18 @@ public class createacount extends AppCompatActivity implements RadioGroup.OnChec
         getGender.setOnCheckedChangeListener(this);
         back.setOnClickListener(this);
         create_account.setOnClickListener(this);
+        datePicker_birth_signup.setOnClickListener(this);
+        birthCalendar = Calendar.getInstance();
+        SetupCollegeSpinner();
+
+        getDate();
     }
 
+    private void SetupCollegeSpinner() {
+        ArrayAdapter<String> adapterColleges = new ArrayAdapter<>(this, R.layout.spinner_where_item, getColleges());
+        spinner_college_signup.setAdapter(adapterColleges);
+
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -127,29 +144,27 @@ public class createacount extends AppCompatActivity implements RadioGroup.OnChec
         String phone = phone_signup.getText().toString();
         String name = name_signup.getText().toString().trim();
         String college = spinner_college_signup.getSelectedItem().toString();
-        String birthdate = datePicker_birth_signup.getYear() + "/" + datePicker_birth_signup.getMonth() + "/" + datePicker_birth_signup.getYear();
+        String birthdate = datePicker_birth_signup.getText().toString();
+        String password = password_signup.getText().toString();
 
 
-        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(name)) {
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(name) || TextUtils.isEmpty(password)) {
             if (TextUtils.isEmpty(email))
                 email_signup.setError("Required.");
             if (TextUtils.isEmpty(phone) || !verifying())
                 phone_signup.setError("Required");
             if (TextUtils.isEmpty(name))
                 name_signup.setError("Required");
-
+            if (TextUtils.isEmpty(birthdate))
+                datePicker_birth_signup.setError("Required");
+            if (TextUtils.isEmpty(password))
+                password_signup.setError("Required");
             valid = false;
         } else {
             email_signup.setError(null);
             phone_signup.setError(null);
             name_signup.setError(null);
-        }
-
-        String password = password_signup.getText().toString();
-        if (TextUtils.isEmpty(password)) {
-            password_signup.setError("Required.");
-            valid = false;
-        } else {
+            datePicker_birth_signup.setError(null);
             password_signup.setError(null);
         }
 
@@ -181,8 +196,6 @@ public class createacount extends AppCompatActivity implements RadioGroup.OnChec
         prgbar.setVisibility(View.INVISIBLE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
-
-    boolean verified = false;
 
     private boolean verifying() {
         String phoneNumber = phone_signup.toString();
@@ -225,28 +238,31 @@ public class createacount extends AppCompatActivity implements RadioGroup.OnChec
 
 
     private void getDataForm() {
-
-
         newUser.setCollege(spinner_college_signup.getSelectedItem().toString().trim());
-        newUser.setBirthdate(getDate().trim());
+        newUser.setBirthdate(datePicker_birth_signup.getText().toString());
         newUser.setEmail(email_signup.getText().toString().trim());
         newUser.setPhone(phone_signup.getText().toString().trim());
         newUser.setName(name_signup.getText().toString().trim());
     }
 
-    private String getDate() {
-        String date = datePicker_birth_signup.getYear() + "/"
-                + datePicker_birth_signup.getMonth() + "/" + datePicker_birth_signup.getDayOfMonth();
-        return date;
+    private void getDate() {
+        dateBirth = (view1, year, monthOfYear, dayOfMonth) -> {
+            // TODO Auto-generated method stub
+            birthCalendar.set(Calendar.YEAR, year);
+            birthCalendar.set(Calendar.MONTH, monthOfYear);
+            birthCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            String birh = String.format("%s/%s/%s", year, monthOfYear, dayOfMonth);
+            datePicker_birth_signup.setText(birh);
+        };
     }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         if (checkedId == R.id.Female_box) {
-            newUser.setGender("female");
+            newUser.setGender("Female");
 
         } else if (checkedId == R.id.Male_box)
-            newUser.setGender("male");
+            newUser.setGender("Male");
 
     }
 
@@ -260,6 +276,29 @@ public class createacount extends AppCompatActivity implements RadioGroup.OnChec
             case R.id.arrowback_signup:
                 onBackPressed();
                 break;
+            case R.id.date_picker_signup:
+                DatePickerDialog datePickerDialogbirth = new DatePickerDialog(this, dateBirth, birthCalendar
+                        .get(Calendar.YEAR), birthCalendar.get(Calendar.MONTH),
+                        birthCalendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialogbirth.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                datePickerDialogbirth.show();
+                break;
+
         }
     }
+
+    private List<String> getColleges() {
+
+        List<String> college = new ArrayList<>();
+        college.add("Faculty");
+        college.add("Computers and Information");
+        college.add("Agriculture");
+        college.add("Law");
+        college.add("Sciences");
+        college.add("Commerce");
+
+
+        return college;
+    }
 }
+

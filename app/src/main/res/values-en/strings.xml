@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sokna</string>
+    <string name="Create_account">Create Account</string>
+    <string name="login">log in</string>
+    <string name="signup">Sign Up</string>
+    <string name="telephone">Phone</string>
+    <string name="college">College</string>
+    <string name="email">Email</string>
+    <string name="passWord">Password</string>
+    <string name="title_activity_home_explore">home_explore</string>
+    <string name="title_explore">Explore</string>
+    <string name="title_inbox">Inbox</string>
+    <string name="title_map">Map</string>
+    <string name="title_profile">Profile</string>
+    <string name="demo_min_label"></string>
+    <string name="demo_max_label"></string>
+    <string-array name="faculties">
+        <item>Faculty</item>
+        <item>Computers and Information</item>
+        <item>Agriculture</item>
+        <item>Law</item>
+        <item>Sciences</item>
+        <item>Commerce</item>
+    </string-array>
+    <string name="price_Per_bed">Price Per Bed</string>
+    <string name="bed_in_room">Bed In Room</string>
+    <string name="Room_in_depart">Room In Depart</string>
+    <string name="Bath_in_depart">Bath In Depart</string>
+    <string name="HaveBalcony">Have Balcony</string>
+    <string name="RoomOrder">Room Order</string>
+    <string name="Host_Rate">Host Rate</string>
+    <string name="location">Location</string>
+    <string name="Services">Services</string>
+    <string name="More_about">More about</string>
+    <!-- activity refer -->
+
+    <string name="refer_get">Refer to Host and Get </string>
+    <string name="much_get">150 LE</string>
+    <string name="host_name">Host name</string>
+    <string name="submit">Submit</string>
+    <string name="where"> Where</string>
+    <string name="guests_number">Guests</string>
+    <string name="when">When</string>
+    <string name="private_room">private Room</string>
+    <string name="shared_room">Shared Room</string>
+    <string name="no_smoking">No Smoking</string>
+    <string name="roommate">Roommate</string>
+    <string name="preferred_faculty">Preferred Faculty</string>
+    <string name="room">Room</string>
+    <string name="price_range">Price Range</string>
+    <string name="semester_three_summer">Semester Three (summer)</string>
+    <string name="semester_two">Semester Two</string>
+    <string name="semester_one">Semester One</string>
+    <string-array name="spinner_choice_time">
+        <item>Student</item>
+        <item>Foreigner</item>
+    </string-array>
+
+
+    <!-- Sync Preferences -->
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="profile">Profile</string>
+    <string name="update">Update</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="request_to_book">Request to Book</string>
+    <string name="save">Save</string>
+    <string name="checkout">CheckOut</string>
+    <string name="checkin">CheckIn</string>
+    <string name="select_all">Select All</string>
+    <string name="reviews">Reviews</string>
+    <string name="LE">L.E</string>
+    <string name="internet">Internet</string>
+    <string name="naturalGas">Natural Gas</string>
+    <string name="periodCleaning">Period Cleaning</string>
+    <string name="bed">Bed</string>
+    <string name="th">th</string>
+    <string name="bath">Bath</string>
+    <string name="average_price">Average Price</string>
+    <string name="LEperMonth">350 L.E per month</string>
+    <string name="birth_date">Birth Date</string>
+    <string name="edit">Edit</string>
+    <string name="select_language">Select Language</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
+    <string name="no_reservation_yet">No Reservation Yet</string>
+    <string name="you_will_notified">You Will notified about your Confirmation of Reservation here</string>
+
+</resources>

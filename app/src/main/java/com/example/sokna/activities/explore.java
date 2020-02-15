@@ -18,7 +18,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -29,7 +28,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
@@ -49,6 +47,8 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
@@ -63,6 +63,7 @@ import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
+
 public class explore extends Fragment implements RoomAdapter.RecyclerViewClickListener,
         SwipeRefreshLayout.OnRefreshListener, View.OnClickListener,
         RadioGroup.OnCheckedChangeListener,
@@ -70,6 +71,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         Spinner.OnItemSelectedListener,
         IOnBackPressed {
     private static final String TAG = "explore";
+    private static final int VERTICAL_ITEM_SPACE = 10;
     @BindView(R.id.CloseFilterSheet)
     Button CloseFilterSheet;
     @BindView(R.id.CloseGuestsSheet)
@@ -87,7 +89,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
     @BindView(R.id.Time_btn)
     Button TimeBtn;
     @BindView(R.id.Filter_btn)
-    Button FilterBtn;
+    MaterialButton FilterBtn;
     @BindView(R.id.filter_bottom_sheet)
     RelativeLayout filterBottomSheet;
     @BindView(R.id.num_guests_bottom_sheet)
@@ -133,9 +135,9 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
     @BindView(R.id.toolbar)
     Toolbar ToolBarHome;
     @BindView(R.id.btn_search)
-    ImageButton SearchBtn;
+    MaterialButton SearchBtn;
     @BindView(R.id.card_search)
-    CardView SearchCard;
+    MaterialCardView SearchCard;
     @BindView(R.id.smoking)
     CheckBox smoking;
     @BindView(R.id.num_guests_count)
@@ -154,12 +156,9 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
     Spinner selectRegionSpin;
     @BindView(R.id.btn_save_anyWhere)
     Button btnSaveAnyWhere;
-
     //-------------------
     private BottomNavigationView bottom_navigation;
     private CoordinatorLayout bottomCord;
-    private CardView cardView_bottom;
-
     //------------------------
     private BottomSheetBehavior bottomSheet_filter;
     private BottomSheetBehavior bottomSheet_anyWhere;
@@ -174,7 +173,6 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
     private View foreigner_view;
     //Recycler View Home Fields
     private RoomAdapter roomAdapter;
-    private static final int VERTICAL_ITEM_SPACE = 10;
     //View Models
     private boolean shared;
     private String facultyPreferred;
@@ -188,6 +186,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
     private Calendar checkOutCalendar;
     private DatePickerDialog.OnDateSetListener dateCheckOut;
     private HashMap<String, String> searchText;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (container == null) {
@@ -198,15 +197,16 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
 
 
         ButterKnife.bind(this, layout);
-        SetDrawablesToButtons();
         return layout;
     }
+
     @Override
     public void onDestroyView() {
 
         super.onDestroyView();
 
     }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -215,10 +215,12 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
 
 
     }
+
     @Override
     public void onStart() {
         super.onStart();
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -268,6 +270,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
             checkOut.setText(foreignerCheckOut);
         };
     }
+
     private void SaveStatesBottomSheets() {
         viewModelExplore.getState_when().observe(this, integer -> {
 
@@ -310,6 +313,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         viewModelExplore.getState_search().observe(this, this::setSearchState);
 
     }
+
     @Override
     public void recyclerViewListClicked(View v, int position) {
 
@@ -317,10 +321,10 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         intent.putExtra("room_selected", viewModelExplore.getrooms().getValue().get(position));
         startActivity(intent);
     }
+
     private void InitializeVariables() {
         bottom_navigation = getActivity().findViewById(R.id.navigation);
         bottomCord = getView().findViewById(R.id.cordy);
-        cardView_bottom = getActivity().findViewById(R.id.card_bottom);
         student_view = getView().findViewById(R.id.student_view);
         foreigner_view = getView().findViewById(R.id.foreigner_view);
         bottomCord = getActivity().findViewById(R.id.cord_home);
@@ -329,6 +333,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         AppBar.setLiftOnScroll(false);
         searchText = new HashMap<>();
     }
+
     private void set_behaviors_sheets() {
         bottomSheet_filter = BottomSheetBehavior.from(filterBottomSheet);
         bottomSheet_anytime = BottomSheetBehavior.from(anytimeBottomSheet);
@@ -336,6 +341,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         bottomSheet_anyWhere = BottomSheetBehavior.from(anyWhereBottomSheet);
 
     }
+
     private void HomeRecycler() {
         ExploreRecyclerHome.setHasFixedSize(true);
         ExploreRecyclerHome.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -359,6 +365,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
 
 
     }
+
     private boolean isInternetAvailable() {
         ConnectivityManager cm =
                 (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -367,35 +374,38 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         return activeNetwork == null ||
                 !activeNetwork.isConnectedOrConnecting();
     }
+
     private void StartAnimBottomNavigation() {
         int height = bottom_navigation.getHeight();
         animation = new TranslateAnimation(0, 0, 0, height);
         animation.setFillAfter(true);
         animation.setDuration(1000);
         bottom_navigation.startAnimation(animation);
-        cardView_bottom.setVisibility(View.INVISIBLE);
         bottomCord.setVisibility(View.INVISIBLE);
     }
+
     private void StartAnimTopBar() {
         toolbar_anim = new TranslateAnimation(0, 0, 0, -ToolBarHome.getHeight());
         toolbar_anim.setFillAfter(true);
         toolbar_anim.setDuration(1000);
         AppBar.startAnimation(toolbar_anim);
     }
+
     private void EndAnimTopBar() {
         toolbar_anim = new TranslateAnimation(0, 0, 0, 0);
         toolbar_anim.setFillAfter(true);
         toolbar_anim.setDuration(1000);
         AppBar.startAnimation(toolbar_anim);
     }
+
     private void EndAnimBottomNavigation() {
         animation = new TranslateAnimation(0, 0, 0, 0);
         animation.setFillAfter(true);
         animation.setDuration(1000);
         bottom_navigation.startAnimation(animation);
-        cardView_bottom.setVisibility(View.VISIBLE);
         bottomCord.setVisibility(View.VISIBLE);
     }
+
     private void StopDragAppSearchBar() {
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) AppBar.getLayoutParams();
         params.setBehavior(new AppBarLayout.Behavior());
@@ -410,6 +420,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         });
 
     }
+
     private void SheetsCallbacks() {
         bottomSheet_filter.setBottomSheetCallback(new BottomSheetCallback() {
             @Override
@@ -419,7 +430,6 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
                 } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
                     EndAnimBottomNavigation();
                     EndAnimTopBar();
-                    cardView_bottom.setVisibility(View.VISIBLE);
                     needReset = false;
 
                 } else if (newState == BottomSheetBehavior.STATE_EXPANDED) {
@@ -505,6 +515,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         selectCitySpin.setAdapter(adapterCity);
 
     }
+
     @Override
     public void onRefresh() {
         if (isInternetAvailable()) {
@@ -522,6 +533,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
 
 
     }
+
     private void showInternetStatus() {
         Snackbar snack = Snackbar.make(bottomCord,
                 "No Internet Connection..!", Snackbar.LENGTH_LONG);
@@ -536,6 +548,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
 
         snack.show();
     }
+
     @OnClick({R.id.CloseGuestsSheet, R.id.CloseTimeSheet, R.id.CloseWhereSheet, R.id.CloseFilterSheet,
             R.id.Where_btn, R.id.Guests_btn, R.id.Time_btn, R.id.Filter_btn,
             R.id.increase, R.id.decrease, R.id.btn_save_anytime, R.id.btn_save_filter, R.id.btn_save_num_guests,
@@ -577,7 +590,6 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
             case R.id.Filter_btn:
                 bottomSheet_filter.setState(BottomSheetBehavior.STATE_EXPANDED);
                 viewModelExplore.setState_filter(BottomSheetBehavior.STATE_EXPANDED);
-                FilterBtn.setBackgroundResource(R.drawable.ic_filter_clicked);
                 break;
 
             case R.id.increase:
@@ -694,13 +706,13 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
     private void setSearchState(boolean state) {
         if (state) {
             AppBar.setExpanded(state);
-            SearchBtn.setBackgroundResource(R.drawable.ic_arrow_drop_down);
+            SearchBtn.setIcon(getResources().getDrawable(R.drawable.ic_arrow_drop_down));
             SearchCard.setCardBackgroundColor(getResources().getColor(R.color.dark_blue));
             SearchCard.setCardElevation(0);
             needReset = true;
         } else {
             AppBar.setExpanded(state);
-            SearchBtn.setBackgroundResource(R.drawable.ic_search);
+            SearchBtn.setIcon(getResources().getDrawable(R.drawable.ic_search));
             SearchCard.setCardBackgroundColor(getResources().getColor(R.color.blue));
             SearchCard.setCardElevation(5);
             needReset = false;
@@ -756,11 +768,13 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
 
 
     }
+
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
 
     }
+
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         if (R.id.radio_sheet_bottom == group.getId()) {
@@ -769,6 +783,7 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         }
 
     }
+
     @OnCheckedChanged({R.id.semester1, R.id.semester2, R.id.semester3, R.id.selectall})
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -817,19 +832,6 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         }
 
     }
-    private void SetDrawablesToButtons() {
-        CloseFilterSheet.setBackground(close);
-        CloseTimeSheet.setBackground(close);
-        CloseWhereSheet.setBackground(close);
-        CloseGuestsSheet.setBackground(close);
-        WhereBtn.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_anywhere), null, null, null);
-        GuestsBtn.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_guest), null, null, null);
-        TimeBtn.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.ic_calender), null, null, null);
-        FilterBtn.setBackgroundResource(R.drawable.ic_filter);
-        IncreaseGuests.setBackgroundResource(R.drawable.ic_increase);
-        DecreaseGuests.setBackgroundResource(R.drawable.ic_decrease);
-        SearchBtn.setBackgroundResource(R.drawable.ic_search);
-    }
 
     @Override
     public boolean onBackPressed() {
@@ -845,5 +847,6 @@ public class explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
     private void setSearchText() {
         viewModelExplore.setSearchText(searchText);
     }
+
 
 }

@@ -1,6 +1,8 @@
 package com.example.sokna.activities;
 
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,8 @@ import com.example.sokna.viewmodels.activityHomeViewModel;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Locale;
+
 import static androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE;
 
 
@@ -25,6 +29,7 @@ public class home_explore extends AppCompatActivity implements BottomNavigationV
     BottomNavigationView navigation;
     private static final String TAG = "home_explore";
     private activityHomeViewModel viewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,14 +62,6 @@ public class home_explore extends AppCompatActivity implements BottomNavigationV
         }
 
     }
-
-    /*@Override
-    public void onBackPressed() {
-            viewFragment(new explore(), "FRAGMENT_HOME");
-            viewModel.getSelectedFragment().setValue(new explore());
-            super.onBackPressed();
-        }*/
-    //https://stackoverflow.com/questions/8430805/clicking-the-back-button-twice-to-exit-an-activity
 
 
     @Override
@@ -130,5 +127,15 @@ public class home_explore extends AppCompatActivity implements BottomNavigationV
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    private void setDefaultLanguage(String Code) {
+
+        Resources res = getApplicationContext().getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        android.content.res.Configuration conf = res.getConfiguration();
+        conf.setLocale(new Locale(Code)); // API 17+ only.
+        res.updateConfiguration(conf, dm);
+
     }
 }

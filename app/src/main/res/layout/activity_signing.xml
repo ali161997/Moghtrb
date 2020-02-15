@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,109 +10,102 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:id="@+id/relativeSigning"
         android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/logoSigning"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignTop="@+id/progressBar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/soknalogo"
+            android:shadowColor="@android:color/background_dark"
+            android:src="@drawable/soknalogo" />
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/buttonFacebookLogin"
+            android:layout_below="@id/logoSigning"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="30dp"
-            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:text="@string/Create_account"
-            tools:includeFontPadding="false"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/heebo_medium"
-            android:padding="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:padding="10dp"
+            android:textAllCaps="true"
+            android:textSize="15sp" />
 
-            android:textAllCaps="false"
-            android:textSize="20sp" />
-
-
-        <Button
-            android:id="@+id/createAccount"
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/signInBtnGoogle"
+            android:textAllCaps="true"
+            android:textSize="15sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/buttonFacebookLogin"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="40dp"
-            android:text="@string/Create_account"
-            tools:includeFontPadding="false"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/createAccount"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/signInBtnGoogle"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
             android:background="@drawable/rounded_button"
             android:fontFamily="@font/heebo_medium"
-            android:padding="10dp"
-            android:textAllCaps="false"
+            app:backgroundTint="@color/low_white"
+            android:text="@string/Create_account"
+            android:textAllCaps="true"
             android:textColor="@color/blue"
-            android:textSize="20sp" />
+            android:textSize="15sp"
+
+            tools:includeFontPadding="false" />
 
         <TextView
-            android:textAllCaps="false"
-            android:id="@+id/more_options"
-            style="?android:listSeparatorTextViewStyle"
-            android:layout_width="wrap_content"
+            android:id="@+id/or"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/createAccount"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/heebo_medium"
-            android:text="@string/more_options"
+            android:gravity="center"
+            android:text="@string/or"
             android:textColor="@color/blue"
             android:textSize="20sp"
             tools:textAllCaps="false" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Or"
-            android:id="@+id/or"
-            android:layout_below="@id/more_options"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:textSize="30dp"
-            tools:textAllCaps="false"
-            android:fontFamily="@font/heebo_medium"
-            android:textColor="@color/blue"
-            android:gravity="center" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/or"
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/login"
-            android:fontFamily="@font/heebo_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            app:backgroundTint="@color/blue"
+            android:layout_below="@id/or"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:textSize="20sp"
-            android:background="@drawable/rounded_button_log"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/heebo_medium"
             android:padding="10dp"
-            android:textColor="@color/white"
             android:text="@string/login"
             android:textAllCaps="false"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
 
             />
 
-        <TextView
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/login"
-            android:text="@string/terms"
-            android:layout_marginTop="30dp"
-            android:textSize="15sp"
-            android:fontFamily="@font/heebo_medium"
-            android:textColor="@color/gray"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp" />
-
-        <ProgressBar
-            android:id="@+id/progressBar_facebook"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:visibility="gone"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_alignParentTop="true" />
 
 
     </RelativeLayout>

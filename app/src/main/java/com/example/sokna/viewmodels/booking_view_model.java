@@ -16,7 +16,6 @@ public class booking_view_model extends ViewModel {
     private MutableLiveData<Room> room;
     private FirebaseFirestore db;
     private MutableLiveData<RoomDetail> roomDtail;
-
     public booking_view_model() {
         room = new MutableLiveData<>();
         roomDtail = new MutableLiveData<>();
@@ -25,12 +24,10 @@ public class booking_view_model extends ViewModel {
     public MutableLiveData<Room> getRoom() {
         return room;
     }
-
     public void set_room(Room room1) {
         room.setValue(room1);
         getRoomRepo();
     }
-
     private void getRoomRepo() {
         //room.getValue().getDetailLink()
         DocumentReference docRef = db.collection("Rooms").document("host:0").collection("Detail0").document("hzJe1CsyQgZFaEapBZV2");
@@ -48,7 +45,6 @@ public class booking_view_model extends ViewModel {
             }
         });
     }
-
     public MutableLiveData<RoomDetail> getRoomDtail() {
         //roomDtail.setValue(new RoomDetail(400.0, 2, 4, 2, 3, "assiut", true, 4, true, true, true, "assd"));
         return roomDtail;

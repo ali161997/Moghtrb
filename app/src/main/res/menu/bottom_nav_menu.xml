@@ -2,7 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/explore_id"
-
         android:icon="@drawable/search"
         android:orderInCategory="1"
         android:title="@string/title_explore" />
@@ -10,17 +9,17 @@
     <item
         android:id="@+id/inbox_id"
         android:icon="@drawable/inbox"
-        android:orderInCategory="2"
-
+        android:orderInCategory="3"
         android:title="@string/title_inbox" />
 
     <item
         android:id="@+id/map_id"
         android:icon="@drawable/ic_map_black_24dp"
-        android:orderInCategory="3"
+        android:orderInCategory="2"
         android:title="@string/title_map" />
     <item
         android:id="@+id/profile_id"
+
         android:icon="@drawable/profile"
         android:orderInCategory="4"
         android:title="@string/title_profile" />

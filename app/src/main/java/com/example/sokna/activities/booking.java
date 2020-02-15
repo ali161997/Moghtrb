@@ -6,25 +6,23 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.sokna.R;
 import com.example.sokna.models.Room;
 import com.example.sokna.viewmodels.booking_view_model;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.android.material.button.MaterialButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
 public class booking extends AppCompatActivity implements View.OnClickListener {
 
     @BindView(R.id.image1_detail)
@@ -58,9 +56,7 @@ public class booking extends AppCompatActivity implements View.OnClickListener {
     @BindView(R.id.back_booking)
     Button backBooking;
     @BindView(R.id.btn_request_booking)
-    Button btnRequestBooking;
-    @BindView(R.id.request_booking)
-    CardView requestBooking;
+    MaterialButton btnRequestBooking;
     @BindView(R.id.bedPriceText)
     TextView bedPriceText;
     @BindView(R.id.numBedText)
@@ -90,7 +86,7 @@ public class booking extends AppCompatActivity implements View.OnClickListener {
     @BindView(R.id.locationText)
     TextView locationText;
     @BindView(R.id.locationIcon)
-    ImageView locationIcon;
+    Button locationIcon;
     @BindView(R.id.servicesText)
     TextView servicesText;
     private booking_view_model booking_model;
@@ -102,7 +98,6 @@ public class booking extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
         ButterKnife.bind(this);
-        backBooking.setBackgroundResource(R.drawable.arrow_back);
         booking_model = ViewModelProviders.of(this).get(booking_view_model.class);
         room = getIntent().getParcelableExtra("room_selected");
         booking_model.set_room(room);
@@ -173,4 +168,6 @@ public class booking extends AppCompatActivity implements View.OnClickListener {
         }
 
     }
+
+
 }

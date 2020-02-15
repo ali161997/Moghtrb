@@ -3,28 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activities.createacount">
 
-    <TextView
+    <ProgressBar
+        android:id="@+id/progressBar_signup"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <TextView
         android:id="@+id/signup_tv"
-        android:fontFamily="@font/heebo_medium"
-        android:text="@string/signup"
-        android:textSize="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@id/arrowback_signup"
+        android:fontFamily="@font/heebo_medium"
+        android:gravity="center"
+        android:text="@string/signup"
         android:textColor="@color/blue"
-        android:gravity="center" />
+        android:textSize="30sp" />
 
     <ImageView
         android:id="@+id/arrowback_signup"
         android:layout_width="35dp"
-        android:layout_alignParentStart="true"
         android:layout_height="33dp"
+        android:layout_alignParentStart="true"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="30dp"
@@ -32,189 +39,234 @@
 
     <ScrollView
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/arrowback_signup"
-        android:layout_marginTop="10dp"
-        android:layout_height="wrap_content">
+        android:layout_marginTop="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
-                android:cursorVisible="true"
-                android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
-                android:id="@+id/typename_signup"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fieldName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="50dp"
-                android:layout_marginRight="30dp"
-                android:inputType="textPersonName"
-                android:padding="@dimen/paddingEditText"
-                android:hint="Name"
+                android:layout_marginEnd="30dp"
                 android:fontFamily="@font/heebo_medium"
-                android:textColor="@color/blue"
+                android:hint="@string/name"
+                android:padding="5dp"
+                android:textColorHint="@color/gray"
                 android:textSize="20sp"
-                android:background="@drawable/edittext_border" />
+                app:boxStrokeColor="@color/gray"
+                app:boxStrokeWidth="1dp"
 
-            <EditText
-                android:cursorVisible="true"
-                android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
-                android:id="@+id/typemail_signup"
+                app:hintAnimationEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/typename_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/Black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fieldMail"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_below="@id/fieldName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/typename_signup"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="25dp"
+                android:fontFamily="@font/heebo_medium"
                 android:layout_marginRight="30dp"
-                android:inputType="textEmailAddress"
-                android:background="@drawable/edittext_border"
-                android:padding="@dimen/paddingEditText"
-                android:textSize="20sp"
                 android:hint="@string/email"
-                android:fontFamily="@font/heebo_medium"
-                android:textColor="@color/blue" />
+                android:padding="5dp"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/gray"
+                android:textSize="20sp"
+                app:boxStrokeColor="@color/gray"
+                app:boxStrokeWidth="1dp"
+                app:hintAnimationEnabled="true">
 
-            <EditText
-                android:cursorVisible="true"
-                android:background="@drawable/edittext_border"
-                android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
-                android:id="@+id/type_phone_signup"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/typemail_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/Black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fieldPhone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/typemail_signup"
+                android:layout_below="@id/fieldMail"
+                android:layout_marginStart="30dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/heebo_medium"
                 android:layout_marginRight="30dp"
-                android:inputType="phone"
-                android:padding="@dimen/paddingEditText"
-                android:textSize="20sp"
                 android:hint="@string/telephone"
-                android:fontFamily="@font/heebo_medium"
-                android:textColor="@color/blue" />
+                android:padding="5dp"
+                android:inputType="phone"
+                android:textColorHint="@color/gray"
+                android:textSize="20sp"
+                app:boxStrokeColor="@color/gray"
+                app:boxStrokeWidth="1dp"
+                app:hintAnimationEnabled="true">
 
-            <EditText
-                android:cursorVisible="true"
-                android:background="@drawable/edittext_border"
-                android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
-                android:id="@+id/type_password_signup"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/type_phone_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/telephone"
+                    android:inputType="phone"
+                    android:textColor="@color/Black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fieldPassword"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/type_phone_signup"
+                android:layout_below="@id/fieldPhone"
+                android:layout_marginStart="30dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="30dp"
                 android:layout_marginRight="30dp"
-                android:inputType="textPassword"
-                android:padding="@dimen/paddingEditText"
-                android:textColor="@color/blue"
-                android:textSize="20sp"
+                android:fontFamily="@font/heebo_medium"
                 android:hint="@string/passWord"
-                android:fontFamily="@font/heebo_medium" />
+                android:padding="5dp"
+                android:textColorHint="@color/gray"
+                android:textSize="20sp"
+                app:boxStrokeColor="@color/gray"
+                app:boxStrokeWidth="1dp"
+                app:hintAnimationEnabled="true"
+                app:passwordToggleDrawable="@drawable/ic_remove_red_eye_black_24dp"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/Black">
 
-            <Spinner
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/type_password_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textColor="@color/Black"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="30dp"
+                android:layout_below="@+id/fieldPassword"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
                 android:layout_marginTop="30dp"
-                android:dropDownWidth="match_parent"
-                android:layout_marginRight="30dp"
-                android:id="@+id/college_Spinner_signup"
-                android:spinnerMode="dropdown"
-                android:prompt="@string/college"
-                android:entries="@array/faculties"
-                style="@style/Widget.AppCompat.Spinner"
-                android:theme="@style/Widget.AppCompat.Light.DropDownItem.Spinner"
-                android:background="#B38F8F"
-                android:layout_below="@+id/type_password_signup" />
+                app:cardBackgroundColor="@color/gray"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardPreventCornerOverlap="false">
+
+                <Spinner
+                    android:id="@+id/college_Spinner_signup"
+                    style="@style/Widget.AppCompat.Spinner.DropDown"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:dropDownWidth="match_parent"
+                    android:popupBackground="@color/gray"
+                    android:spinnerMode="dropdown"
+                    android:theme="@style/Widget.AppCompat.Light.DropDownItem.Spinner" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
 
             <RadioGroup
                 android:id="@+id/radio_gender_signup"
+                style="@style/Widget.AppCompat.CompoundButton.RadioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:layout_below="@id/college_Spinner_signup"
+                android:layout_below="@id/cardSpinner"
                 android:layout_margin="30dp"
-                android:layoutDirection="ltr"
                 android:dividerPadding="20dp"
+                android:gravity="center_horizontal"
+                android:layoutDirection="ltr"
                 android:orientation="horizontal"
                 android:splitMotionEvents="true">
 
                 <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/Male_box"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:layout_marginEnd="40dp"
-                    android:id="@+id/Male_box"
-                    android:tag="MaleBox"
+                    android:checked="true"
                     android:fontFamily="@font/heebo_medium"
+                    android:tag="MaleBox"
                     android:text="@string/male"
-                    app:buttonTint="@color/dark_blue"
                     android:textColor="@color/gray"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    app:buttonTint="@color/dark_blue" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/Female_box"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/Female_box"
-                    android:tag="FemaleBox"
                     android:layout_marginStart="30dp"
                     android:fontFamily="@font/heebo_medium"
-                    app:buttonTint="@color/dark_blue"
+                    android:tag="FemaleBox"
                     android:text="@string/female"
                     android:textColor="@color/gray"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    app:buttonTint="@color/dark_blue" />
             </RadioGroup>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/YearOfBirth"
-                android:id="@+id/birh_tv_signup"
-                android:layout_below="@id/radio_gender_signup"
-                android:textSize="20sp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:textColor="@color/blue" />
 
-            <DatePicker
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/date_picker_signup"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/birh_tv_signup"
+                android:layout_below="@id/radio_gender_signup"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:spinnersShown="true"
-                android:calendarViewShown="false"
-                android:background="@color/blue"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
-                tools:visibility="visible">
+                android:padding="10dp"
+                android:text="@string/birth_date"
+                android:textColor="@color/Black"
+                android:textSize="15sp" />
 
-            </DatePicker>
 
-            <Button
-                android:layout_width="match_parent"
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/createAccount_signup"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/date_picker_signup"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:text="@string/Create_account"
-                android:fontFamily="@font/heebo_medium"
+                android:layout_margin="50dp"
+                android:layout_marginStart="50dp"
                 android:background="@drawable/rounded_button_log"
-                android:layout_marginTop="40dp"
-                android:padding="15dp"
+                android:fontFamily="@font/heebo_medium"
+                android:padding="10dp"
+                android:text="@string/Create_account"
                 android:textAllCaps="false"
-                android:layout_marginBottom="50dp" />
+                android:textColor="@color/white"
+                app:backgroundTint="@color/blue" />
 
-            <ProgressBar
-                android:id="@+id/progressBar_signup"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:visibility="gone"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
         </RelativeLayout>
     </ScrollView>

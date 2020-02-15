@@ -6,11 +6,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,19 +35,18 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
-import com.google.zxing.integration.android.IntentIntegrator;
 
 public class profile extends Fragment implements View.OnClickListener, ListView.OnItemClickListener {
+    private final int PICK_IMAGE_REQUEST = 71;
     ListView listView;
     private SimpleDraweeView userImageView;
     private String TAG = "profile_activity";
     private FirebaseAuth mAuth;
-    private TextView edit_profile;
+    private Button edit_profile;
     private FirebaseFirestore db;
     private TextView tvUserName;
     private ProfileViewModel profileViewModel;
     private ProfileAdapter customAdapter;
-    private final int PICK_IMAGE_REQUEST = 71;
     private FirebaseStorage storage;
     private StorageReference storageReference;
     private Uri filePath;
@@ -97,11 +98,14 @@ public class profile extends Fragment implements View.OnClickListener, ListView.
                     mAuth.signOut();
                     LoginManager.getInstance().logOut();
                     Intent intent = new Intent(getActivity(), signing.class);
+
                     startActivity(intent);
+                    getActivity().finish();
 
 
                 })
                 .setNegativeButton(android.R.string.no, null).show();
+
     }
 
     @Override
@@ -171,11 +175,6 @@ public class profile extends Fragment implements View.OnClickListener, ListView.
         }
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
-
     private void getUserData() {
         profileViewModel.getUsername().observe(this, string ->
 
@@ -190,34 +189,25 @@ public class profile extends Fragment implements View.OnClickListener, ListView.
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
             case 0:
-                Intent intent1 = new Intent(getActivity(), ListUserPlaces.class);
-                startActivity(intent1);
-                break;
-            case 1:
                 Intent intent2 = new Intent(getActivity(), SettingsActivity.class);
                 startActivity(intent2);
                 break;
-            case 2:
+
+            case 1:
                 Intent intent3 = new Intent(getActivity(), refer_host.class);
                 startActivity(intent3);
                 break;
+            case 2:
+                Intent intentBar = new Intent(getActivity(), IdentifyHost.class);
+                startActivity(intentBar);
+                break;
             case 3:
-                IntentIntegrator integrator = new IntentIntegrator(getActivity());
-                integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-                integrator.setPrompt("Scan");
-                integrator.setCameraId(0);
-                integrator.setOrientationLocked(true);
-                integrator.setBeepEnabled(false);
-                integrator.setBarcodeImageEnabled(false);
-                integrator.initiateScan();
+                //---help
                 break;
             case 4:
-                //---
+                //give us feed back
                 break;
             case 5:
-
-                break;
-            case 6:
                 signOut();
                 break;
 
@@ -227,24 +217,28 @@ public class profile extends Fragment implements View.OnClickListener, ListView.
     }
 
     private void setUserImageView(String url) {
-        if (url.contains("https:")) {
-
-            userImageView.setController(
-                    Fresco.newDraweeControllerBuilder()
-                            .setTapToRetryEnabled(true)
-                            .setUri(url)
-                            .build());
+        if (TextUtils.isEmpty(url)) {
         } else {
-
-            StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(url);
-            storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
+            if (url.contains("https:")) {
 
                 userImageView.setController(
                         Fresco.newDraweeControllerBuilder()
                                 .setTapToRetryEnabled(true)
-                                .setUri(uri)
+                                .setUri(url)
                                 .build());
-            });
+
+            } else {
+
+                StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(url);
+                storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
+
+                    userImageView.setController(
+                            Fresco.newDraweeControllerBuilder()
+                                    .setTapToRetryEnabled(true)
+                                    .setUri(uri)
+                                    .build());
+                });
+            }
         }
 
     }

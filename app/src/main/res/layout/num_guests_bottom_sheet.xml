@@ -12,38 +12,22 @@
     app:behavior_peekHeight="0dp"
     app:layout_behavior="@string/bottom_sheet_behavior">
 
-    <RelativeLayout
-        android:id="@+id/header_view_guests"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-
-        <Button
-
+    <com.google.android.material.button.MaterialButton
             android:id="@+id/CloseGuestsSheet"
             android:layout_width="30dp"
+        style="@style/IconOnlyButton"
+        android:layout_margin="10dp"
             android:layout_height="30dp"
+        app:iconTint="@color/blue"
             android:layout_alignParentStart="true"
-            android:layout_margin="10dp" />
+        app:icon="@drawable/ic_close" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="10dp"
-            android:background="@color/white"
-            android:fontFamily="@font/heebo_medium"
-            android:gravity="center"
-            android:padding="0dp"
-            android:text="Reset all"
-            android:textAllCaps="false"
-            android:textColor="@color/blue" />
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
         android:layout_height="match_parent"
-        android:layout_below="@id/header_view_guests"
+        android:layout_below="@id/CloseGuestsSheet"
         android:layout_margin="20dp">
 
         <TextView
@@ -53,9 +37,10 @@
             android:layout_marginEnd="10dp"
             android:layout_toStartOf="@+id/layout_counter"
             android:maxLines="1"
-            android:text="Guests"
+            android:layout_marginTop="5dp"
+            android:text="@string/guests"
             android:textColor="@color/gray"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
 
         <include
             android:id="@+id/layout_counter"
@@ -67,23 +52,17 @@
     </RelativeLayout>
 
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <com.google.android.material.button.MaterialButton
         android:layout_alignParentBottom="true"
-        app:cardCornerRadius="@dimen/card_sheet_corners"
-        app:cardElevation="@dimen/btnSaveCardElevation">
-
-        <Button
             android:id="@+id/btn_save_num_guests"
+        app:backgroundTint="@color/blue"
+        style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blue"
             android:fontFamily="@font/heebo_medium"
             android:text="@string/save"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="25sp" />
-    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

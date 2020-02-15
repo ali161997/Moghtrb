@@ -11,52 +11,37 @@
     app:behavior_peekHeight="0dp"
     app:layout_behavior="@string/bottom_sheet_behavior">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/sheet_top_margin">
 
-        <Button
-            android:id="@+id/CloseTimeSheet"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentStart="true"
-            android:layout_margin="10dp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="10dp"
-            android:background="@color/white"
-            android:fontFamily="@font/heebo_medium"
-            android:gravity="center"
-            android:padding="0dp"
-            android:text="@string/reset_all"
-            android:textAllCaps="false"
-            android:textColor="@color/blue" />
-    </RelativeLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/CloseTimeSheet"
+        style="@style/IconOnlyButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_margin="10dp"
+        app:icon="@drawable/ic_close"
+        app:iconTint="@color/blue" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
         android:id="@+id/cardSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="50dp"
-        app:cardElevation="@dimen/btnSaveCardElevation"
-        app:cardCornerRadius="@dimen/btnSaveCardElevation"
         android:layout_marginBottom="25dp"
-        android:layout_height="wrap_content">
+        app:cardCornerRadius="@dimen/btnSaveCardElevation"
+        app:cardElevation="@dimen/btnSaveCardElevation">
 
         <Spinner
             android:id="@+id/spinnerAnyTime"
-            style="@style/TextAppearance.AppCompat.Large"
+            style="@style/TextAppearance.AppCompat.Large.Inverse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/blue"
-            android:textAlignment="center"
             android:entries="@array/spinner_choice_time"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textAlignment="textStart" />
 
 
     </androidx.cardview.widget.CardView>
@@ -68,11 +53,13 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
+            android:layout_margin="30dp"
             android:layout_height="wrap_content">
 
 
             <include
                 android:id="@+id/foreigner_view"
+
                 layout="@layout/foreigner_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -82,29 +69,24 @@
     <include
         android:id="@+id/student_view"
         layout="@layout/student_view"
-        android:layout_below="@id/cardSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <androidx.cardview.widget.CardView
+        android:layout_margin="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/low_white"
-        android:layout_alignParentBottom="true"
-        app:cardCornerRadius="@dimen/card_sheet_corners"
-        app:cardElevation="@dimen/btnSaveCardElevation">
+        android:layout_below="@id/cardSpinner" />
 
-        <Button
-            android:id="@+id/btn_save_anytime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/blue"
-            android:fontFamily="@font/heebo_medium"
-            android:text="@string/save"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="25sp" />
-    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save_anytime"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/heebo_medium"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:backgroundTint="@color/blue" />
 
 
 </RelativeLayout>

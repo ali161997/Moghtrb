@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:divider="@color/gray"
-    android:layoutDirection="ltr"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -227,7 +226,7 @@
 
             android:id="@+id/hostRateValue"
             android:layout_alignParentEnd="true"
-            style="?android:attr/ratingBarStyleSmall"
+            style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:max="5"
@@ -260,14 +259,17 @@
 
             />
 
-        <ImageView
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/locationIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/IconOnlyButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="20dp"
-            app:srcCompat="@drawable/ic_location" />
+            android:layout_marginEnd="5dp"
+            app:iconTint="@color/Black"
+            app:iconPadding="0dp"
+            app:icon="@drawable/ic_location" />
 
     </RelativeLayout>
 
@@ -277,7 +279,6 @@
         android:id="@+id/servicesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_marginStart="10dp"
         android:fontFamily="@font/heebo_medium"
         android:text="@string/Services"

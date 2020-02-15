@@ -20,15 +20,19 @@
         android:textColor="@color/blue"
         android:gravity="center" />
 
-    <ImageView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/arrowBack_profile"
         android:layout_width="35dp"
+        style="@style/IconOnlyButton"
+        android:layout_height="35dp"
+        android:layout_marginStart="30dp"
+        app:backgroundTint="@color/zxing_transparent"
+        app:icon="@drawable/arrow_back"
         android:layout_alignParentStart="true"
-        android:layout_height="33dp"
-        android:layout_marginLeft="30dp"
+        app:iconPadding="5dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        app:srcCompat="@drawable/arrow_back" />
+        app:iconTint="@color/Black" />
 
 
     <ScrollView
@@ -42,96 +46,141 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/enableEditing"
                 android:text="@string/edit"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/blue"
                 android:padding="5dp"
                 android:textSize="12sp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:fontFamily="@font/heebo_medium"
-                android:background="@color/low_white" />
-            <EditText
-                android:layout_below="@id/enableEditing"
-                android:cursorVisible="true"
-                android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
-                android:id="@+id/typename_profile"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/heebo_thin" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fieldNameProfile"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/enableEditing"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/heebo_medium"
+                android:hint="@string/name"
+                android:textColorHint="@color/gray"
+                android:textSize="20sp"
+                app:boxStrokeColor="@color/gray"
+                app:boxStrokeWidth="1dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="10dp"
-
                 android:inputType="textPersonName"
-                android:padding="5dp"
-                android:hint="Name"
-                android:fontFamily="@font/heebo_medium"
-                android:textColor="@color/blue"
-                android:textSize="20sp"
-                android:background="@drawable/edittext_border" />
+                app:hintAnimationEnabled="true">
 
-            <EditText
-                android:cursorVisible="true"
-                android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
-                android:id="@+id/typemail_profile"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/typename_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/Black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fieldMailProfile"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/typename_profile"
+                android:layout_below="@id/fieldNameProfile"
+                android:layout_marginStart="30dp"
+                android:fontFamily="@font/heebo_medium"
+                android:layout_marginLeft="30dp"
+                android:textSize="20sp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:hint="@string/email"
+                android:inputType="textPersonName"
+                android:textColorHint="@color/gray"
+                app:boxStrokeColor="@color/gray"
+                app:boxStrokeWidth="1dp"
+                app:hintAnimationEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/typemail_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/Black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fieldPhoneProfile"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fieldMailProfile"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/heebo_medium"
+                android:inputType="textPersonName"
+                android:textColorHint="@color/gray"
+                android:textSize="20sp"
+                app:boxStrokeColor="@color/gray"
+                app:boxStrokeWidth="1dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginRight="30dp"
-                android:inputType="textEmailAddress"
-                android:background="@drawable/edittext_border"
-                android:padding="5dp"
-                android:textSize="20sp"
                 android:hint="@string/email"
-                android:fontFamily="@font/heebo_medium"
-                android:textColor="@color/blue" />
+                app:hintAnimationEnabled="true">
 
-            <EditText
-                android:cursorVisible="true"
-                android:background="@drawable/edittext_border"
-                android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
-                android:id="@+id/type_phone_profile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/typemail_profile"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="30dp"
-                android:inputType="phone"
-                android:padding="5dp"
-                android:textSize="20sp"
-                android:hint="@string/telephone"
-                android:fontFamily="@font/heebo_medium"
-                android:textColor="@color/blue" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/type_phone_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/Black" />
 
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <Spinner
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="30dp"
+                android:layout_below="@+id/fieldPhoneProfile"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
                 android:layout_marginTop="30dp"
-                android:dropDownWidth="match_parent"
-                android:layout_marginRight="30dp"
-                android:id="@+id/college_Spinner_profile"
-                android:spinnerMode="dropdown"
-                android:prompt="@string/college"
-                android:entries="@array/faculties"
-                android:background="@color/places_text_black_alpha_26"
-                android:layout_below="@+id/type_phone_profile" />
+                app:cardBackgroundColor="@color/gray"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardPreventCornerOverlap="false">
+
+                <Spinner
+                    android:id="@+id/college_Spinner_profile"
+                    style="@style/Widget.AppCompat.Spinner.DropDown"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:dropDownWidth="match_parent"
+                    android:popupBackground="@color/gray"
+                    android:spinnerMode="dropdown"
+                    android:theme="@style/Widget.AppCompat.Light.DropDownItem.Spinner" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
 
             <RadioGroup
                 android:id="@+id/radio_gender_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:layout_below="@id/college_Spinner_profile"
+                android:layout_below="@id/cardSpinner"
                 android:layout_margin="30dp"
                 android:layoutDirection="ltr"
                 android:dividerPadding="20dp"
@@ -164,56 +213,41 @@
                     android:textSize="15sp" />
             </RadioGroup>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/YearOfBirth"
-                android:id="@+id/birh_tv_profile"
-                android:layout_below="@id/radio_gender_profile"
-                android:textSize="20sp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:textColor="@color/blue" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:id="@+id/cardBirthDate"
-                android:layout_below="@id/birh_tv_profile"
-                app:cardBackgroundColor="@color/low_white"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp">
-
-
-                <Button
+            <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnBirthDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/birth_date"
                     android:textAllCaps="false"
+                android:layout_below="@id/radio_gender_profile"
                     android:textSize="20sp"
+                android:padding="10dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
                     android:background="@color/low_white"
-                    android:textColor="@color/blue">
+                android:textColor="@color/blue"
+                app:backgroundTint="@color/low_white">
 
-                </Button>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.button.MaterialButton>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 android:id="@+id/update_profile"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/cardBirthDate"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_below="@id/btnBirthDate"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:text="@string/update"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/blue"
                 android:fontFamily="@font/heebo_medium"
                 android:background="@drawable/rounded_button_log"
                 android:layout_marginTop="40dp"
                 android:padding="15dp"
                 android:textAllCaps="false"
+
                 android:layout_marginBottom="50dp" />
 
             <ProgressBar

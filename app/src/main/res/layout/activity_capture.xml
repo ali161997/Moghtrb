@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CaptureActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:id="@+id/soknaText"
+        android:layout_alignParentTop="true"
+        app:cardBackgroundColor="@color/low_white"
+        app:cardPreventCornerOverlap="false"
+        app:strokeColor="@color/gray"
+        app:strokeWidth="2dp"
+        app:cardElevation="@dimen/view_parent_dimen"
+        android:layout_height="wrap_content">
+
+        <TextView
+
+            android:layout_height="wrap_content"
+            android:text="Scan Sokna Host Barcode Image "
+            android:fontFamily="@font/heebo_thin"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:minHeight="?attr/actionBarSize"
+
+            android:textColor="@color/blue" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.journeyapps.barcodescanner.CompoundBarcodeView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/soknaText"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/zxing_barcode_scanner"
+        app:zxing_use_texture_view="true" />
+
+</RelativeLayout>
