@@ -5,43 +5,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activities.createacount">
+    tools:context="com.alihashem.sokna.activities.CreateAcount">
 
     <ProgressBar
         android:id="@+id/progressBar_signup"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" />
+        android:visibility="gone"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/signup_tv"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_toEndOf="@id/arrowback_signup"
-        android:fontFamily="@font/heebo_medium"
-        android:gravity="center"
-        android:text="@string/signup"
-        android:textColor="@color/blue"
-        android:textSize="30sp" />
+        android:id="@+id/appBarCreate"
+        android:background="@color/low_white"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/arrowback_signup"
-        android:layout_width="35dp"
-        android:layout_height="33dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        app:srcCompat="@drawable/arrow_back" />
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:id="@+id/toolbarCreate"
+            app:navigationIcon="@drawable/arrow_back"
+            android:layout_height="55dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/blue"
+                    android:gravity="start"
+                    android:text="@string/Create_account"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    app:actualImageResource="@drawable/soknalogo"
+                    android:contentDescription="new post image"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/arrowback_signup"
-        android:layout_marginTop="10dp">
+        app:elevation="@dimen/mainViewElevation"
+        android:layout_below="@id/appBarCreate">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -116,7 +137,7 @@
                 android:layout_marginEnd="30dp"
                 android:fontFamily="@font/heebo_medium"
                 android:layout_marginRight="30dp"
-                android:hint="@string/telephone"
+                android:hint="@string/hint_phone_number"
                 android:padding="5dp"
                 android:inputType="phone"
                 android:textColorHint="@color/gray"
@@ -129,7 +150,6 @@
                     android:id="@+id/type_phone_signup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/telephone"
                     android:inputType="phone"
                     android:textColor="@color/Black" />
 
@@ -214,7 +234,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="40dp"
-                    android:checked="true"
                     android:fontFamily="@font/heebo_medium"
                     android:tag="MaleBox"
                     android:text="@string/male"
@@ -246,9 +265,12 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
                 android:padding="10dp"
+                app:backgroundTint="@color/gray"
                 android:text="@string/birth_date"
-                android:textColor="@color/Black"
-                android:textSize="15sp" />
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp" />
 
 
             <com.google.android.material.button.MaterialButton

@@ -1,11 +1,13 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">0dp</dimen>
+    <dimen name="activity_vertical_margin">5dp</dimen>
     <dimen name="imageWidthDetail">400dp</dimen>
     <dimen name="imageHeightDetail">300dp</dimen>
     <dimen name="btnSaveCardElevation">5dp</dimen>
     <dimen name="view_parent_dimen">10dp</dimen>
+    <dimen name="mainViewElevation">5dp</dimen>
+    <dimen name="toolBarHeight">55dp</dimen>
 
 
 </resources>

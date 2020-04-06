@@ -8,99 +8,114 @@
     android:checkable="true"
     android:clickable="true"
     android:focusable="true"
-    android:minHeight="200dp"
+    android:fitsSystemWindows="true"
     app:cardPreventCornerOverlap="false"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="10dp"
     app:cardElevation="5dp">
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:layout_gravity="center_horizontal"
         android:background="@color/white"
         android:orientation="vertical">
-
-
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/image_item"
             android:layout_width="400dp"
-            android:layout_height="250dp"
+            android:layout_height="300dp"
             android:layout_gravity="center_horizontal"
             fresco:fadeDuration="300"
             fresco:placeholderImage="@drawable/place_holder"
             fresco:placeholderImageScaleType="fitCenter"
             fresco:retryImage="@drawable/ic_refresh_black_24dp" />
 
-
-        <TextView
-            android:id="@+id/tv_price"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:fontFamily="@font/heebo_medium"
-            android:text="2500 L.E"
-            android:textAllCaps="false"
-            android:textColor="@color/dark_blue"
-            android:textSize="16sp" />
+            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_height="0dp">
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingTop="5dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/heebo_thin"
+                android:textAllCaps="false"
+                android:textColor="@color/Black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/genderTV"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:gravity="end|center_vertical"
+                android:fontFamily="@font/bentham"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/Black" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_street"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center_vertical"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="20dp"
-            android:fontFamily="@font/heebo_medium"
-            android:text="Asyut.seed street"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/bentham"
             android:textColor="@color/gray"
-            android:textSize="14sp"
+            android:textSize="15sp"
 
             />
-
-
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="5dp"
             android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:textColor="@color/gray">
 
 
             <RatingBar
                 android:id="@+id/rating_item"
-                style="?android:attr/ratingBarStyleSmall"
+                android:theme="@style/RatingBar"
+                style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:max="5"
                 android:numStars="5"
                 android:stepSize="0.0"
-                android:theme="@style/RatingBar"
-
                 />
 
             <TextView
                 android:id="@+id/review_item"
+                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
                 android:fontFamily="@font/heebo_medium"
-                android:text="52 Reviews"
                 android:textColor="@color/dark_blue"
                 android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/numBedInRoom"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="end|center_vertical"
+                android:fontFamily="@font/bentham"
+                android:textColor="@color/Black"
+                android:layout_height="wrap_content" />
         </LinearLayout>
-
-
     </LinearLayout>
-
-
 </com.google.android.material.card.MaterialCardView>

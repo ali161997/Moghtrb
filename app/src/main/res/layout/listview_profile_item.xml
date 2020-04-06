@@ -9,11 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_button"
-        android:fontFamily="@font/heebo_medium"
+        android:fontFamily="@font/heebo_thin"
         android:maxLines="1"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:textColor="@color/gray"
+        android:padding="15dp"
+        android:textColor="@color/Black"
         android:textSize="20sp" />
 
 </LinearLayout>

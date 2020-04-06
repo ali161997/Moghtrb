@@ -4,52 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="@color/white"
-    tools:context=".activities.login">
+    tools:context="com.alihashem.sokna.activities.Login">
 
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
+        style="?android:attr/progressBarStyle"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
         android:layout_height="wrap_content" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/arrowback_login"
-        app:icon="@drawable/arrow_back"
-        app:iconTint="@color/Black"
-        style="@style/IconOnlyButton"
-        app:backgroundTint="@color/zxing_transparent"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp" />
-
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/arrowback_login"
-        android:text="@string/login"
-        android:fontFamily="@font/heebo_medium"
-        android:textSize="30sp"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:textColor="@color/blue"
-        android:gravity="center" />
+        android:id="@+id/appBarLog"
+        android:background="@color/low_white"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:id="@+id/toolbarLog"
+            app:navigationIcon="@drawable/arrow_back"
+            android:layout_height="55dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="20sp"
+
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/blue"
+                    android:gravity="start"
+                    android:text="@string/login"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    app:actualImageResource="@drawable/soknalogo"
+                    android:contentDescription="new post image"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_alignParentEnd="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBarLog"
         android:layout_alignParentStart="true"
-        android:layout_below="@id/arrowback_login"
-        android:layout_height="wrap_content">
+        android:layout_alignParentEnd="true"
+        app:elevation="@dimen/mainViewElevation"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-2dp">
 
 
         <RelativeLayout
-            android:layout_width="match_parent"
             android:id="@+id/relative_log"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fieldMailLogin"
@@ -66,6 +93,7 @@
                 android:inputType="textEmailAddress"
                 android:textColorHint="@color/gray"
                 android:textSize="20sp"
+                app:hintTextColor="@color/gray"
                 app:boxStrokeColor="@color/gray"
                 app:boxStrokeWidth="1dp"
                 app:hintAnimationEnabled="true">
@@ -73,8 +101,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/typeMailLogin"
                     android:layout_width="match_parent"
+                    android:textCursorDrawable="@drawable/cursor_color"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
                     android:textColor="@color/Black" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -84,6 +112,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextColor="@color/gray"
                 android:layout_below="@id/fieldMailLogin"
                 android:layout_marginStart="30dp"
                 android:layout_marginLeft="30dp"
@@ -97,15 +126,16 @@
                 app:boxStrokeColor="@color/gray"
                 app:boxStrokeWidth="1dp"
                 app:hintAnimationEnabled="true"
+                app:passwordToggleDrawable="@drawable/ic_remove_red_eye_black_24dp"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/Black"
-                app:passwordToggleDrawable="@drawable/ic_remove_red_eye_black_24dp">
+                app:passwordToggleTint="@color/blue">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/type_password_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
+                    android:textCursorDrawable="@drawable/cursor_color"
                     android:textColor="@color/Black"
 
                     />
@@ -113,36 +143,35 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
+                android:id="@+id/forget"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/forget"
                 android:layout_below="@id/fieldPasswordLogin"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="25dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginEnd="40dp"
                 android:fontFamily="@font/heebo_medium"
                 android:text="@string/forget_password_click_here"
+
+
                 android:textColor="@color/gray"
-                android:textSize="15sp"
-
-
-                />
+                android:textSize="15sp" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_go"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                app:backgroundTint="@color/blue"
-                android:textColor="@color/white"
                 android:layout_below="@id/forget"
-                android:fontFamily="@font/heebo_medium"
-                android:layout_marginTop="70dp"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="100dp"
                 android:layout_marginEnd="30dp"
-                android:layout_marginBottom="30dp"
-                android:id="@+id/btn_go"
+                android:layout_marginBottom="50dp"
+                android:fontFamily="@font/heebo_medium"
+                android:text="@string/go"
+                android:textColor="@color/white"
                 android:textSize="20sp"
-                android:text="@string/go" />
+                app:backgroundTint="@color/blue" />
 
 
         </RelativeLayout>

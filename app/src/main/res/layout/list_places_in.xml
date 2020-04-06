@@ -1,33 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/list_places_bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="5dp"
-    android:layout_marginEnd="5dp"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     app:behavior_hideable="true"
     app:behavior_peekHeight="0dp"
     app:cardBackgroundColor="@color/white"
-    app:cardElevation="2dp"
+    app:cardElevation="3dp"
+    app:cardCornerRadius="10dp"
+    android:minHeight="280dp"
+    app:cardPreventCornerOverlap="false"
     app:layout_behavior="@string/bottom_sheet_behavior">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_close_list_places"
         style="@style/IconOnlyButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_gravity="end|top"
+        android:layout_height="wrap_content"
         app:iconTint="@color/blue"
         app:icon="@drawable/ic_close" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/low_white"
+        app:rippleColor="@color/gray"
+        style="@style/TextAppearance.MaterialComponents.Button"
+        app:icon="@drawable/ic_refresh_black_24dp"
+        android:text="@string/try_again"
+        android:id="@+id/tryAgainBtnMap"
+        android:textColor="@color/gray"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:fontFamily="sans-serif"
+        android:layout_gravity="top|start"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/rooms_nearby"
+        android:textSize="15sp"
+        android:padding="5dp"
+        android:textColor="@color/blue" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:id="@+id/locationTextMap"
+        android:text="@string/location"
+        android:maxLines="2"
+        android:textSize="12sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/Black"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="35dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:background="@color/low_white"
         android:orientation="vertical">
 
@@ -43,10 +86,12 @@
     <ProgressBar
         android:id="@+id/progress_loadplaces"
         android:layout_width="wrap_content"
+        android:visibility="gone"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:progressDrawable="@color/blue"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-
         android:progress="25"
 
         />
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

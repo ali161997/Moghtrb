@@ -4,25 +4,16 @@
     android:id="@+id/anyWhere_bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:clipToPadding="false"
     android:fitsSystemWindows="true"
+    android:elevation="@dimen/mainViewElevation"
+    android:background="@drawable/rounded_sheet"
     android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
     app:behavior_hideable="true"
     app:behavior_peekHeight="0dp"
     app:layout_behavior="@string/bottom_sheet_behavior">
-
-    <!-- android:background="@drawable/close_drawable"-->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/CloseWhereSheet"
-        android:layout_width="30dp"
-        style="@style/IconOnlyButton"
-        app:icon="@drawable/ic_close"
-        app:iconTint="@color/blue"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_margin="10dp" />
-
 
     <androidx.cardview.widget.CardView
 
@@ -30,9 +21,8 @@
         android:layout_width="match_parent"
         android:padding="5dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/CloseWhereSheet"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="20dp"
         app:cardBackgroundColor="@color/gray"
         app:cardCornerRadius="10dp"
@@ -66,20 +56,42 @@
 
     </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_alignParentBottom="true"
-        android:id="@+id/btn_save_anyWhere"
+    <LinearLayout
         android:layout_width="match_parent"
+        android:id="@+id/linearWhere"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/heebo_medium"
-        android:text="@string/save"
-        android:layout_marginStart="5dp"
-        android:padding="5dp"
-        android:layout_marginEnd="5dp"
-        app:backgroundTint="@color/blue"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="25sp" />
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/CloseWhereSheet"
+            android:layout_width="wrap_content"
+            style="@style/IconOnlyButton"
+            android:padding="5dp"
+            android:layout_gravity="center_vertical"
+            app:icon="@drawable/ic_close"
+            app:iconTint="@color/blue"
+            android:layout_height="wrap_content" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save_anyWhere"
+            android:layout_width="0dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/heebo_medium"
+            android:text="@string/save"
+            android:padding="5dp"
+            app:backgroundTint="@color/blue"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+
+    </LinearLayout>
+
 
 </RelativeLayout>

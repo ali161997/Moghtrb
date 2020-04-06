@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    tools:context="com.alihashem.sokna.activities.FeedBack">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:id="@+id/appBarFeed"
+        android:background="@color/low_white"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:id="@+id/toolbarFeed"
+            app:navigationIcon="@drawable/arrow_back"
+            android:layout_height="55dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/blue"
+                    android:gravity="start"
+                    android:text="@string/feedback"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@id/appBarFeed"
+        app:elevation="@dimen/mainViewElevation"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/logoFeed"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:shadowColor="@android:color/background_dark"
+                android:src="@drawable/soknalogo"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:contentDescription="@string/soknalogo" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/feedBackView"
+                android:layout_below="@id/logoFeed"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/heebo_medium"
+                app:hintTextColor="@color/blue"
+                android:hint="@string/give_us_feedback"
+                android:padding="10dp"
+                android:textColorHint="@color/gray"
+                android:textSize="20sp"
+                app:boxStrokeColor="@color/gray"
+                app:boxStrokeWidth=".5dp"
+                app:hintAnimationEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/typeFeedBack"
+                    android:layout_width="match_parent"
+                    android:lines="8"
+                    android:minLines="5"
+                    android:scrollbars="vertical"
+                    android:gravity="top|start"
+                    android:maxLines="10"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/Black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:id="@+id/submitTextBtn"
+                android:layout_height="wrap_content"
+                android:layout_margin="50dp"
+                android:layout_below="@id/feedBackView"
+                app:backgroundTint="@color/blue"
+                android:textColor="@color/white"
+                android:text="@string/submit"
+                app:rippleColor="@color/gray"
+                android:padding="5dp"
+                android:textSize="15sp"
+                android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

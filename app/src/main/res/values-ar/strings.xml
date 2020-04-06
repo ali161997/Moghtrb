@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">سكنه</string>
+    <string name="app_name">سكنة</string>
     <string name="bath">حمام</string>
     <string name="Bath_in_depart">حمام فى الشقه</string>
     <string name="bed">سرير</string>
@@ -19,7 +19,7 @@
     <string name="internet">انترنت</string>
     <string name="LE">جنيه</string>
     <string name="location">الموقع</string>
-    <string name="login">تسجيل دخول</string>
+    <string name="login">تسجيل </string>
     <string name="male">ذكر</string>
     <string name="More_about">المزيد</string>
     <string name="naturalGas">غاز طبيعى</string>
@@ -57,8 +57,80 @@
     <string name="select_language">إختر اللغة</string>
     <string name="english">الإنجليزية</string>
     <string name="arabic">العربية</string>
-    <string name="no_reservation_yet">No Reservation Yet</string>
-    <string name="you_will_notified">You Will notified about your Confirmation of Reservation here</string>
-    <string name="name">Name</string>
-    <string name="or">OR</string>
+    <string name="no_reservation_yet">لا يوجد أى حجز</string>
+    <string name="you_will_notified">سوف نقوم بإخبارك عن تأكيد الحجز هنا</string>
+    <string name="name">الإسم</string>
+    <string name="or">أو</string>
+    <string name="forget_password_click_here">هل نسيت كلمة السر</string>
+    <string name="go">الذهاب</string>
+    <string name="soknalogo">soknaLogo</string>
+    <string name="host_phone">رقم المضيف</string>
+    <string name="guests">عدد الضيوف</string>
+    <string name="scan_for_host">المسح عن مضيف</string>
+    <string name="explore_rooms">إستكشاف الغرف</string>
+    <string-array name="list_choices">
+        <item> الإعدادات</item>
+        <item>الإشاره إلى مضيف</item>
+        <item>التعرف على المضيف</item>
+        <item>المساعده</item>
+        <item>إعطاء مراجعه</item>
+        <item>تسجيل الخروج</item>
+    </string-array>
+    <string-array name="spinner_choice_time">
+        <item>طالب</item>
+        <item>غريب</item>
+    </string-array>
+    <string name="Create_account">حساب جديد</string>
+    <string name="average_price">متوسط السعر</string>
+    <string name="email">ايميل</string>
+    <string name="rooms_nearby">غرف قريبة منك</string>
+    <string name="placeAvaiable">أماكن متاحة</string>
+    <string name="bedInRoom">سرير فى الغرفة</string>
+    <string name="menu">قائمة</string>
+    <string name="gender">الجنس</string>
+
+    <string name="LEperMonth">جنيه فى الشهر</string>
+    <string name="start_phone_auth">ابدأ</string>
+    <string name="verify_phone_auth">التعرف</string>
+    <string name="resend_phone_auth">إعادة إرسال</string>
+    <string name="hint_phone_number">رقم الموبايل</string>
+    <string name="hint_verification_code">الكود</string>
+    <string name="status_code_sent">تم الارسال</string>
+    <string name="status_verification_failed">خطأ</string>
+    <string name="status_verification_succeeded">تم التعرف</string>
+    <string name="status_sign_in_failed">خطأ</string>
+    <string name="instant_validation">تم تلقائيا</string>
+    <string name="type_your_mail_n_to_reset_password">أكتب إيميلك لإعادة تعيين كلمة السر</string>
+    <string name="service_details">التفاصيل</string>
+    <string name="cost_per_month">تكلفة شهر</string>
+    <string name="cost_of_a_month_in_advance">تكلفة شهر مقدم</string>
+    <string name="services_water_gas">خدمات(مياه,غاز,..)</string>
+    <string name="confirm">تأكيد</string>
+    <string name="send">إرسال</string>
+    <string name="to">إلى</string>
+    <string name="from">من</string>
+    <string name="total">الإجمالى</string>
+    <string name="in_room">فى الغرفة</string>
+    <string name="beds">الأسره</string>
+    <string name="rooms">الغرف</string>
+    <string name="in_depart">فى الشقة</string>
+    <string name="floor">الطابق</string>
+    <string name="arrangment">الدور</string>
+    <string name="baths">الحمامات</string>
+    <string name="balcony">بلكونة</string>
+    <string name="contained">محتوية</string>
+    <string name="host">المضيف</string>
+    <string name="rate">تقييم</string>
+    <string name="feedback">المراجعة</string>
+    <string name="identifyhost">التعرف على مضيف</string>
+    <string name="payment">الدفع</string>
+    <string name="referHost">الإشارة إلى مضيف</string>
+    <string name="reset_password">إعادة تعيين كلمة السر</string>
+    <string name="settings">الإعدادت</string>
+    <string name="book">الحجز</string>
+    <string name="try_again">حاول أخرى</string>
+    <string name="cannotFind">غير قادر على الوصول,حاول أخرى</string>
+    <string name="logo">logo</string>
+    <string name="requestSubmitted">تم الطلب</string>
+    <string name="notification">الإشعارات</string>
 </resources>

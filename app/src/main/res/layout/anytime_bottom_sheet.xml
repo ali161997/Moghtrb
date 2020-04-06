@@ -4,89 +4,112 @@
     android:id="@+id/anytime_bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:elevation="@dimen/mainViewElevation"
+    android:background="@drawable/rounded_sheet"
     android:clipToPadding="false"
     android:orientation="vertical"
     app:behavior_hideable="true"
     app:behavior_peekHeight="0dp"
     app:layout_behavior="@string/bottom_sheet_behavior">
 
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/CloseTimeSheet"
-        style="@style/IconOnlyButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_margin="10dp"
-        app:icon="@drawable/ic_close"
-        app:iconTint="@color/blue" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardSpinner"
+    <LinearLayout
         android:layout_width="match_parent"
+        android:id="@+id/linearTime"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="25dp"
-        app:cardCornerRadius="@dimen/btnSaveCardElevation"
-        app:cardElevation="@dimen/btnSaveCardElevation">
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/spinnerAnyTime"
-            style="@style/TextAppearance.AppCompat.Large.Inverse"
-            android:layout_width="match_parent"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/CloseTimeSheet"
+            android:layout_width="wrap_content"
+            style="@style/IconOnlyButton"
+            android:padding="5dp"
+            android:layout_gravity="center_vertical"
+            app:icon="@drawable/ic_close"
+            app:iconTint="@color/blue"
+            android:layout_height="wrap_content" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save_anytime"
+            android:layout_width="0dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:background="@color/blue"
-            android:entries="@array/spinner_choice_time"
-            android:padding="10dp"
-            android:textAlignment="textStart" />
+            android:fontFamily="@font/heebo_medium"
+            android:text="@string/save"
+            android:padding="5dp"
+            app:backgroundTint="@color/blue"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
 
 
-    </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cardSpinner">
+        android:layout_width="match_parent"
+        android:layout_above="@id/linearTime"
+        app:elevation="@dimen/mainViewElevation"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_height="match_parent">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="30dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginEnd="30dp"
             android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:id="@+id/cardSpin"
+                app:cardCornerRadius="10dp"
+                app:cardMaxElevation="5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:cardPreventCornerOverlap="false"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:id="@+id/spinnerAnyTime"
+                    style="@style/mySpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/spinner_choice_time"
+                    android:padding="10dp"
+                    android:textAlignment="textStart" />
+            </com.google.android.material.card.MaterialCardView>
 
 
             <include
                 android:id="@+id/foreigner_view"
-
                 layout="@layout/foreigner_view"
+                android:layout_marginTop="30dp"
+                android:layout_below="@id/cardSpin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/student_view"
+                layout="@layout/student_view"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardSpin" />
+
+
         </RelativeLayout>
+
     </ScrollView>
-
-    <include
-        android:id="@+id/student_view"
-        layout="@layout/student_view"
-        android:layout_margin="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cardSpinner" />
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_save_anytime"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/heebo_medium"
-        android:text="@string/save"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        app:backgroundTint="@color/blue" />
 
 
 </RelativeLayout>

@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activities.signing">
+    android:fitsSystemWindows="true"
+    tools:context="com.alihashem.sokna.activities.signing">
 
-
+    <ScrollView
+        android:layout_width="match_parent"
+        app:elevation="@dimen/mainViewElevation"
+        android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/relativeSigning"
@@ -17,7 +21,6 @@
             android:id="@+id/logoSigning"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_alignTop="@+id/progressBar"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:contentDescription="@string/soknalogo"
@@ -28,23 +31,27 @@
             android:id="@+id/buttonFacebookLogin"
             android:layout_below="@id/logoSigning"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="15sp"
+            app:backgroundTint="@color/com_facebook_blue"
+            android:layout_height="100dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="30dp"
-            android:padding="10dp"
-            android:textAllCaps="true"
-            android:textSize="15sp" />
+            android:layout_marginEnd="30dp" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/signInBtnGoogle"
-            android:textAllCaps="true"
+            android:padding="0dp"
+            style="@style/MyButtonStyle"
             android:textSize="15sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/buttonFacebookLogin"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="30dp" />
 
 
@@ -57,14 +64,14 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="30dp"
+            android:padding="8dp"
             android:background="@drawable/rounded_button"
-            android:fontFamily="@font/heebo_medium"
+            android:fontFamily="@font/heebo_thin"
             app:backgroundTint="@color/low_white"
             android:text="@string/Create_account"
-            android:textAllCaps="true"
-            android:textColor="@color/blue"
-            android:textSize="15sp"
-
+            android:textAllCaps="false"
+            android:textColor="@color/Black"
+            android:textSize="20sp"
             tools:includeFontPadding="false" />
 
         <TextView
@@ -92,7 +99,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:fontFamily="@font/heebo_medium"
-            android:padding="10dp"
+            android:padding="5dp"
             android:text="@string/login"
             android:textAllCaps="false"
             android:textColor="@color/white"
@@ -100,16 +107,19 @@
 
             />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true" />
-
 
     </RelativeLayout>
-</ScrollView>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+</RelativeLayout>
 
 
 

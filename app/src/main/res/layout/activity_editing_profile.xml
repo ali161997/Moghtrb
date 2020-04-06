@@ -4,41 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="@color/white"
-    tools:context=".activities.EditingProfile">
+    tools:context="com.alihashem.sokna.activities.EditingProfile">
 
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Profile_tv"
-        android:fontFamily="@font/heebo_medium"
-        android:text="@string/profile"
-        android:textSize="30sp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_toEndOf="@id/arrowBack_profile"
-        android:textColor="@color/blue"
-        android:gravity="center" />
+        android:id="@+id/appBarEdit"
+        android:background="@color/low_white"
+        android:layout_height="wrap_content">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/arrowBack_profile"
-        android:layout_width="35dp"
-        style="@style/IconOnlyButton"
-        android:layout_height="35dp"
-        android:layout_marginStart="30dp"
-        app:backgroundTint="@color/zxing_transparent"
-        app:icon="@drawable/arrow_back"
-        android:layout_alignParentStart="true"
-        app:iconPadding="5dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="20dp"
-        app:iconTint="@color/Black" />
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:id="@+id/toolbarEdit"
+            app:navigationIcon="@drawable/arrow_back"
+            android:layout_height="55dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/blue"
+                    android:gravity="start"
+                    android:text="@string/profile"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    app:actualImageResource="@drawable/soknalogo"
+                    android:contentDescription="new post image"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 
     <ScrollView
+        app:elevation="@dimen/mainViewElevation"
         android:id="@+id/scrollEditingProfile"
         android:layout_width="match_parent"
-        android:layout_below="@id/arrowBack_profile"
+        android:layout_below="@id/appBarEdit"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content">
 
@@ -51,15 +69,16 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/enableEditing"
                 android:text="@string/edit"
+                app:backgroundTint="@color/gray"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/blue"
+                android:textColor="@color/white"
                 android:padding="5dp"
                 android:textSize="12sp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
-                android:fontFamily="@font/heebo_thin" />
+                android:fontFamily="@font/heebo_medium" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fieldNameProfile"
@@ -136,7 +155,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginRight="30dp"
-                android:hint="@string/email"
+                android:hint="@string/telephone"
                 app:hintAnimationEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -215,19 +234,19 @@
 
 
             <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnBirthDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/birth_date"
-                    android:textAllCaps="false"
+                android:id="@+id/btnBirthDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/birth_date"
+                android:textAllCaps="false"
                 android:layout_below="@id/radio_gender_profile"
-                    android:textSize="20sp"
+                android:textSize="20sp"
                 android:padding="10dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
-                    android:background="@color/low_white"
-                android:textColor="@color/blue"
-                app:backgroundTint="@color/low_white">
+                android:background="@color/low_white"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/gray">
 
             </com.google.android.material.button.MaterialButton>
 
@@ -237,8 +256,8 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnBirthDate"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
                 android:text="@string/update"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/blue"
@@ -250,16 +269,16 @@
 
                 android:layout_marginBottom="50dp" />
 
-            <ProgressBar
-                android:id="@+id/progressBar_profile"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:visibility="gone"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
         </RelativeLayout>
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar_profile"
+        android:layout_centerInParent="true"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

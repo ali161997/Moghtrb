@@ -20,8 +20,8 @@
     <item
         android:id="@+id/profile_id"
 
-        android:icon="@drawable/profile"
+        android:icon="@drawable/ic_menu_black_24dp"
         android:orderInCategory="4"
-        android:title="@string/title_profile" />
+        android:title="@string/menu" />
 
 </menu>

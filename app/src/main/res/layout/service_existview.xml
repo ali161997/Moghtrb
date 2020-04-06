@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -8,50 +7,38 @@
 
     >
 
-    <CheckBox
-        android:layout_gravity="center_horizontal"
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
         android:id="@+id/if_internet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:clickable="false"
+        android:drawableEnd="@drawable/ic_checked_black_24dp"
         android:text="@string/internet"
-        android:layoutDirection="rtl"
-        android:textColor="@color/gray"
+        android:drawablePadding="5dp"
+        android:textSize="12sp"
         android:padding="5dp"
-        android:textSize="15sp"
-        app:buttonTint="@color/blue" />
+        android:textColor="@color/gray"
+        android:layout_height="wrap_content" />
 
-
-    <CheckBox
-        android:layout_gravity="center_horizontal"
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
         android:id="@+id/if_gas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="false"
-        android:layoutDirection="rtl"
+        android:drawablePadding="5dp"
+        android:textSize="12sp"
+        android:padding="5dp"
+        android:drawableEnd="@drawable/ic_checked_black_24dp"
+        android:textColor="@color/gray"
         android:text="@string/naturalGas"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:textColor="@color/gray"
-        android:padding="5dp"
-        android:textSize="15sp"
-        app:buttonTint="@color/blue" />
+        android:layout_height="wrap_content" />
 
-    <CheckBox
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/if_cleaning"
-        android:maxLines="2"
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
+        android:id="@+id/if_cleaning"
         android:layout_height="wrap_content"
-        android:clickable="false"
-        android:layoutDirection="rtl"
+        android:drawablePadding="5dp"
+        android:textSize="12sp"
         android:padding="5dp"
-        android:layout_marginStart="5dp"
-        android:text="@string/periodCleaning"
-        android:textColor="@color/gray"
-        android:textSize="15sp"
-        app:buttonTint="@color/blue" />
 
+        android:textColor="@color/gray"
+        android:drawableEnd="@drawable/ic_checked_black_24dp"
+        android:text="@string/periodCleaning" />
 
 </LinearLayout>

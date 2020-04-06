@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical|center_horizontal"
+    android:layoutDirection="locale"
+    android:layout_height="match_parent"
     android:background="@color/white">
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
 
         <com.google.android.libraries.maps.MapView
@@ -23,19 +19,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center_horizontal"
-            android:layout_margin="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             app:strokeColor="@color/gray"
-            android:background="@color/low_white"
-            android:padding="5dp"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/quantum_grey300"
+            android:padding="10dp"
+            android:textDirection="locale"
+            android:layoutDirection="locale"
             app:cardCornerRadius="5dp"
-            app:cardElevation="15dp">
+            app:cardElevation="10dp">
 
             <fragment
                 android:id="@+id/autocomplete_fragment_map"
                 android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true" />
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -43,15 +43,11 @@
             android:id="@+id/get_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="80dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="60dp"
             app:backgroundTint="@color/white"
-            app:rippleColor="@color/blue"
             app:srcCompat="@drawable/ic_place_black_24dp" />
 
         <include layout="@layout/list_places_in" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-
-</RelativeLayout>
