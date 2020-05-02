@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context="com.alihashem.sokna.activities.Settings">
+    tools:context="com.alihashem.moghtreb.activities.Settings">
 
 
     <com.google.android.material.appbar.AppBarLayout

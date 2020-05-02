@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/low_white"
+    app:cardPreventCornerOverlap="false"
+    app:cardElevation="5dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:fontFamily="@font/bentham"
+                android:textColor="@color/gray"
+                android:text="@string/from"
+                android:textSize="15sp"
+                android:id="@+id/fromBooking" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                android:id="@+id/fromDate" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:fontFamily="@font/bentham"
+                android:textColor="@color/gray"
+                android:text="@string/to"
+                android:textSize="15sp"
+                android:id="@+id/toBooking" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                android:id="@+id/toDate" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:fontFamily="@font/bentham"
+                android:padding="5dp"
+                android:textAllCaps="true"
+                android:textColor="@color/gray"
+                android:text="@string/amountPayed"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:id="@+id/amountPayed"
+                android:textSize="15sp"
+                android:padding="5dp"
+                android:textColor="@color/blue"
+                android:text="500 Egp"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_height="wrap_content"
+            android:id="@+id/goToRoom"
+            android:fontFamily="@font/heebo_medium"
+            android:text="@string/go_to_room"
+            android:gravity="center"
+            android:textColor="@color/blue"
+            android:padding="10dp" />
+
+
+    </LinearLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

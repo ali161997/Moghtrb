@@ -4,9 +4,11 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context="com.alihashem.sokna.activities.Payment">
+    tools:context="com.alihashem.moghtreb.activities.Payment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -88,17 +90,6 @@
                     android:text="@string/service_details"
                     android:textColor="@color/Black" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="View Disabled"
-                    android:padding="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:textSize="15sp"
-                    android:textColor="@color/gray"
-
-                    />
-
             </LinearLayout>
 
 
@@ -118,6 +109,7 @@
                     android:textColor="@color/gray"
                     android:text="@string/cost_per_month"
                     android:layout_height="wrap_content" />
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -223,7 +215,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Phone Send"
+                android:text="@string/phoneSend"
                 android:id="@+id/tvSend"
                 android:textSize="20sp"
                 android:padding="5dp"
@@ -245,6 +237,7 @@
                     android:fontFamily="sans-serif-thin"
                     android:textColor="@color/Black"
                     android:id="@+id/From"
+                    android:textSize="15sp"
                     android:layout_weight="0"
                     android:padding="10dp"
                     android:text="@string/from" />
@@ -283,19 +276,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/linear4"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_weight="1"
+                    android:textSize="15sp"
                     android:fontFamily="sans-serif-thin"
                     android:textColor="@color/Black"
                     android:id="@+id/To"
+                    android:gravity="start"
                     android:padding="10dp"
                     android:text="@string/to" />
 
@@ -306,8 +302,9 @@
                     android:layout_weight="1"
                     android:checked="true"
                     android:fontFamily="sans-serif-light"
-                    android:gravity="center_horizontal"
+                    android:gravity="center"
                     android:padding="5dp"
+                    android:textAlignment="center"
                     android:text="@string/vodafone"
                     android:textColor="@color/quantum_googredA700"
                     android:textSize="15sp" />
@@ -318,6 +315,8 @@
                     android:layout_weight="1"
                     android:checked="false"
                     android:text="@string/etisalat"
+                    android:gravity="center"
+                    android:textAlignment="center"
                     android:fontFamily="sans-serif-light"
                     android:id="@+id/etisalatCheck"
                     android:textSize="15sp"
@@ -332,6 +331,7 @@
                     android:text="@string/orange"
                     android:id="@+id/orangeCheck"
                     android:gravity="center"
+                    android:textAlignment="center"
                     android:textSize="15sp"
                     android:padding="5dp"
                     android:textColor="@color/quantum_orangeA700" />
@@ -344,6 +344,7 @@
                     android:fontFamily="sans-serif-light"
                     android:gravity="center"
                     android:id="@+id/weCheck"
+                    android:textAlignment="center"
                     android:textSize="15sp"
                     android:padding="5dp"
                     android:textColor="@color/move" />
@@ -357,7 +358,6 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layoutDirection="ltr"
-                android:text="+20 1068278067"
                 android:gravity="center"
                 android:id="@+id/tvPhone"
                 android:textSize="20sp"

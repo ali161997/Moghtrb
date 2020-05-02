@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:id="@+id/homeLayout"
+    android:background="@color/white"
+    tools:context="com.alihashem.moghtreb.activities.Home">
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/title_explore" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:id="@+id/cord_home"
+        android:background="@color/zxing_transparent"
+        android:layout_alignParentBottom="true"
+        android:fitsSystemWindows="true"
+        android:outlineAmbientShadowColor="@color/gray"
+        android:layout_height="wrap_content">
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigation"
+            android:elevation="5dp"
+            app:elevation="10dp"
+            android:background="@drawable/rounded_bottom"
+            android:fadingEdge="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottomNavigationHeight"
+            android:fitsSystemWindows="true"
+            android:animateLayoutChanges="false"
+            android:animationCache="false"
+            android:focusableInTouchMode="false"
+            app:itemTextAppearanceActive="@style/MenuItem"
+            android:textAlignment="center"
+            app:itemIconTint="@color/icon_selected_in_bottom_nav"
+            app:itemTextColor="@color/icon_selected_in_bottom_nav"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_nav_menu" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>
+
+

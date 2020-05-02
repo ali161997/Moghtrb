@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:id="@+id/cordInbox"
     android:fitsSystemWindows="true"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -10,93 +11,106 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:id="@+id/appBarInbox"
-        android:background="@color/low_white"
+        android:layout_gravity="top"
+        app:liftOnScroll="true"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:id="@+id/toolbarInbox"
-            android:layout_height="@dimen/toolBarHeight">
+            android:minHeight="100dp"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                app:layout_collapseMode="pin"
+                android:layout_gravity="bottom"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:text="@string/notification"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:textColor="@color/blue"
+                android:padding="5dp"
+                android:fontFamily="sans-serif-black"
+                android:textSize="20sp" />
 
-                <TextView
-                    android:textSize="20sp"
-                    android:padding="5dp"
-                    android:layout_gravity="center_vertical"
-                    android:textColor="@color/blue"
-                    android:gravity="start"
-                    android:text="@string/title_inbox"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:background="@color/low_white"
+                app:layout_collapseMode="parallax"
+                android:id="@+id/toolbarInbox"
+                android:layout_height="@dimen/toolBarHeight">
 
-                <com.facebook.drawee.view.SimpleDraweeView
-                    android:layout_width="70dp"
-                    android:layout_height="50dp"
-                    android:padding="5dp"
-                    android:layout_margin="5dp"
-                    app:actualImageResource="@drawable/soknalogo"
-                    android:contentDescription="new post image"
-                    android:visibility="visible" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
 
-            </LinearLayout>
+                    <TextView
+                        android:textSize="25sp"
+                        android:padding="5dp"
+                        android:fontFamily="@font/heebo_medium"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/blue"
+                        android:gravity="start"
+                        android:text="@string/title_inbox"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content" />
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"
+                        android:padding="5dp"
+                        android:layout_margin="5dp"
+                        app:actualImageResource="@drawable/soknalogo"
+                        android:contentDescription="new post image"
+                        android:visibility="visible" />
+
+                </LinearLayout>
 
 
-        </androidx.appcompat.widget.Toolbar>
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
 
     </com.google.android.material.appbar.AppBarLayout>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/notification"
-        android:textColor="@color/blue"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:padding="5dp"
-        android:fontFamily="sans-serif-black"
-        android:textSize="25sp" />
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:id="@+id/inboxSwipe"
-        android:visibility="gone"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="10dp"
+        android:layout_marginBottom="@dimen/bottomNavigationHeight"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         android:fitsSystemWindows="true"
         android:layout_height="wrap_content">
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
+
             android:id="@+id/inboxRecycler"
             android:layout_height="wrap_content" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
-        android:id="@+id/emptyLayout"
-        android:orientation="vertical"
-        android:layout_marginTop="50dp"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_horizontal"
-            android:text="@string/no_reservation_yet"
-            android:textColor="@color/quantum_googredA700"
-            android:textSize="25sp" />
+        android:id="@+id/emptyView"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:paddingStart="30dp"
+        android:gravity="start"
+        android:visibility="gone"
+        android:text="@string/no_reservation_yet"
+        android:textColor="@color/quantum_googredA700"
+        android:textSize="25sp" />
 
 
-    </LinearLayout>
-
-
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

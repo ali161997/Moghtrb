@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.MaterialComponents.CardView"
+    android:checkable="true"
+    android:clickable="true"
+    android:focusable="true"
+    android:fitsSystemWindows="true"
+    app:cardPreventCornerOverlap="false"
+    app:cardBackgroundColor="@color/noty_response_click"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            android:padding="5dp"
+            app:actualImageResource="@drawable/soknalogo" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:fitsSystemWindows="true"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/notyTitle"
+                    android:padding="2dp"
+                    android:fitsSystemWindows="true"
+                    android:layout_gravity="center_vertical"
+                    app:autoSizeMinTextSize="15sp"
+                    android:fontFamily="sans-serif"
+                    android:gravity="start"
+                    android:text="Room Request Approved"
+                    android:textColor="@color/blue"
+                    android:textSize="15sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewEnd"
+                    android:layout_gravity="center_vertical|end"
+                    android:id="@+id/notyTime"
+                    android:paddingEnd="10dp"
+                    android:maxLines="1"
+                    app:autoSizeMinTextSize="10sp"
+                    android:fontFamily="sans-serif"
+                    android:text="12:30-12/11/2020"
+                    android:textColor="@color/gray"
+                    android:textSize="10sp" />
+
+
+            </LinearLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/notyBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:fontFamily="sans-serif"
+                android:gravity="start"
+                app:autoSizeMinTextSize="10sp"
+                android:text="you need to complete reservation"
+                android:textColor="@color/gray"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

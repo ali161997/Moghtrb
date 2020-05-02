@@ -13,6 +13,7 @@
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="10dp"
     app:cardElevation="5dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,9 +21,10 @@
         android:layout_gravity="center_horizontal"
         android:background="@color/white"
         android:orientation="vertical">
+
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/image_item"
-            android:layout_width="400dp"
+            android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_gravity="center_horizontal"
             fresco:fadeDuration="300"
@@ -32,29 +34,29 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:layout_weight="1"
+            android:padding="5dp"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_height="0dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/tv_price"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:paddingTop="5dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/heebo_thin"
                 android:textAllCaps="false"
                 android:textColor="@color/Black"
-                android:textSize="14sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/genderTV"
-                android:layout_weight="1"
-                android:layout_width="0dp"
+                android:padding="1dp"
+                android:layout_width="wrap_content"
+                android:textAlignment="textEnd"
                 android:gravity="end|center_vertical"
                 android:fontFamily="@font/bentham"
                 android:layout_gravity="center_vertical"
@@ -69,6 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:gravity="center_vertical"
+            android:padding="1dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:fontFamily="@font/bentham"
@@ -76,6 +79,7 @@
             android:textSize="15sp"
 
             />
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -95,8 +99,7 @@
                 android:layout_height="wrap_content"
                 android:max="5"
                 android:numStars="5"
-                android:stepSize="0.0"
-                />
+                android:stepSize="0.0" />
 
             <TextView
                 android:id="@+id/review_item"

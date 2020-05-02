@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.alihashem.sokna">
+    package="com.alihashem.moghtreb">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -11,29 +11,37 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:hardwareAccelerated="true"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@drawable/soknalogo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/soknalogo"
         android:supportsRtl="true"
-        android:fullBackupContent="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.alihashem.sokna.activities.Reset"
-            android:launchMode="singleTop"
+            android:name="com.alihashem.moghtreb.activities.Bookings"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <meta-data
+            android:name="firebase_performance_collection_enabled"
+            android:value="false" />
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="true" />
+
+        <activity
+            android:name="com.alihashem.moghtreb.activities.Reset"
             android:screenOrientation="portrait">
 
         </activity>
         <activity
-            android:name="com.alihashem.sokna.activities.Phone"
-            android:screenOrientation="portrait">
-
-        </activity>
-        <activity
-            android:name="com.alihashem.sokna.activities.FeedBack"
+            android:name="com.alihashem.moghtreb.activities.FeedBack"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alihashem.sokna.activities.Capture"
+            android:name="com.alihashem.moghtreb.activities.Capture"
             android:clearTaskOnLaunch="true"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
@@ -41,40 +49,42 @@
             android:theme="@style/AppCompatCaptureTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.alihashem.sokna.activities.IdentifyHost"
+            android:name="com.alihashem.moghtreb.activities.IdentifyHost"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait" /> <!-- tools:replace="android:supportsRtl" -->
-        <activity android:name="com.alihashem.sokna.activities.Settings" />
         <activity
-            android:name="com.alihashem.sokna.activities.Payment"
+            android:name="com.alihashem.moghtreb.activities.Settings"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alihashem.sokna.activities.EditingProfile"
+            android:name="com.alihashem.moghtreb.activities.Payment"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.alihashem.moghtreb.activities.Profile"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alihashem.sokna.activities.ReferHost"
+            android:name="com.alihashem.moghtreb.activities.ReferHost"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alihashem.sokna.activities.Booking"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTop" />
+            android:name="com.alihashem.moghtreb.activities.Book"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.alihashem.sokna.activities.Home"
+            android:name="com.alihashem.moghtreb.activities.Home"
             android:label="@string/title_activity_home_explore"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alihashem.sokna.activities.CreateAcount"
+            android:name="com.alihashem.moghtreb.activities.CreateAccount"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alihashem.sokna.activities.Login"
+            android:name="com.alihashem.moghtreb.activities.Login"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alihashem.sokna.activities.signing"
+            android:name="com.alihashem.moghtreb.activities.signing"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.alihashem.sokna.activities.Splash"
+            android:name="com.alihashem.moghtreb.activities.Splash"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -118,7 +128,7 @@
             android:value="false" />
 
         <service
-            android:name="com.alihashem.sokna.services.MessagingService"
+            android:name="com.alihashem.moghtreb.services.MessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -134,11 +144,9 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_notifications" />
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/blue" />
-        <!-- [END fcm_disable_auto_init] -->
     </application>
 
 </manifest>

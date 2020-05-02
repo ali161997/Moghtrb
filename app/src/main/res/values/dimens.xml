@@ -8,6 +8,7 @@
     <dimen name="view_parent_dimen">10dp</dimen>
     <dimen name="mainViewElevation">5dp</dimen>
     <dimen name="toolBarHeight">55dp</dimen>
+    <dimen name="bottomNavigationHeight">60dp</dimen>
 
 
 </resources>

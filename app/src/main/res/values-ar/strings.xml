@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">سكنة</string>
+    <string name="app_name">مغترب</string>
     <string name="bath">حمام</string>
     <string name="Bath_in_depart">حمام فى الشقه</string>
     <string name="bed">سرير</string>
@@ -69,6 +69,7 @@
     <string name="scan_for_host">المسح عن مضيف</string>
     <string name="explore_rooms">إستكشاف الغرف</string>
     <string-array name="list_choices">
+        <item>الحجوزات</item>
         <item> الإعدادات</item>
         <item>الإشاره إلى مضيف</item>
         <item>التعرف على المضيف</item>
@@ -133,4 +134,11 @@
     <string name="logo">logo</string>
     <string name="requestSubmitted">تم الطلب</string>
     <string name="notification">الإشعارات</string>
+    <string name="phoneSend">تليفون الإرسال</string>
+    <string name="noInternet">لا يوجد إتصال</string>
+    <string name="Student">طالب</string>
+    <string name="amountPayed">قيمة تم دفعها اونلاين</string>
+    <string name="selectCity">تحديد المدينة</string>
+    <string name="guestsCount">ضيوف</string>
+    <string name="go_to_room">الذهاب للغرفه</string>
 </resources>

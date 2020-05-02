@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/cardVerifySheet"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    app:behavior_peekHeight="0dp"
+    app:behavior_hideable="true"
+    android:clipToPadding="false"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:id="@+id/top_dev"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:padding="20dp"
+                android:textColor="@color/Black"
+                android:background="@color/low_white"
+                android:textColorHint="@color/gray"
+                android:id="@+id/fieldPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_phone_number"
+                android:layout_margin="10dp"
+                android:layout_weight="1.0"
+                android:inputType="phone" />
+
+            <EditText
+                android:layout_margin="10dp"
+                android:padding="20dp"
+                android:textColor="@color/Black"
+                android:background="@color/low_white"
+                android:textColorHint="@color/gray"
+                android:id="@+id/fieldVerificationCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_verification_code"
+                android:layout_weight="1.0"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonStartVerification"
+                android:layout_margin="20dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:backgroundTint="@color/blue"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/start_phone_auth" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonVerifyPhone"
+                android:layout_margin="20dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:backgroundTint="@color/blue"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/verify_phone_auth" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonResend"
+                android:layout_margin="20dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:backgroundTint="@color/blue"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/resend_phone_auth" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

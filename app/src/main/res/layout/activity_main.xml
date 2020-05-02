@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:fitsSystemWindows="true"
     app:elevation="@dimen/mainViewElevation"
-    tools:context="com.alihashem.sokna.activities.Splash">
+    tools:context="com.alihashem.moghtreb.activities.Splash">
 
     <ImageView
         android:id="@+id/logoSplash"

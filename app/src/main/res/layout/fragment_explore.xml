@@ -16,7 +16,7 @@
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:expanded="true">
+        app:expanded="false">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
@@ -164,29 +164,26 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_marginBottom="65dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:fitsSystemWindows="true"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:layout_marginBottom="@dimen/bottomNavigationHeight"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_container"
-            android:fitsSystemWindows="true"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/explore_recycler"
+            android:clipToPadding="false"
+            android:padding="5dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/explore_recycler"
-                android:clipToPadding="false"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -208,17 +205,16 @@
             android:textColor="@color/gray"
 
             />
-
     </LinearLayout>
 
 
-    <include layout="@layout/filter_bottom_sheet" />
+    <include layout="@layout/sheet_filter" />
 
-    <include layout="@layout/num_guests_bottom_sheet" />
+    <include layout="@layout/sheet_guests" />
 
-    <include layout="@layout/anytime_bottom_sheet" />
+    <include layout="@layout/sheet_when" />
 
-    <include layout="@layout/anywhere_bottom_sheet" />
+    <include layout="@layout/sheet_where" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
