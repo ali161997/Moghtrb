@@ -11,6 +11,7 @@
     app:cardBackgroundColor="@color/white"
     app:cardElevation="3dp"
     app:cardCornerRadius="10dp"
+    android:maxHeight="350dp"
     android:minHeight="280dp"
     app:cardPreventCornerOverlap="false"
     app:layout_behavior="@string/bottom_sheet_behavior">

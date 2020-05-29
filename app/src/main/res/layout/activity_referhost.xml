@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.alihashem.moghtreb.activities.ReferHost">
+    tools:context="com.alihashem.moghtrb.activities.ReferHost">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                     android:layout_height="50dp"
                     android:padding="5dp"
                     android:layout_margin="5dp"
-                    app:actualImageResource="@drawable/soknalogo"
+                    app:actualImageResource="@drawable/logo"
                     android:contentDescription="new post image"
                     android:visibility="visible" />
 
@@ -51,80 +51,17 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         app:elevation="@dimen/mainViewElevation"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         android:layout_below="@id/appBarRefer"
         android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
+            android:orientation="vertical"
             android:layout_height="wrap_content">
-
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="match_parent"
-                app:backgroundTint="@color/blue"
-                android:id="@+id/go_back"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/host_phone"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="100dp"
-                android:layout_marginEnd="30dp"
-                android:fontFamily="@font/heebo_medium"
-                android:padding="10dp"
-                android:text="@string/submit"
-                android:textColor="@color/white" />
-
-            <EditText
-                android:id="@+id/host_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/host_name"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/edittext_border"
-                android:fontFamily="@font/heebo_medium"
-                android:hint="@string/host_phone"
-                android:inputType="phone"
-                android:padding="5dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
-                android:textSize="25sp" />
-
-            <EditText
-                android:id="@+id/host_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/much_price"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="100dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/edittext_border"
-                android:fontFamily="@font/heebo_medium"
-                android:hint="@string/host_name"
-                android:inputType="textPersonName"
-                android:padding="5dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:textColorHint="@color/common_google_signin_btn_text_dark_disabled"
-                android:textSize="25sp" />
-
-
-            <TextView
-                android:id="@+id/much_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_below="@id/refer_get"
-                android:fontFamily="@font/heebo_medium"
-                android:gravity="center_horizontal"
-                android:text="@string/much_get"
-                android:textColor="@color/blue"
-                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/refer_get"
@@ -139,14 +76,109 @@
                 android:text="@string/refer_get"
                 android:textColor="@color/gray"
                 android:textSize="30sp"
+                android:layout_marginBottom="10dp"
 
                 />
 
+            <TextView
+                android:id="@+id/much_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/heebo_medium"
+                android:gravity="center_horizontal"
+                android:text="@string/much_get"
+                android:textColor="@color/blue"
+                android:textSize="30sp" />
 
-        </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Planned"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="sans-serif-black"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:textColor="@color/green"
+                android:layout_below="@id/much_price" />
 
 
-    </ScrollView>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/hostNameView"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/heebo_medium"
+                android:hint="@string/host_name"
+                android:padding="5dp"
+                android:textColorHint="@color/gray"
+                android:textSize="20sp"
+                app:boxStrokeColor="@color/gray"
+                app:boxStrokeWidth="1dp"
+
+                app:hintAnimationEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/hostNameEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/Black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/hostPhoneView"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/heebo_medium"
+                android:hint="@string/host_phone"
+                android:padding="5dp"
+                android:textColorHint="@color/gray"
+                android:textSize="20sp"
+                app:boxStrokeColor="@color/gray"
+                app:boxStrokeWidth="1dp"
+                app:hintAnimationEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/hostPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:textColor="@color/Black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-</RelativeLayout>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                app:backgroundTint="@color/blue"
+                android:id="@+id/submit"
+                android:enabled="false"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/heebo_medium"
+                android:padding="10dp"
+                android:text="@string/submit"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

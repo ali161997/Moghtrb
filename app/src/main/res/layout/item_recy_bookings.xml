@@ -1,16 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="@color/low_white"
-    app:cardPreventCornerOverlap="false"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white"
     app:cardElevation="5dp"
-    android:layout_height="wrap_content">
+    app:cardCornerRadius="10dp"
+    app:cardPreventCornerOverlap="false">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/hostPhone"
+                android:textColor="@color/gray"
+                android:textSize="15sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/hostPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/Black"
+                android:textSize="15sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCopy"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:text="@string/copy"
+                android:textColor="@color/blue"
+                app:rippleColor="@color/gray" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,79 +58,205 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="5dp"
-                android:fontFamily="@font/bentham"
-                android:textColor="@color/gray"
-                android:text="@string/from"
-                android:textSize="15sp"
-                android:id="@+id/fromBooking" />
+                android:padding="10dp"
+                android:text="Go to Room location"
+                android:textColor="@color/gray" />
 
-            <com.google.android.material.textview.MaterialTextView
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/goToLocationBtn"
+                style="@style/IconOnlyButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:textColor="@color/blue"
-                android:textSize="15sp"
-                android:id="@+id/fromDate" />
+                android:backgroundTint="@color/white"
+                app:icon="@drawable/ic_location"
+                app:iconTint="@color/blue" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="5dp"
-                android:fontFamily="@font/bentham"
-                android:textColor="@color/gray"
-                android:text="@string/to"
-                android:textSize="15sp"
-                android:id="@+id/toBooking" />
+                android:padding="10dp"
+                android:text="@string/go_to_room"
+                android:textColor="@color/gray" />
 
-            <com.google.android.material.textview.MaterialTextView
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/goToRoom"
+                style="@style/IconOnlyButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:textColor="@color/blue"
-                android:textSize="15sp"
-                android:id="@+id/toDate" />
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/heebo_medium"
+                app:icon="@drawable/ic_bed"
+                app:rippleColor="@color/gray" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearDates"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:padding="5dp"
+            android:visibility="gone">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fromBooking"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/bentham"
+                android:padding="5dp"
+                android:text="@string/from"
+                android:textColor="@color/gray"
+                android:textSize="15sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fromDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:gravity="start"
+                android:textColor="@color/Black"
+                android:textSize="15sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/toBooking"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/bentham"
+                android:padding="5dp"
+                android:text="@string/to"
+                android:textColor="@color/gray"
+                android:textSize="15sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/toDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:gravity="start"
+                android:textColor="@color/Black"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:visibility="gone">
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="15sp"
                 android:fontFamily="@font/bentham"
                 android:padding="5dp"
+                android:text="@string/totalPayed"
                 android:textAllCaps="true"
                 android:textColor="@color/gray"
-                android:text="@string/amountPayed"
-                android:layout_height="wrap_content" />
+                android:textSize="15sp" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/totalPayedValue"
                 android:layout_width="wrap_content"
-                android:id="@+id/amountPayed"
-                android:textSize="15sp"
+                android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:textColor="@color/blue"
                 android:text="500 Egp"
-                android:layout_height="wrap_content" />
+                android:textColor="@color/blue"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearPayedOnline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:visibility="gone">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/bentham"
+                android:padding="5dp"
+                android:text="@string/amountPayed"
+                android:textAllCaps="true"
+                android:textColor="@color/gray"
+                android:textSize="15sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/amountPayedValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="500 Egp"
+                android:textColor="@color/blue"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearGuests"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:visibility="gone">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/bentham"
+                android:padding="5dp"
+                android:text="@string/guests_number"
+                android:textAllCaps="true"
+                android:textColor="@color/gray"
+                android:textSize="15sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/guests_numValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="500 Egp"
+                android:textColor="@color/blue"
+                android:textSize="15sp" />
 
 
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/expand"
+            style="@style/IconOnlyButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/goToRoom"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/white"
             android:fontFamily="@font/heebo_medium"
-            android:text="@string/go_to_room"
             android:gravity="center"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:padding="10dp"
             android:textColor="@color/blue"
-            android:padding="10dp" />
+            app:icon="@drawable/ic_details"
+            app:iconPadding="0dp"
+            app:iconTint="@color/blue"
+            app:rippleColor="@color/gray"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Rounded" />
 
 
     </LinearLayout>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context="com.alihashem.moghtreb.activities.Settings">
+    tools:context="com.alihashem.moghtrb.activities.Settings">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -40,7 +40,7 @@
                     android:layout_height="50dp"
                     android:padding="5dp"
                     android:layout_margin="5dp"
-                    app:actualImageResource="@drawable/soknalogo"
+                    app:actualImageResource="@drawable/logo"
                     android:contentDescription="new post image"
                     android:visibility="visible" />
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:fitsSystemWindows="true"
-    tools:context="com.alihashem.moghtreb.activities.FeedBack">
+    tools:context="com.alihashem.moghtrb.activities.FeedBack">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -57,11 +57,11 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:shadowColor="@android:color/background_dark"
-                android:src="@drawable/soknalogo"
+                android:src="@drawable/logo"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="50dp"
-                android:contentDescription="@string/soknalogo" />
+                android:contentDescription="@string/moghtrbLogo" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/feedBackView"

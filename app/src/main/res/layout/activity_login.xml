@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/white"
-    tools:context="com.alihashem.moghtreb.activities.Login">
+    tools:context="com.alihashem.moghtrb.activities.Login">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -49,7 +49,7 @@
                     android:layout_height="50dp"
                     android:padding="5dp"
                     android:layout_margin="5dp"
-                    app:actualImageResource="@drawable/soknalogo"
+                    app:actualImageResource="@drawable/logo"
                     android:contentDescription="new post image"
                     android:visibility="visible" />
 
@@ -70,8 +70,6 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="-2dp">
-
-
         <RelativeLayout
             android:id="@+id/relative_log"
             android:layout_width="match_parent"
@@ -142,8 +140,9 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/forget"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/fieldPasswordLogin"

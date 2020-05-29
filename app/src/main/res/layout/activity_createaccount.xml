@@ -5,51 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.alihashem.moghtreb.activities.CreateAccount">
+    tools:context="com.alihashem.moghtrb.activities.CreateAccount">
 
     <ProgressBar
         android:id="@+id/progressBar_signup"
-        android:layout_gravity="center"
-        android:visibility="gone"
         style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
     <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
         android:id="@+id/appBarCreate"
-        android:background="@color/low_white"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/low_white">
 
         <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
             android:id="@+id/toolbarCreate"
-            app:navigationIcon="@drawable/arrow_back"
-            android:layout_height="55dp">
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            app:navigationIcon="@drawable/arrow_back">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:textSize="20sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/blue"
+                    android:layout_weight="1"
                     android:gravity="start"
                     android:text="@string/Create_account"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:textColor="@color/blue"
+                    android:textSize="20sp" />
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:padding="5dp"
                     android:layout_margin="5dp"
-                    app:actualImageResource="@drawable/soknalogo"
                     android:contentDescription="new post image"
-                    android:visibility="visible" />
+                    android:padding="5dp"
+                    android:visibility="visible"
+                    app:actualImageResource="@drawable/logo" />
 
             </LinearLayout>
 
@@ -61,22 +61,23 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/appBarCreate"
         app:elevation="@dimen/mainViewElevation"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        android:layout_below="@id/appBarCreate">
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fieldName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginEnd="30dp"
                 android:fontFamily="@font/heebo_medium"
                 android:hint="@string/name"
                 android:padding="5dp"
@@ -99,18 +100,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fieldMail"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_below="@id/fieldName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
+                android:layout_below="@id/fieldName"
                 android:fontFamily="@font/heebo_medium"
-                android:layout_marginRight="30dp"
                 android:hint="@string/email"
-                android:padding="5dp"
                 android:inputType="textEmailAddress"
+                android:padding="5dp"
                 android:textColorHint="@color/gray"
                 android:textSize="20sp"
                 app:boxStrokeColor="@color/gray"
@@ -132,15 +128,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/fieldMail"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="30dp"
                 android:fontFamily="@font/heebo_medium"
-                android:layout_marginRight="30dp"
                 android:hint="@string/hint_phone_number"
-                android:padding="5dp"
                 android:inputType="phone"
+                android:padding="5dp"
                 android:textColorHint="@color/gray"
                 android:textSize="20sp"
                 app:boxStrokeColor="@color/gray"
@@ -162,11 +153,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/fieldPhone"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginRight="30dp"
                 android:fontFamily="@font/heebo_medium"
                 android:hint="@string/passWord"
                 android:padding="5dp"
@@ -190,14 +176,20 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="5dp"
+                android:text="@string/selectFaculty"
+                android:textColor="@color/gray"
+                android:textSize="20sp" />
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@+id/fieldPassword"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginTop="30dp"
                 app:cardBackgroundColor="@color/gray"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp"
@@ -222,8 +214,8 @@
                 style="@style/Widget.AppCompat.CompoundButton.RadioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
                 android:layout_below="@id/cardSpinner"
-                android:layout_margin="30dp"
                 android:dividerPadding="20dp"
                 android:gravity="center_horizontal"
                 android:layoutDirection="ltr"
@@ -262,16 +254,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/radio_gender_signup"
-                android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="30dp"
                 android:padding="10dp"
-                app:backgroundTint="@color/gray"
                 android:text="@string/birth_date"
                 android:textColor="@color/white"
                 android:textSize="15sp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp" />
+                app:backgroundTint="@color/gray" />
 
 
             <com.google.android.material.button.MaterialButton
@@ -279,9 +267,8 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/date_picker_signup"
-                android:layout_margin="50dp"
-                android:layout_marginStart="50dp"
+                android:layout_marginTop="25dp"
+                app:rippleColor="@color/gray"
                 android:background="@drawable/rounded_button_log"
                 android:fontFamily="@font/heebo_medium"
                 android:padding="10dp"
@@ -289,9 +276,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/blue" />
-
-
-        </RelativeLayout>
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
     <include layout="@layout/sheet_verify" />

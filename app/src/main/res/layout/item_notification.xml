@@ -23,7 +23,7 @@
             android:layout_height="50dp"
             android:scaleType="fitCenter"
             android:padding="5dp"
-            app:actualImageResource="@drawable/soknalogo" />
+            app:actualImageResource="@drawable/logo" />
 
         <LinearLayout
             android:layout_width="0dp"

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.alihashem.moghtreb.activities.Book">
+    android:id="@+id/coordinatorBook"
+    tools:context="com.alihashem.moghtrb.activities.Book">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -58,7 +59,7 @@
                 android:layout_gravity="end|bottom"
                 app:roundingBorderColor="@color/Black"
                 app:actualImageScaleType="fitCenter"
-                app:actualImageResource="@drawable/soknalogo"
+                app:actualImageResource="@drawable/logo"
                 android:contentDescription="@string/logo"
                 android:visibility="visible" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -66,7 +67,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="60dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         android:layout_height="wrap_content">
 
@@ -89,7 +90,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:id="@+id/mainViewBook"
-                android:visibility="gone"
+
                 android:layout_below="@id/BookLoadingProgress"
                 android:layout_weight="1"
                 android:layout_height="0dp">
@@ -202,27 +203,6 @@
                     android:layout_marginStart="@dimen/view_parent_dimen"
                     android:layout_marginEnd="@dimen/view_parent_dimen" />
 
-                <View
-                    android:id="@+id/line2_booking"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_below="@id/services_existed"
-                    android:layout_marginStart="@dimen/view_parent_dimen"
-                    android:layout_marginTop="@dimen/view_parent_dimen"
-                    android:layout_marginEnd="@dimen/view_parent_dimen"
-                    android:background="@color/gray" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/line2_booking"
-                    android:layout_alignParentStart="true"
-                    android:layout_margin="@dimen/view_parent_dimen"
-                    android:fontFamily="@font/heebo_medium"
-                    android:padding="5dp"
-                    android:text="@string/More_about"
-                    android:textColor="@color/blue"
-                    android:textSize="15sp" />
 
             </RelativeLayout>
 
@@ -251,6 +231,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_request_booking"
+            app:elevation="0dp"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="0dp"
             android:layout_weight="1"

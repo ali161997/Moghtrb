@@ -1,246 +1,372 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fitsSystemWindows="true"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context="com.alihashem.moghtreb.activities.Payment">
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:focusableInTouchMode="true"
+    android:focusedByDefault="true"
+    tools:context="com.alihashem.moghtrb.activities.Payment">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
         android:id="@+id/appBarLog"
-        android:background="@color/low_white"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:fitsSystemWindows="true"
+        app:liftOnScroll="true">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:id="@+id/barPay"
-            app:navigationIcon="@drawable/arrow_back"
-            android:layout_height="55dp">
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:layout_scrollFlags="scroll|enterAlways|snap">
 
-            <LinearLayout
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/barPay"
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
 
-                <TextView
-                    android:textSize="20sp"
+                android:layout_height="55dp"
+                android:background="@color/low_white"
+                app:layout_collapseMode="parallax"
+                app:navigationIcon="@drawable/arrow_back">
 
-                    android:layout_gravity="center_vertical"
-                    android:textColor="@color/blue"
-                    android:gravity="start"
-                    android:text="@string/payment"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                <com.facebook.drawee.view.SimpleDraweeView
-                    android:layout_width="70dp"
-                    android:layout_height="50dp"
-                    android:padding="5dp"
-                    android:layout_margin="5dp"
-                    app:actualImageResource="@drawable/soknalogo"
-                    android:contentDescription="new post image"
-                    android:visibility="visible" />
+                    <TextView
+                        android:layout_width="0dp"
 
-            </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@string/payment"
+                        android:textColor="@color/blue"
+                        android:textSize="20sp" />
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:contentDescription="new post image"
+                        android:padding="5dp"
+                        android:visibility="visible"
+                        app:actualImageResource="@drawable/logo" />
+
+                </LinearLayout>
 
 
-        </androidx.appcompat.widget.Toolbar>
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ScrollView
-        app:elevation="@dimen/mainViewElevation"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/appBarLog"
-        android:layout_height="wrap_content">
+        app:elevation="@dimen/mainViewElevation"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDetails"
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_height="wrap_content">
-
-                <TextView
-
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:gravity="start"
-                    android:id="@+id/tvDetails"
-                    android:textSize="20sp"
-                    android:padding="10dp"
-                    android:text="@string/service_details"
-                    android:textColor="@color/Black" />
-
-            </LinearLayout>
-
+                android:layout_marginEnd="20dp"
+                android:background="@color/white"
+                android:gravity="start"
+                android:text="@string/service_details"
+                android:textColor="@color/blue"
+                android:textSize="20sp"
+                app:layout_collapseMode="pin" />
 
             <LinearLayout
                 android:id="@+id/linear1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/costMonthTv"
                     android:layout_width="0dp"
-                    android:textSize="15sp"
-                    android:id="@+id/costMonth"
-                    android:padding="10dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
-                    android:textColor="@color/gray"
+                    android:layout_weight="1"
+                    android:padding="10dp"
                     android:text="@string/cost_per_month"
-                    android:layout_height="wrap_content" />
+                    android:textColor="@color/gray"
+                    android:textSize="15sp" />
 
+                <TextView
+                    android:id="@+id/valueMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:padding="10dp"
+                    android:text="@string/points"
+                    android:textColor="@color/Black"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:id="@+id/valueMonth"
-                    android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:textSize="15sp"
+                    android:padding="10dp"
+                    android:text="@string/LE"
                     android:textColor="@color/Black"
-                    android:text="@string/LE" />
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linear2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/costAdvanceTv"
                     android:layout_width="0dp"
-                    android:textSize="15sp"
-                    android:id="@+id/costInsurance"
-                    android:padding="10dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
-                    android:textColor="@color/gray"
                     android:layout_weight="1"
-                    android:text="@string/cost_of_a_month_in_advance"
-                    android:layout_height="wrap_content" />
+                    android:padding="10dp"
+                    android:text="@string/month_in_advance"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/valuePreMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:padding="10dp"
+                    android:text="@string/points"
+                    android:textColor="@color/Black"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:id="@+id/valuePreMonth"
-                    android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:textSize="15sp"
+                    android:padding="10dp"
+                    android:text="@string/LE"
                     android:textColor="@color/Black"
-                    android:text="@string/LE" />
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linear3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/servicesTv"
                     android:layout_width="0dp"
-                    android:textSize="15sp"
-                    android:id="@+id/cost"
-                    android:padding="10dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
-                    android:textColor="@color/gray"
+                    android:layout_weight="1"
+                    android:padding="10dp"
                     android:text="@string/services_water_gas"
-                    android:layout_height="wrap_content" />
+                    android:textColor="@color/gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/valueServices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="end"
+                    android:padding="10dp"
+                    android:text="@string/points"
+                    android:textColor="@color/Black"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:id="@+id/valueServices"
-                    android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:textSize="15sp"
+                    android:padding="10dp"
+                    android:text="@string/LE"
                     android:textColor="@color/Black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/commissionTv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:text="@string/Commission"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/valueCommission"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:gravity="end"
-                    android:text="@string/LE" />
+                    android:padding="10dp"
+                    android:text="@string/points"
+                    android:textColor="@color/Black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:padding="10dp"
+                    android:text="@string/LE"
+                    android:textColor="@color/Black"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linear5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/netTv"
                     android:layout_width="0dp"
-                    android:textSize="20sp"
-                    android:id="@+id/netText"
-                    android:padding="10dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:textColor="@color/gray"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:padding="10dp"
                     android:text="@string/total"
-                    android:layout_height="wrap_content" />
+                    android:textAlignment="textStart"
+                    android:textColor="@color/gray"
+                    android:textSize="20sp" />
+
+
+                <TextView
+                    android:id="@+id/valueNet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="end"
+                    android:padding="10dp"
+                    android:text="@string/points"
+                    android:textColor="@color/Black"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:id="@+id/valueNet"
-                    android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:textSize="15sp"
+                    android:padding="10dp"
+                    android:text="@string/LE"
                     android:textColor="@color/Black"
-                    android:gravity="end"
-                    android:text="@string/LE" />
+                    android:textSize="15sp" />
             </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/phoneSend"
-                android:id="@+id/tvSend"
-                android:textSize="20sp"
-                android:padding="5dp"
-                android:fontFamily="sans-serif-thin"
-                android:textColor="@color/Black"
-                android:layout_margin="20dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:id="@+id/linear6"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/MinTv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:text="@string/Minimum"
+                    android:textColor="@color/gray"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/valueMin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="end"
+                    android:padding="10dp"
+                    android:text="@string/points"
+                    android:textColor="@color/Black"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-thin"
-                    android:textColor="@color/Black"
-                    android:id="@+id/From"
-                    android:textSize="15sp"
-                    android:layout_weight="0"
+                    android:layout_marginEnd="20dp"
                     android:padding="10dp"
-                    android:text="@string/from" />
+                    android:text="@string/LE"
+                    android:textColor="@color/Black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvSend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:focusableInTouchMode="true"
+                android:fontFamily="sans-serif-thin"
+                android:padding="5dp"
+                android:text="@string/phoneSend"
+                android:textColor="@color/Black"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/linear6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:focusableInTouchMode="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/From"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:fontFamily="sans-serif-thin"
+                    android:padding="10dp"
+                    android:text="@string/from"
+                    android:textColor="@color/Black"
+                    android:textSize="15sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/fieldPhone"
@@ -250,20 +376,21 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/heebo_medium"
                     android:hint="@string/hint_phone_number"
-                    android:padding="5dp"
                     android:inputType="phone"
+                    android:padding="5dp"
                     android:textColorHint="@color/gray"
                     android:textSize="15sp"
-                    app:boxStrokeWidth="1dp"
-                    app:hintTextColor="@color/Black"
-                    app:boxStrokeWidthFocused=".5dp"
                     app:boxStrokeColor="@color/Black"
-                    app:hintAnimationEnabled="true">
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused=".5dp"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="@color/Black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/typPhonePayment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:focusedByDefault="false"
                         android:inputType="phone"
                         android:textColor="@color/Black" />
 
@@ -273,112 +400,127 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linear4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/linear4"
-                android:gravity="center"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp">
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
                 <TextView
+                    android:id="@+id/To"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
                     android:fontFamily="sans-serif-thin"
-                    android:textColor="@color/Black"
-                    android:id="@+id/To"
                     android:gravity="start"
+                    android:layout_marginStart="10dp"
                     android:padding="10dp"
-                    android:text="@string/to" />
-
-                <CheckedTextView
-                    android:id="@+id/vodafoneCheck"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="true"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:textAlignment="center"
-                    android:text="@string/vodafone"
-                    android:textColor="@color/quantum_googredA700"
+                    android:text="@string/to"
+                    android:textColor="@color/Black"
                     android:textSize="15sp" />
 
-                <CheckedTextView
-                    android:layout_width="0dp"
+                <RadioGroup
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="false"
-                    android:text="@string/etisalat"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:fontFamily="sans-serif-light"
-                    android:id="@+id/etisalatCheck"
-                    android:textSize="15sp"
-                    android:padding="5dp"
-                    android:textColor="@color/green" />
+                    android:layoutDirection="rtl"
+                    android:id="@+id/mobilesRadios"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:splitMotionEvents="true"
+                    android:orientation="vertical">
 
-                <CheckedTextView
-                    android:layout_width="0dp"
-                    android:fontFamily="sans-serif-light"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/orange"
-                    android:id="@+id/orangeCheck"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textSize="15sp"
-                    android:padding="5dp"
-                    android:textColor="@color/quantum_orangeA700" />
 
-                <CheckedTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/we"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:id="@+id/weCheck"
-                    android:textAlignment="center"
-                    android:textSize="15sp"
-                    android:padding="5dp"
-                    android:textColor="@color/move" />
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/vodafoneCheck"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:checked="false"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:padding="5dp"
+                        android:text="@string/vodafone"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/quantum_googredA700"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/etisalatCheck"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:fontFamily="sans-serif-light"
+                        android:padding="5dp"
+                        android:text="@string/etisalat"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/green"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/orangeCheck"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="@string/orange"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/quantum_orangeA700"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/weCheck"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="@string/we"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/move"
+                        android:textSize="15sp" />
+                </RadioGroup>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_marginTop="10dp"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:layoutDirection="ltr"
+                android:focusableInTouchMode="true"
                 android:gravity="center"
-                android:id="@+id/tvPhone"
-                android:textSize="20sp"
+                android:layoutDirection="ltr"
                 android:padding="10dp"
-                android:textColor="@color/quantum_googredA700" />
+                android:textColor="@color/quantum_googredA700"
+                android:textSize="20sp" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnConfirm"
+                style="@style/MyButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/MyButtonStyle"
-                android:text="@string/confirm"
-                android:id="@+id/btnConfirm"
-                android:textColor="@color/white"
-                android:padding="10dp"
                 android:layout_margin="20dp"
+                android:focusableInTouchMode="true"
+                android:padding="10dp"
+                android:text="@string/confirm"
+                android:textColor="@color/white"
                 android:textSize="15sp" />
 
         </LinearLayout>
 
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

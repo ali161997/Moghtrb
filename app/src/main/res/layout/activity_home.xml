@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:id="@+id/homeLayout"
     android:background="@color/white"
-    tools:context="com.alihashem.moghtreb.activities.Home">
+    tools:context="com.alihashem.moghtrb.activities.Home">
 
 
     <FrameLayout

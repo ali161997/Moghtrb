@@ -81,32 +81,6 @@
                 android:textColor="@color/gray"
                 android:textSize="15sp" />
 
-            <LinearLayout
-                android:id="@+id/container_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/price_range_tv"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/average_price"
-                    android:textColor="@color/Black"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="@string/LEperMonth"
-                    android:textColor="@color/Black" />
-
-            </LinearLayout>
 
             <RadioGroup
                 android:id="@+id/radio_sheet_bottom"
@@ -121,7 +95,7 @@
                 android:orientation="vertical"
                 android:splitMotionEvents="true">
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/maleButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -133,7 +107,7 @@
                     android:textColor="@color/gray"
                     android:textSize="15sp" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <com.google.android.material.radiobutton.MaterialRadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
@@ -247,9 +221,9 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:id="@+id/linearSeek"
+                android:layout_below="@id/price_range_tv"
                 android:layoutDirection="ltr"
                 android:layout_margin="20dp"
-                android:layout_below="@id/container_price"
                 android:layout_height="wrap_content">
 
                 <TextView

@@ -53,7 +53,7 @@
         android:layout_width="match_parent"
         android:id="@+id/tvRegion"
         android:layout_below="@id/cardCity"
-        android:text="Select Region"
+        android:text="@string/selectRegion"
         android:textColor="@color/gray"
         android:textSize="20sp"
         android:fontFamily="sans-serif"

@@ -1,97 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:id="@+id/cardVerifySheet"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:layout_behavior="@string/bottom_sheet_behavior"
-    app:behavior_peekHeight="0dp"
-    app:behavior_hideable="true"
+    android:id="@+id/cardVerifySheet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:clipToPadding="false"
-    android:layout_height="match_parent">
+    app:behavior_hideable="true"
+    app:cardPreventCornerOverlap="false"
+    app:cardElevation="5dp"
+    app:behavior_peekHeight="0dp"
+    app:cardBackgroundColor="@color/white"
+    app:layout_behavior="@string/bottom_sheet_behavior">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+
+    <ProgressBar
+        android:id="@+id/progressSheetVerify"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 
         <LinearLayout
-            android:layout_marginTop="50dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:layout_width="match_parent"
-            android:layout_alignParentTop="true"
             android:id="@+id/top_dev"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="50dp"
             android:orientation="vertical">
 
-            <EditText
-                android:padding="20dp"
-                android:textColor="@color/Black"
-                android:background="@color/low_white"
-                android:textColorHint="@color/gray"
-                android:id="@+id/fieldPhoneNumber"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editPhoneSheet"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="20dp"
+                android:elevation="5dp"
+                android:fontFamily="@font/heebo_medium"
                 android:hint="@string/hint_phone_number"
-                android:layout_margin="10dp"
-                android:layout_weight="1.0"
-                android:inputType="phone" />
-
-            <EditText
-                android:layout_margin="10dp"
-                android:padding="20dp"
-                android:textColor="@color/Black"
-                android:background="@color/low_white"
                 android:textColorHint="@color/gray"
-                android:id="@+id/fieldVerificationCode"
+                android:textSize="20sp"
+                app:boxStrokeColor="@color/gray"
+                app:boxStrokeWidth="1dp"
+                app:hintAnimationEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fieldPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/low_white"
+
+                    android:inputType="phone"
+                    android:padding="15dp"
+                    android:textColor="@color/Black"
+
+                    android:textColorHint="@color/gray" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editCodeSheet"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:elevation="5dp"
+                android:fontFamily="@font/heebo_medium"
+                android:textColorHint="@color/gray"
+                android:textSize="20sp"
                 android:hint="@string/hint_verification_code"
-                android:layout_weight="1.0"
-                android:inputType="number" />
+                app:boxStrokeColor="@color/gray"
+                app:boxStrokeWidth="1dp"
+                app:hintAnimationEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fieldVerificationCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/low_white"
+
+                    android:inputType="number"
+                    android:padding="15dp"
+                    android:textColor="@color/Black"
+                    android:textColorHint="@color/gray" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginBottom="100dp"
             android:orientation="vertical">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonStartVerification"
-                android:layout_margin="20dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                app:backgroundTint="@color/blue"
-                android:textColor="@color/white"
+                style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/start_phone_auth" />
+                android:text="@string/start_phone_auth"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/blue"
+                app:rippleColor="@color/dark_blue" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonVerifyPhone"
-                android:layout_margin="20dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                app:backgroundTint="@color/blue"
-                android:textColor="@color/white"
+                style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/verify_phone_auth" />
+                android:text="@string/verify_phone_auth"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/blue"
+                app:rippleColor="@color/dark_blue" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonResend"
-                android:layout_margin="20dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                app:backgroundTint="@color/blue"
-                android:textColor="@color/white"
+                style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/resend_phone_auth" />
+                android:text="@string/resend_phone_auth"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/blue"
+                app:rippleColor="@color/dark_blue" />
         </LinearLayout>
 
 
-    </RelativeLayout>
 
 
 </com.google.android.material.card.MaterialCardView>

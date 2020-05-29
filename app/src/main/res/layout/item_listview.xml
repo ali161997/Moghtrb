@@ -5,17 +5,17 @@
     android:orientation="vertical">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/listview_tv_item"
+        android:id="@+id/recyclerItemProfile"
         android:layout_width="match_parent"
-        android:textDirection="locale"
         android:drawableEnd="@drawable/ic_navigate_next"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/heebo_thin"
         android:maxLines="1"
+        android:gravity="start"
         style="@style/Widget.MaterialComponents.TextView"
         android:padding="10dp"
-        android:drawableTint="@color/blue"
+        android:drawableTint="@color/gray"
         android:textColor="@color/Black"
         android:textSize="20sp" />
 

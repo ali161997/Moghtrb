@@ -63,7 +63,7 @@
     <string name="or">أو</string>
     <string name="forget_password_click_here">هل نسيت كلمة السر</string>
     <string name="go">الذهاب</string>
-    <string name="soknalogo">soknaLogo</string>
+    <string name="moghtrbLogo">moghtrbLogo</string>
     <string name="host_phone">رقم المضيف</string>
     <string name="guests">عدد الضيوف</string>
     <string name="scan_for_host">المسح عن مضيف</string>
@@ -86,7 +86,7 @@
     <string name="email">ايميل</string>
     <string name="rooms_nearby">غرف قريبة منك</string>
     <string name="placeAvaiable">أماكن متاحة</string>
-    <string name="bedInRoom">سرير فى الغرفة</string>
+    <string name="bedInRoom">سرير متاح</string>
     <string name="menu">قائمة</string>
     <string name="gender">الجنس</string>
 
@@ -123,7 +123,7 @@
     <string name="host">المضيف</string>
     <string name="rate">تقييم</string>
     <string name="feedback">المراجعة</string>
-    <string name="identifyhost">التعرف على مضيف</string>
+    <string name="identifyHost">التعرف على مضيف</string>
     <string name="payment">الدفع</string>
     <string name="referHost">الإشارة إلى مضيف</string>
     <string name="reset_password">إعادة تعيين كلمة السر</string>
@@ -141,4 +141,21 @@
     <string name="selectCity">تحديد المدينة</string>
     <string name="guestsCount">ضيوف</string>
     <string name="go_to_room">الذهاب للغرفه</string>
+    <string name="Commission">عمولة</string>
+    <string name="Minimum">أقل ما يمكن دفعه</string>
+    <string name="getDetail">التفاصيل</string>
+    <string name="BookDetail">تفاصيل الحجز</string>
+    <string name="city">المدينة</string>
+    <string name="Region">المنطقة</string>
+    <string name="month_in_advance">شهر مقدم</string>
+    <string name="anyWhere">المكان</string>
+    <string name="selectFaculty">تحديد الكلية</string>
+    <string name="hostPhone">موبايل المضيف</string>
+    <string name="semesterOneAndTwo">الفصل ألاول والثانى</string>
+    <string name="checkDates">عليك تعيين المواعيد</string>
+    <string name="set">تعيين</string>
+    <string name="copy">نسخ</string>
+    <string name="search">بحث</string>
+    <string name="selectRegion">تحديد المنطقة</string>
+
 </resources>

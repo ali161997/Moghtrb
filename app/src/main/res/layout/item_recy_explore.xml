@@ -7,19 +7,19 @@
     android:layout_height="wrap_content"
     android:checkable="true"
     android:clickable="true"
-    android:focusable="true"
     android:fitsSystemWindows="true"
-    app:cardPreventCornerOverlap="false"
+    android:focusable="true"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="10dp"
-    app:cardElevation="5dp">
+    app:cardElevation="5dp"
+    app:cardPreventCornerOverlap="false">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:layout_gravity="center_horizontal"
         android:background="@color/white"
+        android:gravity="center"
         android:orientation="vertical">
 
         <com.facebook.drawee.view.SimpleDraweeView
@@ -34,78 +34,80 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:padding="5dp"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:paddingTop="5dp">
 
             <TextView
                 android:id="@+id/tv_price"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:fontFamily="@font/heebo_thin"
+                android:gravity="center_vertical"
                 android:textAllCaps="false"
                 android:textColor="@color/Black"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/genderTV"
-                android:padding="1dp"
                 android:layout_width="wrap_content"
-                android:textAlignment="textEnd"
-                android:gravity="end|center_vertical"
-                android:fontFamily="@font/bentham"
-                android:layout_gravity="center_vertical"
+
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textColor="@color/Black" />
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/heebo_thin"
+                android:gravity="end|center_vertical"
+                android:padding="1dp"
+                android:textAlignment="textEnd"
+                android:textColor="@color/Black"
+                android:textSize="15sp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/tv_street"
-            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:gravity="center_vertical"
-            android:padding="1dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:fontFamily="@font/bentham"
-            android:textColor="@color/gray"
+            android:layout_weight="1"
+            android:fontFamily="@font/heebo_thin"
+            android:gravity="center_vertical"
+            android:padding="1dp"
+            android:textAlignment="gravity"
+            android:textColor="@color/Black"
             android:textSize="15sp"
 
             />
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
             android:textColor="@color/gray">
 
 
             <RatingBar
                 android:id="@+id/rating_item"
-                android:theme="@style/RatingBar"
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
-                android:layout_gravity="center_vertical"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:max="5"
                 android:numStars="5"
-                android:stepSize="0.0" />
+                android:stepSize="0.0"
+                android:theme="@style/RatingBar" />
 
             <TextView
                 android:id="@+id/review_item"
-                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="8dp"
                 android:fontFamily="@font/heebo_medium"
                 android:textColor="@color/dark_blue"
@@ -114,11 +116,12 @@
             <TextView
                 android:id="@+id/numBedInRoom"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/heebo_thin"
                 android:gravity="end|center_vertical"
-                android:fontFamily="@font/bentham"
-                android:textColor="@color/Black"
-                android:layout_height="wrap_content" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/Black" />
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.alihashem.moghtreb.activities.Capture">
+    tools:context="com.alihashem.moghtrb.activities.Capture">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                     android:layout_height="50dp"
                     android:padding="5dp"
                     android:layout_margin="5dp"
-                    app:actualImageResource="@drawable/soknalogo"
+                    app:actualImageResource="@drawable/logo"
                     android:contentDescription="new post image"
                     android:visibility="visible" />
 

@@ -1,67 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:id="@+id/linearStudentSheet"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <CheckBox
-        android:tag="selectAll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
-        android:id="@+id/selectall"
-        android:layoutDirection="rtl"
-        android:text="@string/select_all"
-        android:textColor="@color/gray"
-        app:buttonTint="@color/blue" />
-
-    <LinearLayout
-        android:id="@+id/checkboxes_view"
+    <RadioGroup
+        android:id="@+id/radioTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/selectall"
-        android:layout_margin="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:splitMotionEvents="true">
 
-        <CheckBox
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/semester1"
-            android:tag="semesterOne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableTint="@color/blue"
             android:layoutDirection="rtl"
+            android:tag="semesterOne"
             android:text="@string/semester_one"
             android:textColor="@color/gray"
             android:textSize="20sp"
             app:buttonTint="@color/blue" />
 
-        <CheckBox
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/semester2"
-            android:tag="semesterTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layoutDirection="rtl"
+            android:tag="semesterTwo"
             android:text="@string/semester_two"
             android:textColor="@color/gray"
             android:textSize="20sp"
 
             app:buttonTint="@color/blue" />
 
-        <CheckBox
-            android:tag="semesterThree"
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/semester3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layoutDirection="rtl"
+            android:tag="semesterThree"
             android:text="@string/semester_three_summer"
             android:textColor="@color/gray"
             android:textSize="20sp"
             app:buttonTint="@color/blue" />
-    </LinearLayout>
 
-</RelativeLayout>
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/semester12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layoutDirection="rtl"
+            android:tag="semesterThree"
+            android:text="@string/semesterOneAndTwo"
+            android:textColor="@color/gray"
+            android:textSize="20sp"
+            app:buttonTint="@color/blue" />
+
+    </RadioGroup>
+</LinearLayout>

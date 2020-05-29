@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context="com.alihashem.moghtreb.activities.IdentifyHost">
+    tools:context="com.alihashem.moghtrb.activities.IdentifyHost">
 
     <ProgressBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center"
         android:id="@+id/identifyProgress"
         android:progress="25"
         android:visibility="gone"
@@ -19,6 +19,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:id="@+id/appBarIdentify"
+        android:layout_gravity="top"
         android:background="@color/low_white"
         android:layout_height="wrap_content">
 
@@ -35,11 +36,11 @@
 
                 <TextView
                     android:textSize="20sp"
-
                     android:layout_gravity="center_vertical"
                     android:textColor="@color/blue"
                     android:gravity="start"
-                    android:text="@string/identifyhost"
+                    android:padding="5dp"
+                    android:text="@string/identifyHost"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content" />
@@ -49,7 +50,7 @@
                     android:layout_height="50dp"
                     android:padding="5dp"
                     android:layout_margin="5dp"
-                    app:actualImageResource="@drawable/soknalogo"
+                    app:actualImageResource="@drawable/logo"
                     android:contentDescription="new post image"
                     android:visibility="visible" />
 
@@ -60,36 +61,39 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/startRead"
-        android:layout_marginTop="100dp"
-        android:layout_below="@id/appBarIdentify"
-        app:icon="@drawable/ic_qr"
-        android:padding="10dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        app:backgroundTint="@color/gray"
-        app:iconTint="@color/white"
-        android:textColor="@color/white"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:textSize="20sp"
-        android:text="@string/scan_for_host" />
+        android:layout_marginTop="120dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_margin="50dp"
-        android:padding="10dp"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:textColor="@color/Black"
-        android:background="@color/low_white"
-        android:layout_height="wrap_content"
-        android:id="@+id/ifHostIdentified"
-        android:layout_below="@id/startRead" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/startRead"
+            app:icon="@drawable/ic_qr"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/gray"
+            app:iconTint="@color/white"
+            android:textColor="@color/white"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textSize="20sp"
+            android:text="@string/scan_for_host" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:textColor="@color/Black"
+            android:background="@color/low_white"
+            android:layout_height="wrap_content"
+            android:id="@+id/ifHostIdentified"
+            android:layout_below="@id/startRead" />
 
-</RelativeLayout>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
