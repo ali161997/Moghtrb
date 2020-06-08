@@ -12,6 +12,7 @@
     <ImageView
         android:id="@+id/logoSplash"
         android:layout_width="150dp"
+        android:transitionName="logo_transition"
         android:layout_height="150dp"
         android:shadowColor="@android:color/background_dark"
         android:src="@drawable/logo"

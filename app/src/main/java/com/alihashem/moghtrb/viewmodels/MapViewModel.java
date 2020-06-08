@@ -12,6 +12,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MapViewModel extends ViewModel {
@@ -89,32 +90,38 @@ public class MapViewModel extends ViewModel {
                     if (!queryDocumentSnapshots.isEmpty()) {
                         List<DocumentSnapshot> list_rooms = queryDocumentSnapshots.getDocuments();
                         for (DocumentSnapshot d : list_rooms) {
-                            Room room = new Room();
-                            room.setLatLng(d.get("latLng", MyLatLong.class));
-                            if (distance(room.getLatLng().getLat(), room.getLatLng().getLon(), PlaceSelectedlatlng.getValue().getLat(), PlaceSelectedlatlng.getValue().getLon()) < .3) {
-                                room.setPrice(d.getDouble("price"));
-                                room.setRate(d.getLong("rate").intValue());
-                                room.setNum_reviews(d.getLong("num_reviews").intValue());
-                                room.setStreet(d.get("street").toString());
-                                room.setBedsAvailable(d.getLong("bedsAvailable").intValue());
-                                room.setTotalBeds(d.getLong("totalBeds").intValue());
-                                room.setHostId(d.get("hostId").toString());
-                                room.setCity(d.get("city").toString());
-                                room.setRegion(d.get("region").toString());
-                                room.setUrlImage1(d.get("urlImage1").toString());
-                                room.setDepartId(d.get("departId").toString());
-                                room.setRoomId(d.get("roomId").toString());
-                                room.setArAddress(d.get("arAddress").toString());
-                                room.setGender(d.get("gender").toString());
-                                room.setCityIndex(d.getLong("cityIndex").intValue());
-                                room.setRegionIndex(d.getLong("regionIndex").intValue());
-                                list.add(room);
+                            try {
+                                {
+
+                                    Room room = new Room();
+                                    HashMap<String, Double> latlong;
+                                    latlong = (HashMap<String, Double>) d.get("latLng");
+                                    Log.i(TAG, "downloadRooms: " + room.getLatLng());
+                                    if (distance(latlong.get("lat"), latlong.get("lon"), PlaceSelectedlatlng.getValue().getLat(), PlaceSelectedlatlng.getValue().getLon()) < .3) {
+                                        room.setPrice(d.getDouble("price"));
+                                        room.setRate(d.getLong("rate").intValue());
+                                        room.setNum_reviews(d.getLong("num_reviews").intValue());
+                                        room.setEnAddress(d.get("enAddress").toString());
+                                        room.setBedsAvailable(d.getLong("bedsAvailable").intValue());
+                                        room.setTotalBeds(d.getLong("totalBeds").intValue());
+                                        room.setHostId(d.get("hostId").toString());
+                                        room.setUrlImage1(d.get("urlImage1").toString());
+                                        room.setDepartId(d.get("departId").toString());
+                                        room.setRoomId(d.get("roomId").toString());
+                                        room.setArAddress(d.get("arAddress").toString());
+                                        room.setGender(d.get("gender").toString());
+                                        room.setCityIndex(d.getLong("cityIndex").intValue());
+                                        room.setRegionIndex(d.getLong("regionIndex").intValue());
+                                        list.add(room);
+                                    }
+                                }
+                            } catch (Exception e) {
+                                Log.i(TAG, "downloadRooms: " + e.getMessage());
                             }
                         }
                         listRooms.setValue(list);
                         Log.i(TAG, "setFilter: Success search between  ");
                     }
-
                 }).addOnFailureListener(e -> {
             Log.i(TAG, "setFilter: failed search bitween " + e);
         });

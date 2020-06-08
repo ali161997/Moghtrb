@@ -89,8 +89,8 @@
     <string name="bedInRoom">سرير متاح</string>
     <string name="menu">قائمة</string>
     <string name="gender">الجنس</string>
-
-    <string name="LEperMonth">جنيه فى الشهر</string>
+    <string name="bookings">الحجوزات</string>
+    <string name="LEperMonth">ج.م شهرياً</string>
     <string name="start_phone_auth">ابدأ</string>
     <string name="verify_phone_auth">التعرف</string>
     <string name="resend_phone_auth">إعادة إرسال</string>
@@ -113,6 +113,7 @@
     <string name="total">الإجمالى</string>
     <string name="in_room">فى الغرفة</string>
     <string name="beds">الأسره</string>
+    <string name="totalPayed">مجموع الدفع</string>
     <string name="rooms">الغرف</string>
     <string name="in_depart">فى الشقة</string>
     <string name="floor">الطابق</string>
@@ -140,7 +141,7 @@
     <string name="amountPayed">قيمة تم دفعها اونلاين</string>
     <string name="selectCity">تحديد المدينة</string>
     <string name="guestsCount">ضيوف</string>
-    <string name="go_to_room">الذهاب للغرفه</string>
+
     <string name="Commission">عمولة</string>
     <string name="Minimum">أقل ما يمكن دفعه</string>
     <string name="getDetail">التفاصيل</string>
@@ -157,5 +158,14 @@
     <string name="copy">نسخ</string>
     <string name="search">بحث</string>
     <string name="selectRegion">تحديد المنطقة</string>
+    <string name="goToRoomLocation">الذهاب لموقع الغرفة</string>
+    <string name="goToRoomDetail">الذهاب لتفاصيل الغرفه</string>
+    <string name="mailNotExist">Mail not exist.</string>
+    <string name="authSucess">Authentication Successful</string>
+    <string name="errorLOgin">Error Login ,Try Again</string>
+    <string name="mailExistance">email is already exist</string>
+    <string name="required">required</string>
+    <string name="more8Character">should more than 8 character</string>
+    <string name="validFormat">\" at least 8 characters, 1 capital alphabet,1 Number and 1 Special Character,\"</string>
 
 </resources>

@@ -67,6 +67,12 @@ public class Book extends AppCompatActivity implements View.OnClickListener,
     SimpleDraweeView image1Detail;
     @BindView(R.id.image2_detail)
     SimpleDraweeView image2Detail;
+    @BindView(R.id.image5_detail)
+    SimpleDraweeView image5Detail;
+    @BindView(R.id.image6_detail)
+    SimpleDraweeView image6Detail;
+    @BindView(R.id.linearRequest)
+    LinearLayout linearLayoutRequest;
     @BindView(R.id.image3_detail)
     SimpleDraweeView image3Detail;
     @BindView(R.id.image4_detail)
@@ -244,6 +250,10 @@ public class Book extends AppCompatActivity implements View.OnClickListener,
                 image2Detail.setImageURI(booking_model.getRoomDetail().getValue().getUrlsImage().get(0));
                 image3Detail.setImageURI(booking_model.getRoomDetail().getValue().getUrlsImage().get(1));
                 image4Detail.setImageURI(booking_model.getRoomDetail().getValue().getUrlsImage().get(2));
+                image5Detail.setImageURI(booking_model.getRoomDetail().getValue().getUrlsImage().get(3));
+                image6Detail.setImageURI(booking_model.getRoomDetail().getValue().getUrlsImage().get(4));
+
+
             } catch (Exception e) {
                 Log.i(TAG, "onResume: " + e.getMessage());
             }
@@ -254,13 +264,15 @@ public class Book extends AppCompatActivity implements View.OnClickListener,
             if (getResources().getConfiguration().locale.getLanguage().equals("ar"))
                 address = room.getArAddress();
             else
-                address = (room.getCity() + "/" + room.getRegion() + "/" + room.getStreet());
+                address = room.getEnAddress();
             bedTitle.setText(address);
             placeAvailable.setText(String.format("%s %s", room.getbedsAvailable(), getResources().getString(R.string.placeAvaiable)));
             ratingItemBooking.setRating(room.getRate());
             reviewItem.setText(String.format("%s  %s", room.getNum_reviews(), getResources().getString(R.string.reviews)));
             priceBed.setText(String.format("%s %s", room.getPrice(), getResources().getString(R.string.LE)));
             numBedRoom.setText(String.format("%s %s", room.getTotalBeds(), getResources().getString(R.string.bed)));
+            if (room.getbedsAvailable() <= 0)
+                linearLayoutRequest.setVisibility(View.GONE);
 
 
         });

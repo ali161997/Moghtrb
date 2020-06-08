@@ -1,8 +1,8 @@
 package com.alihashem.moghtrb.models;
 
 public class MyLatLong {
-    private double lat;
-    private double lon;
+    private double lat = 0.0;
+    private double lon = 0.0;
 
     public MyLatLong() {
     }
@@ -26,6 +26,11 @@ public class MyLatLong {
 
     public void setLon(double lon) {
         this.lon = lon;
+    }
+
+    @Override
+    public String toString() {
+        return lat + " " + lon;
     }
 
 }

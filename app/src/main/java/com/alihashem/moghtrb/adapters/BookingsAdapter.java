@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import com.alihashem.moghtrb.R;
 import com.alihashem.moghtrb.activities.Book;
 import com.alihashem.moghtrb.models.BookingsModel;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
 
@@ -47,6 +49,7 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.Bookin
     @Override
     public void onBindViewHolder(@NonNull final BookingsViewHolder bookingsViewHolder, int i) {
         BookingsModel bookingsModel = bookingsList.get(i);
+        bookingsViewHolder.container.setAnimation(AnimationUtils.loadAnimation(ctx, R.anim.anim_item_inbox));
         bookingsViewHolder.cashAmount.setText(String.format("%s %s", bookingsModel.getCashPayed(), ctx.getResources().getString(R.string.LE)));
         bookingsViewHolder.numGuests.setText(String.format("%s %s", bookingsModel.getNumGuests(), ctx.getResources().getString(R.string.guestsCount)));
         bookingsViewHolder.from.setText(String.format("%s", bookingsModel.getFrom()));
@@ -102,6 +105,7 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.Bookin
         Button goLocation;
         Button btnCopy;
         TextView hostPhone;
+        MaterialCardView container;
 
 
         BookingsViewHolder(@NonNull View itemView) {
@@ -120,6 +124,7 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.Bookin
             linearDates = itemView.findViewById(R.id.linearDates);
             goLocation = itemView.findViewById(R.id.goToLocationBtn);
             btnCopy = itemView.findViewById(R.id.btnCopy);
+            container = itemView.findViewById(R.id.containerBookings);
             btnCopy.setOnClickListener(this);
             goLocation.setOnClickListener(this);
             goToRoom.setOnClickListener(this);

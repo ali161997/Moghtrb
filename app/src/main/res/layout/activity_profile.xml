@@ -210,8 +210,6 @@
                     android:textColor="@color/gray"
                     android:textSize="15sp" />
             </RadioGroup>
-
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnBirthDate"
                 android:layout_width="match_parent"

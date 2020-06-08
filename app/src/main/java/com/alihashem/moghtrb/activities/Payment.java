@@ -84,6 +84,7 @@ public class Payment extends AppCompatActivity implements View.OnClickListener, 
         indexNotification = new MutableLiveData<>();
         radioGroupMobiles.setOnCheckedChangeListener(this);
         indexNotification.setValue(getIntent().getStringExtra("index"));
+        Log.i(TAG, "onCreate: noty id " + getIntent().getStringExtra("index"));
         phoneNumbers = new MutableLiveData<>();
 
         data.observe(this, data -> {
@@ -125,7 +126,7 @@ public class Payment extends AppCompatActivity implements View.OnClickListener, 
                                 map.put("month", document.get("month").toString());
                                 map.put("advance", document.get("advance").toString());
                                 map.put("total", document.get("total").toString());
-                                map.put("commission", document.get("commission").toString());
+                                map.put("commission", document.get("commision").toString());
                                 map.put("min", document.get("min").toString());
                                 if (document.get("services").toString().equals(null))
                                     map.put("services", "0");

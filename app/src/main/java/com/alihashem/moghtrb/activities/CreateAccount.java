@@ -27,7 +27,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.MutableLiveData;
 
 import com.alihashem.moghtrb.R;
-import com.alihashem.moghtrb.models.User;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.datepicker.CalendarConstraints;
@@ -50,8 +49,10 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -76,19 +77,18 @@ public class CreateAccount extends AppCompatActivity implements RadioGroup.OnChe
     private ProgressBar prgbar;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
-    private User newUser = null;
+    private HashMap<String, Object> newUser = null;
     private RadioGroup getGender;
     private MutableLiveData<List<String>> colleges;
     private BottomSheetBehavior bottomSheetVerify;
     private ProgressBar progressBarSheetVerify;
+    private MutableLiveData<Boolean> isEmailExist = new MutableLiveData<>();
     //--------------------------------------------
     private String mVerificationId;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
-
     private EditText mPhoneNumberField;
     private EditText mVerificationField;
-
     private Button mStartButton;
     private Button mVerifyButton;
     private Button mResendButton;
@@ -197,7 +197,7 @@ public class CreateAccount extends AppCompatActivity implements RadioGroup.OnChe
         setContentView(R.layout.activity_createaccount);
         ButterKnife.bind(this);
         group = new ArrayList<>();
-        newUser = new User();
+        newUser = new HashMap<>();
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         colleges = new MutableLiveData<>();
@@ -365,8 +365,15 @@ public class CreateAccount extends AppCompatActivity implements RadioGroup.OnChe
             return;
         }
         // start here
-        mPhoneNumberField.setText(phone_signup.getText().toString());
-        bottomSheetVerify.setState(BottomSheetBehavior.STATE_EXPANDED);
+        isEmailExist.observe(this, b -> {
+            if (b) {
+                editMailSignUp.setError(getString(R.string.mailExistance));
+            } else {
+                mPhoneNumberField.setText(phone_signup.getText().toString());
+                bottomSheetVerify.setState(BottomSheetBehavior.STATE_EXPANDED);
+
+            }
+        });
 
         phoneVerified.observe(this, verified ->
         {
@@ -451,10 +458,28 @@ public class CreateAccount extends AppCompatActivity implements RadioGroup.OnChe
         return false;
     }
 
-    private boolean isEmailValid(String email) {
+    private void isEmailExist(String email) {
+        if (email != null && !email.equals(""))
+            FirebaseAuth.getInstance().fetchSignInMethodsForEmail(email)
+                    .addOnCompleteListener(task -> {
+                        boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
+                        if (isNewUser) {
+                            isEmailExist.setValue(false);
+                        } else {
+                            Toast.makeText(this, R.string.mailExistance, Toast.LENGTH_SHORT).show();
+                            isEmailExist.setValue(true);
+                        }
+
+                    });
+
+    }
+
+    private boolean isEmailValidFormat(String email) {
+
         String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
+
         return matcher.matches();
     }
 
@@ -471,7 +496,7 @@ public class CreateAccount extends AppCompatActivity implements RadioGroup.OnChe
     }
 
     private boolean validateForm() {
-        boolean valid = true;
+        AtomicBoolean valid = new AtomicBoolean(true);
         String email = editMailSignUp.getText().toString().trim();
         String phone = phone_signup.getText().toString();
         String name = editNameSignUp.getText().toString().trim();
@@ -485,45 +510,45 @@ public class CreateAccount extends AppCompatActivity implements RadioGroup.OnChe
 
         String birthdate = btnBirthDate.getText().toString();
         String password = password_signup.getText().toString();
+        isEmailExist(email);
 
-        if (TextUtils.isEmpty(email)) {
-            editMailSignUp.setError("required");
-            valid = false;
-        } else if (!isEmailValid(email)) {
-            editMailSignUp.setError("not valid format");
-            valid = false;
-        } else
-            editMailSignUp.setError(null);
         if (TextUtils.isEmpty(phone)) {
-            phone_signup.setError("Required");
-            valid = false;
+            phone_signup.setError(getString(R.string.required));
+            valid.set(false);
         } else if (!isValidMobile(phone)) {
-            phone_signup.setError("not valid format");
-            valid = false;
+            phone_signup.setError(getString(R.string.noValidFormat));
+            valid.set(false);
         } else
             phone_signup.setError(null);
 
         if (TextUtils.isEmpty(name)) {
-            editNameSignUp.setError("Required");
-            valid = false;
+            editNameSignUp.setError(getString(R.string.required));
+            valid.set(false);
         }
         if (TextUtils.isEmpty(birthdate)) {
-            btnBirthDate.setError("Required");
-            valid = false;
+            btnBirthDate.setError(getString(R.string.required));
+            valid.set(false);
         }
         if (TextUtils.isEmpty(password)) {
-            password_signup.setError("Required");
-            valid = false;
+            password_signup.setError(getString(R.string.required));
+            valid.set(false);
         } else if (password.length() < 8) {
-            password_signup.setError("should more than 8 character");
-            valid = false;
+            password_signup.setError(getString(R.string.more8Character));
+            valid.set(false);
         } else if (!isValidPassword(password)) {
-            password_signup.setError(" at least 8 characters, 1 capital alphabet,1 Number and 1 Special Character,");
-            valid = false;
+            password_signup.setError(getString(R.string.validFormat));
+            valid.set(false);
         } else
             password_signup.setError(null);
+        if (TextUtils.isEmpty(email)) {
+            editMailSignUp.setError(getString(R.string.required));
+            valid.set(false);
+        } else if (!isEmailValidFormat(email)) {
+            editMailSignUp.setError(getString(R.string.noValidFormat));
+            valid.set(false);
+        } else editMailSignUp.setError(null);
 
-        return valid;
+        return valid.get();
     }
 
     private void updateUI(FirebaseUser user) {
@@ -552,21 +577,21 @@ public class CreateAccount extends AppCompatActivity implements RadioGroup.OnChe
     }
 
     private void getDataForm() {
-        newUser.setCollege(spinner_college_signup.getSelectedItemPosition());
-        newUser.setBirthdate(btnBirthDate.getText().toString());
-        newUser.setEmail(editMailSignUp.getText().toString().trim());
-        newUser.setPhone(phone_signup.getText().toString().trim());
-        newUser.setName(editNameSignUp.getText().toString().trim());
+        newUser.put("collegeIndex", spinner_college_signup.getSelectedItemPosition());
+        newUser.put("birthDate", btnBirthDate.getText().toString());
+        newUser.put("email", editMailSignUp.getText().toString().trim());
+        newUser.put("phone", phone_signup.getText().toString().trim());
+        newUser.put("name", editNameSignUp.getText().toString().trim());
     }
 
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         if (checkedId == R.id.Female_box) {
-            newUser.setGender("Female");
+            newUser.put("gender", "female");
 
         } else if (checkedId == R.id.Male_box)
-            newUser.setGender("Male");
+            newUser.put("gender", "male");
 
     }
 

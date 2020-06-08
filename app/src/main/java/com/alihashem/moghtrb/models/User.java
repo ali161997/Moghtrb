@@ -5,7 +5,7 @@ public class User {
     private String phone;
     private Integer collegeIndex;
     private String email;
-    private String birthdate;
+    private String birthDate;
     private String photoUrl;
     private String gender;
 
@@ -13,12 +13,12 @@ public class User {
 
     }
 
-    public User(String name, String phone, Integer collegeIndex, String email, String birthdate, String gender, String photoUrl) {
+    public User(String name, String phone, Integer collegeIndex, String email, String birthDate, String gender, String photoUrl) {
         this.name = name;
         this.phone = phone;
         this.collegeIndex = collegeIndex;
         this.email = email;
-        this.birthdate = birthdate;
+        this.birthDate = birthDate;
         this.gender = gender;
         this.photoUrl = photoUrl;
     }
@@ -63,12 +63,12 @@ public class User {
         this.email = email;
     }
 
-    public String getBirthdate() {
-        return birthdate;
+    public String getbirthDate() {
+        return birthDate;
     }
 
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setbirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getName() {

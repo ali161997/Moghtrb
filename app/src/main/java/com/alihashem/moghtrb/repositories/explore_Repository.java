@@ -19,7 +19,7 @@ public class explore_Repository {
     private static final String TAG = "explore_Repository";
 
     private static explore_Repository instance;
-    private static MutableLiveData<String> lang;
+    private static MutableLiveData<String> lang = new MutableLiveData<>();
     private ArrayList<Room> datasetrooms = new ArrayList<>();
     private MutableLiveData<Double> Min = new MutableLiveData<>();
     private MutableLiveData<Double> Max = new MutableLiveData<>();
@@ -34,7 +34,6 @@ public class explore_Repository {
     public static explore_Repository getInstance() {
         if (instance == null) {
             instance = new explore_Repository();
-            lang = new MutableLiveData<>();
 
         }
         return instance;
@@ -68,17 +67,16 @@ public class explore_Repository {
     //Min Max Functions
 
     public MutableLiveData<Double> getMinSeekbar() {
-        Min.setValue(50.0);
+        Min.setValue(20.0);
         return Min;
 
     }
 
     public MutableLiveData<Double> getMaxSeekbar() {
-        Max.setValue(1000.0);
+        Max.setValue(2000.0);
         return Max;
 
     }
-
 
     //Rooms Functions
     private void setDatasetrooms() {
@@ -96,12 +94,10 @@ public class explore_Repository {
                                 room.setPrice(d.getDouble("price"));
                                 room.setRate(d.getLong("rate").intValue());
                                 room.setNum_reviews(d.getLong("num_reviews").intValue());
-                                room.setStreet(d.get("street").toString());
+                                room.setEnAddress(d.get("enAddress").toString());
                                 room.setBedsAvailable(d.getLong("bedsAvailable").intValue());
                                 room.setTotalBeds(d.getLong("totalBeds").intValue());
                                 room.setHostId(d.get("hostId").toString());
-                                room.setCity(d.get("city").toString());
-                                room.setRegion(d.get("region").toString());
                                 room.setUrlImage1(d.get("urlImage1").toString());
                                 room.setDepartId(d.get("departId").toString());
                                 room.setRoomId(d.get("roomId").toString());

@@ -23,7 +23,9 @@ import com.alihashem.moghtrb.fragments.Explore;
 import com.alihashem.moghtrb.fragments.Inbox;
 import com.alihashem.moghtrb.fragments.Map;
 import com.alihashem.moghtrb.fragments.Menu;
+import com.alihashem.moghtrb.repositories.explore_Repository;
 import com.alihashem.moghtrb.viewmodels.HomeViewModel;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -80,6 +82,8 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+        Fresco.initialize(getApplicationContext());
+        explore_Repository.getInstance().setLang(getResources().getConfiguration().locale.getLanguage());
         navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
         viewModel = new ViewModelProvider(this).get(HomeViewModel.class);

@@ -4,6 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -53,6 +56,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public void onBindViewHolder(@NonNull final NotificationViewHolder notyViewHolder, int i) {
         Notification noty = notyList.get(i);
+        notyViewHolder.container.setAnimation(AnimationUtils.loadAnimation(ctx, R.anim.anim_item_explore));
+        notyViewHolder.imageView.setAnimation(AnimationUtils.loadAnimation(ctx, R.anim.anim_item_inbox));
         if (ctx.getResources().getConfiguration().locale.getLanguage().equals("ar")) {
             notyViewHolder.title.setText(noty.getArtitle());
             notyViewHolder.body.setText(noty.getArbody());
@@ -85,12 +90,16 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         TextView title;
         TextView body;
         TextView time;
+        ImageView imageView;
+        LinearLayout container;
 
         public NotificationViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.notyTitle);
             body = itemView.findViewById(R.id.notyBody);
             time = itemView.findViewById(R.id.notyTime);
+            imageView = itemView.findViewById(R.id.imageViewNotification);
+            container = itemView.findViewById(R.id.containerInbox);
             itemView.setOnClickListener(this);
 
         }

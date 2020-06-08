@@ -5,25 +5,21 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.alihashem.moghtrb.models.User;
 import com.alihashem.moghtrb.repositories.explore_Repository;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class ProfileViewModel extends ViewModel {
 
-    private MutableLiveData<User> userData;
     private static final String TAG = "Editing_view_model";
+    private MutableLiveData<HashMap<String, Object>> userData;
     private FirebaseFirestore db;
     private explore_Repository repository;
-    public MutableLiveData<Boolean> getUpdateCompleted() {
-        return updateCompleted;
-    }
-
     private MutableLiveData<Boolean> updateCompleted;
 
     public ProfileViewModel() {
@@ -34,12 +30,17 @@ public class ProfileViewModel extends ViewModel {
         downloadUserData();
     }
 
-    public MutableLiveData<User> getUserData() {
-
-        return userData;
+    public MutableLiveData<Boolean> getUpdateCompleted() {
+        return updateCompleted;
     }
 
-    public void setUserData(User user) {
+    public MutableLiveData<HashMap<String, Object>> getUserData() {
+
+        return userData;
+
+    }
+
+    public void setUserData(HashMap<String, Object> user) {
         userData.setValue(user);
         UpdateUser();
     }
@@ -51,7 +52,8 @@ public class ProfileViewModel extends ViewModel {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    userData.setValue(document.toObject(User.class));
+                    HashMap<String, Object> h = (HashMap<String, Object>) document.getData();
+                    userData.setValue(h);
                     Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                 } else {
                     Log.d(TAG, "No such document");
@@ -63,7 +65,8 @@ public class ProfileViewModel extends ViewModel {
     }
 
     private void UpdateUser() {
-        db.collection("users").document(FirebaseAuth.getInstance().getUid())
+        db.collection("users")
+                .document(FirebaseAuth.getInstance().getUid())
                 .set(userData.getValue())
                 .addOnSuccessListener(aVoid -> updateCompleted.setValue(true))
                 .addOnFailureListener(e -> updateCompleted.setValue(false));

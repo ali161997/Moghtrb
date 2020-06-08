@@ -61,6 +61,26 @@
                 android:layout_width="@dimen/imageWidthDetail"
                 android:layout_height="@dimen/imageHeightDetail"
                 android:background="@color/gray" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/image5_detail"
+                fresco:roundingBorderWidth="2dp"
+                fresco:placeholderImage="@drawable/place_holder"
+                fresco:roundedCornerRadius="5dp"
+                fresco:retryImage="@drawable/ic_refresh_black_24dp"
+                android:layout_width="@dimen/imageWidthDetail"
+                android:layout_height="@dimen/imageHeightDetail"
+                android:background="@color/gray" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/image6_detail"
+                fresco:roundingBorderWidth="2dp"
+                fresco:placeholderImage="@drawable/place_holder"
+                fresco:roundedCornerRadius="5dp"
+                fresco:retryImage="@drawable/ic_refresh_black_24dp"
+                android:layout_width="@dimen/imageWidthDetail"
+                android:layout_height="@dimen/imageHeightDetail"
+                android:background="@color/gray" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

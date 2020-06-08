@@ -5,9 +5,9 @@
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/white"
     app:cardElevation="5dp"
+    android:id="@+id/containerBookings"
     app:cardCornerRadius="10dp"
     app:cardPreventCornerOverlap="false">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="10dp"
-                android:text="Go to Room location"
+                android:text="@string/goToRoomLocation"
                 android:textColor="@color/gray" />
 
             <com.google.android.material.button.MaterialButton
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="10dp"
-                android:text="@string/go_to_room"
+                android:text="@string/goToRoomDetail"
                 android:textColor="@color/gray" />
 
             <com.google.android.material.button.MaterialButton

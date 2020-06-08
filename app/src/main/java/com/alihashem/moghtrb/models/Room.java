@@ -5,47 +5,42 @@ public class Room {
     private Double price; //
     private Integer rate;//
     private Integer num_reviews;//
-    private String street;//
     private Integer bedsAvailable;//
     private String hostId;
-    private String city;
-    private String region;
     private String urlImage1;
     private String departId;
     private String roomId;
     private String arAddress;
+    private String enAddress;
     private MyLatLong latLng;
     private Integer totalBeds;
     private Integer cityIndex;
     private Integer regionIndex;
     private String gender;
-    public Room() {
 
+    public Room() {
+        latLng = new MyLatLong();
     }
 
     public Room(double price,
                 int rate,
                 int num_reviews,
-                String street,
                 int bedsAvailable,
                 Integer totalBeds,
                 String hostId,
-                String city,
-                String region,
                 String urlImage1,
                 String departId,
+                String enAddress,
                 String roomId, String arAddress,
                 MyLatLong latLng, String gender,
                 Integer regionIndex, Integer cityIndex) {
         this.price = price;
         this.rate = rate;
+        this.enAddress = enAddress;
         this.num_reviews = num_reviews;
-        this.street = street;
         this.bedsAvailable = bedsAvailable;
         this.totalBeds = totalBeds;
         this.hostId = hostId;
-        this.city = city;
-        this.region = region;
         this.urlImage1 = urlImage1;
         this.departId = departId;
         this.roomId = roomId;
@@ -54,6 +49,14 @@ public class Room {
         this.gender = gender;
         this.regionIndex = regionIndex;
         this.cityIndex = cityIndex;
+    }
+
+    public String getEnAddress() {
+        return enAddress;
+    }
+
+    public void setEnAddress(String enAddress) {
+        this.enAddress = enAddress;
     }
 
     public void setBedsAvailable(Integer bedsAvailable) {
@@ -116,14 +119,6 @@ public class Room {
         this.num_reviews = num_reviews;
     }
 
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
     public int getbedsAvailable() {
         return bedsAvailable;
     }
@@ -134,22 +129,6 @@ public class Room {
 
     public void setHostId(String hostId) {
         this.hostId = hostId;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
     }
 
     public String getUrlImage1() {

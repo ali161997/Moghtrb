@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ import com.alihashem.moghtrb.models.Room;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.drawable.ProgressBarDrawable;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
 
@@ -57,6 +59,8 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
     @Override
     public void onBindViewHolder(@NonNull final RoomViewHolder roomViewHolder, int i) {
         Room room = roomList.get(i);
+        roomViewHolder.container.setAnimation(AnimationUtils.loadAnimation(ctx, R.anim.anim_item_explore));
+
         String s = Double.toString(room.getPrice());
         roomViewHolder.price.setText(String.format("%s %s", s, ctx.getResources().getString(R.string.LEperMonth)));
         if (ctx.getResources().getConfiguration().locale.getLanguage().equals("ar")) {
@@ -66,7 +70,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
             else if (room.getGender().toLowerCase().equals("female"))
                 roomViewHolder.genderTv.setText("بنات");
         } else {
-            roomViewHolder.street.setText(room.getCity() + "-" + room.getRegion() + "-" + room.getStreet());
+            roomViewHolder.street.setText(room.getEnAddress());
             roomViewHolder.genderTv.setText(room.getGender());
         }
 
@@ -113,6 +117,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
         TextView reviews;
         TextView numBedInRoom;
         TextView genderTv;
+        MaterialCardView container;
 
         public RoomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -123,6 +128,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
             ratingBar = itemView.findViewById(R.id.rating_item);
             reviews = itemView.findViewById(R.id.review_item);
             genderTv = itemView.findViewById(R.id.genderTV);
+            container = itemView.findViewById(R.id.containerExplore);
             itemView.setOnClickListener(this);
 
         }

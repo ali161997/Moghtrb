@@ -2,7 +2,10 @@ package com.alihashem.moghtrb.activities;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.Selection;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -21,7 +24,6 @@ import androidx.core.widget.NestedScrollView;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.alihashem.moghtrb.R;
-import com.alihashem.moghtrb.models.User;
 import com.alihashem.moghtrb.viewmodels.ProfileViewModel;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.datepicker.CalendarConstraints;
@@ -34,6 +36,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
 import butterknife.BindView;
@@ -74,7 +77,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     @BindView(R.id.fieldPhoneProfile)
     TextInputLayout fieldPhoneProfile;
     private MaterialDatePicker materialDatePicker;
-    private User updateUser;
+    private HashMap<String, Object> updateUser;
     private ProfileViewModel profileViewModel;
 
     @Override
@@ -84,13 +87,14 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         ButterKnife.bind(this);
         toolbarEdit.setNavigationOnClickListener(view -> onBackPressed());
         try {
-            updateUser = new User();
+            updateUser = new HashMap<>();
             InitializeVariables();
             EnableEditing(false);
             SetupCollegeSpinner();
             setUserData();
             //calender Constraints
             initPicker();
+            setPrefixPhone();
         } catch (Exception e) {
             Log.i(TAG, "onCreate: " + e.getMessage());
         }
@@ -146,6 +150,37 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         return false;
     }
 
+    private void setPrefixPhone() {
+        typePhoneProfile.setText("+2");
+        Selection.setSelection(typePhoneProfile.getText(), typePhoneProfile.getText().length());
+
+
+        typePhoneProfile.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!s.toString().startsWith("+2")) {
+                    typePhoneProfile.setText("+2");
+                    Selection.setSelection(typePhoneProfile.getText(), typePhoneProfile.getText().length());
+
+                }
+
+            }
+        });
+    }
 
     private void InitializeVariables() {
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
@@ -154,20 +189,22 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
     private void setUserData() {
         profileViewModel.getUserData().observe(this, user -> {
-            try {
-                typePhoneProfile.setText(user.getPhone());
-                typenameProfile.setText(user.getName());
-                collegeSpinnerProfile.setSelection(user.getCollege());
-                if (user.getBirthdate() != null) btnBirthDate.setText(user.getBirthdate());
-                else btnBirthDate.setText(getResources().getString(R.string.birth_date));
-                if (user.getGender() != null) {
-                    if (user.getGender().equals("male"))
-                        MaleBox.setChecked(true);
-                    else if (user.getGender().equals("female"))
-                        FemaleBox.setChecked(true);
-                }
-            } catch (Exception e) {
-                Log.i(TAG, "setUserData: " + e.getMessage());
+            typenameProfile.setText(user.get("name").toString());
+            if (user.containsKey("phone"))
+                if (user.get("phone") != null)
+                    typePhoneProfile.setText(user.get("phone").toString());
+            if (user.containsKey("collegeIndex"))
+                if (user.get("name") != null)
+                    collegeSpinnerProfile.setSelection((Integer.parseInt(user.get("collegeIndex").toString())));
+            if (user.get("birthDate") != null && user.containsKey("birthDate"))
+                btnBirthDate.setText(user.get("birthDate").toString());
+            else btnBirthDate.setText(getResources().getString(R.string.birth_date));
+
+            if (user.get("gender") != null && user.containsKey("gender")) {
+                if (user.get("gender").equals("male"))
+                    MaleBox.setChecked(true);
+                else if (user.get("gender").equals("female"))
+                    FemaleBox.setChecked(true);
             }
 
 
@@ -271,13 +308,16 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void getDataForm() {
-        updateUser.setCollege(collegeSpinnerProfile.getSelectedItemPosition());
-        updateUser.setBirthdate(btnBirthDate.getText().toString());
-        updateUser.setPhone(typePhoneProfile.getText().toString().trim());
-        updateUser.setName(typenameProfile.getText().toString().trim());
-        if (MaleBox.isChecked()) updateUser.setGender("male");
-        else updateUser.setGender("female");
-        updateUser.setPhotoUrl(profileViewModel.getUserData().getValue().getPhotoUrl());
+
+        updateUser.put("collegeIndex", collegeSpinnerProfile.getSelectedItemPosition());
+
+        updateUser.put("birthDate", btnBirthDate.getText().toString());
+        updateUser.put("phone", typePhoneProfile.getText().toString().trim());
+        updateUser.put("mail", profileViewModel.getUserData().getValue().get("mail"));
+        updateUser.put("name", typenameProfile.getText().toString().trim());
+        if (MaleBox.isChecked()) updateUser.put("gender", "male");
+        else updateUser.put("gender", "female");
+        updateUser.put("photoUrl", profileViewModel.getUserData().getValue().get("photoUrl"));
     }
 
     private void EnableEditing(boolean enabled) {

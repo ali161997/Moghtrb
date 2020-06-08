@@ -3,18 +3,18 @@ package com.alihashem.moghtrb.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.telephony.TelephonyManager;
+import android.transition.Explode;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 
 import com.alihashem.moghtrb.R;
 import com.alihashem.moghtrb.models.MyContextWrapper;
@@ -34,15 +34,6 @@ public class Splash extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    public boolean CheckPoorConnection() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo network = connectivityManager.getActiveNetworkInfo();
-        int netSubType = Integer.parseInt(network.getSubtypeName());
-        return netSubType == TelephonyManager.NETWORK_TYPE_GPRS ||
-                netSubType == TelephonyManager.NETWORK_TYPE_EDGE ||
-                netSubType == TelephonyManager.NETWORK_TYPE_1xRTT;
-    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -74,8 +65,11 @@ public class Splash extends AppCompatActivity {
             FirebaseUser currentUser = mAuth.getCurrentUser();
             if (currentUser != null) {
                 Intent intent = new Intent(Splash.this, Home.class);
+                ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation(this, findViewById(R.id.logoSplash), "logo_transition");
                 startActivity(intent);
-                Log.d(TAG, "onCreate: saccessful sign");
+                Log.d(TAG, "onCreate: successful sign");
+
 
             } else {
                 Intent homeintent = new Intent(Splash.this, signing.class);
@@ -97,10 +91,15 @@ public class Splash extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Fresco.initialize(getApplicationContext());
         splashLogo = findViewById(R.id.logoSplash);
+// set an enter transition
+        getWindow().setEnterTransition(new Explode());
+// set an exit transition
+        getWindow().setExitTransition(new Explode());
 
 
     }

@@ -43,7 +43,6 @@ import com.alihashem.moghtrb.adapters.RoomAdapter;
 import com.alihashem.moghtrb.models.HostID;
 import com.alihashem.moghtrb.models.StudentTime;
 import com.alihashem.moghtrb.models.VerticalSpaceItemDecoration;
-import com.alihashem.moghtrb.repositories.Uploading_explore;
 import com.alihashem.moghtrb.viewmodels.ExploreViewModel;
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import com.google.android.material.appbar.AppBarLayout;
@@ -331,7 +330,6 @@ public class Explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
     public void onStart() {
 
         super.onStart();
-        onRefresh();
     }
 
     @Override
@@ -347,7 +345,9 @@ public class Explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         RadioFilterSheet.setOnCheckedChangeListener(this);
         radioTimeSheet.setOnCheckedChangeListener(this);
         AppBar.addOnOffsetChangedListener(this);
-
+        if (viewModelExplore.getMakeRefresh().getValue()) {
+            onRefresh();
+        }
         rangeSeekSheet.setMinValue((float) (double) viewModelExplore.getMinSeek().getValue());
         rangeSeekSheet.setMaxValue((float) (double) viewModelExplore.getMaxSeek().getValue());
         rangeSeekSheet.setOnRangeSeekbarChangeListener((minValue, maxValue) -> {
@@ -362,8 +362,6 @@ public class Explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
             viewModelExplore.setHostId(HostID.getInstance().getHostId());
             HostID.getInstance().setHostId(null);
         }
-        Uploading_explore uploading_explore = new Uploading_explore();
-        //uploading_explore.settoUpload();
     }
 
     @Override
@@ -583,6 +581,7 @@ public class Explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
                         tryAgainBtn.setVisibility(View.GONE);
                 } else tryAgainBtn.setVisibility(View.VISIBLE);
                 SwipeRefreshHome.setRefreshing(false);
+                viewModelExplore.getMakeRefresh().setValue(false);
             }, 4000);
         }
 

@@ -5,15 +5,17 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.transition.Explode;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.alihashem.moghtrb.R;
-import com.alihashem.moghtrb.models.User;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -34,6 +36,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+
 public class signing extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "SigningActivity";
     private static final int RC_SIGN_IN = 9001;
@@ -41,7 +45,6 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
     private LoginButton loginButtonfacebook;
     private AuthCredential credential;
     //FireBase;
-    private User newUser;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     private ProgressBar prgbar;
@@ -60,11 +63,24 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signing);
+
+// set an enter transition
+        getWindow().setEnterTransition(new Explode());
+// set an exit transition
+        getWindow().setExitTransition(new Explode());
         findViewById(R.id.createAccount).setOnClickListener(this);
         findViewById(R.id.login).setOnClickListener(this);
         findViewById(R.id.signInBtnGoogle).setOnClickListener(this);
+        loginButtonfacebook = findViewById(R.id.buttonFacebookLogin);
+        loginButtonfacebook.setAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_item_inx));
+        findViewById(R.id.signInBtnGoogle).setAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_item_inx));
+        findViewById(R.id.createAccount).setAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_item_inx));
+        findViewById(R.id.login).setAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_item_inx));
+        findViewById(R.id.createAccount).setAnimation(AnimationUtils.loadAnimation(this, R.anim.translate_item_inx));
+
         prgbar = findViewById(R.id.progressBar);
         prgbar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.blue), android.graphics.PorterDuff.Mode.MULTIPLY);
         mAuth = FirebaseAuth.getInstance();
@@ -86,7 +102,6 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
 
     private void FaceBookVariables() {
         mCallbackManager = CallbackManager.Factory.create();
-        loginButtonfacebook = findViewById(R.id.buttonFacebookLogin);
         loginButtonfacebook.setReadPermissions("email", "public_profile");
         loginButtonfacebook.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -157,15 +172,12 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
                         FirebaseUser user = mAuth.getCurrentUser();
                         boolean isNewUser = task.getResult().getAdditionalUserInfo().isNewUser();
                         if (isNewUser) {
-                            newUser = new User();
-                            newUser.setName(task.getResult().getUser().getDisplayName());
-                            newUser.setEmail(task.getResult().getUser().getEmail());
-                            newUser.setPhone(task.getResult().getUser().getPhoneNumber());
-                            newUser.setPhotoUrl(task.getResult().getUser().getPhotoUrl().toString());
-                            db.collection("users").document(user.getUid()).set(newUser)
-                                    .addOnSuccessListener(documentReference ->
-                                            Snackbar.make(findViewById(R.id.relativeSigning), "Success.", Snackbar.LENGTH_SHORT).show())
-                                    .addOnFailureListener(e -> Snackbar.make(findViewById(R.id.relativeSigning), "Success.", Snackbar.LENGTH_SHORT).show());
+                            HashMap<String, String> userData = new HashMap<>();
+                            userData.put("name", task.getResult().getUser().getDisplayName());
+                            userData.put("email", task.getResult().getUser().getEmail());
+                            userData.put("phone", task.getResult().getUser().getPhoneNumber());
+                            userData.put("photoUrl", task.getResult().getUser().getPhotoUrl().toString());
+                            addUser(userData);
                         }
                         updateUI(user);
 
@@ -203,14 +215,12 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
                         FirebaseUser user = mAuth.getCurrentUser();
                         boolean isNewUser = task.getResult().getAdditionalUserInfo().isNewUser();
                         if (isNewUser) {
-                            newUser = new User();
-                            newUser.setName(task.getResult().getUser().getDisplayName());
-                            newUser.setEmail(task.getResult().getUser().getEmail());
-                            newUser.setPhone(task.getResult().getUser().getPhoneNumber());
-                            newUser.setPhotoUrl(task.getResult().getUser().getPhotoUrl().toString());
-                            db.collection("users").document(user.getUid()).set(newUser)
-                                    .addOnSuccessListener(documentReference -> Toast.makeText(signing.this, "success added", Toast.LENGTH_SHORT).show())
-                                    .addOnFailureListener(e -> Toast.makeText(signing.this, "fail added", Toast.LENGTH_SHORT).show());
+                            HashMap<String, String> userData = new HashMap<>();
+                            userData.put("name", task.getResult().getUser().getDisplayName());
+                            userData.put("email", task.getResult().getUser().getEmail());
+                            userData.put("phone", task.getResult().getUser().getPhoneNumber());
+                            userData.put("photoUrl", task.getResult().getUser().getPhotoUrl().toString());
+                            addUser(userData);
                         }
 
                         updateUI(user);
@@ -230,6 +240,13 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
                 });
     }
 
+    private void addUser(HashMap<String, String> user) {
+
+        db.collection("users").document(mAuth.getCurrentUser().getUid())
+                .set(user)
+                .addOnSuccessListener(documentReference -> Toast.makeText(signing.this, "success added", Toast.LENGTH_SHORT).show())
+                .addOnFailureListener(e -> Toast.makeText(signing.this, "fail added", Toast.LENGTH_SHORT).show());
+    }
 
     private void showProgressDialog() {
 

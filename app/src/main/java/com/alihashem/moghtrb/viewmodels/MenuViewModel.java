@@ -5,7 +5,6 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.alihashem.moghtrb.models.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -20,6 +19,7 @@ public class MenuViewModel extends ViewModel {
     private FirebaseAuth firebaseAuth;
     private MutableLiveData<List<String>> items;
     private ArrayList<String> choices;
+    private static final String TAG = "MenuViewModel";
 
     public MenuViewModel() {
         Username = new MutableLiveData<>();
@@ -59,9 +59,12 @@ public class MenuViewModel extends ViewModel {
                 .document(firebaseAuth.getUid());
         docRef.get()
                 .addOnSuccessListener(documentSnapshot -> {
-                    User user1 = documentSnapshot.toObject(User.class);
-                    userImage.setValue(user1.getPhotoUrl());
-                    Username.setValue(user1.getName());
+                    try {
+                        userImage.setValue(documentSnapshot.get("photoUrl").toString());
+                    } catch (Exception e) {
+                        Log.i(TAG, "setData: " + e.getMessage());
+                    }
+                    Username.setValue(documentSnapshot.get("name").toString());
                 }).addOnFailureListener(e -> {
             Log.i("Profile View Model", "Error");
         });

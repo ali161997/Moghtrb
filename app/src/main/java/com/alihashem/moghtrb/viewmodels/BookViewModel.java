@@ -80,12 +80,10 @@ public class BookViewModel extends ViewModel {
                     room.setPrice(d.getDouble("price"));
                     room.setRate(d.getLong("rate").intValue());
                     room.setNum_reviews(d.getLong("num_reviews").intValue());
-                    room.setStreet(d.get("street").toString());
+                    room.setEnAddress(d.get("enAddress").toString());
                     room.setBedsAvailable(d.getLong("bedsAvailable").intValue());
                     room.setTotalBeds(d.getLong("totalBeds").intValue());
                     room.setHostId(d.get("hostId").toString());
-                    room.setCity(d.get("city").toString());
-                    room.setRegion(d.get("region").toString());
                     room.setUrlImage1(d.get("urlImage1").toString());
                     room.setDepartId(d.get("departId").toString());
                     room.setRoomId(d.get("roomId").toString());

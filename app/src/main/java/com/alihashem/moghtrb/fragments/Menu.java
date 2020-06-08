@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alihashem.moghtrb.R;
 import com.alihashem.moghtrb.activities.Profile;
-import com.alihashem.moghtrb.adapters.ProfileAdapter;
+import com.alihashem.moghtrb.adapters.MenuAdapter;
 import com.alihashem.moghtrb.models.VerticalSpaceItemDecoration;
 import com.alihashem.moghtrb.viewmodels.MenuViewModel;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -65,6 +65,7 @@ public class Menu extends Fragment implements View.OnClickListener {
         userImageView.setOnClickListener(this);
         getActivity().overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         getUserData();
+        getUserData();
     }
 
     private void InitializeVariables() {
@@ -73,7 +74,7 @@ public class Menu extends Fragment implements View.OnClickListener {
         userImageView = getView().findViewById(R.id.image_profile);
         tvUserName = getView().findViewById(R.id.user_name);
         menuViewModel = new ViewModelProvider(getActivity()).get(MenuViewModel.class);
-        ProfileAdapter itemArrayAdapter = new ProfileAdapter(getActivity(), new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.list_choices))));
+        MenuAdapter itemArrayAdapter = new MenuAdapter(getActivity(), new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.list_choices))));
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(10));
@@ -167,30 +168,12 @@ public class Menu extends Fragment implements View.OnClickListener {
 
     private void setUserImageView(String url) {
         Log.i(TAG, "setUserImageView: " + url);
-        userImageView.setController(
-                Fresco.newDraweeControllerBuilder()
-                        .setTapToRetryEnabled(true)
-                        .setUri(url)
-                        .build());
-//        if (TextUtils.isEmpty(url)) {
-//        } else {
-//            if (url.contains("https:")) {
-//
-//
-//
-//            } else {
-//
-//                StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(url);
-//                storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
-//
-//                    userImageView.setController(
-//                            Fresco.newDraweeControllerBuilder()
-//                                    .setTapToRetryEnabled(true)
-//                                    .setUri(uri)
-//                                    .build());
-//                });
-//            }
-//        }
-
+        if (url != null) {
+            userImageView.setController(
+                    Fresco.newDraweeControllerBuilder()
+                            .setTapToRetryEnabled(true)
+                            .setUri(url)
+                            .build());
+        }
     }
 }

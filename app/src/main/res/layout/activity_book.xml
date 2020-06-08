@@ -67,7 +67,6 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_marginBottom="60dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         android:layout_height="wrap_content">
 
@@ -90,7 +89,6 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:id="@+id/mainViewBook"
-
                 android:layout_below="@id/BookLoadingProgress"
                 android:layout_weight="1"
                 android:layout_height="0dp">
@@ -109,7 +107,6 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/heebo_thin"
-                        android:lines="2"
                         android:textAllCaps="false"
                         android:maxLines="2"
                         android:padding="@dimen/view_parent_dimen"
@@ -198,6 +195,7 @@
                     layout="@layout/view_services"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="60dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/bed_details"
                     android:layout_marginStart="@dimen/view_parent_dimen"
@@ -213,6 +211,7 @@
     <LinearLayout
         android:layout_gravity="bottom"
         android:orientation="horizontal"
+        android:id="@+id/linearRequest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

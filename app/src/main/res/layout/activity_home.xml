@@ -19,17 +19,18 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:id="@+id/cord_home"
-        android:background="@color/zxing_transparent"
+        android:outlineSpotShadowColor="@color/Black"
+        android:elevation="10dp"
+        android:layout_margin="2dp"
         android:layout_alignParentBottom="true"
         android:fitsSystemWindows="true"
+        android:background="@drawable/rounded_bottom"
         android:outlineAmbientShadowColor="@color/gray"
         android:layout_height="wrap_content">
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation"
-            android:elevation="5dp"
-            app:elevation="10dp"
-            android:background="@drawable/rounded_bottom"
-            android:fadingEdge="horizontal"
+            android:background="@color/explore_card_bck"
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottomNavigationHeight"
             android:fitsSystemWindows="true"

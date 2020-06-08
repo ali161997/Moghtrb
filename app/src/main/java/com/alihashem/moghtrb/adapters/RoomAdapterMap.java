@@ -21,12 +21,10 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.List;
 
 public class RoomAdapterMap extends RecyclerView.Adapter<RoomAdapterMap.RoomViewHolder> {
+    private static final String TAG = "RoomAdapterMap";
     private static RecyclerViewClickListener itemListener;
-
-
     final private Context ctx;
     final private List<Room> roomList;
-    private static final String TAG = "RoomAdapterMap";
 
     public RoomAdapterMap(Context ctx, List<Room> roomList, RecyclerViewClickListener itemListener) {
         this.ctx = ctx;
@@ -62,7 +60,9 @@ public class RoomAdapterMap extends RecyclerView.Adapter<RoomAdapterMap.RoomView
         Room room = roomList.get(i);
         String s = Double.toString(room.getPrice());
         roomViewHolder.price.setText(s + "  LE/Month");
-        roomViewHolder.street.setText(room.getStreet());
+        if (ctx.getResources().getConfiguration().locale.getLanguage().equals("ar"))
+            roomViewHolder.street.setText(room.getArAddress());
+        else roomViewHolder.street.setText(room.getEnAddress());
         roomViewHolder.ratingBar.setRating(room.getRate());
         roomViewHolder.reviews.setText(room.getNum_reviews() + " Reviews");
         ProgressBarDrawable progressBarDrawable = new ProgressBarDrawable();

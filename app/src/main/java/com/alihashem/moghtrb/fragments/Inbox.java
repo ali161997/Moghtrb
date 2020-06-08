@@ -105,12 +105,7 @@ public class Inbox extends Fragment implements View.OnClickListener,
         navigation.removeBadge(R.id.inbox_id);
         inboxViewModel = new ViewModelProvider(getActivity()).get(InboxViewModel.class);
         inboxSwipe.setOnRefreshListener(this);
-        inboxSwipe.setRefreshing(true);
-        new Handler().postDelayed(() -> {
-
-            inboxSwipe.setRefreshing(false);
-
-        }, 4000);
+        onRefresh();
         setUpNotificationRecycler();
 
 
@@ -198,11 +193,12 @@ public class Inbox extends Fragment implements View.OnClickListener,
                 }
 
 
-            }, 3000);
+            }, 2000);
         }
 
 
     }
+
     private void showInternetStatus() {
         Snackbar snackbar = Snackbar
                 .make(cordInbox, R.string.noInternet, Snackbar.LENGTH_LONG)

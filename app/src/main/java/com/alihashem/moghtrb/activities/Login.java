@@ -40,6 +40,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private EditText email;
     private EditText password;
     private TextView forgetTv;
+    private boolean mailFound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,21 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
+        if (matcher.matches()) {
+            FirebaseAuth.getInstance().fetchSignInMethodsForEmail(email)
+                    .addOnCompleteListener(task -> {
+                        boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
+                        if (isNewUser) {
+                            mailFound = false;
+                        } else {
+                            Toast.makeText(this, "email not exist", Toast.LENGTH_SHORT).show();
+                            mailFound = true;
+                        }
+
+                    });
+        }
+        return matcher.matches() && mailFound;
+
     }
 
     private boolean isValidPassword(final String password) {
@@ -101,18 +116,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
+                        Toast.makeText(Login.this, R.string.authSucess, Toast.LENGTH_SHORT).show();
                         updateUI(user);
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "signInWithEmail:failure", task.getException());
-                        Toast.makeText(Login.this, "Authentication failed.",
+                        Toast.makeText(Login.this, R.string.mailNotExist,
                                 Toast.LENGTH_SHORT).show();
                         updateUI(null);
                     }
 
                     // [START_EXCLUDE]
                     if (!task.isSuccessful()) {
-                        Toast.makeText(this, "Error Login ,Try Again", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, R.string.errorLOgin, Toast.LENGTH_LONG).show();
                     }
                     hideProgressDialog();
                     // [END_EXCLUDE]
