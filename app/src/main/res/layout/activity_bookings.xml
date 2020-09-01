@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.alihashem.moghtrb.activities.Bookings">
+    tools:context="com.moghtrb.activities.Bookings">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:id="@+id/appBarCap"
-        android:background="@color/low_white"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:id="@+id/toolbarBookings"
+            style="@style/toolBarCollapsed"
             app:navigationIcon="@drawable/arrow_back"
             android:layout_height="@dimen/toolBarHeight">
 
@@ -27,7 +27,7 @@
                 <TextView
                     android:textSize="20sp"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/blue"
+                    android:textColor="@color/white"
                     android:gravity="start"
                     android:text="@string/bookings"
                     android:layout_width="0dp"
@@ -37,9 +37,7 @@
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:padding="5dp"
-                    android:layout_margin="5dp"
-                    app:actualImageResource="@drawable/logo"
+                    app:actualImageResource="@drawable/logo_icon_white"
                     android:contentDescription="new post image"
                     android:visibility="visible" />
 

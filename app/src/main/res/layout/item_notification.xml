@@ -72,13 +72,13 @@
             app:autoSizeMinTextSize="10sp" />
     </LinearLayout>
 
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/imageViewNotification"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        app:actualImageResource="@drawable/logo_icon_blue"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="5dp"
-        app:srcCompat="@drawable/logo" />
+        android:layout_marginStart="5dp" />
 
 </RelativeLayout>

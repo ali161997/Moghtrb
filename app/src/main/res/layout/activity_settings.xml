@@ -1,48 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context="com.alihashem.moghtrb.activities.Settings">
+    tools:context="com.moghtrb.activities.Settings">
 
 
     <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
         android:id="@+id/appBarSetting"
-        android:background="@color/low_white"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/low_white">
 
         <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
             android:id="@+id/toolbarSetting"
-            app:navigationIcon="@drawable/arrow_back"
-            android:layout_height="55dp">
+            android:layout_width="match_parent"
+            style="@style/toolBarCollapsed"
+            android:layout_height="@dimen/toolBarHeight"
+            app:navigationIcon="@drawable/arrow_back">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:textSize="20sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/blue"
+                    android:layout_weight="1"
                     android:gravity="start"
                     android:text="@string/settings"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:padding="5dp"
-                    android:layout_margin="5dp"
-                    app:actualImageResource="@drawable/logo"
                     android:contentDescription="new post image"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    app:actualImageResource="@drawable/logo_icon_white" />
 
             </LinearLayout>
 
@@ -51,59 +50,65 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <TextView
-
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/appBarSetting"
-        android:text="@string/select_language"
-        android:textSize="25sp"
-        android:id="@+id/selectLanguage"
-        android:textColor="@color/gray"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp" />
+        android:background="@drawable/default_bck"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <RadioGroup
-        android:id="@+id/radioSelectLanguage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/selectLanguage"
-        android:layout_margin="20dp"
-        android:padding="5dp"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical"
-        android:splitMotionEvents="true">
-
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/englishButton"
-            android:layoutDirection="rtl"
-            android:padding="10dp"
-            android:textAlignment="textStart"
-            android:layout_gravity="start"
+        <TextView
+            android:id="@+id/selectLanguage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/heebo_medium"
-            android:text="@string/english"
-            app:buttonTint="@color/dark_blue"
-            android:textColor="@color/gray"
-            android:textSize="15sp" />
+            android:layout_below="@id/appBarSetting"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/select_language"
+            android:textColor="@color/dark_blue"
+            android:textSize="25sp" />
 
-        <androidx.appcompat.widget.AppCompatRadioButton
+        <RadioGroup
+            android:id="@+id/radioSelectLanguage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layoutDirection="rtl"
-            android:padding="10dp"
-            android:textAlignment="textStart"
-            android:layout_gravity="start"
-            android:id="@+id/arabicButton"
-            android:fontFamily="@font/heebo_medium"
-            app:buttonTint="@color/dark_blue"
-            android:text="@string/arabic"
-            android:textColor="@color/gray"
-            android:textSize="15sp" />
-    </RadioGroup>
+            android:layout_below="@id/selectLanguage"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:splitMotionEvents="true">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/englishButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:fontFamily="@font/heebo_medium"
+                android:layoutDirection="rtl"
+                android:padding="10dp"
+                android:text="@string/english"
+                android:textAlignment="textStart"
+                android:textColor="@color/dark_blue"
+                android:textSize="15sp"
+                app:buttonTint="@color/dark_blue" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/arabicButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:fontFamily="@font/heebo_medium"
+                android:layoutDirection="rtl"
+                android:padding="10dp"
+                android:text="@string/arabic"
+                android:textAlignment="textStart"
+                android:textColor="@color/dark_blue"
+                android:textSize="15sp"
+                app:buttonTint="@color/dark_blue" />
+        </RadioGroup>
+    </LinearLayout>
 
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

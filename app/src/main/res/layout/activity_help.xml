@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activities.Help">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/helpAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:collapsedTitleTextAppearance="@style/collapsingToolbarLayoutTitleColor"
+            app:contentScrim="@color/dark_blue"
+            app:expandedTitleMarginEnd="15dp"
+            app:expandedTitleMarginStart="20dp"
+            app:expandedTitleTextAppearance="@style/expandedToolbarLayoutTitleColor"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="@string/book"
+            app:titleEnabled="true">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/logoHelp"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_gravity="bottom|end"
+                app:actualImageResource="@drawable/logo_white_complete"
+                app:layout_collapseMode="pin" />
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBarHelp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolBarHeight"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:navigationIcon="@drawable/arrow_back">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="start"
+                        android:text="@string/help"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+
+                android:fontFamily="@font/heebo_medium"
+                android:padding="10dp"
+                android:text="@string/contactingText"
+                android:textColor="@color/blue"
+                android:textSize="20sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mailTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:drawableEnd="@drawable/mail_24"
+                android:fontFamily="@font/heebo_medium"
+                android:layoutDirection="ltr"
+                android:padding="10dp"
+                android:text="@string/infoMail"
+                android:textColor="@color/gray"
+                android:textSize="18sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/heebo_medium"
+                android:padding="10dp"
+                android:text="@string/orByWhatsApp"
+                android:textColor="@color/blue"
+                android:textSize="18sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPhone1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/low_white"
+                android:drawableEnd="@drawable/ic_copy"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:layoutDirection="ltr"
+                android:padding="10dp"
+                android:text="@string/phone1"
+                android:textColor="@color/quantum_googredA700"
+                android:textSize="20sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPhone2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/low_white"
+                android:drawableEnd="@drawable/ic_copy"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:layoutDirection="ltr"
+                android:padding="10dp"
+                android:text="01001717478"
+                android:textColor="@color/green"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

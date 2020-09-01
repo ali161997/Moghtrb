@@ -25,28 +25,15 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/CloseTimeSheet"
-            android:layout_width="wrap_content"
-            style="@style/IconOnlyButton"
-            android:padding="5dp"
-            android:layout_gravity="center_vertical"
-            app:icon="@drawable/ic_close"
-            app:iconTint="@color/blue"
-            android:layout_height="wrap_content" />
+            style="@style/closeButtonStyle" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_save_anytime"
             android:layout_width="0dp"
             android:layout_marginEnd="20dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/heebo_medium"
-            android:text="@string/save"
-            android:padding="5dp"
-            app:backgroundTint="@color/blue"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="25sp" />
+            style="@style/blueButtonStyle"
+            android:text="@string/save" />
 
 
     </LinearLayout>
@@ -95,6 +82,7 @@
                 android:id="@+id/foreigner_view"
                 layout="@layout/view_foreigner"
                 android:layout_marginTop="30dp"
+                android:visibility="gone"
                 android:layout_below="@id/cardSpin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -103,6 +91,8 @@
                 android:id="@+id/student_view"
                 layout="@layout/view_student"
                 android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cardSpin" />

@@ -40,9 +40,9 @@
     <string name="RoomOrder">ترتيب الدور</string>
     <string name="save">حفظ</string>
     <string name="select_all">تحديد الكل</string>
-    <string name="semester_one">نصف السنة الأول</string>
-    <string name="semester_three_summer">النصف السنه الثالث</string>
-    <string name="semester_two">نصف السنه الثانى</string>
+    <string name="semester_one"> الترم ألاول</string>
+    <string name="semester_three_summer">الترم الصيفى</string>
+    <string name="semester_two">الترم الثانى </string>
     <string name="Services">الخدمات</string>
     <string name="shared_room">غرفة مشتركه</string>
     <string name="submit">إتمام</string>
@@ -78,13 +78,13 @@
         <item>تسجيل الخروج</item>
     </string-array>
     <string-array name="spinner_choice_time">
-        <item>طالب</item>
-        <item>غريب</item>
+        <item>مواعيد طالب الفصلية </item>
+        <item>مواعيد غريب يومية </item>
     </string-array>
     <string name="Create_account">حساب جديد</string>
     <string name="average_price">متوسط السعر</string>
-    <string name="email">ايميل</string>
-    <string name="rooms_nearby">غرف قريبة منك</string>
+    <string name="email">إيميل</string>
+    <string name="rooms_nearby">غرف قريبة مسافة 500 متر من الموقع المحدد</string>
     <string name="placeAvaiable">أماكن متاحة</string>
     <string name="bedInRoom">سرير متاح</string>
     <string name="menu">قائمة</string>
@@ -94,7 +94,7 @@
     <string name="start_phone_auth">ابدأ</string>
     <string name="verify_phone_auth">التعرف</string>
     <string name="resend_phone_auth">إعادة إرسال</string>
-    <string name="hint_phone_number">رقم الموبايل</string>
+    <string name="hint_phone_number">رقم الموبايل سيتم الإرسال منه</string>
     <string name="hint_verification_code">الكود</string>
     <string name="status_code_sent">تم الارسال</string>
     <string name="status_verification_failed">خطأ</string>
@@ -103,9 +103,9 @@
     <string name="instant_validation">تم تلقائيا</string>
     <string name="type_your_mail_n_to_reset_password">أكتب إيميلك لإعادة تعيين كلمة السر</string>
     <string name="service_details">التفاصيل</string>
-    <string name="cost_per_month">تكلفة شهر</string>
+    <string name="cost_per_month">التكلفة الشهرية</string>
     <string name="cost_of_a_month_in_advance">تكلفة شهر مقدم</string>
-    <string name="services_water_gas">خدمات(مياه,غاز,..)</string>
+    <string name="services_water_gas"> خدمات(مياه,غاز,..) طوال الفترة</string>
     <string name="confirm">تأكيد</string>
     <string name="send">إرسال</string>
     <string name="to">إلى</string>
@@ -135,7 +135,7 @@
     <string name="logo">logo</string>
     <string name="requestSubmitted">تم الطلب</string>
     <string name="notification">الإشعارات</string>
-    <string name="phoneSend">تليفون الإرسال</string>
+    <string name="phoneSend"> إرسال الكاش</string>
     <string name="noInternet">لا يوجد إتصال</string>
     <string name="Student">طالب</string>
     <string name="amountPayed">قيمة تم دفعها اونلاين</string>
@@ -148,11 +148,11 @@
     <string name="BookDetail">تفاصيل الحجز</string>
     <string name="city">المدينة</string>
     <string name="Region">المنطقة</string>
-    <string name="month_in_advance">شهر مقدم</string>
+    <string name="month_in_advance">يدفع  شهر مقدماً</string>
     <string name="anyWhere">المكان</string>
     <string name="selectFaculty">تحديد الكلية</string>
     <string name="hostPhone">موبايل المضيف</string>
-    <string name="semesterOneAndTwo">الفصل ألاول والثانى</string>
+    <string name="semesterOneAndTwo">الترم ألاول والثانى</string>
     <string name="checkDates">عليك تعيين المواعيد</string>
     <string name="set">تعيين</string>
     <string name="copy">نسخ</string>
@@ -160,12 +160,39 @@
     <string name="selectRegion">تحديد المنطقة</string>
     <string name="goToRoomLocation">الذهاب لموقع الغرفة</string>
     <string name="goToRoomDetail">الذهاب لتفاصيل الغرفه</string>
-    <string name="mailNotExist">Mail not exist.</string>
-    <string name="authSucess">Authentication Successful</string>
-    <string name="errorLOgin">Error Login ,Try Again</string>
-    <string name="mailExistance">email is already exist</string>
-    <string name="required">required</string>
-    <string name="more8Character">should more than 8 character</string>
-    <string name="validFormat">\" at least 8 characters, 1 capital alphabet,1 Number and 1 Special Character,\"</string>
+    <string name="mailNotExist">البريد الالكترونى غير موجود</string>
+    <string name="authSucess">مصادقة ناجحة</string>
+    <string name="errorLOgin">خطأ فى التسجيل،حاول أخرى</string>
+    <string name="mailExistance">البريد موجود مسبقاً</string>
+    <string name="required">مطلوب</string>
+    <string name="more8Character">يجب اكثر من ثمانى أحرف</string>
+    <string name="validFormat">,8 أحرف على الأقل،حرف كبير،ورقم و حرف خاص</string>
+    <string name="LEPerDay">جنيه يومياً</string>
+    <string name="selectDates">تحديد المواعيد</string>
+    <string name="help">ألمساعده</string>
+    <string name="orByWhatsApp">أو عن طريق الواتساب</string>
+    <string name="contactingText">يمكنك التواصل معنا عبر البريد الإلكترونى</string>
+    <string name="infoMail">info@moghtrb.com</string>
+    <string name="Faculty">الكلية</string>
+    <string name="moghtrbExist">مغترب موجود فى أسيوط</string>
+    <string name="tooManyRequests">تخطيت الحد الأقصى من الطلبات</string>
+    <string name="no_result_found">لا توجد نتائج</string>
+    <string name="selectOrder">تحديد الطابق</string>
+    <string name="air_conditioned">مكيف</string>
+    <string name="elevator">مصعد</string>
+    <string name="details">التفاصيل</string>
+    <string name="timeMessageBook">سوف يتم الرد عليك خلال ساعه كحد أقصى</string>
+    <string name="timeMessagePayment">يجب عليك الدفع خلال خمس ساعات كحد أقصى</string>
+    <string name="Notice">ملاحظة</string>
+    <string name="cost_per_day">التكلفة اليومية</string>
+    <string name="sendTo">رقم الموبايل سيتم الإرسال إليه</string>
+    <string name="orByMessenger">أو عن طريق فيسبوك ماسنجر</string>
+    <string name="available">متاح</string>
+    <string name="hostComment">تعليق المضيف</string>
+    <string name="recommendation">recommendation</string>
+    <string name="updateProfileText">Update your profile for good experience</string>
+    <string name="List">list</string>
+    <string name="More">more</string>
+    <string name="dial">Dial</string>
 
 </resources>

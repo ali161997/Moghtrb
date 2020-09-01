@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     app:behavior_hideable="true"
-    app:cardPreventCornerOverlap="false"
-    app:cardElevation="5dp"
     app:behavior_peekHeight="0dp"
     app:cardBackgroundColor="@color/white"
+    app:cardElevation="5dp"
+    app:cardPreventCornerOverlap="false"
     app:layout_behavior="@string/bottom_sheet_behavior">
 
 
@@ -17,121 +17,95 @@
         android:id="@+id/progressSheetVerify"
         style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
-        <LinearLayout
-            android:id="@+id/top_dev"
+    <LinearLayout
+        android:id="@+id/top_dev"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="50dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editPhoneSheet"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_marginStart="50dp"
+            android:layout_marginVertical="20dp"
+            android:elevation="5dp"
+            android:fontFamily="@font/heebo_medium"
+            android:hint="@string/hint_phone_number"
+            android:textColorHint="@color/gray"
+            android:textSize="20sp"
+            android:focusedByDefault="false"
+            app:boxStrokeColor="@color/gray"
+            app:boxStrokeWidth="1dp"
+            app:hintAnimationEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fieldPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/low_white"
+                android:focusedByDefault="false"
+                android:inputType="phone"
+                android:padding="15dp"
+                android:textColor="@color/Black"
+
+                android:textColorHint="@color/gray" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editCodeSheet"
+            android:focusedByDefault="false"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:fontFamily="@font/heebo_medium"
+            android:hint="@string/hint_verification_code"
+            android:textColorHint="@color/gray"
+            android:textSize="20sp"
+            app:boxStrokeColor="@color/gray"
+            app:boxStrokeWidth="1dp"
+            app:hintAnimationEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fieldVerificationCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/low_white"
+                android:focusedByDefault="false"
+                android:inputType="number"
+                android:padding="15dp"
+                android:textColor="@color/Black"
+                android:textColorHint="@color/gray" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonStartVerification"
+            style="@style/blueButtonStyle"
             android:layout_marginTop="100dp"
-            android:layout_marginEnd="50dp"
-            android:orientation="vertical">
+            android:text="@string/start_phone_auth" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/editPhoneSheet"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="20dp"
-                android:elevation="5dp"
-                android:fontFamily="@font/heebo_medium"
-                android:hint="@string/hint_phone_number"
-                android:textColorHint="@color/gray"
-                android:textSize="20sp"
-                app:boxStrokeColor="@color/gray"
-                app:boxStrokeWidth="1dp"
-                app:hintAnimationEnabled="true">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonVerifyPhone"
+            style="@style/blueButtonStyle"
+            android:text="@string/verify_phone_auth" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/fieldPhoneNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/low_white"
-
-                    android:inputType="phone"
-                    android:padding="15dp"
-                    android:textColor="@color/Black"
-
-                    android:textColorHint="@color/gray" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/editCodeSheet"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:elevation="5dp"
-                android:fontFamily="@font/heebo_medium"
-                android:textColorHint="@color/gray"
-                android:textSize="20sp"
-                android:hint="@string/hint_verification_code"
-                app:boxStrokeColor="@color/gray"
-                app:boxStrokeWidth="1dp"
-                app:hintAnimationEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/fieldVerificationCode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/low_white"
-
-                    android:inputType="number"
-                    android:padding="15dp"
-                    android:textColor="@color/Black"
-                    android:textColorHint="@color/gray" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_alignParentBottom="true"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginBottom="100dp"
-            android:orientation="vertical">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonStartVerification"
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/start_phone_auth"
-                android:textColor="@color/white"
-                app:backgroundTint="@color/blue"
-                app:rippleColor="@color/dark_blue" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonVerifyPhone"
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/verify_phone_auth"
-                android:textColor="@color/white"
-                app:backgroundTint="@color/blue"
-                app:rippleColor="@color/dark_blue" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonResend"
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/resend_phone_auth"
-                android:textColor="@color/white"
-                app:backgroundTint="@color/blue"
-                app:rippleColor="@color/dark_blue" />
-        </LinearLayout>
-
-
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonResend"
+            style="@style/blueButtonStyle"
+            android:text="@string/resend_phone_auth" />
+    </LinearLayout>
 
 
 </com.google.android.material.card.MaterialCardView>

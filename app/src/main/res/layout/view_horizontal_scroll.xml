@@ -1,86 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="300dp"
+    xmlns:app="http://schemas.android.com/tools"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/imageHeightDetail"
     android:layoutDirection="ltr"
     android:orientation="vertical">
 
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        fresco:cardBackgroundColor="@color/gray"
         fresco:cardElevation="5dp"
-        fresco:strokeWidth="1dp"
         fresco:strokeColor="@color/low_white"
-        fresco:cardBackgroundColor="@color/low_white"
-        android:layout_height="wrap_content">
+        fresco:strokeWidth="1dp">
+
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/image1_detail"
-                fresco:roundingBorderWidth="2dp"
-                android:layout_marginEnd="5dp"
-                fresco:placeholderImage="@drawable/place_holder"
-                fresco:roundedCornerRadius="10dp"
-                fresco:retryImage="@drawable/ic_refresh_black_24dp"
-                android:layout_width="@dimen/imageWidthDetail"
-                android:layout_height="@dimen/imageHeightDetail"
-                android:background="@color/gray" />
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerImage1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:shimmer_auto_start="true"
+                app:shimmer_base_alpha=".7"
+                app:shimmer_colored="false"
+                app:shimmer_direction="left_to_right"
+                app:shimmer_highlight_alpha="1"
+                app:shimmer_highlight_color="#8F8787"
+                app:shimmer_repeat_mode="restart">
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/image2_detail"
-                fresco:roundingBorderWidth="2dp"
-                android:layout_marginEnd="5dp"
-                fresco:placeholderImage="@drawable/place_holder"
-                fresco:retryImage="@drawable/ic_refresh_black_24dp"
-                fresco:roundedCornerRadius="10dp"
-                android:layout_width="@dimen/imageWidthDetail"
-                android:layout_height="@dimen/imageHeightDetail"
-                android:background="@color/gray" />
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/image1_detail"
+                    android:layout_width="@dimen/imageWidthDetail"
+                    android:layout_height="@dimen/imageHeightDetail"
+                    android:layout_marginEnd="5dp"
+                    android:background="@color/gray"
+                    app:progressBarAutoRotateInterval="500"
+                    fresco:placeholderImage="@drawable/place_holder"
+                    fresco:retryImage="@drawable/ic_refresh_black_24dp"
+                    fresco:roundedCornerRadius="10dp"
+                    fresco:roundingBorderWidth="2dp" />
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/image3_detail"
-                fresco:roundingBorderWidth="2dp"
-                fresco:placeholderImage="@drawable/place_holder"
-                fresco:roundedCornerRadius="5dp"
-                fresco:retryImage="@drawable/ic_refresh_black_24dp"
-                android:layout_width="@dimen/imageWidthDetail"
-                android:layout_height="@dimen/imageHeightDetail"
-                android:layout_marginEnd="10dp"
-                android:background="@color/gray" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/image4_detail"
-                fresco:roundingBorderWidth="2dp"
-                fresco:placeholderImage="@drawable/place_holder"
-                fresco:roundedCornerRadius="5dp"
-                fresco:retryImage="@drawable/ic_refresh_black_24dp"
-                android:layout_width="@dimen/imageWidthDetail"
-                android:layout_height="@dimen/imageHeightDetail"
-                android:background="@color/gray" />
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerImage2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:shimmer_auto_start="true"
+                app:shimmer_base_alpha=".7"
+                app:shimmer_colored="false"
+                app:shimmer_direction="left_to_right"
+                app:shimmer_highlight_alpha="1"
+                app:shimmer_highlight_color="#8F8787"
+                app:shimmer_repeat_mode="restart">
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/image5_detail"
-                fresco:roundingBorderWidth="2dp"
-                fresco:placeholderImage="@drawable/place_holder"
-                fresco:roundedCornerRadius="5dp"
-                fresco:retryImage="@drawable/ic_refresh_black_24dp"
-                android:layout_width="@dimen/imageWidthDetail"
-                android:layout_height="@dimen/imageHeightDetail"
-                android:background="@color/gray" />
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/image2_detail"
+                    android:layout_width="@dimen/imageWidthDetail"
+                    android:layout_height="@dimen/imageHeightDetail"
+                    android:layout_marginEnd="5dp"
+                    android:background="@color/gray"
+                    app:progressBarAutoRotateInterval="500"
+                    fresco:placeholderImage="@drawable/place_holder"
+                    fresco:retryImage="@drawable/ic_refresh_black_24dp"
+                    fresco:roundedCornerRadius="10dp"
+                    fresco:roundingBorderWidth="2dp" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/image6_detail"
-                fresco:roundingBorderWidth="2dp"
-                fresco:placeholderImage="@drawable/place_holder"
-                fresco:roundedCornerRadius="5dp"
-                fresco:retryImage="@drawable/ic_refresh_black_24dp"
-                android:layout_width="@dimen/imageWidthDetail"
-                android:layout_height="@dimen/imageHeightDetail"
-                android:background="@color/gray" />
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerImage3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:shimmer_auto_start="true"
+                app:shimmer_base_alpha=".7"
+                app:shimmer_colored="false"
+                app:shimmer_direction="left_to_right"
+                app:shimmer_highlight_alpha="1"
+                app:shimmer_highlight_color="#8F8787"
+                app:shimmer_repeat_mode="restart">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/image3_detail"
+                    android:layout_width="@dimen/imageWidthDetail"
+                    android:layout_height="@dimen/imageHeightDetail"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/gray"
+                    app:progressBarAutoRotateInterval="500"
+                    fresco:placeholderImage="@drawable/place_holder"
+                    fresco:retryImage="@drawable/ic_refresh_black_24dp"
+                    fresco:roundedCornerRadius="5dp"
+                    fresco:roundingBorderWidth="2dp" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerImage4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:shimmer_auto_start="true"
+                app:shimmer_base_alpha=".7"
+                app:shimmer_colored="false"
+                app:shimmer_direction="left_to_right"
+                app:shimmer_highlight_alpha="1"
+                app:shimmer_highlight_color="#8F8787"
+                app:shimmer_repeat_mode="restart">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/image4_detail"
+                    android:layout_width="@dimen/imageWidthDetail"
+                    android:layout_height="@dimen/imageHeightDetail"
+                    android:background="@color/gray"
+                    app:progressBarAutoRotateInterval="500"
+                    fresco:placeholderImage="@drawable/place_holder"
+                    fresco:retryImage="@drawable/ic_refresh_black_24dp"
+                    fresco:roundedCornerRadius="5dp"
+                    fresco:roundingBorderWidth="2dp" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerImage5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:shimmer_auto_start="true"
+                app:shimmer_base_alpha=".7"
+                app:shimmer_colored="false"
+                app:shimmer_direction="left_to_right"
+                app:shimmer_highlight_alpha="1"
+                app:shimmer_highlight_color="#8F8787"
+                app:shimmer_repeat_mode="restart">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/image5_detail"
+                    android:layout_width="@dimen/imageWidthDetail"
+                    android:layout_height="@dimen/imageHeightDetail"
+                    android:background="@color/gray"
+                    app:progressBarAutoRotateInterval="500"
+                    fresco:placeholderImage="@drawable/place_holder"
+                    fresco:retryImage="@drawable/ic_refresh_black_24dp"
+                    fresco:roundedCornerRadius="5dp"
+                    fresco:roundingBorderWidth="2dp" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerImage6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:shimmer_auto_start="true"
+                app:shimmer_base_alpha=".7"
+                app:shimmer_colored="false"
+                app:shimmer_direction="left_to_right"
+                app:shimmer_highlight_alpha="1"
+                app:shimmer_highlight_color="#8F8787"
+                app:shimmer_repeat_mode="restart">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/image6_detail"
+                    android:layout_width="@dimen/imageWidthDetail"
+                    android:layout_height="@dimen/imageHeightDetail"
+                    android:background="@color/gray"
+                    app:progressBarAutoRotateInterval="500"
+                    fresco:placeholderImage="@drawable/place_holder"
+                    fresco:progressBarImageScaleType="center"
+                    fresco:retryImage="@drawable/ic_refresh_black_24dp"
+                    fresco:roundedCornerRadius="5dp"
+                    fresco:roundingBorderWidth="2dp" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

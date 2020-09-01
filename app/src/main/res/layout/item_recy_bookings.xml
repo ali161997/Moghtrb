@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/containerBookings"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/white"
-    app:cardElevation="5dp"
-    android:id="@+id/containerBookings"
     app:cardCornerRadius="10dp"
+    app:cardElevation="5dp"
     app:cardPreventCornerOverlap="false">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:text="@string/copy"
+                app:strokeWidth="0dp"
                 android:textColor="@color/blue"
                 app:rippleColor="@color/gray" />
 
@@ -65,12 +67,14 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/goToLocationBtn"
                 style="@style/IconOnlyButton"
+                app:strokeWidth="0dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
                 app:icon="@drawable/ic_location"
                 app:iconTint="@color/blue" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,6 +83,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:text="@string/goToRoomDetail"
@@ -89,9 +94,12 @@
                 style="@style/IconOnlyButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
+                android:drawableBottom="@drawable/ic_bed"
+                android:drawablePadding="0dp"
+                app:strokeWidth="0dp"
                 android:fontFamily="@font/heebo_medium"
-                app:icon="@drawable/ic_bed"
+                android:gravity="center"
+                android:padding="0dp"
                 app:rippleColor="@color/gray" />
         </LinearLayout>
 
@@ -118,8 +126,8 @@
                 android:id="@+id/fromDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:gravity="start"
+                android:padding="5dp"
                 android:textColor="@color/Black"
                 android:textSize="15sp" />
 
@@ -138,8 +146,8 @@
                 android:id="@+id/toDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:gravity="start"
+                android:padding="5dp"
                 android:textColor="@color/Black"
                 android:textSize="15sp" />
         </LinearLayout>
@@ -242,10 +250,13 @@
             style="@style/IconOnlyButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:layout_gravity="center_horizontal"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/heebo_medium"
             android:gravity="center"
+            app:strokeWidth="0dp"
+
+            android:layout_marginTop="5dp"
             android:insetLeft="0dp"
             android:insetTop="0dp"
             android:insetRight="0dp"

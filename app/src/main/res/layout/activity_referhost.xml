@@ -5,44 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.alihashem.moghtrb.activities.ReferHost">
+    tools:context="com.moghtrb.activities.ReferHost">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
         android:id="@+id/appBarRefer"
-        android:background="@color/low_white"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/low_white">
 
         <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
             android:id="@+id/toolbarRefer"
-            app:navigationIcon="@drawable/arrow_back"
-            android:layout_height="55dp">
+            style="@style/toolBarCollapsed"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolBarHeight"
+            app:navigationIcon="@drawable/arrow_back">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:textSize="20sp"
+                    android:layout_width="0dp"
 
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/blue"
+                    android:layout_weight="1"
                     android:gravity="start"
                     android:text="@string/referHost"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:padding="5dp"
-                    android:layout_margin="5dp"
-                    app:actualImageResource="@drawable/logo"
                     android:contentDescription="new post image"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    app:actualImageResource="@drawable/logo_icon_white" />
 
             </LinearLayout>
 
@@ -53,30 +52,30 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/default_bck"
         app:elevation="@dimen/mainViewElevation"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        android:layout_below="@id/appBarRefer"
-        android:layout_height="wrap_content">
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
 
             <TextView
                 android:id="@+id/refer_get"
-                android:layout_alignParentTop="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_alignParentTop="true"
                 android:layout_marginTop="30dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/heebo_medium"
                 android:gravity="center_horizontal"
                 android:text="@string/refer_get"
-                android:textColor="@color/gray"
+                android:textColor="@color/blue"
                 android:textSize="30sp"
-                android:layout_marginBottom="10dp"
 
                 />
 
@@ -84,8 +83,6 @@
                 android:id="@+id/much_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
                 android:fontFamily="@font/heebo_medium"
                 android:gravity="center_horizontal"
                 android:text="@string/much_get"
@@ -95,14 +92,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Planned"
-                android:layout_marginHorizontal="30dp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="sans-serif-black"
-                android:textSize="25sp"
                 android:gravity="center"
+                android:text="Planned"
                 android:textColor="@color/green"
-                android:layout_below="@id/much_price" />
+                android:textSize="25sp" />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -110,17 +105,14 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
                 android:layout_marginTop="50dp"
-                android:layout_marginEnd="30dp"
                 android:fontFamily="@font/heebo_medium"
                 android:hint="@string/host_name"
                 android:padding="5dp"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/blue"
                 android:textSize="20sp"
-                app:boxStrokeColor="@color/gray"
+                app:boxStrokeColor="@color/dark_blue"
                 app:boxStrokeWidth="1dp"
-
                 app:hintAnimationEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -128,7 +120,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:textColor="@color/Black" />
+                    android:textColor="@color/dark_blue" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -137,15 +129,13 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
                 android:layout_marginTop="50dp"
-                android:layout_marginEnd="30dp"
                 android:fontFamily="@font/heebo_medium"
                 android:hint="@string/host_phone"
                 android:padding="5dp"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/blue"
                 android:textSize="20sp"
-                app:boxStrokeColor="@color/gray"
+                app:boxStrokeColor="@color/dark_blue"
                 app:boxStrokeWidth="1dp"
                 app:hintAnimationEnabled="true">
 
@@ -154,25 +144,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
-                    android:textColor="@color/Black" />
+                    android:textColor="@color/dark_blue" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.button.MaterialButton
-                android:layout_width="match_parent"
-                app:backgroundTint="@color/blue"
                 android:id="@+id/submit"
-                android:enabled="false"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                style="@style/blueButtonStyle"
                 android:layout_marginTop="100dp"
-                android:layout_marginEnd="30dp"
-                android:fontFamily="@font/heebo_medium"
-                android:padding="10dp"
-                android:text="@string/submit"
-                android:textColor="@color/white" />
+                android:enabled="false"
+                android:text="@string/submit" />
 
 
         </LinearLayout>

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "272918520092-h02sa92l4f6jfk9soedo0m6q12jgro3e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alihashem.moghtrb",
+            "certificate_hash": "5825189095a8f8ad79e7122f1e8129439fcfa6d1"
+          }
+        },
+        {
           "client_id": "272918520092-k40g3lhlk2f674fkrt4bcn04kbdla3sa.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -45,12 +53,20 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:272918520092:android:83c01562413e7fdd",
+        "mobilesdk_app_id": "1:272918520092:android:a7d1665b530ed20e021ad9",
         "android_client_info": {
-          "package_name": "com.example.sokna"
+          "package_name": "com.moghtrb"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "272918520092-r4vk8mq05caio8an0m8ee1l5kp5d8e8b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moghtrb",
+            "certificate_hash": "5825189095a8f8ad79e7122f1e8129439fcfa6d1"
+          }
+        },
         {
           "client_id": "272918520092-mo1bcm3mtnuc6uu8mbfmpasijmn530hk.apps.googleusercontent.com",
           "client_type": 3

@@ -2,6 +2,15 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/tools"
+    android:checkable="true"
+    android:clickable="true"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:clipToPadding="false"
+    style="@style/Widget.MaterialComponents.CardView"
+    app:cardBackgroundColor="@color/explore_card_bck"
+    app:cardCornerRadius="10dp"
     android:layout_height="wrap_content">
 
 
@@ -15,11 +24,11 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/image_item_map"
-            android:layout_width="200dp"
-            android:layout_height="150dp"
+            android:layout_width="220dp"
+            android:layout_height="180dp"
             android:layout_gravity="center_horizontal"
             fresco:fadeDuration="300"
-            fresco:placeholderImage="@drawable/place_holder"
+            app:placeholderImage="@color/quantum_grey500"
             fresco:placeholderImageScaleType="fitCenter"
             fresco:retryImage="@drawable/ic_refresh_black_24dp"
             fresco:roundedCornerRadius="2dp"

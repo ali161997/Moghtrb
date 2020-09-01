@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/containerExplore"
     style="@style/Widget.MaterialComponents.CardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,7 +10,6 @@
     android:clickable="true"
     android:fitsSystemWindows="true"
     android:focusable="true"
-    android:id="@+id/containerExplore"
     app:cardBackgroundColor="@color/explore_card_bck"
     app:cardCornerRadius="10dp"
     app:cardElevation="5dp"
@@ -23,14 +23,31 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/image_item"
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerImage"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_gravity="center_horizontal"
-            fresco:fadeDuration="300"
-            fresco:placeholderImageScaleType="fitCenter"
-            fresco:retryImage="@drawable/ic_refresh_black_24dp" />
+            android:layout_height="wrap_content"
+            app:shimmer_auto_start="true"
+            app:shimmer_base_alpha=".7"
+            app:shimmer_colored="false"
+            app:shimmer_direction="left_to_right"
+            app:shimmer_highlight_alpha="1"
+            app:shimmer_highlight_color="#8F8787"
+            app:shimmer_repeat_mode="restart">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/image_item"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_gravity="center_horizontal"
+                app:placeholderImage="@color/quantum_grey500"
+                fresco:fadeDuration="300"
+                fresco:placeholderImageScaleType="fitCenter"
+                fresco:progressBarImageScaleType="center"
+                fresco:retryImage="@drawable/ic_refresh_black_24dp" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -111,16 +128,6 @@
                 android:fontFamily="@font/heebo_medium"
                 android:textColor="@color/dark_blue"
                 android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/numBedInRoom"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/heebo_thin"
-                android:gravity="end|center_vertical"
-                android:textAlignment="textEnd"
-                android:textColor="@color/Black" />
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

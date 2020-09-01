@@ -1,57 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="@color/white"
-    tools:context="com.alihashem.moghtrb.activities.Login">
+    android:fitsSystemWindows="true"
+    tools:context="com.moghtrb.activities.Login">
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
-        android:visibility="gone"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
     <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
         android:id="@+id/appBarLog"
-        android:background="@color/low_white"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/low_white">
 
         <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
             android:id="@+id/toolbarLog"
-            app:navigationIcon="@drawable/arrow_back"
-            android:layout_height="55dp">
+            style="@style/toolBarCollapsed"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolBarHeight"
+            app:navigationIcon="@drawable/arrow_back">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:textSize="20sp"
-
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/blue"
+                    android:layout_weight="1"
                     android:gravity="start"
                     android:text="@string/login"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:padding="5dp"
-                    android:layout_margin="5dp"
-                    app:actualImageResource="@drawable/logo"
                     android:contentDescription="new post image"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    app:actualImageResource="@drawable/logo_icon_white" />
 
             </LinearLayout>
 
@@ -62,46 +60,41 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/appBarLog"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        app:elevation="@dimen/mainViewElevation"
+        android:layout_height="match_parent"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="-2dp">
-        <RelativeLayout
+        android:background="@drawable/default_bck"
+        app:elevation="@dimen/mainViewElevation"
+        android:padding="50dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
             android:id="@+id/relative_log"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fieldMailLogin"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginRight="30dp"
                 android:fontFamily="@font/heebo_medium"
                 android:hint="@string/email"
+                android:layout_marginTop="20dp"
                 android:inputType="textEmailAddress"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/dark_blue"
                 android:textSize="20sp"
-                app:hintTextColor="@color/gray"
-                app:boxStrokeColor="@color/gray"
+                app:boxStrokeColor="@color/dark_blue"
                 app:boxStrokeWidth="1dp"
-                app:hintAnimationEnabled="true">
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="@color/dark_blue">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/typeMailLogin"
                     android:layout_width="match_parent"
-                    android:textCursorDrawable="@drawable/cursor_color"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/Black" />
+                    android:textColor="@color/Black"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -110,20 +103,15 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:hintTextColor="@color/gray"
-                android:layout_below="@id/fieldMailLogin"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/heebo_medium"
                 android:hint="@string/passWord"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/dark_blue"
                 android:textSize="20sp"
-                app:boxStrokeColor="@color/gray"
+                app:boxStrokeColor="@color/dark_blue"
                 app:boxStrokeWidth="1dp"
                 app:hintAnimationEnabled="true"
+                app:hintTextColor="@color/dark_blue"
                 app:passwordToggleDrawable="@drawable/ic_remove_red_eye_black_24dp"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@color/blue">
@@ -133,8 +121,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:textCursorDrawable="@drawable/cursor_color"
                     android:textColor="@color/Black"
+                    android:textCursorDrawable="@drawable/cursor_color"
 
                     />
 
@@ -142,39 +130,26 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/forget"
-                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/fieldPasswordLogin"
-                android:layout_marginStart="40dp"
                 android:layout_marginTop="25dp"
-                android:layout_marginEnd="40dp"
+                android:clickable="true"
                 android:fontFamily="@font/heebo_medium"
                 android:text="@string/forget_password_click_here"
-
-
-                android:textColor="@color/gray"
+                android:textColor="@color/dark_blue"
                 android:textSize="15sp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_go"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/blueButtonStyle"
                 android:layout_below="@id/forget"
-                android:layout_marginStart="30dp"
                 android:layout_marginTop="100dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="50dp"
-                android:fontFamily="@font/heebo_medium"
-                android:text="@string/go"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:backgroundTint="@color/blue" />
+                android:text="@string/go" />
 
 
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

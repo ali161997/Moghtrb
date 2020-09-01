@@ -7,6 +7,11 @@
         android:title="@string/title_explore" />
 
     <item
+        android:id="@+id/services_id"
+        android:icon="@drawable/ic_support"
+        android:orderInCategory="2"
+        android:title="@string/Services" />
+    <item
         android:id="@+id/inbox_id"
         android:icon="@drawable/inbox"
         android:orderInCategory="3"
@@ -15,13 +20,12 @@
     <item
         android:id="@+id/map_id"
         android:icon="@drawable/ic_map_black_24dp"
-        android:orderInCategory="2"
+        android:orderInCategory="3"
         android:title="@string/title_map" />
     <item
-        android:id="@+id/profile_id"
-
+        android:id="@+id/more_id"
         android:icon="@drawable/ic_menu_black_24dp"
         android:orderInCategory="4"
-        android:title="@string/menu" />
+        android:title="@string/More" />
 
 </menu>

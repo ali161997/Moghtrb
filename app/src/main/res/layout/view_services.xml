@@ -2,48 +2,80 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
     android:layout_gravity="center_horizontal"
+    android:background="@drawable/rounded_sheet"
+    android:divider="@color/gray"
+    android:dividerPadding="5dp"
+    android:gravity="center"
+    android:padding="10dp"
+    android:showDividers="middle"
 
     >
 
     <com.google.android.material.textview.MaterialTextView
-        android:layout_width="0dp"
         android:id="@+id/if_internet"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:drawableBottom="@drawable/ic_checked_black_24dp"
+        android:drawablePadding="5dp"
+        android:gravity="center"
+        android:padding="5dp"
         android:text="@string/internet"
-        android:layout_weight="1"
-        android:drawablePadding="5dp"
-        android:textSize="12sp"
-        android:padding="5dp"
         android:textColor="@color/gray"
-        android:gravity="center"
-        android:layout_height="wrap_content" />
+        android:textSize="12sp" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/if_elevator"
         android:layout_width="0dp"
         android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:drawableBottom="@drawable/ic_checked_black_24dp"
+        android:drawablePadding="5dp"
         android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/elevator"
+        android:textColor="@color/gray"
+        android:textSize="12sp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/if_conditioner"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:drawableBottom="@drawable/ic_checked_black_24dp"
+        android:drawablePadding="5dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/air_conditioned"
+        android:textColor="@color/gray"
+        android:textSize="12sp" />
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/if_gas"
-        android:drawablePadding="5dp"
-        android:textSize="12sp"
-        android:padding="5dp"
-        android:drawableBottom="@drawable/ic_checked_black_24dp"
-        android:textColor="@color/gray"
-        android:text="@string/naturalGas"
-        android:layout_height="wrap_content" />
-
-    <com.google.android.material.textview.MaterialTextView
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:gravity="center"
-        android:id="@+id/if_cleaning"
-        android:layout_height="wrap_content"
-        android:drawablePadding="5dp"
-        android:textSize="12sp"
-        android:padding="5dp"
-        android:textColor="@color/gray"
+        android:layout_height="match_parent"
         android:drawableBottom="@drawable/ic_checked_black_24dp"
-        android:text="@string/periodCleaning" />
+        android:drawablePadding="5dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/naturalGas"
+        android:textColor="@color/gray"
+        android:textSize="12sp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/if_cleaning"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:drawableBottom="@drawable/ic_checked_black_24dp"
+        android:drawablePadding="5dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/periodCleaning"
+        android:textColor="@color/gray"
+        android:textSize="12sp" />
+
 
 </LinearLayout>

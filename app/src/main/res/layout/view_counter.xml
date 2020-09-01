@@ -1,39 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="10dp">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:drawableStart="@drawable/ic_guest"
+        android:drawablePadding="10dp"
+        android:maxLines="1"
+        android:padding="10dp"
+        android:text="@string/guests"
+        android:textColor="@color/gray"
+        android:textSize="15sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/decrease"
+        style="@style/IconOnlyButton"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/low_white"
         app:icon="@drawable/ic_decrease"
         app:iconTint="@color/blue"
-        style="@style/IconOnlyButton"
-        app:backgroundTint="@color/low_white"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content" />
+        app:strokeWidth="0dp" />
 
     <TextView
         android:id="@+id/num_guests_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:fontFamily="@font/heebo_medium"
         android:textColor="@color/Black"
-        android:textSize="22sp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp" />
+        android:textSize="20sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/increase"
-        app:iconTint="@color/blue"
-        app:icon="@drawable/ic_increase"
         style="@style/IconOnlyButton"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
         app:backgroundTint="@color/low_white"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content" />
+        app:icon="@drawable/ic_increase"
+        app:iconTint="@color/blue"
+        app:strokeWidth="0dp" />
 
 
 </LinearLayout>

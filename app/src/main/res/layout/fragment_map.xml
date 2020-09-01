@@ -22,9 +22,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            app:strokeColor="@color/gray"
-            app:strokeWidth="1dp"
-            app:cardBackgroundColor="@color/quantum_grey300"
+            app:cardBackgroundColor="@color/dark_blue"
             android:padding="10dp"
             android:textDirection="locale"
             android:layoutDirection="locale"
@@ -47,7 +45,6 @@
             android:layout_marginBottom="60dp"
             app:backgroundTint="@color/white"
             app:srcCompat="@drawable/ic_place_black_24dp" />
-
     <include layout="@layout/sheet_places" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

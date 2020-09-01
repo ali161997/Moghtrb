@@ -1,58 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context="com.alihashem.moghtrb.activities.IdentifyHost">
+    tools:context="com.moghtrb.activities.IdentifyHost">
 
     <ProgressBar
+        android:id="@+id/identifyProgress"
+        style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:id="@+id/identifyProgress"
         android:progress="25"
-        android:visibility="gone"
-        style="@style/Widget.AppCompat.ProgressBar" />
+        android:visibility="gone" />
 
     <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
         android:id="@+id/appBarIdentify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="top"
-        android:background="@color/low_white"
-        android:layout_height="wrap_content">
+        android:background="@color/low_white">
 
         <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
             android:id="@+id/toolbarIdentify"
-            app:navigationIcon="@drawable/arrow_back"
-            android:layout_height="55dp">
+            style="@style/toolBarCollapsed"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolBarHeight"
+            app:navigationIcon="@drawable/arrow_back">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:textSize="20sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/blue"
+                    android:layout_weight="1"
                     android:gravity="start"
                     android:padding="5dp"
                     android:text="@string/identifyHost"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:padding="5dp"
-                    android:layout_margin="5dp"
-                    app:actualImageResource="@drawable/logo"
                     android:contentDescription="new post image"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    app:actualImageResource="@drawable/logo_icon_white" />
 
             </LinearLayout>
 
@@ -63,37 +62,47 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="120dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_height="match_parent"
+        android:background="@drawable/default_bck"
         android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="new post image"
+            android:visibility="visible"
+            app:actualImageResource="@drawable/logo_text_blue" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/startRead"
-            app:icon="@drawable/ic_qr"
-            android:padding="10dp"
-            android:layout_marginBottom="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:backgroundTint="@color/gray"
-            app:iconTint="@color/white"
-            android:textColor="@color/white"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:textSize="20sp"
-            android:text="@string/scan_for_host" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
+            android:padding="10dp"
+            android:text="@string/scan_for_host"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:backgroundTint="@color/gray"
+            app:icon="@drawable/ic_qr"
+            app:iconTint="@color/white" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:padding="10dp"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:textColor="@color/Black"
-            android:background="@color/low_white"
-            android:layout_height="wrap_content"
             android:id="@+id/ifHostIdentified"
-            android:layout_below="@id/startRead" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/startRead"
+            android:background="@color/low_white"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/Black"
+            android:textSize="25sp" />
 
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

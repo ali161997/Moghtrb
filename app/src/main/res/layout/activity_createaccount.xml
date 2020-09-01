@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="@color/white"
-    tools:context="com.alihashem.moghtrb.activities.CreateAccount">
+    tools:context="com.moghtrb.activities.CreateAccount">
 
     <ProgressBar
         android:id="@+id/progressBar_signup"
@@ -24,7 +25,8 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarCreate"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            style="@style/toolBarCollapsed"
+            android:layout_height="@dimen/toolBarHeight"
             app:navigationIcon="@drawable/arrow_back">
 
             <LinearLayout
@@ -39,17 +41,15 @@
                     android:layout_weight="1"
                     android:gravity="start"
                     android:text="@string/Create_account"
-                    android:textColor="@color/blue"
+                    android:textColor="@color/white"
                     android:textSize="20sp" />
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
                     android:contentDescription="new post image"
-                    android:padding="5dp"
                     android:visibility="visible"
-                    app:actualImageResource="@drawable/logo" />
+                    app:actualImageResource="@drawable/logo_icon_white" />
 
             </LinearLayout>
 
@@ -60,17 +60,17 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/appBarCreate"
+        android:layout_height="match_parent"
         app:elevation="@dimen/mainViewElevation"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical"
             android:paddingStart="30dp"
+
             android:paddingEnd="30dp">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -85,7 +85,6 @@
                 android:textSize="20sp"
                 app:boxStrokeColor="@color/gray"
                 app:boxStrokeWidth="1dp"
-
                 app:hintAnimationEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -161,6 +160,7 @@
                 app:boxStrokeColor="@color/gray"
                 app:boxStrokeWidth="1dp"
                 app:hintAnimationEnabled="true"
+                app:passwordToggleTintMode="multiply"
                 app:passwordToggleDrawable="@drawable/ic_remove_red_eye_black_24dp"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@color/Black">
@@ -175,47 +175,12 @@
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:padding="5dp"
-                android:text="@string/selectFaculty"
-                android:textColor="@color/gray"
-                android:textSize="20sp" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_below="@+id/fieldPassword"
-                app:cardBackgroundColor="@color/gray"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp"
-                app:cardPreventCornerOverlap="false">
-
-                <Spinner
-                    android:id="@+id/college_Spinner_signup"
-                    style="@style/Widget.AppCompat.Spinner.DropDown"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:dropDownWidth="match_parent"
-                    android:popupBackground="@color/gray"
-                    android:spinnerMode="dropdown"
-                    android:theme="@style/Widget.AppCompat.Light.DropDownItem.Spinner" />
-
-
-            </com.google.android.material.card.MaterialCardView>
-
-
             <RadioGroup
                 android:id="@+id/radio_gender_signup"
                 style="@style/Widget.AppCompat.CompoundButton.RadioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:layout_below="@id/cardSpinner"
                 android:dividerPadding="20dp"
                 android:gravity="center_horizontal"
                 android:layoutDirection="ltr"
@@ -248,34 +213,87 @@
             </RadioGroup>
 
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/date_picker_signup"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/radio_gender_signup"
                 android:layout_marginTop="20dp"
-                android:padding="10dp"
+                android:padding="5dp"
+                android:text="@string/selectCity"
+                android:textColor="@color/gray"
+                android:textSize="20sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSpinnerCity"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:cardBackgroundColor="@color/gray"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardPreventCornerOverlap="false">
+
+                <Spinner
+                    android:id="@+id/city_Spinner_signup"
+                    style="@style/Widget.AppCompat.Spinner.DropDown"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:dropDownWidth="match_parent"
+                    android:popupBackground="@color/gray"
+                    android:spinnerMode="dropdown"
+                    android:theme="@style/Widget.AppCompat.Light.DropDownItem.Spinner" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="5dp"
+                android:text="@string/selectFaculty"
+                android:textColor="@color/gray"
+                android:textSize="20sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:cardBackgroundColor="@color/gray"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardPreventCornerOverlap="false">
+
+                <Spinner
+                    android:id="@+id/college_Spinner_signup"
+                    style="@style/Widget.AppCompat.Spinner.DropDown"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:dropDownWidth="match_parent"
+                    android:popupBackground="@color/gray"
+                    android:spinnerMode="dropdown"
+                    android:theme="@style/Widget.AppCompat.Light.DropDownItem.Spinner" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/date_picker_signup"
+                style="@style/blueButtonStyle"
+                app:icon="@drawable/ic_calender"
+                android:layout_marginTop="20dp"
+                app:iconGravity="end"
+                android:textAlignment="viewStart"
                 android:text="@string/birth_date"
                 android:textColor="@color/white"
-                android:textSize="15sp"
                 app:backgroundTint="@color/gray" />
 
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/createAccount_signup"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/blueButtonStyle"
                 android:layout_marginTop="25dp"
-                app:rippleColor="@color/gray"
-                android:background="@drawable/rounded_button_log"
-                android:fontFamily="@font/heebo_medium"
-                android:padding="10dp"
-                android:text="@string/Create_account"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                app:backgroundTint="@color/blue" />
+                android:layout_marginBottom="50dp"
+                android:text="@string/Create_account" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

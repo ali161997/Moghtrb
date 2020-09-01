@@ -5,32 +5,34 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:divider="@color/gray"
-    android:layout_marginStart="10dp"
+    android:showDividers="middle"
+    android:paddingVertical="10dp"
+    android:dividerPadding="10dp"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_marginStart="10dp"
+        android:paddingVertical="10dp"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
             android:id="@+id/iconBed"
-            android:layout_marginTop="10dp"
-            android:layout_centerVertical="true"
-            android:padding="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_bed" />
+            android:layout_centerVertical="true"
+            android:drawableStart="@drawable/ic_bed"
+            android:gravity="center"
+            android:padding="10dp" />
 
         <TextView
-            android:layout_marginTop="7dp"
             android:id="@+id/numBedText"
-            android:maxLines="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginStart="5dp"
-            android:fontFamily="@font/heebo_thin"
             android:layout_toEndOf="@id/iconBed"
+            android:fontFamily="@font/heebo_thin"
+            android:maxLines="1"
             android:text="@string/beds"
             android:textColor="@color/Black"
             android:textSize="17sp"
@@ -40,54 +42,56 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/numBedText"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/iconBed"
             android:maxLines="1"
             android:text="@string/in_room"
             android:textColor="@color/gray"
-            android:textSize="12sp"
-            android:layout_marginStart="6dp"
-            android:layout_toEndOf="@id/iconBed"
-            android:layout_below="@id/numBedText" />
+            android:textSize="12sp" />
 
         <TextView
-            android:layout_centerVertical="true"
             android:id="@+id/numBedRoom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/heebo_thin"
             android:text="3"
-            android:layout_marginEnd="20dp"
             android:textColor="@color/Black"
             android:textSize="20sp" />
 
 
     </RelativeLayout>
 
-    <include layout="@layout/view_divider" />
+    ""
 
     <RelativeLayout
-        android:layout_marginStart="10dp"
         android:layout_width="match_parent"
+        android:paddingVertical="10dp"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
             android:id="@+id/iconRoom"
-            android:layout_marginTop="10dp"
-            android:layout_centerVertical="true"
-            android:padding="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_room" />
+            android:layout_centerVertical="true"
+            android:drawableStart="@drawable/ic_room"
+            android:gravity="center"
+            android:padding="10dp" />
 
         <TextView
-            android:layout_marginTop="7dp"
+
             android:id="@+id/numRoomText"
-            android:maxLines="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginStart="5dp"
-            android:fontFamily="@font/heebo_thin"
             android:layout_toEndOf="@id/iconRoom"
+            android:fontFamily="@font/heebo_thin"
+            android:maxLines="1"
             android:text="@string/rooms"
             android:textColor="@color/Black"
             android:textSize="17sp"
@@ -97,113 +101,56 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/numRoomText"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/iconRoom"
             android:maxLines="1"
             android:text="@string/in_depart"
             android:textColor="@color/gray"
-            android:textSize="12sp"
-            android:layout_marginStart="6dp"
-            android:layout_toEndOf="@id/iconRoom"
-            android:layout_below="@id/numRoomText" />
+            android:textSize="12sp" />
 
         <TextView
-            android:layout_centerVertical="true"
             android:id="@+id/numRoomValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/heebo_thin"
             android:text="3"
-            android:layout_marginEnd="20dp"
             android:textColor="@color/Black"
             android:textSize="20sp" />
 
 
     </RelativeLayout>
 
-    <include layout="@layout/view_divider" />
+    ""
 
 
     <RelativeLayout
-        android:layout_marginStart="10dp"
         android:layout_width="match_parent"
+        android:paddingVertical="10dp"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:id="@+id/iconOrder"
-            android:layout_marginTop="10dp"
-            android:layout_centerVertical="true"
-            android:padding="10dp"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_order" />
-
-        <TextView
-            android:layout_marginTop="7dp"
-            android:id="@+id/roomOrderText"
-            android:maxLines="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:fontFamily="@font/heebo_thin"
-            android:layout_toEndOf="@id/iconOrder"
-            android:text="@string/floor"
-            android:textColor="@color/Black"
-            android:textSize="17sp"
-
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="@string/arrangment"
-            android:textColor="@color/gray"
-            android:textSize="12sp"
-            android:layout_marginStart="6dp"
-            android:layout_toEndOf="@id/iconOrder"
-            android:layout_below="@id/roomOrderText" />
-
-        <TextView
-            android:layout_centerVertical="true"
-            android:id="@+id/roomOrderValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="@font/heebo_thin"
-            android:text="@string/fourth"
-            android:layout_marginEnd="20dp"
-            android:textColor="@color/Black"
-            android:textSize="15sp" />
-
-
-    </RelativeLayout>
-
-    <include layout="@layout/view_divider" />
-
-
-    <RelativeLayout
-        android:layout_marginStart="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
             android:id="@+id/iconBath"
-            android:layout_marginTop="10dp"
-            android:layout_centerVertical="true"
-            android:padding="10dp"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_bath" />
-
-        <TextView
-            android:layout_marginTop="7dp"
-            android:id="@+id/numBathDepartText"
-            android:maxLines="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableStart="@drawable/ic_bath"
+            android:gravity="center"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/numBathDepartText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginStart="5dp"
-            android:fontFamily="@font/heebo_thin"
             android:layout_toEndOf="@id/iconBath"
+            android:fontFamily="@font/heebo_thin"
+            android:maxLines="1"
             android:text="@string/baths"
             android:textColor="@color/Black"
             android:textSize="17sp"
@@ -213,53 +160,55 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/numBathDepartText"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/iconBath"
             android:maxLines="1"
             android:text="@string/in_depart"
             android:textColor="@color/gray"
-            android:textSize="12sp"
-            android:layout_marginStart="6dp"
-            android:layout_toEndOf="@id/iconBath"
-            android:layout_below="@id/numBathDepartText" />
+            android:textSize="12sp" />
 
         <TextView
-            android:layout_centerVertical="true"
             android:id="@+id/numBathDepartValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/heebo_thin"
             android:text="3"
-            android:layout_marginEnd="20dp"
             android:textColor="@color/Black"
             android:textSize="20sp" />
 
 
     </RelativeLayout>
 
-    <include layout="@layout/view_divider" />
+    ""
+
     <RelativeLayout
-        android:layout_marginStart="10dp"
+        android:paddingVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
             android:id="@+id/iconBalcony"
-            android:layout_marginTop="10dp"
-            android:layout_centerVertical="true"
-            android:padding="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_balcony" />
+            android:layout_centerVertical="true"
+            android:drawableStart="@drawable/ic_balcony"
+            android:gravity="center"
+            android:padding="10dp" />
 
         <TextView
-            android:layout_marginTop="7dp"
             android:id="@+id/haveBalconyText"
-            android:maxLines="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginStart="5dp"
-            android:fontFamily="@font/heebo_thin"
             android:layout_toEndOf="@id/iconBalcony"
+            android:fontFamily="@font/heebo_thin"
+            android:maxLines="1"
             android:text="@string/balcony"
             android:textColor="@color/Black"
             android:textSize="17sp"
@@ -269,52 +218,53 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/haveBalconyText"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/iconBalcony"
             android:maxLines="1"
             android:text="@string/contained"
             android:textColor="@color/gray"
-            android:textSize="12sp"
-            android:layout_marginStart="6dp"
-            android:layout_toEndOf="@id/iconBalcony"
-            android:layout_below="@id/haveBalconyText" />
+            android:textSize="12sp" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:layout_centerVertical="true"
             android:id="@+id/BalconyBox"
-            android:drawableStart="@drawable/ic_checked_black_24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp" />
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:drawableStart="@drawable/ic_checked_black_24dp" />
 
 
     </RelativeLayout>
 
-    <include layout="@layout/view_divider" />
+    ""
 
 
     <RelativeLayout
+        android:paddingVertical="10dp"
         android:layout_width="match_parent"
-        android:layout_marginStart="10dp"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
             android:id="@+id/iconHost"
-            android:layout_marginTop="10dp"
-            android:layout_centerVertical="true"
-            android:padding="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_hostrate" />
+            android:layout_centerVertical="true"
+            android:drawableStart="@drawable/ic_hostrate"
+            android:gravity="center"
+            android:padding="10dp" />
 
         <TextView
-            android:layout_marginTop="7dp"
             android:id="@+id/hostRateText"
-            android:maxLines="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginStart="5dp"
-            android:fontFamily="@font/heebo_thin"
             android:layout_toEndOf="@id/iconHost"
+            android:fontFamily="@font/heebo_thin"
+            android:maxLines="1"
             android:text="@string/host"
             android:textColor="@color/Black"
             android:textSize="17sp"
@@ -324,55 +274,56 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/hostRateText"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/iconHost"
             android:maxLines="1"
             android:text="@string/rate"
             android:textColor="@color/gray"
-            android:textSize="15sp"
-            android:layout_marginStart="6dp"
-            android:layout_toEndOf="@id/iconHost"
-            android:layout_below="@id/hostRateText" />
+            android:textSize="15sp" />
 
         <RatingBar
 
             android:id="@+id/hostRateValue"
-            android:layout_alignParentEnd="true"
             style="?android:attr/ratingBarStyleSmall"
-            android:theme="@style/RatingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:max="5"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="20dp"
+            android:max="5"
             android:numStars="5"
             android:rating="3.50"
-            />
+            android:theme="@style/RatingBar" />
 
     </RelativeLayout>
 
-    <include layout="@layout/view_divider" />
+    ""
+
     <RelativeLayout
-        android:layout_marginStart="10dp"
         android:layout_width="match_parent"
+        android:paddingVertical="10dp"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
             android:id="@+id/iconLocation"
-            android:layout_marginTop="10dp"
-            android:layout_centerVertical="true"
-            android:padding="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_mapicon" />
+            android:layout_centerVertical="true"
+            android:drawableStart="@drawable/ic_mapicon"
+            android:gravity="center"
+            android:padding="10dp" />
 
         <TextView
-            android:layout_marginTop="7dp"
             android:id="@+id/locationText"
-            android:maxLines="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:fontFamily="@font/heebo_thin"
+            android:layout_centerVertical="true"
             android:layout_toEndOf="@id/iconLocation"
+            android:fontFamily="@font/heebo_thin"
+            android:maxLines="1"
             android:text="@string/room"
             android:textColor="@color/Black"
             android:textSize="17sp"
@@ -382,41 +333,41 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/locationText"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/iconLocation"
             android:maxLines="1"
             android:text="@string/location"
             android:textColor="@color/gray"
-            android:textSize="12sp"
-            android:layout_marginStart="6dp"
-            android:layout_toEndOf="@id/iconLocation"
-            android:layout_below="@id/locationText" />
+            android:textSize="12sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/locationBtn"
             style="@style/IconOnlyButton"
-            app:strokeWidth="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:rippleColor="@color/gray"
-            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            app:iconTint="@color/blue"
+            android:layout_centerVertical="true"
+            app:icon="@drawable/ic_location"
+            app:iconGravity="end"
             app:iconPadding="0dp"
-            app:icon="@drawable/ic_location" />
+            app:iconTint="@color/blue"
+            app:rippleColor="@color/gray"
+            app:strokeWidth="0dp" />
 
 
     </RelativeLayout>
 
-    <include layout="@layout/view_divider" />
+    ""
 
     <TextView
-        android:layout_marginStart="15dp"
-        android:padding="10dp"
         android:id="@+id/servicesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/heebo_medium"
+        android:padding="10dp"
         android:text="@string/Services"
-        android:layout_marginBottom="10dp"
         android:textColor="@color/blue"
         android:textSize="18sp" />
 

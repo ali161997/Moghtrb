@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:background="@color/dark_blue"
     android:fitsSystemWindows="true"
     app:elevation="@dimen/mainViewElevation"
-    tools:context="com.alihashem.moghtrb.activities.Splash">
+    tools:context="com.moghtrb.activities.Splash">
 
-    <ImageView
-        android:id="@+id/logoSplash"
-        android:layout_width="150dp"
-        android:transitionName="logo_transition"
-        android:layout_height="150dp"
-        android:shadowColor="@android:color/background_dark"
-        android:src="@drawable/logo"
-        android:layout_gravity="center"
-        android:contentDescription="@string/moghtrbLogo" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <pl.droidsonroids.gif.GifTextView
+            android:id="@+id/logoSplash"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:background="@drawable/intro"
+            android:elevation="0dp"
+            android:shadowColor="@color/zxing_transparent" />
+
+
+    </LinearLayout>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

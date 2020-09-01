@@ -5,10 +5,10 @@
     android:width="30dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <path
-        android:fillColor="#1273EB"
+        android:fillColor="@color/dark_blue"
         android:pathData="M328.653,0l-34.995,0l0,251.113l-288.758,0l0,28.889l323.753,0z" />
     <path
-        android:fillColor="#1273EB"
+        android:fillColor="@color/dark_blue"
         android:pathData="M346.152,61.261v209.992l37.191,0.008v42.487c0,8.68 -7.061,15.739 -15.74,15.739h-39.72c0.47,-1.342 0.689,-2.084 0.686,-2.084c3.35,-12.178 5.353,-25.012 5.353,-38.656H4.899c0,146.013 112.35,193.577 112.35,193.577h98.466v-36.623l9.425,-18.096l0.158,0.001c2.956,-0.879 5.983,-1.662 8.834,-2.746c39.608,-15.078 63.93,-42.116 77.954,-63.894h55.518c26.037,0 47.22,-21.183 47.22,-47.219v-42.479l36.365,0.008l26.236,-210.008L346.152,61.261z" />
     <path
         android:fillColor="#1273EB"

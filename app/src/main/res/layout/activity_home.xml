@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:id="@+id/homeLayout"
     android:background="@color/white"
-    tools:context="com.alihashem.moghtrb.activities.Home">
+    tools:context="com.moghtrb.activities.Home">
 
 
     <FrameLayout
@@ -25,7 +25,7 @@
         android:layout_alignParentBottom="true"
         android:fitsSystemWindows="true"
         android:background="@drawable/rounded_bottom"
-        android:outlineAmbientShadowColor="@color/gray"
+        android:outlineAmbientShadowColor="@color/Black"
         android:layout_height="wrap_content">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
