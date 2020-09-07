@@ -190,9 +190,35 @@
     <string name="available">متاح</string>
     <string name="hostComment">تعليق المضيف</string>
     <string name="recommendation">recommendation</string>
-    <string name="updateProfileText">Update your profile for good experience</string>
-    <string name="List">list</string>
-    <string name="More">more</string>
-    <string name="dial">Dial</string>
+    <string name="updateProfileText">قم بتحديث بياناتك الشخصية</string>
+    <string name="List">القائمة</string>
+    <string name="More">أكثر</string>
+    <string name="dial">إتصال</string>
+    <string name="homeMade">طعام منزلى</string>
+    <string name="laundry">مغسلة</string>
+    <string name="cleaners">عمال نظافة</string>
+    <string name="restaurants">مطاعم</string>
+    <string name="coffee">مقاهى</string>
+    <string name="football">ملاعب خماسية</string>
+    <string name="taxi">سائقى التاكسى</string>
+    <string name="confirmation">التأكيد</string>
+    <string name="enter_promo">أدخل كود الخصم</string>
+    <string name="setDate">تعيين المواعيد</string>
+    <string name="verify">تحقق</string>
+    <string name="successfulCoupon">خصم ناجح</string>
+    <string name="noCoupon">كوبون غير متاح</string>
+    <string name="Wait_our_confirmation">إنتظر إشعاراً كى تتم الدفع خلال ساعه</string>
+    <string name="phone">رقم الموبايل</string>
+    <string-array name="services">
+
+        <item> طعام منزلى</item>
+        <item>مغسلة </item>
+        <item>عمال نظافة</item>
+        <item> مطاعم</item>
+        <item> مقاهى</item>
+        <item> ملاعب خماسى</item>
+        <item> سائقى التاكسى</item>
+
+    </string-array>
 
 </resources>

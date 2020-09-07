@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/fieldMail"
                 android:fontFamily="@font/heebo_medium"
-                android:hint="@string/hint_phone_number"
+                android:hint="@string/phone"
                 android:inputType="phone"
                 android:padding="5dp"
                 android:textColorHint="@color/gray"

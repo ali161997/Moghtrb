@@ -360,9 +360,10 @@ public class ExploreViewModel extends ViewModel {
         listRooms.setValue(new ArrayList<>());
         isLastItemReached.setValue(false);
 
-        prepareQuery().limit(limit).get().addOnFailureListener(e -> {
-            Log.i(TAG, "setFilter: Success Execute " + e);
-        }).addOnCompleteListener(task -> {
+        prepareQuery().limit(limit).get()
+                .addOnFailureListener(e -> {
+                    Log.i(TAG, "setFilter: Success Execute " + e);
+                }).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 for (DocumentSnapshot d : task.getResult()) {
                     listRooms.getValue().add(setRoomModel(d));

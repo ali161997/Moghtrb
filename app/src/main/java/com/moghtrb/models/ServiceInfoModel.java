@@ -7,17 +7,27 @@ public class ServiceInfoModel {
     private String infoImage;
     private int likes;
     private int disLikes;
+    private String docID;
 
     public ServiceInfoModel() {
     }
 
-    public ServiceInfoModel(String name, String phone, MyLatLong location, int likes, int disLikes, String infoImage) {
+    public ServiceInfoModel(String name, String phone, MyLatLong location, int likes, int disLikes, String infoImage, String docID) {
         this.name = name;
         this.phone = phone;
         this.location = location;
         this.likes = likes;
         this.disLikes = disLikes;
         this.infoImage = infoImage;
+        this.docID = docID;
+    }
+
+    public String getDocID() {
+        return docID;
+    }
+
+    public void setDocID(String docID) {
+        this.docID = docID;
     }
 
     public String getInfoImage() {

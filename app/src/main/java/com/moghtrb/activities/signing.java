@@ -38,6 +38,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.moghtrb.R;
 
 import java.util.HashMap;
+
 public class signing extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "SigningActivity";
     private static final int RC_SIGN_IN = 9001;
@@ -51,6 +52,7 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
     //Google
     private GoogleSignInOptions gso;
     private GoogleSignInClient mGoogleSignInClient;
+    private boolean goHome;
 
     // [START declare_auth]
     private CallbackManager mCallbackManager;
@@ -106,8 +108,6 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
         loginButtonfacebook.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d(TAG, "facebook:onSuccess:" + loginResult);
-                Log.i(TAG, "onSuccess: " + loginResult.getAccessToken());
                 handleFacebookAccessToken(loginResult.getAccessToken());
 
             }
@@ -174,7 +174,8 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
                         boolean isNewUser = task.getResult().getAdditionalUserInfo().isNewUser();
                         if (isNewUser) {
                             addUser(getUserData(task));
-                        }
+                            goHome = false;
+                        } else goHome = true;
                         updateUI(user);
 
                     } else {
@@ -225,7 +226,8 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
                         boolean isNewUser = task.getResult().getAdditionalUserInfo().isNewUser();
                         if (isNewUser) {
                             addUser(getUserData(task));
-                        }
+                            goHome = false;
+                        } else goHome = true;
 
                         updateUI(user);
 
@@ -265,7 +267,10 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
-            Intent intent = new Intent(signing.this, Home.class);
+            Intent intent;
+            if (goHome)
+                intent = new Intent(signing.this, Home.class);
+            else intent = new Intent(signing.this, Profile.class);
             startActivity(intent);
             finish();
         } else {

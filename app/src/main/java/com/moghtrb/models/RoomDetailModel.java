@@ -3,7 +3,7 @@ package com.moghtrb.models;
 import java.util.HashMap;
 import java.util.List;
 
-public class RoomDetail {
+public class RoomDetailModel {
     private int numRoomsInDepart;
     private int numBath;
     private double hostRate;
@@ -23,13 +23,13 @@ public class RoomDetail {
 
     private String hostComment;
 
-    public RoomDetail() {
+    public RoomDetailModel() {
         floors = new HashMap<>();
         services = new HashMap<>();
     }
 
-    public RoomDetail(int numRoomsInDepart, int numBath,
-                      double hostRate, boolean haveBalcony, int departOrder, HashMap<String, Boolean> services, List<String> urlsImage) {
+    public RoomDetailModel(int numRoomsInDepart, int numBath,
+                           double hostRate, boolean haveBalcony, int departOrder, HashMap<String, Boolean> services, List<String> urlsImage) {
         this.numRoomsInDepart = numRoomsInDepart;
         this.numBath = numBath;
         this.hostRate = hostRate;

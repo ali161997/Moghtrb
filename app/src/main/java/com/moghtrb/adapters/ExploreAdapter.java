@@ -30,7 +30,7 @@ import com.moghtrb.models.ShimmerProgress;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder> {
+public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.RoomViewHolder> {
     private static final String TAG = "RoomAdapter";
     private static RecyclerViewClickListener itemListener;
     final private Context ctx;
@@ -41,11 +41,11 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
     private Boolean isStudent;
     private List<ShimmerProgress> progresses;
 
-    public RoomAdapter(Context ctx, List<Room> roomList, RecyclerViewClickListener itemListener, Boolean isStudent) {
+    public ExploreAdapter(Context ctx, List<Room> roomList, RecyclerViewClickListener itemListener, Boolean isStudent) {
         this.ctx = ctx;
         this.roomList = roomList;
         progresses = new ArrayList<>(roomList.size());
-        RoomAdapter.itemListener = itemListener;
+        ExploreAdapter.itemListener = itemListener;
         this.isStudent = isStudent;
         displayMetrics = new DisplayMetrics();
         ((Activity) ctx).getWindowManager()
@@ -125,18 +125,17 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
         progresses.add(progress);
         try {
             roomViewHolder.imageView.getHierarchy().setProgressBarImage(progresses.get(i));
+            progresses.get(i).getFinished().observe((LifecycleOwner) roomViewHolder.imageView.getContext(), finished ->
+            {
+
+                if (finished) {
+                    roomViewHolder.shimmerFrameLayout.hideShimmer();
+                    roomViewHolder.shimmerFrameLayout.stopShimmer();
+                }
+            });
         } catch (Exception e) {
             Log.i(TAG, "onBindViewHolder: " + e.getMessage());
         }
-
-        progresses.get(i).getFinished().observe((LifecycleOwner) roomViewHolder.imageView.getContext(), finished ->
-        {
-
-            if (finished) {
-                roomViewHolder.shimmerFrameLayout.hideShimmer();
-                roomViewHolder.shimmerFrameLayout.stopShimmer();
-            }
-        });
 
 
     }

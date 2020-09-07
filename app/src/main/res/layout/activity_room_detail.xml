@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.moghtrb.activities.Book">
+    tools:context="com.moghtrb.activities.RoomDetail">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarBook"
@@ -188,10 +188,9 @@
 
                     <Spinner
                         android:id="@+id/roomOrderSpinner"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
                         android:padding="10dp"
                         android:spinnerMode="dialog"
                         android:theme="@style/ThemeOverlay.AppCompat.Light" />
@@ -243,29 +242,29 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/bed_details"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="10dp"
                     android:layout_marginStart="@dimen/view_parent_dimen"
-                    android:layout_marginEnd="@dimen/view_parent_dimen" />
+                    android:layout_marginEnd="@dimen/view_parent_dimen"
+                    android:layout_marginBottom="10dp" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:textSize="20sp"
+                    android:text="@string/hostComment"
                     android:textColor="@color/blue"
-                    android:text="@string/hostComment" />
+                    android:textSize="20sp" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:padding="15dp"
                     android:id="@+id/hostComment"
                     android:layout_width="match_parent"
-                    android:textSize="15sp"
-                    android:textColor="@color/gray"
-                    android:fontFamily="@font/heebo_medium"
-                    android:text="نساربنسبلارنبلارنلاسنبرلانسبلارنسبرلان"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="60dp"
-                    android:minLines="2" />
+                    android:fontFamily="@font/heebo_medium"
+                    android:minLines="2"
+                    android:padding="15dp"
+                    android:text="نساربنسبلارنبلارنلاسنبرلانسبلارنسبرلان"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp" />
 
 
             </LinearLayout>
@@ -274,48 +273,22 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <LinearLayout
-        android:id="@+id/linearRequest"
-        android:layout_width="match_parent"
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_go_confirmation"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:orientation="horizontal">
-
-        <ir.alirezabdn.wp7progress.WP10ProgressBar
-            android:id="@+id/pieProgress"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:background="@color/white"
-            android:visibility="gone"
-            app:animationDuration="2300"
-            app:indicatorColor="@color/blue"
-            app:indicatorHeight="7"
-            app:indicatorRadius="5"
-            app:interval="100" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_request_booking"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="@string/request_to_book"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:backgroundTint="@android:color/holo_red_dark"
-            app:elevation="0dp"
-            app:rippleColor="@color/gray" />
-
-
-    </LinearLayout>
-
-    <include layout="@layout/sheet_map" />
-
-    <include layout="@layout/sheet_when" />
+        android:layout_gravity="bottom|end"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:text="@string/go"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:backgroundTint="@android:color/holo_red_dark"
+        app:elevation="0dp"
+        app:rippleColor="@color/gray" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -10,7 +10,6 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -23,7 +22,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -40,12 +38,6 @@ import butterknife.OnClick;
 public class Payment extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
     private static final String TAG = "PaymentActivity";
-    @BindView(R.id.valueMonth)
-    TextView valueMonth; // سعر الشهر
-    @BindView(R.id.valuePreMonth)
-    TextView valuePreMonth; //مقدما
-    @BindView(R.id.valueServices)
-    TextView valueServices;
     @BindView(R.id.valueNet)
     TextView valueNet;
     @BindView(R.id.tvSend)
@@ -62,20 +54,12 @@ public class Payment extends AppCompatActivity implements View.OnClickListener, 
     EditText phoneEdit;
     @BindView(R.id.barPay)
     Toolbar barPay;
-    @BindView(R.id.valueCommission)
-    TextView valueCommission;
-    @BindView(R.id.costMonthTv)
-    TextView tvAmount;
     @BindView(R.id.valueMin)
     TextView valueMin;
     @BindView(R.id.appBarLog)
     AppBarLayout appBarPayment;
     @BindView(R.id.mobilesRadios)
     RadioGroup radioGroupMobiles;
-    @BindView(R.id.linearDetail)
-    LinearLayout linearDetail;
-    @BindView(R.id.tvDetails)
-    MaterialTextView tvDetails;
     private MutableLiveData<HashMap<String, String>> phoneNumbers;
     private MutableLiveData<String> indexNotification;
     private MutableLiveData<HashMap<String, String>> data;
@@ -93,19 +77,7 @@ public class Payment extends AppCompatActivity implements View.OnClickListener, 
         phoneNumbers = new MutableLiveData<>();
 
         data.observe(this, data -> {
-            if (data.get("type").equalsIgnoreCase("student")) {
-                valueMonth.setText(data.get("month"));
-                tvAmount.setText(getString(R.string.cost_per_month));
-                valuePreMonth.setText(data.get("advance"));
-                valueServices.setText(data.get("services"));
-
-            } else {
-                valueMonth.setText(data.get("dayCost"));
-                tvAmount.setText(getString(R.string.cost_per_day));
-            }
-
             valueNet.setText(data.get("total"));
-            valueCommission.setText(data.get("commission"));
             valueMin.setText(data.get("min"));
 
         });
@@ -214,11 +186,6 @@ public class Payment extends AppCompatActivity implements View.OnClickListener, 
                     Toast.makeText(this, "Check first", Toast.LENGTH_SHORT).show();
                 else copyPhoneToClip();
                 break;
-            case R.id.tvDetails:
-                if (linearDetail.getVisibility() == View.VISIBLE)
-                    extend(false);
-                else extend(true);
-                break;
 
         }
     }
@@ -305,15 +272,5 @@ public class Payment extends AppCompatActivity implements View.OnClickListener, 
                 .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> {
 
                 }).show();
-    }
-
-    private void extend(boolean extended) {
-        if (extended) {
-            tvDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_arrow_drop_up_24, 0);
-            linearDetail.setVisibility(View.VISIBLE);
-        } else {
-            linearDetail.setVisibility(View.GONE);
-            tvDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down, 0);
-        }
     }
 }

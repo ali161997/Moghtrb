@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.OneCategoryService"></activity>
+        <activity android:name=".activities.ConfirmRequest"></activity>
+        <activity android:name=".activities.OneCategoryService" />
         <activity android:name=".activities.MultipleCategoryService" />
         <activity
             android:name=".activities.Help"
@@ -62,13 +63,14 @@
         <activity
             android:name=".activities.Profile"
             android:configChanges="locale|orientation"
+            android:parentActivityName=".activities.Home"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.ReferHost"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.Book"
+            android:name=".activities.RoomDetail"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity

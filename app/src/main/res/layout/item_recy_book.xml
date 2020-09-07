@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/tools">
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerImgBook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:shimmer_auto_start="true"
+        app:shimmer_base_alpha=".7"
+        app:shimmer_colored="false"
+        app:shimmer_direction="left_to_right"
+        app:shimmer_highlight_alpha="1"
+        app:shimmer_highlight_color="#8F8787"
+        app:shimmer_repeat_mode="restart">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/imageBook"
+            fresco:placeholderImage="@drawable/place_holder"
+            fresco:retryImage="@drawable/ic_refresh_black_24dp"
+            fresco:roundedCornerRadius="10dp"
+            fresco:roundingBorderWidth="2dp"
+            android:layout_width="@dimen/imageWidthDetail"
+            android:layout_height="@dimen/imageHeightDetail"
+            android:layout_marginEnd="5dp"
+            android:background="@color/gray"
+            app:progressBarAutoRotateInterval="500" />
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+</RelativeLayout>

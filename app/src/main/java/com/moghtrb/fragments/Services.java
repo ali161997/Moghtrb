@@ -45,6 +45,8 @@ public class Services extends Fragment {
         recyclerView = getView().findViewById(R.id.servicesRecycler);
         setUpRecycler();
         mViewModel = new ViewModelProvider(getActivity()).get(ServicesViewModel.class);
+        mViewModel.setCtx(getActivity());
+        mViewModel.prepareList();
         mViewModel.getList().observe(getViewLifecycleOwner(), list -> {
             servicesAdapter = new ServicesAdapter(getActivity(), list);
             recyclerView.setAdapter(servicesAdapter);
@@ -60,4 +62,5 @@ public class Services extends Fragment {
         recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(10));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
+
 }

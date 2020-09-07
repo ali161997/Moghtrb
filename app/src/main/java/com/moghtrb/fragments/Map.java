@@ -53,7 +53,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.moghtrb.Interfaces.IOnBackPressed;
 import com.moghtrb.R;
-import com.moghtrb.activities.Book;
+import com.moghtrb.activities.RoomDetail;
 import com.moghtrb.adapters.RoomAdapterMap;
 import com.moghtrb.models.MyLatLong;
 import com.moghtrb.models.VerticalSpaceItemDecoration;
@@ -343,7 +343,7 @@ public class Map extends Fragment implements
     @Override
     public void recyclerViewListClicked(View v, int position) {
 
-        Intent intent = new Intent(getActivity(), Book.class);
+        Intent intent = new Intent(getActivity(), RoomDetail.class);
         intent.putExtra("roomId", mapViewModel.getListRooms().getValue().get(position).getRoomId());
         intent.putExtra("type", "foreigner");
         intent.putExtra("numGuests", 1);

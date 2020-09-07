@@ -196,7 +196,7 @@ public class CreateAccount extends AppCompatActivity implements RadioGroup.OnChe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_createaccount);
+        setContentView(R.layout.activity_create_account);
         ButterKnife.bind(this);
         newUser = new HashMap<>();
         db = FirebaseFirestore.getInstance();

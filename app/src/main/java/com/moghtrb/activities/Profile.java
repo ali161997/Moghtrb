@@ -1,5 +1,6 @@
 package com.moghtrb.activities;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -94,7 +95,14 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
         InitializeVariables();
-        toolbarEdit.setNavigationOnClickListener(view -> onBackPressed());
+        toolbarEdit.setNavigationOnClickListener(view -> {
+            if (isTaskRoot()) {
+                startActivity(new Intent(Profile.this, Home.class));
+                finish();
+            } else {
+                super.onBackPressed();
+            }
+        });
         //  try {
 
         updateUser = new HashMap<>();

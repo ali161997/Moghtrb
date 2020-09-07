@@ -19,17 +19,20 @@ import com.google.android.material.textview.MaterialTextView;
 import com.moghtrb.R;
 import com.moghtrb.models.ServiceInfoModel;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ItemsViewHolder> {
     private static final String TAG = "ProfileAdapter";
     final private Context ctx;
     final private List<ServiceInfoModel> list;
+    private HashMap<String, HashMap<String, Object>> updates;
 
 
     public InfoAdapter(Context ctx, List<ServiceInfoModel> List) {
         this.ctx = ctx;
         this.list = List;
+        updates = new HashMap<>();
 
 
     }
@@ -84,6 +87,10 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ItemsViewHolde
 
     }
 
+    public HashMap<String, HashMap<String, Object>> getUpdateMap() {
+        return updates;
+    }
+
 
     public class ItemsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         MaterialTextView tvName;
@@ -111,8 +118,19 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ItemsViewHolde
             locationBtn.setOnClickListener(this);
             dialBtn.setOnClickListener(this);
             itemView.setOnClickListener(this);
+            likeBtn.setOnTouchListener((v, event) -> {
+
+                return false;
+            });
 
 
+        }
+
+        private void updateDoc() {
+            HashMap<String, Object> keys = new HashMap<>();
+            keys.put("likes", list.get(getLayoutPosition()).getLikes());
+            keys.put("disLikes", list.get(getLayoutPosition()).getDisLikes());
+            updates.put(list.get(getLayoutPosition()).getDocID(), keys);
         }
 
 
@@ -121,43 +139,71 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ItemsViewHolde
             Log.i(TAG, "onClick: clicked" + this.getLayoutPosition());
             switch (v.getId()) {
                 case R.id.btnLike:
-                    Toast.makeText(ctx, "like", Toast.LENGTH_SHORT).show();
+                    if (likeBtn.isSelected()) {
+                        likeBtn.setSelected(false);
+                        list.get(getLayoutPosition()).setLikes(list.get(getLayoutPosition()).getLikes() - 1);
+                    } else {
+                        likeBtn.setSelected(true);
+                        list.get(getLayoutPosition()).setLikes(list.get(getLayoutPosition()).getLikes() + 1);
+                        if (disLikeBtn.isSelected()) {
+                            disLikeBtn.setSelected(false);
+                            list.get(getLayoutPosition()).setDisLikes(list.get(getLayoutPosition()).getDisLikes() - 1);
+                        }
+
+                    }
+                    updateDoc();
+                    notifyDataSetChanged();
                     break;
                 case R.id.btnDisLike:
-                    Toast.makeText(ctx, "dislike", Toast.LENGTH_SHORT).show();
+                    if (disLikeBtn.isSelected()) {
+                        disLikeBtn.setSelected(false);
+                        list.get(getLayoutPosition()).setDisLikes(list.get(getLayoutPosition()).getDisLikes() - 1);
+                    } else {
+                        disLikeBtn.setSelected(true);
+                        list.get(getLayoutPosition()).setDisLikes(list.get(getLayoutPosition()).getDisLikes() + 1);
+                        if (likeBtn.isSelected()) {
+                            likeBtn.setSelected(false);
+                            list.get(getLayoutPosition()).setLikes(list.get(getLayoutPosition()).getLikes() - 1);
+                        }
+
+                    }
+                    updateDoc();
+                    notifyDataSetChanged();
+
                     break;
 
                 case R.id.infoLocation:
-                    goToMapActivity(getLayoutPosition());
+                    goToMapActivity();
                     break;
                 case R.id.btnDial:
-                    goToDialer(getLayoutPosition());
+                    goToDialer();
                     break;
 
             }
 
         }
 
-        private void goToDialer(int position) {
-            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + list.get(position).getPhone()));
+        private void goToDialer() {
+            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + list.get(getLayoutPosition()).getPhone()));
             ctx.startActivity(intent);
         }
 
-        private void goToMapActivity(int position) {
+        private void goToMapActivity() {
             try {
-                String ur = String.format("geo:%s,%s", list.get(position).getLocation().getLat(), list.get(position).getLocation().getLon());
+                String ur = String.format("geo:%s,%s", list.get(getLayoutPosition()).getLocation().getLat(), list.get(getLayoutPosition()).getLocation().getLon());
                 Uri gmmIntentUri = Uri.parse(ur);
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 if (mapIntent.resolveActivity(ctx.getPackageManager()) != null) {
 
                     ctx.startActivity(mapIntent);
-                } else Toast.makeText(ctx, "you should install google map app", Toast.LENGTH_LONG);
+                } else
+                    Toast.makeText(ctx, "you should install google map app", Toast.LENGTH_LONG);
             } catch (Exception e) {
                 Toast.makeText(ctx, "Error occurred", Toast.LENGTH_LONG);
             }
         }
 
-
     }
+
 }

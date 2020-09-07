@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.moghtrb.R;
-import com.moghtrb.activities.Book;
+import com.moghtrb.activities.RoomDetail;
 import com.moghtrb.models.BookingsModel;
 
 import java.util.List;
@@ -135,7 +135,7 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.Bookin
         @Override
         public void onClick(View v) {
             if (v.getId() == R.id.goToRoom) {
-                Intent intent = new Intent(ctx, Book.class);
+                Intent intent = new Intent(ctx, RoomDetail.class);
                 intent.putExtra("roomId", bookingsList.get(getLayoutPosition()).getRoomId());
                 ctx.startActivity(intent);
             } else if (v.getId() == R.id.expand) {

@@ -55,8 +55,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textview.MaterialTextView;
 import com.moghtrb.Interfaces.IOnBackPressed;
 import com.moghtrb.R;
-import com.moghtrb.activities.Book;
-import com.moghtrb.adapters.RoomAdapter;
+import com.moghtrb.activities.RoomDetail;
+import com.moghtrb.adapters.ExploreAdapter;
 import com.moghtrb.models.HostID;
 import com.moghtrb.models.StudentTime;
 import com.moghtrb.models.VerticalSpaceItemDecoration;
@@ -76,7 +76,7 @@ import butterknife.OnItemSelected;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
-public class Explore extends Fragment implements RoomAdapter.RecyclerViewClickListener,
+public class Explore extends Fragment implements ExploreAdapter.RecyclerViewClickListener,
         SwipeRefreshLayout.OnRefreshListener, View.OnClickListener,
         RadioGroup.OnCheckedChangeListener,
         Spinner.OnItemSelectedListener,
@@ -162,7 +162,6 @@ public class Explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
     TextView textSearch;
     @BindView(R.id.bottomProgressBar)
     ProgressBar bottomProgress;
-
     MaterialDatePicker<Pair<Long, Long>> materialDatePicker;
     MaterialDatePicker.Builder datePickerBuilder;
     Calendar myCalender;
@@ -173,6 +172,7 @@ public class Explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
     ShimmerFrameLayout shimmerWhen;
     @BindView(R.id.shimmer_filter)
     ShimmerFrameLayout shimmerFilter;
+    private long numDays;
     //------------------------
     private ArrayAdapter<String> adapterCity;
     private ArrayAdapter<String> adapterFaculties;
@@ -189,7 +189,7 @@ public class Explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
     private View studentView;
     private View foreignerView;
     //Recycler View Home Fields
-    private RoomAdapter roomAdapter;
+    private ExploreAdapter roomAdapter;
     //View Models
     private ExploreViewModel viewModelExplore;
     private Intent intent;
@@ -275,9 +275,9 @@ public class Explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
             if (roomAdapter == null) {
 
                 if (viewModelExplore.getStudent().getValue())
-                    roomAdapter = new RoomAdapter(getContext(), roomList, this, true);
+                    roomAdapter = new ExploreAdapter(getContext(), roomList, this, true);
                 else
-                    roomAdapter = new RoomAdapter(getContext(), roomList, this, false);
+                    roomAdapter = new ExploreAdapter(getContext(), roomList, this, false);
                 ExploreRecyclerHome.setAdapter(roomAdapter);
             } else if (lastIndex == 0)
                 roomAdapter.notifyDataSetChanged();
@@ -366,7 +366,7 @@ public class Explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         viewModelExplore = new ViewModelProvider(getActivity()).get(ExploreViewModel.class);
         viewModelExplore.setContext(getApplicationContext());
         lang = getResources().getConfiguration().locale.getLanguage();
-        intent = new Intent(getActivity(), Book.class);
+        intent = new Intent(getActivity(), RoomDetail.class);
     }
 
     @Override
@@ -419,6 +419,8 @@ public class Explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         else intent.putExtra("type", "Foreigner");
         try {
             intent.putExtra("dates", viewModelExplore.getDates().getValue());
+            intent.putExtra("days", numDays);
+
         } catch (Exception e) {
             Log.i(TAG, "recyclerViewListClicked: " + e.getMessage());
         }
@@ -448,6 +450,8 @@ public class Explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         datePickerBuilder.setTitleText("select Dates");
         materialDatePicker = datePickerBuilder.build();
         materialDatePicker.addOnPositiveButtonClickListener(selection -> {
+            numDays = materialDatePicker.getSelection().second - materialDatePicker.getSelection().first;
+            Log.i(TAG, "initPicker: " + numDays);
             checkInDate.setText(getMilli(materialDatePicker.getSelection().first));
             checkOutDate.setText(getMilli(materialDatePicker.getSelection().second));
 
@@ -457,6 +461,7 @@ public class Explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
 
     private String getMilli(Long date) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
         return formatter.format(new Date(date));
     }
 
@@ -486,7 +491,7 @@ public class Explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
         ExploreRecyclerHome.setLayoutManager(new LinearLayoutManager(getActivity()));
         ExploreRecyclerHome.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
         ExploreRecyclerHome.setItemAnimator(new DefaultItemAnimator());
-        roomAdapter = new RoomAdapter(getContext(), viewModelExplore.getRooms().getValue(), this, true);
+        roomAdapter = new ExploreAdapter(getContext(), viewModelExplore.getRooms().getValue(), this, true);
         ExploreRecyclerHome.setAdapter(roomAdapter);
         ExploreRecyclerHome.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -638,7 +643,7 @@ public class Explore extends Fragment implements RoomAdapter.RecyclerViewClickLi
                 } else resultTv.setVisibility(View.VISIBLE);
                 SwipeRefreshHome.setRefreshing(false);
                 viewModelExplore.getMakeRefresh().setValue(false);
-            }, 5000);
+            }, 3000);
         }
 
 

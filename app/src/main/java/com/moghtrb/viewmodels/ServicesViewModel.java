@@ -22,7 +22,7 @@ public class ServicesViewModel extends ViewModel {
     public ServicesViewModel() {
         list = new MutableLiveData<>(new ArrayList<>());
         ctx = new MutableLiveData<>();
-        prepareList();
+
     }
 
     public void setCtx(Context ctx) {
@@ -38,14 +38,15 @@ public class ServicesViewModel extends ViewModel {
         this.list = list;
     }
 
-    private void prepareList() {
-        ServicesModel model1 = new ServicesModel("HomeMade Food", R.drawable.ic_cooking);
-        ServicesModel model2 = new ServicesModel("Laundry", R.drawable.ic_electrical_appliance);
-        ServicesModel model3 = new ServicesModel("Cleaners", R.drawable.ic_cleaners);
-        ServicesModel model4 = new ServicesModel("Restaurants", R.drawable.ic_baseline_fastfood_24);
-        ServicesModel model5 = new ServicesModel("Coffee shop", R.drawable.ic_coffee_breaks);
-        ServicesModel model6 = new ServicesModel("Football Stade", R.drawable.ic_football_field);
-        ServicesModel model7 = new ServicesModel("Taxi Drivers", R.drawable.ic_baseline_local_taxi_24);
+    public void prepareList() {
+        list = new MutableLiveData<>(new ArrayList<>());
+        ServicesModel model1 = new ServicesModel(ctx.getValue().getResources().getString(R.string.homeMade), R.drawable.ic_cooking);
+        ServicesModel model2 = new ServicesModel(ctx.getValue().getResources().getString(R.string.laundry), R.drawable.ic_electrical_appliance);
+        ServicesModel model3 = new ServicesModel(ctx.getValue().getResources().getString(R.string.cleaners), R.drawable.ic_cleaners);
+        ServicesModel model4 = new ServicesModel(ctx.getValue().getResources().getString(R.string.restaurants), R.drawable.ic_baseline_fastfood_24);
+        ServicesModel model5 = new ServicesModel(ctx.getValue().getResources().getString(R.string.coffee), R.drawable.ic_coffee_breaks);
+        ServicesModel model6 = new ServicesModel(ctx.getValue().getResources().getString(R.string.football), R.drawable.ic_football_field);
+        ServicesModel model7 = new ServicesModel(ctx.getValue().getResources().getString(R.string.taxi), R.drawable.ic_baseline_local_taxi_24);
 
 
         list.getValue().add(model1);

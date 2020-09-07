@@ -84,6 +84,7 @@
             android:id="@+id/likesCounterTv"
             android:layout_margin="10dp"
             android:layout_width="0dp"
+
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:text="10"
@@ -92,26 +93,25 @@
             android:layout_height="wrap_content" />
 
         <com.google.android.material.button.MaterialButton
-            style="@style/IconOnlyButton"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             app:strokeWidth="0dp"
+            style="@style/IconOnlyButton"
+            app:icon="@drawable/ic_like_not_selected"
+            app:iconTint="@color/like_button_color_states"
             android:layout_marginEnd="20dp"
             android:layout_marginVertical="10dp"
-            android:layout_height="30dp"
-            app:icon="@drawable/ic_like"
-            android:id="@+id/btnLike"
-            app:iconTint="@color/gray" />
+            android:layout_height="40dp"
+            android:id="@+id/btnLike" />
 
         <com.google.android.material.button.MaterialButton
             style="@style/IconOnlyButton"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             app:strokeWidth="0dp"
             android:id="@+id/btnDisLike"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="7dp"
-            android:layout_height="30dp"
-            app:icon="@drawable/ic_dislike"
-            app:iconTint="@color/gray" />
+            android:layout_height="40dp"
+            app:icon="@drawable/ic_dislike_not_selected"
+            app:iconTint="@color/like_button_color_states" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/disLikesCounterTv"

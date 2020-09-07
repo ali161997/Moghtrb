@@ -5,38 +5,38 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.moghtrb.models.MyLatLong;
 import com.moghtrb.models.Room;
-import com.moghtrb.models.RoomDetail;
+import com.moghtrb.models.RoomDetailModel;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-public class BookViewModel extends ViewModel {
+public class RoomDetailViewModel extends ViewModel {
     private static final String TAG = "booking_view_model";
     private MutableLiveData<Room> roomIn;
-    private FirebaseFirestore db;
-    private MutableLiveData<RoomDetail> roomDetail;
+    private MutableLiveData<RoomDetailModel> roomDetail;
     private MutableLiveData<String> roomId;
-    private MutableLiveData<Boolean> completed;
-    private MutableLiveData<Integer> numGuests;
     private MutableLiveData<Integer> totalPlacesAvailable;
     private MutableLiveData<String> Date;
     private MutableLiveData<String> type;
+    private MutableLiveData<Integer> numGuests;
     private MutableLiveData<List<String>> keysFloors;
     private MutableLiveData<List<Integer>> valuesFloors;
     private MutableLiveData<String> selectedFloor;
+    private MutableLiveData<List<String>> listImgs;
+    private MutableLiveData<Integer> numDays;
+    private FirebaseFirestore db;
 
-    public BookViewModel() {
+    public RoomDetailViewModel() {
         roomIn = new MutableLiveData<>();
+        numDays = new MutableLiveData<>();
         selectedFloor = new MutableLiveData<>();
         totalPlacesAvailable = new MutableLiveData<>(3);
         roomId = new MutableLiveData<>();
@@ -44,10 +44,36 @@ public class BookViewModel extends ViewModel {
         numGuests = new MutableLiveData<>(1);
         Date = new MutableLiveData<>();
         type = new MutableLiveData<>();
-        completed = new MutableLiveData<>();
         keysFloors = new MutableLiveData<>();
         valuesFloors = new MutableLiveData<>();
+        listImgs = new MutableLiveData<>(new ArrayList<>());
         db = FirebaseFirestore.getInstance();
+    }
+
+    public MutableLiveData<Integer> getNumDays() {
+        return numDays;
+    }
+
+    public void setNumDays(Integer numDays) {
+        this.numDays.setValue(numDays);
+    }
+
+    public MutableLiveData<String> getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(String hostId) {
+        this.roomId.setValue(hostId);
+        getRoomFromDatabase();
+        getRoomDetailFromDatabase();
+    }
+
+    public MutableLiveData<List<String>> getListImgs() {
+        return listImgs;
+    }
+
+    public void setListImgs(MutableLiveData<List<String>> listImgs) {
+        this.listImgs = listImgs;
     }
 
     public MutableLiveData<String> getSelectedFloor() {
@@ -96,6 +122,10 @@ public class BookViewModel extends ViewModel {
         return Date;
     }
 
+    public void setDate(MutableLiveData<String> date) {
+        Date = date;
+    }
+
     public void setDate(String date) {
         Date.setValue(date);
     }
@@ -106,12 +136,6 @@ public class BookViewModel extends ViewModel {
 
     public void setType(String type) {
         this.type.setValue(type);
-    }
-
-    public void setRoomId(String hostId) {
-        this.roomId.setValue(hostId);
-        getRoomFromDatabase();
-        getRoomDetailFromDatabase();
     }
 
     private void prepareKeyFloors(HashMap<String, Integer> map) {
@@ -130,25 +154,8 @@ public class BookViewModel extends ViewModel {
             if (task.isSuccessful()) {
                 DocumentSnapshot d = task.getResult();
                 if (d.exists()) {
-                    Room room = new Room();
-                    room.setPrice(d.getDouble("price"));
-                    room.setRate(d.getLong("rate").intValue());
-                    room.setNum_reviews(d.getLong("num_reviews").intValue());
-                    room.setEnAddress(d.get("enAddress").toString());
-                    room.setTotalBeds(d.getLong("totalBeds").intValue());
-                    room.setHostId(d.get("hostId").toString());
-                    room.setUrlImage1(d.get("urlImage1").toString());
-                    room.setDepartId(d.get("departId").toString());
-                    room.setRoomId(d.get("roomId").toString());
-                    room.setArAddress(d.get("arAddress").toString());
-
-                    HashMap<String, Double> latlong = (HashMap<String, Double>) d.get("latLng");
-                    room.setLatLng(new MyLatLong(latlong.get("lat"), latlong.get("lon")));
-                    Log.i(TAG, "getRoomFromDatabase: " + latlong.get("lat") + "" + latlong.get("lon"));
-                    room.setGender(d.get("gender").toString());
-                    room.setCityIndex(d.getLong("cityIndex").intValue());
-                    room.setRegionIndex(d.getLong("regionIndex").intValue());
-                    roomIn.setValue(room);
+                    listImgs.getValue().add(d.get("urlImage1").toString());
+                    roomIn.setValue(setRoom(d));
                     Log.d(TAG, "DocumentSnapshot data: " + d.getData());
                 } else {
                     Log.d(TAG, "No such document");
@@ -165,18 +172,13 @@ public class BookViewModel extends ViewModel {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    RoomDetail roomDetail1 = new RoomDetail();
-                    roomDetail1.setNumRoomsInDepart(document.getLong("numRoomsInDepart").intValue());
-                    roomDetail1.setNumBath(document.getLong("numBath").intValue());
-                    roomDetail1.setHaveBalcony(document.getBoolean("haveBalcony"));
-                    roomDetail1.setHostRate(document.getDouble("hostRate"));
-                    roomDetail1.setFloors((HashMap<String, Integer>) document.get("floor"));
-                    prepareKeyFloors(roomDetail1.getFloors());
-                    prepareValuesFloors(roomDetail1.getFloors());
-                    roomDetail1.setServices(((HashMap<String, Boolean>) document.get("services")));
-                    roomDetail1.setUrlsImage((ArrayList<String>) document.get("urlsImage"));
-                    roomDetail1.setHostComment(document.getString("hostComment"));
-                    roomDetail.setValue(roomDetail1);
+                    List<String> temp = (ArrayList<String>) document.get("urlsImage");
+                    for (String e : temp
+                    ) {
+                        listImgs.getValue().add(e);
+
+                    }
+                    roomDetail.setValue(setRoomDetail(document));
 
                     Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                 } else {
@@ -188,32 +190,50 @@ public class BookViewModel extends ViewModel {
         });
     }
 
-    public MutableLiveData<RoomDetail> getRoomDetail() {
+    private Room setRoom(DocumentSnapshot d) {
+        Room room = new Room();
+        room.setPrice(d.getDouble("price"));
+        room.setRate(d.getLong("rate").intValue());
+        room.setNum_reviews(d.getLong("num_reviews").intValue());
+        room.setEnAddress(d.get("enAddress").toString());
+        room.setTotalBeds(d.getLong("totalBeds").intValue());
+        room.setHostId(d.get("hostId").toString());
+
+        room.setDepartId(d.get("departId").toString());
+        room.setRoomId(d.get("roomId").toString());
+        room.setArAddress(d.get("arAddress").toString());
+
+        HashMap<String, Double> latlong = (HashMap<String, Double>) d.get("latLng");
+        room.setLatLng(new MyLatLong(latlong.get("lat"), latlong.get("lon")));
+        Log.i(TAG, "getRoomFromDatabase: " + latlong.get("lat") + "" + latlong.get("lon"));
+        room.setGender(d.get("gender").toString());
+        room.setCityIndex(d.getLong("cityIndex").intValue());
+        room.setRegionIndex(d.getLong("regionIndex").intValue());
+        return room;
+    }
+
+    private RoomDetailModel setRoomDetail(DocumentSnapshot document) {
+        RoomDetailModel roomDetail1 = new RoomDetailModel();
+        roomDetail1.setNumRoomsInDepart(document.getLong("numRoomsInDepart").intValue());
+        roomDetail1.setNumBath(document.getLong("numBath").intValue());
+        roomDetail1.setHaveBalcony(document.getBoolean("haveBalcony"));
+        roomDetail1.setHostRate(document.getDouble("hostRate"));
+        roomDetail1.setFloors((HashMap<String, Integer>) document.get("floor"));
+        prepareKeyFloors(roomDetail1.getFloors());
+        prepareValuesFloors(roomDetail1.getFloors());
+        roomDetail1.setServices(((HashMap<String, Boolean>) document.get("services")));
+
+        roomDetail1.setHostComment(document.getString("hostComment"));
+        return roomDetail1;
+
+    }
+
+    public MutableLiveData<RoomDetailModel> getRoomDetail() {
         return roomDetail;
     }
 
     public MutableLiveData<Room> getRoom() {
         return roomIn;
-    }
-
-    public MutableLiveData<Boolean> sendRequest(String userId) {
-        Map<String, Object> request = new HashMap<>();
-        Timestamp timestamp = Timestamp.now();
-        request.put("roomId", roomId.getValue());
-        request.put("userId", userId);
-        request.put("timeRequest", timestamp);
-        request.put("type", type.getValue());
-        request.put("numGuests", numGuests.getValue());
-        request.put("dates", Date.getValue());
-        request.put("roomOrder", selectedFloor.getValue());
-        db.collection("Requests").document()
-                .set(request)
-                .addOnSuccessListener(aVoid -> {
-                    completed.setValue(true);
-                })
-                .addOnFailureListener(e -> completed.setValue(false));
-
-        return completed;
     }
 
 

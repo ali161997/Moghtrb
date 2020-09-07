@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -301,63 +300,6 @@
 
     ""
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:paddingVertical="10dp"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/iconLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:drawableStart="@drawable/ic_mapicon"
-            android:gravity="center"
-            android:padding="10dp" />
-
-        <TextView
-            android:id="@+id/locationText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/iconLocation"
-            android:fontFamily="@font/heebo_thin"
-            android:maxLines="1"
-            android:text="@string/room"
-            android:textColor="@color/Black"
-            android:textSize="17sp"
-
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/locationText"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/iconLocation"
-            android:maxLines="1"
-            android:text="@string/location"
-            android:textColor="@color/gray"
-            android:textSize="12sp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/locationBtn"
-            style="@style/IconOnlyButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            app:icon="@drawable/ic_location"
-            app:iconGravity="end"
-            app:iconPadding="0dp"
-            app:iconTint="@color/blue"
-            app:rippleColor="@color/gray"
-            app:strokeWidth="0dp" />
-
-
-    </RelativeLayout>
 
     ""
 
