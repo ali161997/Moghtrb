@@ -408,7 +408,10 @@ public class Explore extends Fragment implements ExploreAdapter.RecyclerViewClic
             Log.i(TAG, "onViewCreated: hostId" + HostID.getInstance().getHostId());
             HostID.getInstance().setHostId(null);
         }
+
+
     }
+
 
     @Override
     public void recyclerViewListClicked(View v, int position) {
@@ -570,6 +573,7 @@ public class Explore extends Fragment implements ExploreAdapter.RecyclerViewClic
 
     }
 
+
     private void sheetsCallbacks() {
         whereSheet.addBottomSheetCallback(new BottomSheetCallback() {
             @Override
@@ -643,7 +647,7 @@ public class Explore extends Fragment implements ExploreAdapter.RecyclerViewClic
                 } else resultTv.setVisibility(View.VISIBLE);
                 SwipeRefreshHome.setRefreshing(false);
                 viewModelExplore.getMakeRefresh().setValue(false);
-            }, 3000);
+            }, 2000);
         }
 
 

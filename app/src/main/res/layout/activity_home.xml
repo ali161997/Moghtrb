@@ -2,11 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:id="@+id/homeLayout"
     android:background="@color/white"
+    android:fitsSystemWindows="true"
     tools:context="com.moghtrb.activities.Home">
 
 
@@ -17,29 +17,29 @@
         android:text="@string/title_explore" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
         android:id="@+id/cord_home"
-        android:outlineSpotShadowColor="@color/Black"
-        android:elevation="10dp"
-        android:layout_margin="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:fitsSystemWindows="true"
+        android:layout_margin="2dp"
         android:background="@drawable/rounded_bottom"
+        android:elevation="10dp"
+        android:fitsSystemWindows="true"
         android:outlineAmbientShadowColor="@color/Black"
-        android:layout_height="wrap_content">
+        android:outlineSpotShadowColor="@color/Black">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation"
-            android:background="@color/explore_card_bck"
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottomNavigationHeight"
-            android:fitsSystemWindows="true"
             android:animateLayoutChanges="false"
             android:animationCache="false"
+            android:background="@color/explore_card_bck"
+            android:fitsSystemWindows="true"
             android:focusableInTouchMode="false"
-            app:itemTextAppearanceActive="@style/MenuItem"
             android:textAlignment="center"
             app:itemIconTint="@color/icon_selected_in_bottom_nav"
+            app:itemTextAppearanceActive="@style/MenuItem"
             app:itemTextColor="@color/icon_selected_in_bottom_nav"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_nav_menu" />

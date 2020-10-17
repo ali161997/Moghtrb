@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="@color/white"
+    android:fitsSystemWindows="true"
     tools:context="com.moghtrb.activities.CreateAccount">
 
     <ProgressBar
@@ -24,8 +24,8 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarCreate"
-            android:layout_width="match_parent"
             style="@style/toolBarCollapsed"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/toolBarHeight"
             app:navigationIcon="@drawable/arrow_back">
 
@@ -160,10 +160,10 @@
                 app:boxStrokeColor="@color/gray"
                 app:boxStrokeWidth="1dp"
                 app:hintAnimationEnabled="true"
-                app:passwordToggleTintMode="multiply"
                 app:passwordToggleDrawable="@drawable/ic_remove_red_eye_black_24dp"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/Black">
+                app:passwordToggleTint="@color/Black"
+                app:passwordToggleTintMode="multiply">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/type_password_signup"
@@ -175,6 +175,7 @@
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <RadioGroup
                 android:id="@+id/radio_gender_signup"
                 style="@style/Widget.AppCompat.CompoundButton.RadioButton"
@@ -279,13 +280,13 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/date_picker_signup"
                 style="@style/blueButtonStyle"
-                app:icon="@drawable/ic_calender"
                 android:layout_marginTop="20dp"
-                app:iconGravity="end"
-                android:textAlignment="viewStart"
                 android:text="@string/birth_date"
+                android:textAlignment="viewStart"
                 android:textColor="@color/white"
-                app:backgroundTint="@color/gray" />
+                app:backgroundTint="@color/gray"
+                app:icon="@drawable/ic_calender"
+                app:iconGravity="end" />
 
 
             <com.google.android.material.button.MaterialButton

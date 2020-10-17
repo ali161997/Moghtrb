@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.IntentSender;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -22,10 +23,17 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.moghtrb.Interfaces.IOnBackPressed;
 import com.moghtrb.R;
 import com.moghtrb.fragments.Explore;
 import com.moghtrb.fragments.Inbox;
@@ -41,8 +49,12 @@ import static androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE;
 public class Home extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "home_explore";
+    private static final int HIGH_PRIORITY_UPDATE = 5;
+    private static final int MY_REQUEST_CODE = 777;
     public static String dataFrom = "";
     public static Activity that;
+    AppUpdateManager appUpdateManager;
+    Task<AppUpdateInfo> appUpdateInfoTask;
     BottomNavigationView navigation;
     Intent intentFrom;
     private HomeViewModel viewModel;
@@ -128,10 +140,33 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
                     } else Log.i(TAG, "onComplete: Subscribed completed");
 
                 });
+        //check if update available
+        appUpdateManager = AppUpdateManagerFactory.create(this);
+        appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+        // Checks that the platform will allow the specified type of update.
+        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                    && appUpdateInfo.updatePriority() >= HIGH_PRIORITY_UPDATE
+                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+                try {
+                    appUpdateManager.startUpdateFlowForResult(
+                            // Pass the intent that is returned by 'getAppUpdateInfo()'.
+                            appUpdateInfo,
+                            // Or 'AppUpdateType.FLEXIBLE' for flexible updates.
+                            AppUpdateType.IMMEDIATE,
+                            // The current activity making the update request.
+                            this,
+                            // Include a request code to later monitor this update request.
+                            MY_REQUEST_CODE);
+                } catch (IntentSender.SendIntentException e) {
+                    e.printStackTrace();
+                }
+            } else Log.i(TAG, "onResume: not available " + appUpdateInfo.availableVersionCode());
+
+        });
 
 
     }
-
 //    @Override
 //    public void onBackPressed() {
 //        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
@@ -170,12 +205,19 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
             case R.id.more_id:
                 viewFragment(new More(), "Fragment_other");
                 viewModel.setFragment_Selected(new More());
-
                 return true;
         }
 
         return false;
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (!(fragment instanceof IOnBackPressed) || !((IOnBackPressed) fragment).onBackPressed()) {
+            super.onBackPressed();
+        }
     }
 
     private void viewFragment(Fragment fragment, String name) {
@@ -201,6 +243,7 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
                     // pop all the fragment and remove the listener
                     fragmentManager.popBackStack("Fragment_other", POP_BACK_STACK_INCLUSIVE);
                     fragmentManager.removeOnBackStackChangedListener(this);
+
                     viewFragment(new Explore(), "FRAGMENT_HOME");
                     // set the home button selected
                     navigation.getMenu().getItem(0).setChecked(true);

@@ -20,7 +20,7 @@
             android:layout_width="250dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            android:background="@drawable/intro"
+            android:background="@mipmap/intro"
             android:elevation="0dp"
             android:shadowColor="@color/zxing_transparent" />
 

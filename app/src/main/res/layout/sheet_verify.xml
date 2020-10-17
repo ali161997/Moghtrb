@@ -39,11 +39,11 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
             android:elevation="5dp"
+            android:focusedByDefault="false"
             android:fontFamily="@font/heebo_medium"
             android:hint="@string/hint_phone_number"
             android:textColorHint="@color/gray"
             android:textSize="20sp"
-            android:focusedByDefault="false"
             app:boxStrokeColor="@color/gray"
             app:boxStrokeWidth="1dp"
             app:hintAnimationEnabled="true">
@@ -64,11 +64,11 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editCodeSheet"
-            android:focusedByDefault="false"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="5dp"
+            android:focusedByDefault="false"
             android:fontFamily="@font/heebo_medium"
             android:hint="@string/hint_verification_code"
             android:textColorHint="@color/gray"

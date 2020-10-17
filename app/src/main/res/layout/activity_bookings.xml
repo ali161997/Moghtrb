@@ -8,38 +8,38 @@
     tools:context="com.moghtrb.activities.Bookings">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
         android:id="@+id/appBarCap"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
             android:id="@+id/toolbarBookings"
             style="@style/toolBarCollapsed"
-            app:navigationIcon="@drawable/arrow_back"
-            android:layout_height="@dimen/toolBarHeight">
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolBarHeight"
+            app:navigationIcon="@drawable/arrow_back">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:textSize="20sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/white"
+                    android:layout_weight="1"
                     android:gravity="start"
                     android:text="@string/bookings"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    app:actualImageResource="@drawable/logo_icon_white"
                     android:contentDescription="new post image"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    app:actualImageResource="@drawable/logo_icon_white" />
 
             </LinearLayout>
 
@@ -50,18 +50,18 @@
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeBookings"
-        android:padding="5dp"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:padding="5dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bookingsRecycler"
-            android:clipToPadding="false"
-            android:padding="5dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="5dp" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

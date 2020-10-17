@@ -141,8 +141,7 @@ public class MapViewModel extends ViewModel {
     }
 
     public void downloadNextRooms() {
-        db.collection("Rooms").
-                whereEqualTo("exist", true)
+        db.collection("Rooms")
                 .limit(limit)
                 .startAfter(lastVisible)
                 .get().addOnSuccessListener(

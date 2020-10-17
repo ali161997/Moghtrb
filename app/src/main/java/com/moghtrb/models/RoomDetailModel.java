@@ -12,15 +12,6 @@ public class RoomDetailModel {
     private HashMap<String, Boolean> services;
     private HashMap<String, Integer> floors;
     private List<String> urlsImage;
-
-    public String getHostComment() {
-        return hostComment;
-    }
-
-    public void setHostComment(String hostComment) {
-        this.hostComment = hostComment;
-    }
-
     private String hostComment;
 
     public RoomDetailModel() {
@@ -37,6 +28,14 @@ public class RoomDetailModel {
         this.departOrder = departOrder;
         this.services = services;
         this.urlsImage = urlsImage;
+    }
+
+    public String getHostComment() {
+        return hostComment;
+    }
+
+    public void setHostComment(String hostComment) {
+        this.hostComment = hostComment;
     }
 
     public HashMap<String, Integer> getFloors() {

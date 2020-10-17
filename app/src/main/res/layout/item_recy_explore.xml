@@ -83,13 +83,13 @@
 
         <TextView
             android:id="@+id/tv_street"
-            android:maxLines="2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:fontFamily="@font/heebo_thin"
             android:gravity="center_vertical"
+            android:maxLines="2"
             android:padding="1dp"
             android:textAlignment="gravity"
             android:textColor="@color/Black"

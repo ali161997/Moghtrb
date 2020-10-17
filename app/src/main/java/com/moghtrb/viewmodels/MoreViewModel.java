@@ -34,6 +34,7 @@ public class MoreViewModel extends ViewModel {
 
     }
 
+
     public MutableLiveData<Boolean> getProfileCompleted() {
         return profileCompleted;
     }
@@ -55,12 +56,6 @@ public class MoreViewModel extends ViewModel {
 
     public MutableLiveData<String> getUsername() {
         return Username;
-    }
-
-    public MutableLiveData<List<String>> getItems() {
-        listViewData();
-        items.setValue(choices);
-        return items;
     }
 
 
@@ -89,23 +84,10 @@ public class MoreViewModel extends ViewModel {
     }
 
     private boolean profileCompletedFun(DocumentSnapshot doc) {
-        return doc.contains("phone") && doc.get("phone") != null
-                && doc.contains("collegeIndex") && doc.get("collegeIndex") != null
-                && doc.contains("cityIndex") && doc.get("cityIndex") != null
-                && doc.contains("birthDate") && doc.get("birthDate") != null
-                && doc.contains("gender") && doc.get("gender") != null;
+        return doc.contains("completed") && doc.getBoolean("completed");
 
     }
 
-    private void listViewData() {
-
-        choices.add("Settings");
-        choices.add("Refer Host");
-        choices.add("Identify Host");
-        choices.add("Help");
-        choices.add("Give Us Feed back");
-        choices.add("Log out");
-    }
 
     private void updateIMageReference() {
         db.collection("users").document(firebaseAuth.getUid())

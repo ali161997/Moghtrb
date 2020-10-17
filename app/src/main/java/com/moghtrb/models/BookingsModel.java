@@ -10,6 +10,25 @@ public class BookingsModel {
     private String city;
     private String region;
     private MyLatLong latLng;
+    private String hostPhone;
+
+    public BookingsModel() {
+    }
+
+    public BookingsModel(String roomId, String from, String to,
+                         String total, String cashPayed, String numGuests, String city, String region
+            , String hostPhone, MyLatLong latLng) {
+        this.hostPhone = hostPhone;
+        this.latLng = latLng;
+        this.roomId = roomId;
+        this.from = from;
+        this.to = to;
+        this.total = total;
+        this.numGuests = numGuests;
+        this.cashPayed = cashPayed;
+        this.city = city;
+        this.region = region;
+    }
 
     public MyLatLong getLatLng() {
         return latLng;
@@ -27,8 +46,6 @@ public class BookingsModel {
         this.hostPhone = hostPhone;
     }
 
-    private String hostPhone;
-
     public String getCity() {
         return city;
     }
@@ -42,24 +59,6 @@ public class BookingsModel {
     }
 
     public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public BookingsModel() {
-    }
-
-    public BookingsModel(String roomId, String from, String to,
-                         String total, String cashPayed, String numGuests, String city, String region
-            , String hostPhone, MyLatLong latLng) {
-        this.hostPhone = hostPhone;
-        this.latLng = latLng;
-        this.roomId = roomId;
-        this.from = from;
-        this.to = to;
-        this.total = total;
-        this.numGuests = numGuests;
-        this.cashPayed = cashPayed;
-        this.city = city;
         this.region = region;
     }
 

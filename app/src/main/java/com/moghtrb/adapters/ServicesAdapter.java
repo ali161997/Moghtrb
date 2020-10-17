@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.material.textview.MaterialTextView;
 import com.moghtrb.R;
+import com.moghtrb.activities.MultipleCategoryService;
 import com.moghtrb.activities.OneCategoryService;
 import com.moghtrb.models.ServicesModel;
 
@@ -93,46 +94,15 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ItemsV
         @Override
         public void onClick(View v) {
             Log.i(TAG, "onClick: clicked" + this.getLayoutPosition());
-            Intent intent = new Intent(ctx, OneCategoryService.class);
-            intent.putExtra("index", this.getLayoutPosition());
-            ctx.startActivity(intent);
-//            switch (this.getLayoutPosition()) {
-//                case 0:
-//                    intent.putExtra("type",ctx.getResources().getString(R.string.homeMade));
-//                    ctx.startActivity(intent);
-//                    break;
-//                case 1:
-//                    intent.putExtra("type",ctx.getResources().getString(R.string.laundry));
-//                    ctx.startActivity(intent);
-//                    break;
-//
-//                case 2:
-//                    intent.putExtra("type",ctx.getResources().getString(R.string.cleaners));
-//
-//                    ctx.startActivity(intent);
-//
-//                    break;
-//                case 3:
-//                    intent.putExtra("type",ctx.getResources().getString(R.string.restaurants));
-//                    ctx.startActivity(intent);
-//
-//                    break;
-//                case 4:
-//                    intent.putExtra("type",ctx.getResources().getString(R.string.coffee));
-//                    ctx.startActivity(intent);
-//
-//                    break;
-//                case 5:
-//                    intent.putExtra("type",ctx.getResources().getString(R.string.footaball));
-//                    ctx.startActivity(intent);
-//
-//                    break;
-//                case 6:
-//                    intent.putExtra("type",ctx.getResources().getString(R.string.taxi));
-//                    ctx.startActivity(intent);
-//                    break;
-//
-//            }
+
+            if (getLayoutPosition() == 2) {
+                Intent intent = new Intent(ctx, MultipleCategoryService.class);
+                ctx.startActivity(intent);
+            } else {
+                Intent intent = new Intent(ctx, OneCategoryService.class);
+                intent.putExtra("index", this.getLayoutPosition());
+                ctx.startActivity(intent);
+            }
 
         }
 

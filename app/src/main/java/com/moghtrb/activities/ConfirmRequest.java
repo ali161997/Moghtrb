@@ -1,8 +1,7 @@
 package com.moghtrb.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
@@ -32,8 +31,6 @@ import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.radiobutton.MaterialRadioButton;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.moghtrb.R;
@@ -102,10 +99,6 @@ public class ConfirmRequest extends AppCompatActivity implements View.OnClickLis
     TextView valueMin;
     @BindView(R.id.btnConfirm)
     MaterialButton btnConfirm;
-    @BindView(R.id.typPromoCode)
-    TextInputEditText typPromoCode;
-    @BindView(R.id.fieldPromoCode)
-    TextInputLayout fieldPromoCode;
     @BindView(R.id.CloseTimeSheet)
     MaterialButton CloseTimeSheet;
     @BindView(R.id.btn_save_anytime)
@@ -146,8 +139,6 @@ public class ConfirmRequest extends AppCompatActivity implements View.OnClickLis
     private View studentView;
     private View foreignerView;
     private boolean extend = false;
-    private double commission;
-    private double min;
 
     @Override
     public void onBackPressed() {
@@ -172,7 +163,7 @@ public class ConfirmRequest extends AppCompatActivity implements View.OnClickLis
         viewModel.setSelectedFloor(getIntent().getStringExtra("roomOrder"));
         if (getIntent().getStringExtra("type").equalsIgnoreCase("Foreigner"))
             viewModel.setNumDays(new MutableLiveData<>(getIntent().getIntExtra("days", 1)));
-
+        viewModel.isProfileCompleted();
         studentView = findViewById(R.id.student_view);
         foreignerView = findViewById(R.id.foreigner_view);
         spinner_when.setOnItemSelectedListener(this);
@@ -183,8 +174,12 @@ public class ConfirmRequest extends AppCompatActivity implements View.OnClickLis
             if (viewModel.getType().getValue().equalsIgnoreCase("foreigner")) {
                 valueMonth.setText(Double.toString(model.getDayCost()));
                 costMonthTv.setText(getString(R.string.cost_per_day));
-                valueNet.setText(Double.toString(model.getDayCost() * viewModel.getNumDays().getValue() * viewModel.getNumGuests().getValue()));
-                valueMin.setText(Double.toString((model.getDayCost() * viewModel.getNumDays().getValue() * viewModel.getNumGuests().getValue()) / 2.0));
+                double net = (model.getDayCost() * viewModel.getNumDays().getValue() * viewModel.getNumGuests().getValue())
+                        + (model.getCommissionDays() * viewModel.getNumGuests().getValue());
+                valueNet.setText(Double.toString(net));
+                double min = (model.getDayCost() * viewModel.getNumDays().getValue()
+                        * viewModel.getNumGuests().getValue() / 2.0) + (model.getCommissionDays() * viewModel.getNumGuests().getValue());
+                valueMin.setText(Double.toString(min));
                 valueCommission.setText(Double.toString(model.getCommissionDays() * viewModel.getNumGuests().getValue()));
 
 
@@ -192,15 +187,22 @@ public class ConfirmRequest extends AppCompatActivity implements View.OnClickLis
                 valueMonth.setText(Double.toString(model.getMonthPrice()));
                 valuePreMonth.setText(Double.toString(model.getAdvance()));
                 valueServices.setText(Double.toString(model.getServices()));
-                double total = viewModel.getNumGuests().getValue() * (model.getMonthPrice() + model.getAdvance() + model.getServices());
-                valueNet.setText(Double.toString(total));
-                commission = model.getCommission() * viewModel.getNumGuests().getValue();
-                valueCommission.setText(Double.toString(commission));
-                viewModel.setCommission(new MutableLiveData<>(commission));
-                min = (total + commission) / 2.0;
-                valueMin.setText(Double.toString(min));
-                viewModel.setMin(new MutableLiveData<>(min));
+                viewModel.setTotal(viewModel.getNumGuests().getValue() * (model.getMonthPrice() + model.getAdvance() + model.getServices() + model.getCommission()));
+                viewModel.setCommission(model.getCommission() * viewModel.getNumGuests().getValue());
+                viewModel.setMin(((viewModel.getTotal().getValue()
+                        - viewModel.getCommission().getValue()) / 2.0 + viewModel.getCommission().getValue()));
+
+
             }
+            viewModel.getCommission().observe(this, com -> {
+                valueCommission.setText(Double.toString(com));
+            });
+            viewModel.getMin().observe(this, min -> {
+                valueMin.setText(Double.toString(min));
+            });
+            viewModel.getTotal().observe(this, t -> {
+                valueNet.setText(Double.toString(t));
+            });
 
 
         });
@@ -290,43 +292,10 @@ public class ConfirmRequest extends AppCompatActivity implements View.OnClickLis
                 }).show();
     }
 
-    @OnClick({R.id.btnVerify, R.id.btnConfirm, R.id.btnSetDate, R.id.CloseTimeSheet, R.id.btn_save_anytime, R.id.selectDates, R.id.tvDetails})
+    @OnClick({R.id.btnConfirm, R.id.btnSetDate, R.id.CloseTimeSheet, R.id.btn_save_anytime, R.id.selectDates, R.id.tvDetails})
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnVerify:
-                if (!typPromoCode.getText().toString().equals("")) {
-                    try {
-                        viewModel.verifyCode(typPromoCode.getText().toString());
-                        viewModel.getCodeVerified().observe(this, d -> {
-                            if (d) {
-                                Toast t = Toast.makeText(this, R.string.successfulCoupon, Toast.LENGTH_LONG);
-
-                                t.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
-                                t.show();
-                                valueCommission.setTextSize(40);
-                                valueCommission.setTextColor(R.color.green);
-                            } else {
-                                Toast t = Toast.makeText(this, R.string.noCoupon, Toast.LENGTH_LONG);
-                                t.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
-                                t.show();
-                            }
-
-                        });
-                        viewModel.getValueCode().observe(this, num -> {
-                                    double c = commission - num;
-                                    valueCommission.setText(Double.toString(c));
-                                    valueMin.setText(Double.toString(min - num));
-                                    viewModel.setCommission(new MutableLiveData<>(commission));
-                                    viewModel.setMin(new MutableLiveData<>(min - num));
-
-                                }
-                        );
-                    } catch (Exception e) {
-                        Log.i(TAG, "onClick: " + e.getMessage());
-                    }
-                }
-                break;
             case R.id.tvDetails:
                 extend(!extend);
                 extend = !extend;
@@ -336,35 +305,42 @@ public class ConfirmRequest extends AppCompatActivity implements View.OnClickLis
                 whenSheet.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 break;
             case R.id.btnConfirm:
-                if (viewModel.getDate().getValue() == null) {
+                if (!viewModel.getProfileCompleted().getValue()) {
                     Snackbar mySnackbar = Snackbar.make(coordinatorConfirm,
-                            getResources().getString(R.string.checkDates), Snackbar.LENGTH_SHORT);
+                            getResources().getString(R.string.complete_profile), Snackbar.LENGTH_SHORT);
+                    mySnackbar.setAction(R.string.go, new MyUndoListener());
                     mySnackbar.show();
-
                 } else {
-                    pieProgress.setVisibility(View.VISIBLE);
-                    pieProgress.showProgressBar();
-                    if (spinner_when.getSelectedItemPosition() == 0)
-                        viewModel.setType("student");
-                    else viewModel.setType("foreigner");
-                    Toast.makeText(this, "complted request", Toast.LENGTH_SHORT).show();
-                    viewModel.sendRequest(FirebaseAuth.getInstance().getUid()).observe(this, bool ->
-                    {
-                        pieProgress.hideProgressBar();
-                        pieProgress.setVisibility(View.GONE);
-                        if (bool) {
-                            showMessage();
-                            btnConfirm.setIcon(getDrawable(R.drawable.ic_checked_black_24dp));
-                            btnConfirm.setEnabled(false);
-                            btnConfirm.setText(R.string.requestSubmitted);
+                    if (viewModel.getDate().getValue() == null) {
+                        Snackbar mySnackbar = Snackbar.make(coordinatorConfirm,
+                                getResources().getString(R.string.checkDates), Snackbar.LENGTH_SHORT);
+                        mySnackbar.show();
 
-                        } else {
-                            btnConfirm.setIcon(null);
-                            btnConfirm.setEnabled(true);
-                            btnConfirm.setText("Resend");
-                        }
+                    } else {
+                        pieProgress.setVisibility(View.VISIBLE);
+                        pieProgress.showProgressBar();
+                        if (spinner_when.getSelectedItemPosition() == 0)
+                            viewModel.setType("student");
+                        else viewModel.setType("foreigner");
+                        Toast.makeText(this, "complted request", Toast.LENGTH_SHORT).show();
+                        viewModel.sendRequest(FirebaseAuth.getInstance().getUid()).observe(this, bool ->
+                        {
+                            pieProgress.hideProgressBar();
+                            pieProgress.setVisibility(View.GONE);
+                            if (bool) {
+                                showMessage();
+                                btnConfirm.setIcon(getDrawable(R.drawable.ic_checked_black_24dp));
+                                btnConfirm.setEnabled(false);
+                                btnConfirm.setText(R.string.requestSubmitted);
 
-                    });
+                            } else {
+                                btnConfirm.setIcon(null);
+                                btnConfirm.setEnabled(true);
+                                btnConfirm.setText("Resend");
+                            }
+
+                        });
+                    }
                 }
                 break;
             case R.id.btnSetDate:
@@ -441,6 +417,17 @@ public class ConfirmRequest extends AppCompatActivity implements View.OnClickLis
             studentTime.setSemester2(true);
         } else if (buttonView.getId() == R.id.semester3) {
             studentTime.setSemester3(true);
+        }
+    }
+
+
+    public class MyUndoListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+
+            Intent intent = new Intent(ConfirmRequest.this, Profile.class);
+            startActivity(intent);
         }
     }
 }

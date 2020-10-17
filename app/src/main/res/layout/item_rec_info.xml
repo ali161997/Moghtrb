@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="1dp"
+    android:background="@drawable/bck_item_info"
+    android:outlineSpotShadowColor="@color/gray">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/imageItemInfo"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:outlineSpotShadowColor="@color/gray"
+        app:actualImageResource="@drawable/place_holder"
+        app:roundedCornerRadius="5dp" />
+
+    <LinearLayout
+        android:id="@+id/linearName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageItemInfo"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/infoName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="@string/Services"
+            android:textSize="15sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/infoLocation"
+            style="@style/IconOnlyButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/imageItemInfo"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="10dp"
+            android:padding="10dp"
+            app:icon="@drawable/ic_location"
+            app:strokeWidth="0dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearDial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearName"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="@string/dial"
+            android:textSize="15sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDial"
+            style="@style/IconOnlyButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="10dp"
+            app:icon="@drawable/ic_baseline_phone_forwarded_24"
+            app:strokeWidth="0dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearDial"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/likesCounterTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:padding="10dp"
+            android:text="10" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLike"
+            style="@style/IconOnlyButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginEnd="20dp"
+            app:icon="@drawable/ic_like_not_selected"
+            app:iconTint="@color/like_button_color_states"
+            app:strokeWidth="0dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDisLike"
+            style="@style/IconOnlyButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            app:icon="@drawable/ic_dislike_not_selected"
+            app:iconTint="@color/like_button_color_states"
+            app:strokeWidth="0dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/disLikesCounterTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:padding="10dp"
+            android:text="10" />
+    </LinearLayout>
+
+
+</RelativeLayout>

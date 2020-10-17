@@ -29,9 +29,9 @@ import com.moghtrb.activities.signing;
 import java.util.List;
 
 public class MoreAdapter extends RecyclerView.Adapter<MoreAdapter.ItemsViewHolder> {
+    private static final String TAG = "ProfileAdapter";
     final private Context ctx;
     final private List<String> list;
-    private static final String TAG = "ProfileAdapter";
 
 
     public MoreAdapter(Context ctx, List<String> List) {

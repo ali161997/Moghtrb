@@ -85,7 +85,7 @@
                 android:id="@+id/linear5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="20dp"
+                android:layout_marginTop="20dp"
                 android:focusableInTouchMode="true"
                 android:orientation="horizontal">
 
@@ -159,6 +159,92 @@
                     android:textSize="15sp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/linear9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/commissionTv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:text="@string/Commission"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/valueCommission"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="end"
+                    android:padding="10dp"
+                    android:text="@string/points"
+                    android:textColor="@color/Black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/LE"
+                    android:textColor="@color/Black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fieldPromoCode"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="40dp"
+                    android:layout_marginVertical="20dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/heebo_medium"
+                    android:gravity="center"
+                    android:hint="@string/enter_promo"
+                    android:inputType="textShortMessage"
+                    android:padding="5dp"
+                    android:textColorHint="@color/green"
+                    android:textSize="20sp"
+                    app:boxStrokeColor="@color/Black"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused=".5dp"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="@color/gray">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/typPromoCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusedByDefault="false"
+                        android:gravity="center"
+                        android:inputType="textShortMessage"
+                        android:textColor="@color/green" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVerify"
+                    style="@style/blueButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="15dp"
+                    android:text="@string/verify" />
+            </LinearLayout>
+
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvSend"
                 android:layout_width="wrap_content"
@@ -169,6 +255,7 @@
                 android:text="@string/phoneSend"
                 android:textColor="@color/dark_blue"
                 android:textSize="20sp" />
+
 
             <LinearLayout
                 android:id="@+id/linear4"

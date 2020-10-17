@@ -76,7 +76,7 @@ public class explore_Repository {
     }
 
     public MutableLiveData<Double> getMaxSeekbar() {
-        Max.setValue(2000.0);
+        Max.setValue(4000.0);
         return Max;
     }
 

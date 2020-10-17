@@ -145,13 +145,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         String str_email = email.getText().toString();
         String str_password = password.getText().toString();
-        if (TextUtils.isEmpty(str_email) || !isEmailValid(str_email)) {
-            email.setError("wrong mail");
-            valid = false;
-        } else {
-            email.setError(null);
-            valid = true;
-        }
         if (TextUtils.isEmpty(str_password) || !isValidPassword(str_password)) {
             password.setError("wrong password");
             valid = false;
@@ -160,6 +153,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             password.setError(null);
             valid = true;
         }
+        if (TextUtils.isEmpty(str_email) || !isEmailValid(str_email)) {
+            email.setError("wrong mail");
+            valid = false;
+        } else {
+            email.setError(null);
+            valid = true;
+        }
+
         return valid;
     }
 
@@ -185,7 +186,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             case R.id.btn_go:
                 try {
                     if (InternetNotAvailable())
-                        Toast.makeText(this, "No Internet", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, R.string.noInternet, Toast.LENGTH_LONG).show();
                     else
                         signIn(email.getText().toString().trim(), password.getText().toString().trim());
                 } catch (Exception e) {

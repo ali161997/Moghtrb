@@ -6,15 +6,15 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/recyclerItemProfile"
-        android:layout_width="match_parent"
-        android:drawableEnd="@drawable/ic_navigate_next"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/heebo_thin"
-        android:maxLines="1"
-        android:gravity="start"
         style="@style/Widget.MaterialComponents.TextView"
-        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_navigate_next"
         android:drawableTint="@color/gray"
+        android:fontFamily="@font/heebo_thin"
+        android:gravity="start"
+        android:maxLines="1"
+        android:padding="10dp"
         android:textColor="@color/Black"
         android:textSize="20sp" />
 

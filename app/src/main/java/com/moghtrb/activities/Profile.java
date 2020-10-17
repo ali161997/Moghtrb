@@ -1,5 +1,6 @@
 package com.moghtrb.activities;
 
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import butterknife.BindView;
@@ -270,7 +272,19 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        ActivityManager mngr = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+
+        List<ActivityManager.RunningTaskInfo> taskList = mngr.getRunningTasks(10);
+
+        if (taskList.get(0).numActivities == 1 &&
+                taskList.get(0).topActivity.getClassName().equals(this.getClass().getName())) {
+            Intent in = new Intent(this, Home.class);
+            startActivity(in);
+            finish();
+            Log.i(TAG, "This is last activity in the stack");
+        } else
+            super.onBackPressed();
+
     }
 
     @OnClick({R.id.update_profile, R.id.enableEditing, R.id.btnBirthDate})
@@ -360,7 +374,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void getDataForm() {
-
+        updateUser.put("completed", true);
         updateUser.put("collegeIndex", collegeSpinnerProfile.getSelectedItemPosition());
         updateUser.put("cityIndex", citySpinnerProfile.getSelectedItemPosition());
         updateUser.put("birthDate", btnBirthDate.getText().toString());

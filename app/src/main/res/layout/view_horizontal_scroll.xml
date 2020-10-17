@@ -8,11 +8,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/book_horizontal_recycler"
         android:layout_width="match_parent"
-        android:scrollbars="horizontal"
-        android:scrollbarStyle="outsideOverlay"
+        android:layout_height="match_parent"
         android:scrollIndicators="start|end"
         android:scrollbarAlwaysDrawHorizontalTrack="true"
+        android:scrollbarStyle="outsideOverlay"
         android:scrollbarThumbHorizontal="@color/blue"
         android:scrollbarTrackHorizontal="@color/quantum_brown200"
-        android:layout_height="match_parent" />
+        android:scrollbars="horizontal" />
 </LinearLayout>

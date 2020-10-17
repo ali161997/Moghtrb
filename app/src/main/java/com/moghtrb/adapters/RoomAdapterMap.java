@@ -65,6 +65,7 @@ public class RoomAdapterMap extends RecyclerView.Adapter<RoomAdapterMap.RoomView
         else roomViewHolder.street.setText(room.getEnAddress());
         roomViewHolder.ratingBar.setRating(room.getRate());
         roomViewHolder.reviews.setText(room.getNum_reviews() + " Reviews");
+        roomViewHolder.gender.setText(room.getGender());
         ProgressBarDrawable progressBarDrawable = new ProgressBarDrawable();
         progressBarDrawable.setColor(R.color.quantum_googred);
         progressBarDrawable.setAlpha(1);
@@ -103,6 +104,8 @@ public class RoomAdapterMap extends RecyclerView.Adapter<RoomAdapterMap.RoomView
         RatingBar ratingBar;
         TextView reviews;
         ProgressBar progressBar;
+        TextView gender;
+
 
         public RoomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -111,6 +114,7 @@ public class RoomAdapterMap extends RecyclerView.Adapter<RoomAdapterMap.RoomView
             street = itemView.findViewById(R.id.tv_street_map);
             ratingBar = itemView.findViewById(R.id.rating_item_map);
             reviews = itemView.findViewById(R.id.review_item_map);
+            gender = itemView.findViewById(R.id.genderTVMap);
             itemView.setOnClickListener(this);
 
         }

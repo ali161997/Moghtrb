@@ -8,6 +8,11 @@ public class StudentTime {
     private boolean semester1;
     private boolean semester2;
     private boolean semester3;
+    private boolean semester12;
+
+    public StudentTime() {
+
+    }
 
     public boolean isSemester12() {
         return semester12;
@@ -15,12 +20,6 @@ public class StudentTime {
 
     public void setSemester12(boolean semester12) {
         this.semester12 = semester12;
-    }
-
-    private boolean semester12;
-
-    public StudentTime() {
-
     }
 
     public boolean isSemester1() {

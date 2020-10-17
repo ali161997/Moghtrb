@@ -61,16 +61,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/logoFeed"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                app:actualImageResource="@drawable/logo_icon_blue"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="50dp"
                 android:contentDescription="@string/moghtrbLogo"
-                android:shadowColor="@android:color/background_dark"
-                android:src="@drawable/logo_icon_blue" />
+                android:shadowColor="@android:color/background_dark" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/feedBackView"

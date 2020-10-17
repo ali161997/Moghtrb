@@ -4,15 +4,15 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:divider="@color/gray"
-    android:showDividers="middle"
-    android:paddingVertical="10dp"
     android:dividerPadding="10dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingVertical="10dp"
+    android:showDividers="middle">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:paddingVertical="10dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/iconBed"
@@ -69,8 +69,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:paddingVertical="10dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/iconRoom"
@@ -129,8 +129,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:paddingVertical="10dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/iconBath"
@@ -186,9 +186,9 @@
     ""
 
     <RelativeLayout
-        android:paddingVertical="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/iconBalcony"
@@ -242,9 +242,9 @@
 
 
     <RelativeLayout
-        android:paddingVertical="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/iconHost"

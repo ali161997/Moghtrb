@@ -104,23 +104,20 @@ public class InfoViewModel extends ViewModel {
     }
 
     public void downloadInfo() {
+        listInfo.setValue(new ArrayList<>());
         firebaseFirestore.collection("Services")
                 .document("Assiut")
                 .collection(listDocIDs.get(indexService.getValue()))
-                .get().addOnCompleteListener(task -> {
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (DocumentSnapshot d : task.getResult()) {
+                            listInfo.getValue().add(setInfoModel(d));
 
-
-        })
-                .addOnFailureListener(e -> {
-                    Log.i(TAG, "failure in get info" + e);
-                }).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                for (DocumentSnapshot d : task.getResult()) {
-                    listInfo.getValue().add(setInfoModel(d));
-
-                }
-            }
-
+                        }
+                    }
+                }).addOnFailureListener(e -> {
+            Log.i(TAG, "failure in get info" + e);
         });
     }
 
@@ -139,12 +136,14 @@ public class InfoViewModel extends ViewModel {
 
     private void setListDocIDs() {
         listDocIDs.add("homeMade");
+        listDocIDs.add("workSpace");
+        listDocIDs.add("restaurants");
+        listDocIDs.add("football");
+        listDocIDs.add("gym");
         listDocIDs.add("laundry");
         listDocIDs.add("cleaners");
-        listDocIDs.add("restaurants");
-        listDocIDs.add("coffee");
-        listDocIDs.add("football");
         listDocIDs.add("taxi");
+        listDocIDs.add("coffee");
 
 
     }

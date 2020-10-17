@@ -4,10 +4,10 @@
     android:layout_height="wrap_content"
     android:background="@drawable/rounded_sheet"
     android:drawableEnd="@drawable/ic_arrow_drop_down"
+    android:drawablePadding="0dp"
     android:drawableTint="@color/dark_blue"
     android:fontFamily="@font/heebo_medium"
     android:gravity="center"
-    android:drawablePadding="0dp"
     android:padding="10dp"
     android:textColor="@color/dark_blue"
     android:textSize="20sp">

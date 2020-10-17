@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -22,6 +23,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -56,13 +59,28 @@ public class Payment extends AppCompatActivity implements View.OnClickListener, 
     Toolbar barPay;
     @BindView(R.id.valueMin)
     TextView valueMin;
+    @BindView(R.id.commissionTv)
+    TextView commissionTv;
+    @BindView(R.id.valueCommission)
+    TextView valueCommission;
+    @BindView(R.id.typPromoCode)
+    TextInputEditText typPromoCode;
+    @BindView(R.id.fieldPromoCode)
+    TextInputLayout fieldPromoCode;
     @BindView(R.id.appBarLog)
     AppBarLayout appBarPayment;
     @BindView(R.id.mobilesRadios)
     RadioGroup radioGroupMobiles;
+    HashMap<String, Object> deta;
     private MutableLiveData<HashMap<String, String>> phoneNumbers;
     private MutableLiveData<String> indexNotification;
-    private MutableLiveData<HashMap<String, String>> data;
+    private MutableLiveData<HashMap<String, Object>> data;
+    private MutableLiveData<Boolean> codeVerified;
+    private MutableLiveData<Double> valueCode;
+    private MutableLiveData<Double> commission;
+    private MutableLiveData<Double> min;
+    private MutableLiveData<Double> total;
+    private String code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,14 +89,21 @@ public class Payment extends AppCompatActivity implements View.OnClickListener, 
         ButterKnife.bind(this);
         data = new MutableLiveData<>();
         indexNotification = new MutableLiveData<>();
+        valueCode = new MutableLiveData<>();
+        codeVerified = new MutableLiveData<>();
+        commission = new MutableLiveData<>();
+        min = new MutableLiveData<>();
+        total = new MutableLiveData<>();
         radioGroupMobiles.setOnCheckedChangeListener(this);
         indexNotification.setValue(getIntent().getStringExtra("index"));
         Log.i(TAG, "onCreate: noty id " + getIntent().getStringExtra("index"));
         phoneNumbers = new MutableLiveData<>();
 
         data.observe(this, data -> {
-            valueNet.setText(data.get("total"));
-            valueMin.setText(data.get("min"));
+            commission.setValue((Double) data.get("commission"));
+            min.setValue((Double) data.get("min"));
+            total.setValue((Double) data.get("total"));
+
 
         });
         setPrefixPhone();
@@ -87,16 +112,49 @@ public class Payment extends AppCompatActivity implements View.OnClickListener, 
                 onBackPressed()
         );
         indexNotification.observe(this, this::getDetails);
+        commission.observe(this, t -> {
+            valueCommission.setText(Double.toString(t));
+        });
+        min.observe(this, y -> {
+            valueMin.setText(Double.toString(y));
+        });
+        total.observe(this, total -> {
+            valueNet.setText(Double.toString(total));
+        });
 
     }
 
+    public void verifyCode(String code) {
+        FirebaseFirestore.getInstance().collection("Codes").document("promoCodes")
+                .get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot d = task.getResult();
+                if (d.exists()) {
+                    if (d.contains(code)) {
+                        deta = (HashMap<String, Object>) d.get(code);
+                        if (((Long) deta.get("num")).doubleValue() < ((Long) deta.get("total")).doubleValue()) {
+                            codeVerified.setValue(true);
+                            this.code = code;
+                            valueCode.setValue(((Long) deta.get("value")).doubleValue());
+                        } else codeVerified.setValue(false);
+                    }
+                } else {
+                    codeVerified.setValue(false);
+                }
+            } else {
+                Log.d(TAG, "get failed with ", task.getException());
+            }
+        });
+    }
+
     private void getDetails(String detailID) {
-        HashMap<String, String> map = new HashMap<>();
+        HashMap<String, Object> map = new HashMap<>();
         DocumentReference docRef =
                 FirebaseFirestore
                         .getInstance()
                         .collection("Accepted-Requests")
                         .document(detailID);
+        Log.i(TAG, "getDetails: " + detailID);
         docRef
                 .get()
                 .addOnCompleteListener(task -> {
@@ -105,18 +163,19 @@ public class Payment extends AppCompatActivity implements View.OnClickListener, 
                         if (document.exists()) {
                             try {
                                 Log.i(TAG, "getDetails: " + document.getData());
-                                map.put("type", document.get("type").toString());
-                                map.put("dayCost", document.get("dayCost").toString());
-                                map.put("month", document.get("month").toString());
-                                map.put("advance", document.get("advance").toString());
-                                map.put("total", document.get("total").toString());
-                                map.put("commission", document.get("commission").toString());
-                                map.put("min", document.get("min").toString());
+                                map.put("type", document.getString("type"));
+                                map.put("month", document.getDouble("month"));
+                                map.put("numGuests", document.getDouble("numGuests"));
+                                map.put("advance", document.getDouble("advance"));
+                                map.put("total", document.getDouble("total"));
+                                map.put("commission", document.getDouble("commission"));
+                                map.put("min", document.getDouble("min"));
                                 if (document.get("services").toString().equals(null))
-                                    map.put("services", "0");
-                                else map.put("services", document.get("services").toString());
+                                    map.put("services", 0.0);
+                                else map.put("services", document.getDouble("services"));
                                 data.setValue(map);
                                 Log.i(TAG, "getDetails: " + document.getData());
+                                map.put("dayCost", document.getDouble("dayCost"));
                             } catch (Exception e) {
                                 Log.i(TAG, "getDetails: " + e.getMessage());
                             }
@@ -171,15 +230,53 @@ public class Payment extends AppCompatActivity implements View.OnClickListener, 
         return false;
     }
 
-    @OnClick({R.id.tvPhone, R.id.btnConfirm, R.id.tvDetails})
+    @OnClick({R.id.tvPhone, R.id.btnConfirm, R.id.btnVerify})
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btnVerify:
+                if (!typPromoCode.getText().toString().equals("")) {
+                    try {
+                        verifyCode(typPromoCode.getText().toString());
+                        codeVerified.observe(this, d -> {
+                            if (d) {
+                                Toast t = Toast.makeText(this, R.string.successfulCoupon, Toast.LENGTH_LONG);
+                                t.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
+                                t.show();
+                                valueCommission.setTextSize(40);
+                                valueCommission.setTextColor(R.color.green);
+                            } else {
+                                Toast t = Toast.makeText(this, R.string.noCoupon, Toast.LENGTH_LONG);
+                                t.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
+                                t.show();
+                            }
+
+                        });
+                        valueCode.observe(this, num -> {
+                                    double c =
+                                            (commission.getValue() - num * (double) data.getValue().get("numGuests"));
+                                    double rem = commission.getValue() - c;
+                                    commission.setValue(c);
+                                    min.setValue(min.getValue() - rem);
+                                    total.setValue(total.getValue() - rem);
+
+                                }
+                        );
+                    } catch (Exception e) {
+                        Log.i(TAG, "onClick: " + e.getMessage());
+                    }
+                }
+                break;
             case R.id.btnConfirm:
-                if (isValidMobile(phoneEdit.getText().toString().trim()) && radioGroupMobiles.getCheckedRadioButtonId() != -1) {
-                    uploadConfirmation();
-                } else
-                    phoneEdit.setError("not Valid");
+                try {
+                    if (isValidMobile(phoneEdit.getText().toString().trim()) && radioGroupMobiles.getCheckedRadioButtonId() != -1) {
+                        uploadConfirmation();
+                        UpdateValues();
+                    } else
+                        phoneEdit.setError("not Valid");
+                } catch (Exception e) {
+                    Log.i(TAG, "onClick: " + e.getMessage());
+                }
                 break;
             case R.id.tvPhone:
                 if (tvPhone.getText().toString().equals(""))
@@ -235,6 +332,10 @@ public class Payment extends AppCompatActivity implements View.OnClickListener, 
         Timestamp timestamp = Timestamp.now();
         Conf.put("time", timestamp);
         Conf.put("phone", phoneEdit.getText().toString());
+        Conf.put("coupon", code);
+        Conf.put("min", min.getValue());
+        Conf.put("total", total.getValue());
+        Log.i(TAG, "uploadConfirmation: " + Conf);
         FirebaseFirestore.getInstance().collection("Wait-Confirmation")
                 .document(indexNotification.getValue())
                 .set(Conf)
@@ -246,6 +347,20 @@ public class Payment extends AppCompatActivity implements View.OnClickListener, 
 
                 })
                 .addOnFailureListener(e -> Toast.makeText(this, "Confirmation Error", Toast.LENGTH_LONG).show());
+
+    }
+
+    public void UpdateValues() {
+        if (codeVerified.getValue()) {
+            deta.put("num", ((Long) deta.get("num")).doubleValue() + 1);
+            FirebaseFirestore.getInstance().collection("Codes")
+                    .document("promoCodes")
+                    .update(code, deta).addOnCompleteListener(task -> {
+                Log.i(TAG, "UpdateValues: completed");
+            }).addOnFailureListener(e -> {
+                Log.i(TAG, "UpdateValues: failure" + e.getMessage());
+            });
+        }
 
     }
 

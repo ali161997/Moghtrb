@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,79 +28,73 @@ public class ConfirmRequestViewModel extends ViewModel {
     private MutableLiveData<RoomDetailModel> roomDetail;
     private MutableLiveData<paymentsModel> payments;
     private MutableLiveData<Integer> numDays;
-    private MutableLiveData<Boolean> codeVerified;
-    private MutableLiveData<Double> valueCode;
     private MutableLiveData<Double> commission;
     private MutableLiveData<Double> min;
+    private MutableLiveData<Double> total;
+    private MutableLiveData<Boolean> profileCompleted;
 
     public ConfirmRequestViewModel() {
         db = FirebaseFirestore.getInstance();
         payments = new MutableLiveData<>(new paymentsModel());
         roomId = new MutableLiveData<>();
         Date = new MutableLiveData<>();
-        codeVerified = new MutableLiveData<>();
         selectedFloor = new MutableLiveData<>();
         type = new MutableLiveData<>();
         numDays = new MutableLiveData<>();
         completed = new MutableLiveData<>();
-        valueCode = new MutableLiveData<>();
         numGuests = new MutableLiveData<>(1);
         commission = new MutableLiveData<>();
         min = new MutableLiveData<>();
+        total = new MutableLiveData<>();
+        profileCompleted = new MutableLiveData<>();
 
+    }
 
+    public MutableLiveData<Boolean> getProfileCompleted() {
+        return profileCompleted;
+    }
+
+    public void setProfileCompleted(Boolean profileCompleted) {
+        this.profileCompleted.setValue(profileCompleted);
+    }
+
+    public void isProfileCompleted() {
+
+        DocumentReference docRef = FirebaseFirestore.getInstance().collection("users")
+                .document(FirebaseAuth.getInstance().getUid());
+        docRef.get()
+                .addOnSuccessListener(doc -> {
+
+                    profileCompleted.setValue(doc.contains("completed") && doc.getBoolean("completed"));
+
+                }).addOnFailureListener(e -> {
+            Log.i("Profile View Model", "Error");
+        });
+
+    }
+
+    public MutableLiveData<Double> getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total.setValue(total);
     }
 
     public MutableLiveData<Double> getMin() {
         return min;
     }
 
-    public void setMin(MutableLiveData<Double> min) {
-        this.min = min;
+    public void setMin(Double min) {
+        this.min.setValue(min);
     }
 
     public MutableLiveData<Double> getCommission() {
         return commission;
     }
 
-    public void setCommission(MutableLiveData<Double> commission) {
-        this.commission = commission;
-    }
-
-    public MutableLiveData<Double> getValueCode() {
-        return valueCode;
-    }
-
-    public void setValueCode(MutableLiveData<Double> valueCode) {
-        this.valueCode = valueCode;
-    }
-
-    public MutableLiveData<Boolean> getCodeVerified() {
-        return codeVerified;
-    }
-
-    public void setCodeVerified(MutableLiveData<Boolean> codeVerified) {
-        this.codeVerified = codeVerified;
-    }
-
-    public void verifyCode(String code) {
-        db.collection("Codes").document("promoCodes")
-                .get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                DocumentSnapshot d = task.getResult();
-                if (d.exists()) {
-                    if (d.contains(code)) {
-                        codeVerified.setValue(true);
-                        valueCode.setValue(d.getDouble(code));
-                        Log.i(TAG, "verifyCode: " + d.getDouble(code));
-                    }
-                } else {
-                    codeVerified.setValue(false);
-                }
-            } else {
-                Log.d(TAG, "get failed with ", task.getException());
-            }
-        });
+    public void setCommission(Double commission) {
+        this.commission.setValue(commission);
     }
 
     public MutableLiveData<Integer> getNumDays() {
@@ -184,7 +179,6 @@ public class ConfirmRequestViewModel extends ViewModel {
     }
 
     public MutableLiveData<Boolean> sendRequest(String userId) {
-        double total = numGuests.getValue() * (payments.getValue().getAdvance() + payments.getValue().getMonthPrice() + payments.getValue().getServices());
         Map<String, Object> request = new HashMap<>();
         Timestamp timestamp = Timestamp.now();
         request.put("roomId", roomId.getValue());
@@ -192,9 +186,14 @@ public class ConfirmRequestViewModel extends ViewModel {
         request.put("timeRequest", timestamp);
         request.put("type", type.getValue());
         request.put("numGuests", numGuests.getValue());
-        request.put("dates", Date.getValue());
+        if (type.getValue().equalsIgnoreCase("foreigner"))
+            request.put("days", numDays.getValue());
+
+        String[] arr = Date.getValue().split("-");
+        request.put("from", arr[0]);
+        request.put("to", arr[1]);
         request.put("roomOrder", selectedFloor.getValue());
-        request.put("total", total);
+        request.put("total", total.getValue());
         request.put("commission", commission.getValue());
         request.put("min", min.getValue());
         request.put("month", payments.getValue().getMonthPrice());

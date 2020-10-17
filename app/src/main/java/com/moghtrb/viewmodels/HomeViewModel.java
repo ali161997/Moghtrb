@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel;
 import com.moghtrb.fragments.Explore;
 
 public class HomeViewModel extends ViewModel {
-    private MutableLiveData<Fragment> fragment_Selected;
     private static final String TAG = "activityHomeViewModel";
+    private MutableLiveData<Fragment> fragment_Selected;
 
     public HomeViewModel() {
 

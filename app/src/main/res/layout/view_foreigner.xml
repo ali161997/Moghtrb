@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/selectDates"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/selectDates"
         android:layout_margin="30dp"
-        android:padding="10dp"
-        android:id="@+id/selectDates"
-        android:textColor="@color/white"
         android:backgroundTint="@color/gray"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+        android:padding="10dp"
+        android:text="@string/selectDates"
+        android:textColor="@color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,59 +25,59 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:padding="10dp"
-            android:hint=""
             android:background="@color/white"
+            android:hint=""
+            android:padding="10dp"
             android:text="@string/checkin"
-            android:textColor="@color/gray" />
+            android:textColor="@color/gray"
+            android:textSize="20sp" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:padding="10dp"
-            android:hint=""
-            android:gravity="center"
             android:id="@+id/checkInValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
+            android:layout_weight="1"
             android:background="@color/white"
-            android:textColor="@color/gray" />
+            android:gravity="center"
+            android:hint=""
+            android:padding="10dp"
+            android:textColor="@color/gray"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
         android:orientation="horizontal">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:padding="10dp"
-            android:hint=""
             android:background="@color/white"
+            android:hint=""
+            android:padding="10dp"
             android:text="@string/checkout"
-            android:textColor="@color/gray" />
+            android:textColor="@color/gray"
+            android:textSize="20sp" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:padding="10dp"
-            android:hint=""
-            android:gravity="center"
             android:id="@+id/checkOutValue"
-
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
+            android:layout_weight="1"
             android:background="@color/white"
-            android:textColor="@color/gray" />
+            android:gravity="center"
+            android:hint=""
+
+            android:padding="10dp"
+            android:textColor="@color/gray"
+            android:textSize="20sp" />
 
     </LinearLayout>
 

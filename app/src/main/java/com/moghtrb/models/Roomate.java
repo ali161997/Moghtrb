@@ -1,6 +1,9 @@
 package com.moghtrb.models;
 
 public class Roomate {
+    private boolean noSmoking;
+    private String faculty;
+
     public Roomate(boolean noSmoking, String faculty) {
         this.noSmoking = noSmoking;
         this.faculty = faculty;
@@ -26,8 +29,5 @@ public class Roomate {
     public void setFaculty(String faculty) {
         this.faculty = faculty;
     }
-
-    private boolean noSmoking;
-    private String faculty;
 
 }

@@ -49,10 +49,10 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     private ProgressBar prgbar;
+    private boolean completed = false;
     //Google
     private GoogleSignInOptions gso;
     private GoogleSignInClient mGoogleSignInClient;
-    private boolean goHome;
 
     // [START declare_auth]
     private CallbackManager mCallbackManager;
@@ -174,8 +174,8 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
                         boolean isNewUser = task.getResult().getAdditionalUserInfo().isNewUser();
                         if (isNewUser) {
                             addUser(getUserData(task));
-                            goHome = false;
-                        } else goHome = true;
+                            completed = false;
+                        }
                         updateUI(user);
 
                     } else {
@@ -207,6 +207,7 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
         userData.put("birthDate", "");
         userData.put("gender", "");
         userData.put("photoUrl", task.getResult().getUser().getPhotoUrl().toString());
+        userData.put("completed", completed);
         return userData;
     }
 
@@ -226,8 +227,8 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
                         boolean isNewUser = task.getResult().getAdditionalUserInfo().isNewUser();
                         if (isNewUser) {
                             addUser(getUserData(task));
-                            goHome = false;
-                        } else goHome = true;
+                            completed = false;
+                        }
 
                         updateUI(user);
 
@@ -268,9 +269,7 @@ public class signing extends AppCompatActivity implements View.OnClickListener {
         hideProgressDialog();
         if (user != null) {
             Intent intent;
-            if (goHome)
-                intent = new Intent(signing.this, Home.class);
-            else intent = new Intent(signing.this, Profile.class);
+            intent = new Intent(signing.this, Home.class);
             startActivity(intent);
             finish();
         } else {

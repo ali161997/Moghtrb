@@ -433,6 +433,7 @@ public class Map extends Fragment implements
         if (needReset) {
             //action not popBackStack
             mapViewModel.setSheetState(4);
+            needReset = false;
             return true;
         } else return false;
     }

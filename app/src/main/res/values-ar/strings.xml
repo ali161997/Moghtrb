@@ -98,7 +98,7 @@
     <string name="hint_verification_code">الكود</string>
     <string name="status_code_sent">تم الارسال</string>
     <string name="status_verification_failed">خطأ</string>
-    <string name="status_verification_succeeded">تم التعرف</string>
+    <string name="status_verification_succeeded">تم بنجاح</string>
     <string name="status_sign_in_failed">خطأ</string>
     <string name="instant_validation">تم تلقائيا</string>
     <string name="type_your_mail_n_to_reset_password">أكتب إيميلك لإعادة تعيين كلمة السر</string>
@@ -209,15 +209,31 @@
     <string name="noCoupon">كوبون غير متاح</string>
     <string name="Wait_our_confirmation">إنتظر إشعاراً كى تتم الدفع خلال ساعه</string>
     <string name="phone">رقم الموبايل</string>
+    <string name="complete_profile">من فضلك,أكمل معلوماتك الشخصية</string>
+    <string name="no_place_Available">لا توجد أماكن,غير الطابق المحدد</string>
+    <string name="workSpace">مساحات عمل</string>
+    <string name="gym">جيم</string>
+    <string name="noItem">لا توجد بيانات</string>
     <string-array name="services">
-
         <item> طعام منزلى</item>
+        <item>مساحات عمل</item>
+        <item> مطاعم</item>
+        <item> ملاعب خماسى</item>
+        <item>جيم</item>
         <item>مغسلة </item>
         <item>عمال نظافة</item>
-        <item> مطاعم</item>
-        <item> مقاهى</item>
-        <item> ملاعب خماسى</item>
         <item> سائقى التاكسى</item>
+        <item> مقاهى</item>
+    </string-array>
+    <string-array name="restaurantCategory">
+        <item>كريب</item>
+        <item>سمك</item>
+        <item>بيتزا</item>
+        <item>برجر</item>
+        <item>ساندوتش</item>
+        <item>فول وطعميه</item>
+        <item>فراخ</item>
+
 
     </string-array>
 

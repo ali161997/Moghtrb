@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -55,12 +56,13 @@ public class OneCategoryService extends AppCompatActivity implements SwipeRefres
         mViewModel = new ViewModelProvider(this).get(InfoViewModel.class);
         mViewModel.setCtx(this);
         int index = getIntent().getIntExtra("index", 0);
-        mViewModel.setTypeData(index);
+
         Log.i(TAG, "onCreate: " + index);
         mViewModel.getTypeData().observe(this, mt -> {
             toolBarTitleInfo.setText(mViewModel.getListServices().get(mt));
         });
         toolbarInfo.setNavigationOnClickListener(view -> onBackPressed());
+        mViewModel.setTypeData(index);
         setUpRecycler();
         swipeInfo.setOnRefreshListener(this);
         onRefresh();
@@ -110,6 +112,8 @@ public class OneCategoryService extends AppCompatActivity implements SwipeRefres
             {
                 if (infoAdapter != null) {
                     infoAdapter.notifyDataSetChanged();
+                    if (infoAdapter.getItemCount() == 0)
+                        Toast.makeText(this, R.string.noItem, Toast.LENGTH_SHORT).show();
                 }
                 swipeInfo.setRefreshing(false);
             }, 3000);

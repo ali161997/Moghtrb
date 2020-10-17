@@ -15,8 +15,8 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/if_internet"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:drawableBottom="@drawable/ic_checked_black_24dp"
         android:drawablePadding="5dp"
         android:gravity="center"
@@ -28,8 +28,8 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/if_elevator"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:drawableBottom="@drawable/ic_checked_black_24dp"
         android:drawablePadding="5dp"
         android:gravity="center"
@@ -41,8 +41,8 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/if_conditioner"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:drawableBottom="@drawable/ic_checked_black_24dp"
         android:drawablePadding="5dp"
         android:gravity="center"
@@ -54,8 +54,8 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/if_gas"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:drawableBottom="@drawable/ic_checked_black_24dp"
         android:drawablePadding="5dp"
         android:gravity="center"
@@ -67,8 +67,8 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/if_cleaning"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:drawableBottom="@drawable/ic_checked_black_24dp"
         android:drawablePadding="5dp"
         android:gravity="center"

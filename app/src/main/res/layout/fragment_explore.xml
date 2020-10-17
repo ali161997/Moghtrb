@@ -61,17 +61,17 @@
                         android:id="@+id/Where_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/where"
-                        android:textColor="@color/white"
-                        android:backgroundTint="@color/blue"
                         android:background="@color/blue"
+                        android:backgroundTint="@color/blue"
                         android:clickable="true"
-                        android:shadowColor="@color/white"
                         android:drawableStart="@drawable/ic_anywhere"
-                        android:textAlignment="textStart"
-                        android:textSize="15sp"
-                        android:padding="10dp"
                         android:drawablePadding="10dp"
+                        android:padding="10dp"
+                        android:shadowColor="@color/white"
+                        android:text="@string/where"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
                         app:icon="@drawable/ic_anywhere"
                         app:iconPadding="5dp"
                         app:iconTint="@color/white" />
@@ -81,9 +81,9 @@
                     android:id="@+id/shimmer_when"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginVertical="10dp"
                     android:layout_marginBottom="5dp"
                     android:layout_weight="1"
-                    android:layout_marginVertical="10dp"
                     app:shimmer_auto_start="true"
                     app:shimmer_base_alpha=".8"
                     app:shimmer_colored="false"
@@ -93,15 +93,15 @@
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/Time_btn"
-                        android:layout_height="wrap_content"
                         android:layout_width="match_parent"
-                        android:text="@string/when"
-                        android:padding="10dp"
+                        android:layout_height="wrap_content"
                         android:background="@color/blue"
-                        android:textColor="@color/white"
-                        android:drawablePadding="10dp"
-                        android:textAlignment="textStart"
                         android:drawableStart="@drawable/ic_calender"
+                        android:drawablePadding="10dp"
+                        android:padding="10dp"
+                        android:text="@string/when"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/white"
                         app:iconTint="@color/white" />
                 </com.facebook.shimmer.ShimmerFrameLayout>
 
@@ -223,7 +223,6 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_container"
         android:layout_width="match_parent"
@@ -265,8 +264,8 @@
 
             <ProgressBar
                 android:id="@+id/bottomProgressBar"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
                 android:indeterminateDrawable="@drawable/progress"
                 android:progress="25"

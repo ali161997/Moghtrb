@@ -3,13 +3,13 @@
     package="com.moghtrb">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
         android:allowBackup="true"
@@ -20,9 +20,17 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ConfirmRequest"></activity>
-        <activity android:name=".activities.OneCategoryService" />
-        <activity android:name=".activities.MultipleCategoryService" />
+        <activity
+            android:name=".activities.ConfirmRequest"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".activities.OneCategoryService"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MultipleCategoryService"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.Help"
             android:screenOrientation="portrait" />

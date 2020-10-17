@@ -16,8 +16,8 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarSetting"
-            android:layout_width="match_parent"
             style="@style/toolBarCollapsed"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/toolBarHeight"
             app:navigationIcon="@drawable/arrow_back">
 
@@ -52,10 +52,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@drawable/default_bck"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@drawable/default_bck"
+        android:orientation="vertical"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <TextView
             android:id="@+id/selectLanguage"

@@ -79,11 +79,6 @@ public class Settings extends AppCompatActivity implements View.OnClickListener,
                 .setMessage("Restart App to Apply Changes?")
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> {
-//                    if (ProcessPhoenix.isPhoenixProcess(this)) {
-//                        return;
-//                    }
-//                    Intent nextIntent = new Intent(this, Splash.class);
-//                    ProcessPhoenix.triggerRebirth(this, nextIntent);
 
                     Intent mStartActivity = new Intent(this, Splash.class);
                     int mPendingIntentId = 123456;

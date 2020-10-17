@@ -64,7 +64,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ItemsViewHolde
     @Override
     public ItemsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(ctx);
-        View view = inflater.inflate(R.layout.info_item, null, false);
+        View view = inflater.inflate(R.layout.item_rec_info, null, false);
         view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
         return new ItemsViewHolder(view);
 

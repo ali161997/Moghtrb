@@ -21,33 +21,25 @@
             android:orientation="horizontal">
 
             <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/hostPhone"
                 android:textColor="@color/gray"
                 android:textSize="15sp" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/hostPhone"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:textAlignment="center"
-                android:textColor="@color/Black"
-                android:textSize="15sp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCopy"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/IconOnlyButton"
                 android:layout_width="wrap_content"
+                app:icon="@drawable/ic_baseline_phone_forwarded_24"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:text="@string/copy"
-                app:strokeWidth="0dp"
                 android:textColor="@color/blue"
-                app:rippleColor="@color/gray" />
+                app:rippleColor="@color/gray"
+                app:strokeWidth="0dp" />
 
         </LinearLayout>
 
@@ -67,12 +59,12 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/goToLocationBtn"
                 style="@style/IconOnlyButton"
-                app:strokeWidth="0dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
                 app:icon="@drawable/ic_location"
-                app:iconTint="@color/blue" />
+                app:iconTint="@color/blue"
+                app:strokeWidth="0dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -94,13 +86,10 @@
                 style="@style/IconOnlyButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableBottom="@drawable/ic_bed"
-                android:drawablePadding="0dp"
-                app:strokeWidth="0dp"
+                app:icon="@drawable/ic_bed"
                 android:fontFamily="@font/heebo_medium"
-                android:gravity="center"
-                android:padding="0dp"
-                app:rippleColor="@color/gray" />
+                app:rippleColor="@color/gray"
+                app:strokeWidth="0dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -251,12 +240,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/heebo_medium"
             android:gravity="center"
-            app:strokeWidth="0dp"
 
-            android:layout_marginTop="5dp"
             android:insetLeft="0dp"
             android:insetTop="0dp"
             android:insetRight="0dp"
@@ -267,7 +255,8 @@
             app:iconPadding="0dp"
             app:iconTint="@color/blue"
             app:rippleColor="@color/gray"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Rounded" />
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Rounded"
+            app:strokeWidth="0dp" />
 
 
     </LinearLayout>

@@ -40,7 +40,7 @@ public class More extends Fragment implements View.OnClickListener {
     private final int PICK_IMAGE_REQUEST = 71;
     private RecyclerView recyclerView;
     private SimpleDraweeView userImageView;
-    private String TAG = "Menu_activity";
+    private static final String TAG = "More";
     private Button edit_profile;
     private TextView tvUserName;
     private MoreViewModel menuViewModel;
@@ -105,12 +105,13 @@ public class More extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK
-                && data != null && data.getData() != null) {
+        Log.i(TAG, "onActivityResult: first");
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
             filePath = data.getData();
             try {
                 uploadImage();
             } catch (Exception e) {
+                Log.i(TAG, "onActivityResult: " + e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -124,14 +125,14 @@ public class More extends Fragment implements View.OnClickListener {
     }
 
     public String addExt(String strs) {
-        String lin = strs;
         String ext = "_500x500";
         String sub = "?";
-        lin.replace(sub, ext + sub);
-        return lin;
+        strs = strs.replace(sub, (ext + sub));
+        return strs;
     }
 
     private void uploadImage() {
+        Log.i(TAG, "uploadImage: ");
 
         if (filePath != null) {
             final ProgressDialog progressDialog = new ProgressDialog(getActivity());
@@ -139,17 +140,19 @@ public class More extends Fragment implements View.OnClickListener {
             progressDialog.show();
             StorageReference ref = storageReference.child("users_prof_pics/" + FirebaseAuth.getInstance().getUid());
             ref.putFile(filePath)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            ref.getDownloadUrl().addOnSuccessListener(uri -> {
+                                progressDialog.dismiss();
+                                String re = addExt(uri.toString());
+                                menuViewModel.setImageReference(re);
+                                setUserImageView(re);
+                                Toast.makeText(getActivity(), "Uploaded", Toast.LENGTH_SHORT).show();
+
+                            });
+                        }
+                    })
                     .addOnSuccessListener(taskSnapshot -> {
-                        ref.getDownloadUrl().addOnSuccessListener(uri -> {
-                            progressDialog.dismiss();
-                            String re = addExt(uri.toString());
-
-                            menuViewModel.setImageReference(re);
-
-                            setUserImageView(re);
-                            Toast.makeText(getActivity(), "Uploaded", Toast.LENGTH_SHORT).show();
-
-                        });
 
 
                     }).addOnCompleteListener(task -> {
@@ -187,10 +190,9 @@ public class More extends Fragment implements View.OnClickListener {
 
     private void setUserImageView(String url) {
         Log.i(TAG, "setUserImageView: " + url);
-        if (url != null) {
+        if (url != null && !url.equals("")) {
             userImageView.setController(
                     Fresco.newDraweeControllerBuilder()
-                            .setTapToRetryEnabled(true)
                             .setUri(url)
                             .build());
         }

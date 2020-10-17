@@ -162,6 +162,8 @@ public class CreateAccount extends AppCompatActivity implements RadioGroup.OnChe
         mPhoneNumberField = findViewById(R.id.fieldPhoneNumber);
         selectCitySpinner = findViewById(R.id.city_Spinner_signup);
 
+        //completed
+
     }
 
     private void setUpVerifySheet() {
@@ -382,14 +384,12 @@ public class CreateAccount extends AppCompatActivity implements RadioGroup.OnChe
                                 getDataForm();
                                 db.collection("users").document(user.getUid()).set(newUser)
                                         .addOnSuccessListener(documentReference ->
-                                                Toast.makeText(CreateAccount.this, "success added", Toast.LENGTH_SHORT).show())
-                                        .addOnFailureListener(e -> Toast.makeText(CreateAccount.this, "fail added", Toast.LENGTH_SHORT).show());
+                                                Toast.makeText(CreateAccount.this, R.string.status_verification_succeeded, Toast.LENGTH_SHORT).show())
+                                        .addOnFailureListener(e -> Toast.makeText(CreateAccount.this, "failure", Toast.LENGTH_SHORT).show());
                                 updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(CreateAccount.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
                                 updateUI(null);
                             }
 
@@ -567,6 +567,7 @@ public class CreateAccount extends AppCompatActivity implements RadioGroup.OnChe
     }
 
     private void getDataForm() {
+        newUser.put("completed", true);
         newUser.put("cityIndex", selectCitySpinner.getSelectedItemPosition());
         newUser.put("collegeIndex", spinner_college_signup.getSelectedItemPosition());
         newUser.put("birthDate", btnBirthDate.getText().toString());

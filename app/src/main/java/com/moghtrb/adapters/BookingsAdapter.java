@@ -1,7 +1,5 @@
 package com.moghtrb.adapters;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -55,7 +53,6 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.Bookin
         bookingsViewHolder.from.setText(String.format("%s", bookingsModel.getFrom()));
         bookingsViewHolder.to.setText(String.format("%s", bookingsModel.getTo()));
         bookingsViewHolder.totalAmount.setText(String.format("%s %s", bookingsModel.getTotal(), ctx.getResources().getString(R.string.LE)));
-        bookingsViewHolder.hostPhone.setText(String.format("%s", bookingsModel.getHostPhone()));
 
 
     }
@@ -104,13 +101,11 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.Bookin
         LinearLayout payedOnline;
         Button goLocation;
         Button btnCopy;
-        TextView hostPhone;
         MaterialCardView container;
 
 
         BookingsViewHolder(@NonNull View itemView) {
             super(itemView);
-            hostPhone = itemView.findViewById(R.id.hostPhone);
             from = itemView.findViewById(R.id.fromDate);
             to = itemView.findViewById(R.id.toDate);
             goToRoom = itemView.findViewById(R.id.goToRoom);
@@ -131,6 +126,10 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.Bookin
             expandBtn.setOnClickListener(this);
         }
 
+        private void goToDialer() {
+            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + bookingsList.get(getLayoutPosition()).getHostPhone()));
+            ctx.startActivity(intent);
+        }
 
         @Override
         public void onClick(View v) {
@@ -149,7 +148,7 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.Bookin
 
 
             } else if (v.getId() == R.id.btnCopy) {
-                copyPhoneToClip();
+                goToDialer();
 
             } else if (v.getId() == R.id.goToLocationBtn) {
                 goToMapActivity();
@@ -172,12 +171,12 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.Bookin
 
         }
 
-        private void copyPhoneToClip() {
-            ClipboardManager clipboard = (ClipboardManager) ctx.getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData clip = ClipData.newPlainText("host phone", hostPhone.getText());
-            clipboard.setPrimaryClip(clip);
-            Toast.makeText(ctx, "copied", Toast.LENGTH_SHORT).show();
-        }
+//        private void copyPhoneToClip() {
+//            ClipboardManager clipboard = (ClipboardManager) ctx.getSystemService(Context.CLIPBOARD_SERVICE);
+//            ClipData clip = ClipData.newPlainText("host phone", hostPhone.getText());
+//            clipboard.setPrimaryClip(clip);
+//            Toast.makeText(ctx, "copied", Toast.LENGTH_SHORT).show();
+//        }
 
         private void goToMapActivity() {
             try {

@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -284,6 +285,13 @@ public class RoomDetail extends AppCompatActivity implements View.OnClickListene
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if (parent.getId() == R.id.roomOrderSpinner) {
             String s = String.format("%s %s", booking_model.getValuesFloors().getValue().get(position), getString(R.string.available));
+            int p = (int) ((Number) booking_model.getValuesFloors().getValue().get(position)).longValue();
+            if (p == 0) {
+                Toast.makeText(this, R.string.no_place_Available, Toast.LENGTH_LONG).show();
+                btn_go_confirmation.setEnabled(false);
+            } else {
+                btn_go_confirmation.setEnabled(true);
+            }
             placeAvailable.setText(s);
             booking_model.setSelectedFloor(roomOrderSpinnner.getSelectedItem().toString());
             long x = ((Number) booking_model.getValuesFloors().getValue().get(position)).longValue();

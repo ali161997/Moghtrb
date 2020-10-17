@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearItemCategory"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    android:padding="5dp">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/itemCategory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_tv_item_category"
+        android:clickable="true"
+        android:fontFamily="sans-serif-condensed"
+        android:foreground="?attr/selectableItemBackground"
+        android:padding="10dp"
+        android:shadowColor="@color/Black"
+        android:shadowDy="1"
+        android:text="Sea Food"
+        android:textColor="@color/item_category_text"
+        android:textSize="15sp" />
+
+
+</LinearLayout>

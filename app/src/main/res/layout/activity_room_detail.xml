@@ -276,19 +276,21 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_go_confirmation"
-        style="@style/Widget.MaterialComponents.Button"
+        style="@style/IconOnlyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
+        android:layout_margin="10dp"
         android:gravity="center"
         android:padding="10dp"
-        android:layout_margin="10dp"
-        android:text="@string/go"
-        android:textColor="@color/white"
+        android:shadowColor="@color/gray"
         android:textSize="20sp"
-        app:backgroundTint="@android:color/holo_red_dark"
+        app:backgroundTint="@color/detail_go"
         app:elevation="0dp"
-        app:rippleColor="@color/gray" />
+        app:icon="@drawable/ic_baseline_double_arrow_24"
+        app:iconTint="@color/white"
+        app:rippleColor="@color/gray"
+        app:strokeWidth="0dp" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

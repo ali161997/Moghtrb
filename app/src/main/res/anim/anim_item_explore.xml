@@ -6,10 +6,10 @@
         android:toAlpha="1.0" />
     <scale
         android:duration="300"
+        android:fillBefore="false"
         android:fromXScale="0.0"
         android:fromYScale="0.0"
         android:toXScale="1.0"
-        android:fillBefore="false"
         android:toYScale="1.0" />
 
 </set>
